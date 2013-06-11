@@ -1,0 +1,41 @@
+{
+    "Blade Material":{
+        "Magical Crystal":1,
+        "Enchanted Glass":2,
+        "Adamantite":3,
+        "Mithral":3,
+        "Cold Iron":7,
+        "Obsidian":8,
+        "Damascus":8,
+        "Silver":15,
+        "Steel":100,
+        "Iron":200,
+        "Bronze":100,
+        "Copper":50
+    },
+    "Blade Shape":{
+        "Leaf":10,
+        "Straight":20,
+        "Curved":10,
+        "Pointed":8,
+        "Single-Edged":5,
+        "Wavy":3
+    },
+    "Handguard Shape":{
+        "Cruciform":20,
+        "Oval":10,
+        "Arched":10
+    },
+    "Handguard Material":{
+        "Brass":10,
+        "Bronze":10,
+        "Steel":10,
+        "Nickel":10
+    },
+    "Hilt Material":{
+        "Horn":20,
+        "Leather":10,
+        "Bone":10,
+        "Wood":15
+    }
+}
