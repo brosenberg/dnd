@@ -1,0 +1,28 @@
+{
+	"Ruined City CR 6":{
+		"1 spider swarm (Avg. CR 1)":4,
+		"1 rat swarm (Avg. CR 1)":4,
+		"2d6 human skeletons (Avg. CR 3)":8,
+		"1d6 stirges (Avg. CR 3)":8,
+		"1 assassin vine (Avg. CR 3)":4,
+		"1d6 ghouls (Avg. CR 4)":8,
+		"1 barghest (Avg. CR 4)":2,
+		"1d6 skeletal champions (Avg. CR 5)":6,
+		"1d4 yeth hounds (Avg. CR 5)":4,
+		"1d6 ogres (Avg. CR 6)":6,
+		"1d6 shadows (Avg. CR 6)":4,
+		"1d6 wights (Avg. CR 6)":4,
+		"1 lamia (Avg. CR 6)":2,
+		"1d6 harpies (Avg. CR 7)":6,
+		"1 medusa (Avg. CR 7)":2,
+		"1 nabasu (Avg. CR 8)":2,
+		"1 dark naga (Avg. CR 8)":2,
+		"1d8 gargoyles (Avg. CR 8)":8,
+		"1d6 cyclopes (Avg. CR 8)":4,
+		"1d6 wraiths (Avg. CR 8)":4,
+		"1 behir (Avg. CR 8)":2,
+		"1 sphinx (Avg. CR 8)":2,
+		"1 spirit naga (Avg. CR 9)":2,
+		"1d4 spectres (Avg. CR 9)":2
+	}
+}

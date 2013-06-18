@@ -1,0 +1,24 @@
+{
+	"Desert Encounter CR 6":{
+		"1 giant spider (Avg. CR 1)":8,
+		"1 skeletal champion (Avg. CR 2)":4,
+		"1d8 skeletons (Avg. CR 2)":6,
+		"1 bat swarm (Avg. CR 2)":4,
+		"1 giant scorpion (Avg. CR 3)":8,
+		"1d3 dire bats (Avg. CR 4)":4,
+		"1d6 venomous snakes (Avg. CR 4)":8,
+		"1 basilisk (Avg. CR 5)":4,
+		"1 mummy (Avg. CR 5)":6,
+		"1d4 jann (Avg. CR 6)":4,
+		"1 lamia (Avg. CR 6)":4,
+		"2d6 giant ants (Avg. CR 6)":8,
+		"1 brass dragon (young) (Avg. CR 7)":4,
+		"2d6 gnolls and 1d4 hyenas (Avg. CR 7)":8,
+		"1 remorhaz (cold desert only) (Avg. CR 7)":4,
+		"1 behir (Avg. CR 8)":4,
+		"1 sphinx (Avg. CR 8)":4,
+		"1 blue dragon (young) (Avg. CR 9)":4,
+		"1 brass dragon (adult) (Avg. CR 11)":2,
+		"1 blue dragon (adult) (Avg. CR 13)":2
+	}
+}

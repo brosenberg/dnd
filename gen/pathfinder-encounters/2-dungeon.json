@@ -1,0 +1,27 @@
+{
+	"1–6 1d6 dire rats   1":{
+		"1d6 fire beetles (Avg. CR 1)":6,
+		"1d6 human skeletons (Avg. CR 1)":8,
+		"1d4 giant centipedes (Avg. CR 1)":4,
+		"1 spider swarm (Avg. CR 1)":2,
+		"1d6 human zombies (Avg. CR 2)":6,
+		"1 choker (Avg. CR 2)":2,
+		"1 skeletal champion (Avg. CR 2)":2,
+		"2d6 goblins (Avg. CR 3)":8,
+		"1d4 ghouls (Avg. CR 3)":4,
+		"1d4 giant spiders (Avg. CR 3)":6,
+		"1 cockatrice (Avg. CR 3)":2,
+		"1 gelatinous cube (Avg. CR 3)":4,
+		"1 rust monster (Avg. CR 3)":4,
+		"1 shadow (Avg. CR 3)":4,
+		"1 wight (Avg. CR 3)":2,
+		"2d4 stirges (Avg. CR 4)":6,
+		"1d6 darkmantles (Avg. CR 4)":6,
+		"1d6 troglodytes (Avg. CR 4)":4,
+		"1d4 bugbears (Avg. CR 4)":4,
+		"1d4 vargouilles (Avg. CR 4)":2,
+		"1 gray ooze (Avg. CR 4)":2,
+		"1 mimic (Avg. CR 4)":2,
+		"1 ogre (Avg. CR 4)":4
+	}
+}
