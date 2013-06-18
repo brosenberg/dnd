@@ -1,0 +1,1 @@
+cat treasure | ./process-treasure.pl
