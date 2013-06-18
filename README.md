@@ -14,6 +14,6 @@ old-generator
 -------------
 Old script from many years ago that was intended to be used for the creation of an endless dungeon. It uses data from the Dungeonscape book, some Dungeon magazines and the Pathfinder Beastiary.
 
-process-treasure.pl
+process-treasure
 -------------------
-Script used to process a somewhat specifically formatted treasure sheet from a D&D game. It calculates the total value of all of the treasure on the sheet.
+Script used to process a somewhat specifically formatted treasure sheet from a D&D game. It calculates the total value of all of the treasure on the sheet. An example sheet is given.
