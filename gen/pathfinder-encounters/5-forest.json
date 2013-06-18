@@ -1,0 +1,28 @@
+{
+	"Forest (Temperate Forest) CR 5":{
+		"1 bat swarm (Avg. CR 2)":6,
+		"1 yellow musk creeper (Avg. CR 2)":2,
+		"1d4 giant spiders (Avg. CR 3)":4,
+		"1 assassin vine (Avg. CR 3)":4,
+		"1 giant mantis (Avg. CR 3)":4,
+		"1 unicorn (Avg. CR 3)":2,
+		"1d4 dire bats (Avg. CR 4)":4,
+		"1d4 boars (Avg. CR 4)":6,
+		"1 dire boar (Avg. CR 4)":2,
+		"1 giant stag beetle (Avg. CR 4)":4,
+		"1 owlbear (Avg. CR 4)":4,
+		"1 tiger (Avg. CR 4)":4,
+		"1d6 werewolves (Avg. CR 5)":6,
+		"1d4 dire wolves (Avg. CR 5)":4,
+		"1 ettercap and 1d6 giant spiders (Avg. CR 5)":4,
+		"2d6 goblins and 1d4 goblin dogs (Avg. CR 5)":10,
+		"1 barghest and 2d6 goblins (Avg. CR 6)":4,
+		"1d6 centaurs (Avg. CR 6)":4,
+		"2d6 wolves (Avg. CR 6)":8,
+		"1 nymph (Avg. CR 7)":2,
+		"1 dire tiger (Avg. CR 8)":4,
+		"1 green dragon (young) (Avg. CR 8)":2,
+		"1d4 shambling mounds (Avg. CR 8)":4,
+		"1 treant (Avg. CR 8)":2
+	}
+}

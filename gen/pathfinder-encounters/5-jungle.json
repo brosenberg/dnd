@@ -1,0 +1,28 @@
+{
+	"Jungle (Warm Forest) CR 5":{
+		"1 bat swarm (Avg. CR 2)":4,
+		"1 yellow musk creeper (Avg. CR 2)":4,
+		"1 constrictor snake (Avg. CR 2)":6,
+		"1d6 giant centipedes (Avg. CR 2)":4,
+		"1 leopard (Avg. CR 2)":8,
+		"1d4 giant spiders (Avg. CR 3)":4,
+		"1d6 venomous snakes (Avg. CR 4)":4,
+		"1d4 boars (Avg. CR 4)":6,
+		"1 dire boar (Avg. CR 4)":4,
+		"1 tiger (Avg. CR 4)":6,
+		"1 giant frilled lizard (Avg. CR 5)":4,
+		"1d6 monitor lizards (Avg. CR 5)":6,
+		"1 army ant swarm (Avg. CR 5)":2,
+		"1 ankylosaurus (Avg. CR 6)":2,
+		"1d6 dire apes (Avg. CR 6)":6,
+		"2d4 gorillas (Avg. CR 6)":8,
+		"2d4 deinonychuses (Avg. CR 7)":4,
+		"1 nymph (Avg. CR 7)":2,
+		"1d4 girallons (Avg. CR 8)":2,
+		"1 dire tiger (Avg. CR 8)":4,
+		"1d4 shambling mounds (Avg. CR 8)":4,
+		"1 treant (Avg. CR 8)":2,
+		"1 tyrannosaurus (Avg. CR 9)":2,
+		"1 brachiosaurus (Avg. CR 10)":2
+	}
+}
