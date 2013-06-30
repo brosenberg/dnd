@@ -1,1 +1,2 @@
+./process-treasure.pl treasure
 cat treasure | ./process-treasure.pl
