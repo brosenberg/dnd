@@ -6,9 +6,10 @@ if (!defined $ARGV[0]) {die};
 open (my $FH, '<', $TRAITDB) or die "$0: $TRAITDB: $!";
 
 while (<$FH>) {
-    if (/$ARGV[0]/) {
+    if (/$ARGV[0]/i) {
         my @l = split(',');
-        my $s = sprintf("[1;33m%s[0m: %s\n",$l[0],join(',',@l[5..$#l-2]));
+        map {s/^\s*"?(.+?)"?\s*$/$1/} @l;
+        my $s = sprintf("[1;33m%s[0m [1;34m(%s)[0m: %s\n",$l[0],$l[1],join(',',@l[5..$#l-2]));
         $s =~ s/($ARGV[0])/[1;31m$1[0m/gi;
         $s =~ s/\s\s+/ /g;
         print $s;
