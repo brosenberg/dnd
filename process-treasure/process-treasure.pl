@@ -2,6 +2,13 @@
 
 use strict;
 
+if (-t STDIN && not defined $ARGV[0]) {
+    die <<USAGE
+Usage: $0 [treasure sheet]
+       cat [treasure sheet] | $0
+USAGE
+}
+
 my $r = qr/([0-9]+\s*x\b\s*)?([0-9]+)\s*(pp|gp|ep|sp|cp)\b\s*(each)?(set)?(\s*;)?/;
 my $gold_value = { 'pp' => 10,
                    'gp' =>  1,

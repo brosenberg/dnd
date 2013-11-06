@@ -6,7 +6,11 @@ use JSON 2.28;
 
 my $print = 0;
 
-GetOptions('print' => \$print);
+GetOptions('print' => \$print,
+           'help'  => sub { print "$0: [input file]\n"; exit 1;}
+);
+
+if (! scalar @ARGV) { die "$0: [input file]\n"; }
 
 open(my $FH,'<',"$ARGV[0]") or die "$!\n";
 
