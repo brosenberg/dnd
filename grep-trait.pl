@@ -1,4 +1,5 @@
 #!/usr/bin/perl -w
+# wget https://spreadsheets.google.com/pub?key=0Ak-IxjmMq9NMdG83a3pOQ1hKTVllVDhISlJmbFJRQ1E&single=true&gid=0&output=csv
 use strict;
 
 my $TRAITDB = "/home/ben/Downloads/Traits.csv";
