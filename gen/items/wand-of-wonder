@@ -1,10 +1,10 @@
 {
-    " Type":{
+    "   Type":{
         "Common":65,
         "Uncommon":30,
         "Rare":5
     },
-    "Common":{
+    "  Common":{
         "Slow creature pointed at for 10 rounds (Will DC 15 negates).": 4,
         "Faerie fire surrounds the target.": 3,
         "Deludes wielder for 1 round into believing the rod functions as indicated by a second die roll (no save).": 4,
@@ -28,7 +28,7 @@
         "Wielder (50% chance) or target (50% chance) turns permanently blue, green, or purple (no save).": 4,
         "Flesh to stone (or stone to flesh if target is stone already) if target is within 60 ft. (Fortitude DC 18 negates).": 4
     },
-    "Uncommon":{
+    "  Uncommon":{
         "Wielder is teleported to the location where she was at exactly one day ago.": 3,
         "A 200-ft. wall of stone appears wherever the rod wielder wishes it.": 3,
         "Mass invisibility affects every creature within 900 ft. of the wielder.": 3,
@@ -56,7 +56,7 @@
         "Power word blind against a creature of the rod wielder's choice.": 3,
         "Rod fires a disruptor beam (see blaster rifle).": 2
     },
-    "Rare":{
+    " Rare":{
         "Gate (planar travel) to Kord's Realm in Ysgard.": 3,
         "Gate (planar travel) to Shra'kt'lor in Limbo.": 3,
         "Gate (planar travel) to the City of Slaughter in Pandemonium.": 3,
@@ -81,5 +81,36 @@
         "Wielder shapechanges into a creature of the character's choice.": 3,
         "Iron body affects the wielder for 20 minutes.": 3,
         "Wish (no XP or gold cost).": 3
+    },
+    "   Wand of a Wonder":{
+        "Target loses all body hair, fur, or feathers.": 1,
+        "10ft. deep pit opens beneath target's feet": 4,
+        "Target gains +1 bonus to attacks of the next three rounds.": 1,
+        "One-hundred small bats appear, swarm around the wielder's head for one round, and then flit away.": 1,
+        "Target grows wings, arms, or tentacles.": 1,
+        "Cage of heavy iron bars (10ft square) surrounds the wielder.": 1,
+        "Each piece of headgear within 20ft. changes to a skullcap topped by a bladed device, the blades turning in any breeze.": 1,
+        "Target's color turns to hot pink.": 4,
+        "All gold with 10ft. of the wielder turns to lead.": 2,
+        "Target is covered with a layer of honey.": 3,
+        "In each of the next 5 rounds, 2d4sp shoot forth from each of the wielder's ears.": 2,
+        "Target is garbed in a beautiful, well-tailored, embroidered silk coat (2,000gp value; but magical and dispellable).": 1,
+        "Target is polymorphed into a giant rabbit (as the polymorph other spell, target must make a Will save DC14 or mentally become rabbit as well).": 4,
+        "Target grows a large moustache in 1 round (possibly with a goatee).": 1,
+        "Thousands of horseflies fill the area with 30ft. of the wielder, interfering with Concentration and provoking such checks on all cast spells.": 1,
+        "Target is affected by Otto's irresistible dance for 3 rounds (no save).": 4,
+        "Stream of acid shoots out to 10ft. range, inflicting 4d6 points of damage, Reflex save (DC 15) for half.": 3,
+        "Invisible bards begin playing music on visible instruments. They play loudly for 3-6 rounds, then vanish.": 2,
+        "Tree grows under wielder, lifting to the ceiling or 50ft. height, whichever is less.": 1,
+        "One-hundred dead and putrid fish rain down with 30ft. of the wielder.": 4,
+        "Target glows for 2-5 rounds as if affected by faerie fire spell, but thereafter the wielder vanishes for 2-5 rounds as if an invisibility spell was cast.": 5,
+        "The sounds of bells ring forth drowning out all noise and speech for 2-5 rounds.": 1,
+        "Casts dispel magic within 20ft. radius as a 12th level sorcerer.": 4,
+        "Casts summon monster IV as a 12th level sorcerer.": 8,
+        "Target gains 3d4hp which remain for thirty minutes (non-dispensable; damage taken is first removed from these bonus points).": 1,
+        "Wielder floats 10ft. up (as if feather fall was cast in reverse gravity), hovers for 3-6 rounds then drops suddenly.": 3,
+        "Eight fiery spheres of different hues shoot forth, striking the target and seemingly causing great amounts of damage (actually only 1hp/ each).": 4,
+        "All weapons held in hand within 30ft. turn into bunches of flowers.": 3,
+        "circle of death at target (max. range 20ft.)": 1
     }
 }
