@@ -1,0 +1,50 @@
+{
+    "Minor Magic Armor":{
+        "+1 armor of shield":105,
+        "Lesser minor specific armor or shield":20,
+        "+2 armor of shield":26,
+        "+1 armor or shield with one +1 special ability":26,
+        "Greater minor specific armor or shield":19
+    },
+    "Medium Magic Armor":{
+        "+1 armor or shield (1,000 gp base price)":9,
+        "+2 armor or shield (4,000 gp base price)":9,
+        "+3 armor or shield (9,000 gp base price)":11,
+        "+1 armor with one +1 special ability1 or +1 shield with one +1 special ability1":11,
+        "+1 armor with two +1 special abilities1 or +1 shield with one +1 special abilities1":11,
+        "+1 armor with one +2 special ability1 or +1 shield with one +2 special ability1":11,
+        "+2 armor with one +1 special abilities1 or +2 shield with one +1 special abilities1":11,
+        "Lesser medium specific armor or shield":19,
+        "+2 armor or shield (4,000 gp base price)":9,
+        "+3 armor or shield (9,000 gp base price)":11,
+        "+1 armor with one +1 special ability1 or +1 shield with one +1 special ability1":9,
+        "+1 armor with one +2 special ability1 or +1 shield with one +2 special ability1":11,
+        "+2 armor with one +1 special ability1 or +2 shield with one +1 special ability1":11,
+        "+2 armor with one +2 special ability1 or +2 shield with one +2 special ability1":11,
+        "+3 armor with one +1 special ability1 or +3 shield with one +1 special ability1":11,
+        "Greater medium specific armor or shield":19
+    },
+    "Major Magic Armor":{
+        "+3 armor or shield (9,000 gp base price)":9,
+        "+4 armor or shield (16,000 gp base price)":11,
+        "+1 armor with one +2 special ability or +1 shield with one +2 special ability":9,
+        "+1 armor with one +3 special ability or +1 shield with one +3 special ability":11,
+        "+2 armor with one +2 special ability or +2 shield with one +2 special ability":11,
+        "+3 armor with one +1 special ability or +3 shield with one +1 special ability":11,
+        "+4 armor with one +1 special ability or +4 shield with one +1 special ability":11,
+        "Lesser major specific armor or shield":19,
+        "+4 armor or shield (16,000 gp base price)":9,
+        "+5 armor or shield (25,000 gp base price)":9,
+        "+4 armor with one +1 special ability or +4 shield with one +1 special ability":9,
+        "+4 armor with one +2 special ability or +4 shield with one +2 special ability":7,
+        "+4 armor with one +3 special ability or +4 shield with one +3 special ability":7,
+        "+4 armor with one +4 special ability or +4 shield with one +4 special ability":4,
+        "+5 armor with one +1 special ability or +5 shield with one +1 special ability":7,
+        "+5 armor with one +2 special ability or +5 shield with one +2 special ability":7,
+        "+5 armor with one +3 special ability or +5 shield with one +3 special ability":3,
+        "+5 armor with two +2 special abilities or +5 shield with two +2 special abilities":2,
+        "+5 armor with one +4 special ability or +5 shield with one +4 special ability":2,
+        "+5 armor with one +5 special ability or +5 shield with one +5 special ability":2,
+        "Greater major specific armor or shield":19
+    }
+}

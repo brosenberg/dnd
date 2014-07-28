@@ -1,0 +1,67 @@
+{
+    "+1":{
+        "Benevolent":5,
+        "Poison-resistant":5,
+        "Balanced":5,
+        "Bitter":5,
+        "Bolstering":5,
+        "Brawling":5,
+        "Champion":5,
+        "Dastard":5,
+        "Deathless":5,
+        "Defiant":5,
+        "Fortification (light)":5,
+        "Grinding":4,
+        "Impervious":4,
+        "Mirrored":5,
+        "Spell storing":5,
+        "Stanching":5,
+        "Warding":5
+    },
+    "+2":{
+        "Glamered":11,
+        "Jousting":11,
+        "Shadow":13,
+        "Slick":13,
+        "Expeditious":11,
+        "Creeping":11,
+        "Rallying":11,
+        "Spell resistance (13)":11
+    },
+    "+3":{
+        "Adhesive":7,
+        "Hosteling":8,
+        "Radiant":8,
+        "Delving":9,
+        "Putrid":8,
+        "Fortification (moderate)":9,
+        "Ghost touch":9,
+        "Invulnerability":8,
+        "Spell resistance (15)":9,
+        "Titanic":7,
+        "Wild":7
+    },
+    "+4":{
+        "Harmonizing":15,
+        "Shadow, improved":16,
+        "Slick, improved":16,
+        "Energy resistance":16,
+        "Martyring":15,
+        "Spell resistance (17)":16
+    },
+    "+5":{
+        "Righteous":7,
+        "Unbound":6,
+        "Unrighteous":7,
+        "Vigilant":6,
+        "Determination":6,
+        "Shadow, greater":7,
+        "Slick, greater":7,
+        "Energy resistance, improved":7,
+        "Etherealness":7,
+        "Undead controlling":6,
+        "Energy resistance, greater":7,
+        "Fortification (heavy)":7,
+        "Spell resistance (19)":7
+    }
+}
