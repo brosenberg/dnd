@@ -1,1 +1,1 @@
-sed 's/ability1/ability/g;s/abilities1/abilities/g;/—/!d;s/—/-/g;s/   */-/g' new | sort | awk -F- '{print "            \"" $3 "\":" $2-$1+1 ","}'
+sed 's/ability1/ability/g;s/abilities1/abilities/g;/—/!d;s/—/-/g;s/   */-/g' new | awk -F- '{print "            \"" $3 "\":" $2-$1+1 ","}' | sort

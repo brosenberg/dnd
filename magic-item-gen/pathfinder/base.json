@@ -74,5 +74,28 @@
             "Lesser major specific armor or shield":20,
             "Greater major specific armor or shield":20
         }
+    },
+    "Weapons":{
+        "Minor":{
+            "+1 weapon":106,
+            "+2 weapon":27,
+            "+1 weapon with one +1 special ability":27,
+            "Lesser minor specific weapon":20,
+            "Greater minor specific weapon":20
+        },
+        "Medium":{
+            "+1 weapon":10,
+            "+2 weapon":20,
+            "+3 weapon":24,
+            "+1 weapon with one +1 special ability":22,
+            "+1 weapon with one +2 special ability":24,
+            "+1 weapon with two +1 special abilities":12,
+            "+2 weapon with one +1 special ability":12,
+            "+2 weapon with one +2 special ability":12,
+            "+2 weapon with one +1 special ability":12,
+            "+3 weapon with one +1 special ability":12,
+            "Lesser medium specific weapon":20,
+            "Greater medium specific weapon":20
+        },
     }
 }
