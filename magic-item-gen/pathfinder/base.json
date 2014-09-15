@@ -1,5 +1,5 @@
 {
-    "Item Type":{
+    "Item Types":{
         "Minor":{
             "Armor and shields":4,
             "Weapons":5,
@@ -30,6 +30,49 @@
             "Staves":20,
             "Wands":5,
             "Wondrous items":20
+        }
+    },
+    "Armor and shields":{
+        "Minor":{
+            "+1 armor or shield":106,
+            "+2 armor or shield":27,
+            "+1 armor or shield with one +1 special ability":27,
+            "Lesser minor specific armor or shield":20,
+            "Greater minor specific armor or shield":20
+        },
+        "Medium":{
+            "+1 armor or shield":10,
+            "+2 armor or shield":20,
+            "+3 armor or shield":24,
+            "+1 armor or shield with one +1 special ability":22,
+            "+1 armor or shield with two +1 special abilities":24,
+            "+1 armor or shield with one +2 special ability":24,
+            "+2 armor or shield with one +1 special ability":24,
+            "+2 armor with one +2 special ability or +2 shield with one +2 special ability":12,
+            "+3 armor with one +1 special ability or +3 shield with one +1 special ability":12,
+            "Lesser medium specific armor or shield":20,
+            "Greater medium specific armor or shield":20
+        },
+        "Major":{
+            "+3 armor or shield (9,000 gp base price)":10,
+            "+4 armor or shield (16,000 gp base price)":22,
+            "+5 armor or shield (25,000 gp base price)":10,
+            "+1 armor or shield with one +2 special ability":10,
+            "+1 armor or shield with one +3 special ability":12,
+            "+2 armor or shield with one +2 special ability":12,
+            "+3 armor or shield with one +1 special ability":12,
+            "+4 armor or shield with one +1 special ability":22,
+            "+4 armor or shield with one +2 special ability":8,
+            "+4 armor or shield with one +3 special ability":8,
+            "+4 armor or shield with one +4 special ability":5,
+            "+5 armor or shield with one +1 special ability":8,
+            "+5 armor or shield with one +2 special ability":8,
+            "+5 armor or shield with one +3 special ability":4,
+            "+5 armor or shield with two +2 special abilities":3,
+            "+5 armor or shield with one +4 special ability":3,
+            "+5 armor or shield with one +5 special ability":3,
+            "Lesser major specific armor or shield":20,
+            "Greater major specific armor or shield":20
         }
     }
 }

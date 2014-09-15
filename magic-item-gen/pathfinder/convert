@@ -1,0 +1,1 @@
+awk -F- '{print "            \"" $3 "\":" $2-$1+1 ","}' new |sed 's/ability1/ability/g;s/abilities1/abilities/g'

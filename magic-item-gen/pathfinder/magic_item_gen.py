@@ -23,8 +23,9 @@ def main():
     with open('base.json', 'r') as f:
         base = json.load(f)
     print "Generating a %s magic item..." % (args.category,)
-    item_type = roll_table(base['Item Type'][args.category.title()])
+    item_type = roll_table(base['Item Types'][args.category.title()])
     print "Item Type:", item_type
+    print roll_table(base['Armor and shields']['Minor'])
 
 if __name__ == '__main__':
     main()
