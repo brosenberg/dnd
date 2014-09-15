@@ -97,5 +97,28 @@
             "Lesser medium specific weapon":20,
             "Greater medium specific weapon":20
         },
+        "Major":{
+            "+1 weapon with one +2 special ability":10,
+            "+1 weapon with one +3 special ability":12,
+            "+2 weapon with one +2 special ability":12,
+            "+3 weapon with one +1 special ability":12,
+            "+3 weapon":10,
+            "+4 weapon with one +1 special ability":10,
+            "+4 weapon with one +1 special ability":12,
+            "+4 weapon with one +2 special ability":8,
+            "+4 weapon with one +3 special ability":8,
+            "+4 weapon with one +4 special ability":5,
+            "+4 weapon":10,
+            "+4 weapon":12,
+            "+5 weapon with one +1 special ability":8,
+            "+5 weapon with one +2 special ability":8,
+            "+5 weapon with one +3 special ability and one +2 special ability":3,
+            "+5 weapon with one +3 special ability":4,
+            "+5 weapon with one +4 special ability and one +1 special ability":3,
+            "+5 weapon with one +4 special ability":3,
+            "+5 weapon":10,
+            "Greater major specific weapon":20,
+            "Lesser major specific weapon":20
+        }
     }
 }
