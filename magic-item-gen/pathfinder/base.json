@@ -1,0 +1,35 @@
+{
+    "Item Type":{
+        "Minor":{
+            "Armor and shields":4,
+            "Weapons":5,
+            "Potions":35,
+            "Rings":2,
+            "Scrolls":35,
+            "Wands":10,
+            "Wondrous items":9
+        },
+        "Medium":{
+            "Armor and shields":10,
+            "Weapons":10,
+            "Potions":10,
+            "Rings":10,
+            "Rods":10,
+            "Scrolls":15,
+            "Staves":3,
+            "Wands":15,
+            "Wondrous items":17
+        },
+        "Major":{
+            "Armor and shields":10,
+            "Weapons":10,
+            "Potions":5,
+            "Rings":10,
+            "Rods":10,
+            "Scrolls":10,
+            "Staves":20,
+            "Wands":5,
+            "Wondrous items":20
+        }
+    }
+}
