@@ -1,28 +1,29 @@
 = Treasure Sheet =
 Coins:
-pp: 20238 gp: 22823 ep: 9684 sp: 4929 cp: 5619
+pp: 20563 gp: 23723 ep: 10259 sp: 6179 cp: 5789
 
 == Gems ==
 Agate: 28 x 10 gp each; 1 x 100 gp; 1 x 500 gp
 Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
 Alexandrine:
-Amber: 3 x 100 gp
+Amber: 4 x 100 gp
 Amethyst: 23 x 100 gp
 Aquamarine: 1 x 5000 gp
-Azurites: 5 x 10 gp
-Bloodstone: 14 x 50 gp
+Azurites: 6 x 10 gp
+Bloodstone: 17 x 50 gp
 Calcedony, White: 1 x 50 gp
 Carnelian: 3 x 50 gp
 Carnelian, Reddish Brown: 1 x 50 gp
 Chrysopate:
-Citrine: 6 x 50 gp
+Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
+Coral, Crimson: 1 x 100 gp
 Coral, Pink: 1 x 100 gp
 Diamond: 2 x 5000 gp
 Eye Agate:
-Garnet, Red: 10 x 100 gp
+Garnet, Red: 10 x 100 gp, 1 x 500 gp
 Garnet, Violet: 1 x 100 gp; 8 x 500 gp
-Hematite: 9 x 10 gp each
+Hematite: 1 x 5 gp, 9 x 10 gp each
 Ioun Stone, Ellipsoid, Lavender/Green (Dead): 500 gp
 Jade:
 Jasper: 1 x 100 gp; 2 x 50 gp
@@ -30,11 +31,11 @@ Lapis Lazuli: Several huge chunks (approx 200 lbs) 75000 gp
 Malachite:
 Moonstone:
 Moonstone, Pale Blue: 2 x 75 gp
-Obsidian:
+Obsidian: 2 x 50 gp
 Onyx, Black: 4 x 50 gp
 Opal: 7 x 1000 gp
 Opal, Black:
-Opal, Fire: 1 x 1000 gp
+Opal, Fire: 3 x 1000 gp
 Pearl: 12 x 100 gp
 Pearl, Black: 6 x 450 gp
 Pearl, Seed: 40 x 10 gp; 25 x 2 gp
@@ -148,6 +149,7 @@ Bone Fish Carved Scroll Case 75 gp.
 Iron Ring 1 gp
 Onyx Abstract Statuette 800 gp
 Glass Box 10 gp
+Citrine Encrusted Silver Goblet 1400gp
  
 == Magical Arms ==
 Adjatha the Drinker 35000gp
@@ -171,7 +173,7 @@ Mace +1, 2500gp
 Crossbow of Speed (string broken; requires Enchant an Item to be cast and a bowyer to repair)
 5 Crossbow Bolts +3
 Hammer +2, 5000gp
-2 Longsword +1, 2 x 2515gp
+3 Longsword +1, 3 x 2515gp
 St. Moreman's Trident +1, +4
     Can speak to Aquatic creatures. If wielder is Aquatic: +4 vs. Non-Aquatic, Control Aquatic Creatures, Paralyzing
 Whip +1
@@ -209,6 +211,7 @@ Bronzewood Swagger Stick 5 gp (Baron von B?)
 50’ silk rope 10 gp
 Iron Key inscribed w/ “D’LYSS” (opened a chest in Water Temple)
 Bone scrollcase x 2
+Steel scrollcase
 Bullseye lantern 12 gp
 Tinder box
 12 kegs of lamp oil
@@ -238,7 +241,9 @@ Scarab with letters: TZGY (there are four total: 3 from the Lower Temple and 1 f
 Scarab with letter: TZOY (non-magical and useless)
 Scroll of Prot from Heat (3 days duration)
 Scroll of Prot Dragon Breath (2D4+4 rds, only self)
+Scroll of Prot from Electricity
 Potion of Waterbreathing II (1 dose) – 12th lvl waterbreathing, 50% to work
+Potion of Creation (Creates a four post bed)
 Priest Scroll, 4 spells: 1evels 1, 2, 3, 4
 Ring of Gargoyles
     1: Repel Gargoyles
@@ -261,13 +266,34 @@ Oil of Bruno's Curse
     Smear on one person
     Protection from Evil for 24 hours
 Scroll of Protection vs. Non-Magical Weapons
-Pick of Strumming
+Pick of Strumming (Linneas has this)
 Priest Scroll
     Gate
     Unholy Word
     Restoration
+Wand of Burdening (Command word unknown)
+Potion of Sobriety (2 doses)
+Potion of Dragon Sight
+Junk Potion (#819)
+Oil of Dezir'ma (Love potion for 24 hours, save)
+Potion of Confusion (#521)
+Potion of Clay (Turns the recipient into clay for 20 minutes, which can be sculpted)
+Wizard Scroll
+    Ride the Wind (2nd level)
+    Whispering Wind (2nd level)
+    Fly (3rd level)
+    Wind Wall (3rd level)
+    Airboat (8th level)
+Priest Scroll
+    Precipitation
+    Withdraw
+    Cloud Burst
+    Remove Paralysis
+    Imbue with Spell Ability
+    Rainbow
 
 == Misc Items ==
+Elemental Fire Lab 2000gp
 Wizard’s Lab 6000gp
 Many spell components (to be determined)
 Lab equipment (rms 328 and 329)
@@ -276,7 +302,7 @@ Phosphorous 35 gp
 Ground Ruby 1000 gp
 4 small amber rods 25 gp each
 Saffron 5 gp
-Sulfer 40 gp
+Sulfur 40 gp
 Lion’s blood 10 gp
 Platinum dust 20 gp
 Gold dust 20 gp
