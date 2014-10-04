@@ -176,6 +176,7 @@ Crossbow of Speed (string broken; requires Enchant an Item to be cast and a bowy
 St. Moreman's Trident +1, +4
     Can speak to Aquatic creatures. If wielder is Aquatic: +4 vs. Non-Aquatic, Control Aquatic Creatures, Paralyzing
 Whip +1
+Poisoned Spear Head (Fire Node #21)
  
 == Normal Arms ==
 Various exotic weapons (non-magical) (from Smigmal Rehand)
@@ -203,7 +204,7 @@ Silver Lined White Linen Robe w/ Jet and Crystal (Air Temple High Priest) 1500 g
 Ceremonial Robes of Earth: 28 x 10 gp Hematites; 8 x 50 gp Jaspers
 Ceremonial Earth Temple Harness Sheath and Bronze Dagger 15 gp
 Bronzewood Swagger Stick 5 gp (Baron von B?)
-5 Silk Robes (1 for each Temple) with matching slippers from Hedrak)
+5 Silk Robes (1 for each Temple) (with matching slippers from Hedrak)
 
 == Equipment ==
 50’ Hemp Rope 2 x 1 gp
@@ -235,15 +236,10 @@ Silver Lamps w/ Eerie Green Continual Light (2)
 Potion of Water Breathing (2 doses)
 Stone of Warmth (Baron von Balderdash has this item)
 Magic Box (1: Shrink to 1/12th size; 2: Leomund’s Secret Chest; 3: return command; 4: Grow to 4x size, 1200 lbs.) - Balderdash
-Priest Scroll: Silence 15ft rad.; Dispel Magic; Cure Critical Wounds; Flamestrike; Slay Living (a priest should have this)
 Scarab with letters: TZGY (there are four total: 3 from the Lower Temple and 1 from early on from the Traders which I think Zazzamar has)
 Scarab with letter: TZOY (non-magical and useless)
-Scroll of Prot from Heat (3 days duration)
-Scroll of Prot Dragon Breath (2D4+4 rds, only self)
-Scroll of Prot from Electricity
 Potion of Waterbreathing II (1 dose) – 12th lvl waterbreathing, 50% to work
 Potion of Creation (Creates a four post bed)
-Priest Scroll, 4 spells: 1evels 1, 2, 3, 4
 Ring of Gargoyles
     1: Repel Gargoyles
         Can ignore the friendly Gargoyles
@@ -264,12 +260,7 @@ Potion of Golden Silence, 2 doses
 Oil of Bruno's Curse
     Smear on one person
     Protection from Evil for 24 hours
-Scroll of Protection vs. Non-Magical Weapons
 Pick of Strumming
-Priest Scroll
-    Gate
-    Unholy Word
-    Restoration
 Wand of Burdening (Command word unknown)
 Potion of Sobriety (2 doses)
 Potion of Dragon Sight
@@ -277,12 +268,24 @@ Junk Potion (#819)
 Oil of Dezir'ma (Love potion for 24 hours, save)
 Potion of Confusion (#521)
 Potion of Clay (Turns the recipient into clay for 20 minutes, which can be sculpted)
-Wizard Scroll
-    Ride the Wind (2nd level)
-    Whispering Wind (2nd level)
-    Fly (3rd level)
-    Wind Wall (3rd level)
-    Airboat (8th level)
+
+== Scrolls ==
+Scroll of Protection vs. Non-Magical Weapons
+Scroll of Prot from Heat (3 days duration)
+Scroll of Prot Dragon Breath (2D4+4 rds, only self)
+Scroll of Prot from Electricity
+Priest Scroll
+    4 spells: 1evels 1, 2, 3, 4
+Priest Scroll
+    Silence 15ft rad.
+    Dispel Magic
+    Cure Critical Wounds
+    Flamestrike
+    Slay Living
+Priest Scroll
+    Gate
+    Unholy Word
+    Restoration
 Priest Scroll
     Precipitation
     Withdraw
@@ -290,6 +293,12 @@ Priest Scroll
     Remove Paralysis
     Imbue with Spell Ability
     Rainbow
+Wizard Scroll
+    Ride the Wind (2nd level)
+    Whispering Wind (2nd level)
+    Fly (3rd level)
+    Wind Wall (3rd level)
+    Airboat (8th level)
 
 == Misc Items ==
 Elemental Fire Lab 2000gp
@@ -326,5 +335,5 @@ Hedrak’s books on military tactics, strategy, and personal improvement (Leadin
 2 Adult White Dragon
 1 Baby White Dragon
 2 Adult Black Dragon
-2 Red Dragon (Unknown ages)
+2 Juvenile Red Dragon
 Silver Fox furs 4 x 4000 gp each
