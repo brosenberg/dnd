@@ -150,6 +150,8 @@ Iron Ring 1 gp
 Onyx Abstract Statuette 800 gp
 Glass Box 10 gp
 Citrine Encrusted Silver Goblet 1400gp
+Bone scrollcase x 2
+Steel scrollcase
  
 == Magical Arms ==
 Adjatha the Drinker 35000gp
@@ -165,7 +167,7 @@ Ringmail +1 2600gp
 Chainmail +2 (from Ashremm) 5075gp
 Medium Shield +1 (from Ashremm), 1 x 2507gp
 2 Medium Shields +2, 2 x 5007gp
-3 Hammer +2, 3 x 5000gp
+3 Hammers +2, 3 x 5000gp
 Morningstar +1, 2510gp
 2 Battle Axes +1, 2 x 2505gp
 Mace +1, 2500gp
@@ -178,40 +180,40 @@ St. Moreman's Trident +1, +4
 Whip +1
 Poisoned Spear Head (Fire Node #21)
  
-== Normal Arms ==
+== Normal Arms and Armor ==
 Various exotic weapons (non-magical) (from Smigmal Rehand)
 Black Leather armour with matching leather mask
 2 suits of human sized bronze platemail 2 x 400 gp
-4 shields embossed with the Earth Temple Triangle 4 x 7 gp
 2 suits of normal Platemail (1 from Water Temple; 1 from Earth Temple) 2 x 600 gp
+4 shields embossed with the Earth Temple Triangle 4 x 7 gp
 Med. Shield (embossed w/ Octopus) 7 gp
 1 Bronze Mace (15 gp)
 3 longswords 3 x 15 gp
 short sword 10 gp
+2 Salamander Spears
  
 == Clothing ==
-Earth Temple tabards 20 x 6 sp
+Ceremonial Robes of Earth: 28 x 10 gp Hematites; 8 x 50 gp Jaspers
+Ceremonial Earth Temple Harness Sheath and Bronze Dagger 15 gp
+Bronzewood Swagger Stick 5 gp (Baron von B?)
 Crimson Fire Temple capes 7 x 8 sp
-Red Robe w/ Gold Skull on front
-Red Robe w/ Gold skulls front and back
-Red Robe (Ashremm) w/ gold skulls, front, back, and sleeves; studded with re garnets (3000 gp value)
-Rusty Red cloaks 2 x 8 sp
+Earth Temple tabards 20 x 6 sp
 Green Water Temple shirts (5)
 Green cape 8 sp
 Green Silk Handkerchief
 Green Embroidered Silk Robe w/ Octopus of Aquamarine (Water Temple High Priest) 6400 gp
+Red Robe w/ Gold Skull on front
+Red Robe w/ Gold skulls front and back
+Red Robe (Ashremm) w/ gold skulls, front, back, and sleeves; studded with re garnets (3000 gp value)
+Rusty Red cloaks 2 x 8 sp
 Silver Lined White Linen Robe w/ Jet and Crystal (Air Temple High Priest) 1500 gp
-Ceremonial Robes of Earth: 28 x 10 gp Hematites; 8 x 50 gp Jaspers
-Ceremonial Earth Temple Harness Sheath and Bronze Dagger 15 gp
-Bronzewood Swagger Stick 5 gp (Baron von B?)
 5 Silk Robes (1 for each Temple) (with matching slippers from Hedrak)
+Senshock's Wizard Robe (Stars and Moons and Clovers like a leaper Shawn)
 
 == Equipment ==
-50’ Hemp Rope 2 x 1 gp
+50’ hemp rope 2 x 1 gp
 50’ silk rope 10 gp
 Iron Key inscribed w/ “D’LYSS” (opened a chest in Water Temple)
-Bone scrollcase x 2
-Steel scrollcase
 Bullseye lantern 12 gp
 Tinder box
 12 kegs of lamp oil
@@ -239,7 +241,8 @@ Magic Box (1: Shrink to 1/12th size; 2: Leomund’s Secret Chest; 3: return comm
 Scarab with letters: TZGY (there are four total: 3 from the Lower Temple and 1 from early on from the Traders which I think Zazzamar has)
 Scarab with letter: TZOY (non-magical and useless)
 Potion of Waterbreathing II (1 dose) – 12th lvl waterbreathing, 50% to work
-Potion of Creation (Creates a four post bed)
+Potion of Creation (Creates a four post bed) (Balderdash has this)
+Ring of Protection +1
 Ring of Gargoyles
     1: Repel Gargoyles
         Can ignore the friendly Gargoyles
@@ -268,6 +271,8 @@ Junk Potion (#819)
 Oil of Dezir'ma (Love potion for 24 hours, save)
 Potion of Confusion (#521)
 Potion of Clay (Turns the recipient into clay for 20 minutes, which can be sculpted)
+Spent Ring of Demon Holding
+Bracers of Not-Archery (from Senshok)
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -299,6 +304,10 @@ Wizard Scroll
     Fly (3rd level)
     Wind Wall (3rd level)
     Airboat (8th level)
+Wizard Scroll
+    Shield (1st level)
+    Wizard Lock (2nd level)
+    Fly (3rd level)
 
 == Misc Items ==
 Elemental Fire Lab 2000gp
@@ -321,9 +330,16 @@ Copper dust 10 gp
 Vial of Quicksilver 1000 gp
 Jar of Wolfsbane
 Jar of Magic Ink (for scrolls)
+Senshok's Golden Skull
 
 == Library ==
-Includes the spell books of Falrinth the Favored
+Includes the spell books of Falrinth the Favored and Senshock the Skull-less
+Senshock the Skull-less's Spellbook
+    1: Charm Person, Detect Magic, Feather Fall, Magic Missile, Read Magic, Shield, Unseen Servant, Copy
+    2: Detect Invis, Invisibility, Knock, Magic Mouth, Web, Wizard Lock
+    3: Dispel Magic, Explosive Runes, Fireball, Fly, Haste, Lightning Bolt, Tongues
+    4: Charm Monster, Dimension Door, Firetrap, Polymorph Self
+    5: Conjure Elemental, Teleport, Wall of Stone
 15 Books on Water Temple Ritual, the Elemental Plane of Water, and Water Elementals
 Several scrolls of Air Rituals and Kelno’s notes
 8 Books on Air Temple Rituals, Elemental Air, and a creature called a Drelb
@@ -335,5 +351,5 @@ Hedrak’s books on military tactics, strategy, and personal improvement (Leadin
 2 Adult White Dragon
 1 Baby White Dragon
 2 Adult Black Dragon
-2 Juvenile Red Dragon
+1 Juvenile Red Dragon
 Silver Fox furs 4 x 4000 gp each
