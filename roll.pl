@@ -7,6 +7,8 @@ for ( split(',', join('',@ARGV) ) ) {
         my $mod = defined $3 && defined $4 ? "$3$4" : undef;
         printf "%9s: ", sprintf "%sd%s%s", $1,$2,defined $mod?$mod:'';
         &roll($1,$2,$mod);
+    } else {
+        warn "I don't understand: $_\n";
     }
 }
 
