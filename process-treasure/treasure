@@ -1,12 +1,12 @@
 = Treasure Sheet =
 Coins:
-pp: 20563 gp: 23723 ep: 10259 sp: 6179 cp: 5789
+pp: 20663 gp: 23723 ep: 10259 sp: 6179 cp: 5789
 
 == Gems ==
 Agate: 28 x 10 gp each; 1 x 100 gp; 1 x 500 gp
 Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
-Alexandrine:
+Alexandrite:
 Amber: 4 x 100 gp
 Amethyst: 23 x 100 gp
 Aquamarine: 1 x 5000 gp
@@ -46,7 +46,7 @@ Sapphire, Blue: 1 x 500 gp
 Sapphire, Black: 1 x 7500 gp
 Sapphire, Star: 1 x 1000 gp 
 Spinel, Brown: 28 x 100 gp
-Tiger Eyes: 13 x 10 gp
+Tiger Eye: 13 x 10 gp
 Topaz: 1 x 500 gp
 Tourmaline: 10 x 100 gp
 Tourmaline, Black: 9 x 500 gp
@@ -73,7 +73,7 @@ Silver chain with polished carnelian 120 gp
 Gold Chains w/Holy Symbol of Fire Temple 2 x 100 gp each
 Gold Chain with Fire Temple Symbol set w/Ruby 2500 gp
 Gold Chain with Fire Temple Symbol set w/Garnet 750 gp
-Gold chain 100 gp
+Gold Chain 100 gp
 Gold Chain 200 gp
 Platinum necklace w/diamonds 8000 gp
 Carnelian Brooch w/ Arms of the Knights of the Hart 800 gp
@@ -93,6 +93,8 @@ Platinum bracelet 1000 gp
 Electrum armlet 30 gp
 Gold and ruby earrings 4000 gp
 Single large gold earring 20 gp
+Necklace 1000 gp
+Ring 250 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -144,7 +146,7 @@ Crystal chandeliers 2 x 2000 gp each
 Golden Quill holders 3 x 50 gp each
 Silver bejeweled inkwell stand 1800 gp
 Brass candle rod 525 gp
-Painting of the Army of Elemental Evil w/Hedrak at fore 250 gp
+Painting of the Army of Elemental Evil w/Hedrack at fore 250 gp
 Bone Fish Carved Scroll Case 75 gp.
 Iron Ring 1 gp
 Onyx Abstract Statuette 800 gp
@@ -152,6 +154,7 @@ Glass Box 10 gp
 Citrine Encrusted Silver Goblet 1400gp
 Bone scrollcase x 2
 Steel scrollcase
+Brass scrollcase
  
 == Magical Arms ==
 Adjatha the Drinker 35000gp
@@ -207,7 +210,7 @@ Red Robe w/ Gold skulls front and back
 Red Robe (Ashremm) w/ gold skulls, front, back, and sleeves; studded with re garnets (3000 gp value)
 Rusty Red cloaks 2 x 8 sp
 Silver Lined White Linen Robe w/ Jet and Crystal (Air Temple High Priest) 1500 gp
-5 Silk Robes (1 for each Temple) (with matching slippers from Hedrak)
+5 Silk Robes (1 for each Temple) (with matching slippers from Hedrack)
 Senshock's Wizard Robe (Stars and Moons and Clovers like a leaper Shawn)
 
 == Equipment ==
@@ -308,6 +311,13 @@ Wizard Scroll
     Shield (1st level)
     Wizard Lock (2nd level)
     Fly (3rd level)
+Wizard Scroll
+    Run (1st level)
+    Preserve (2nd level)
+    Item (3rd level)
+    Stoneskin (4th level)
+    Contingency (6th level)
+    Eyebite (6th level)
 
 == Misc Items ==
 Elemental Fire Lab 2000gp
@@ -330,7 +340,7 @@ Copper dust 10 gp
 Vial of Quicksilver 1000 gp
 Jar of Wolfsbane
 Jar of Magic Ink (for scrolls)
-Senshok's Golden Skull
+Senshok's Golden Skull (enchanted by the paladin)
 
 == Library ==
 Includes the spell books of Falrinth the Favored and Senshock the Skull-less
@@ -345,7 +355,7 @@ Several scrolls of Air Rituals and Kelno’s notes
 8 Books on Air Temple Rituals, Elemental Air, and a creature called a Drelb
 Record of Temple Troops
 List of creatures categorized as AEFW
-Hedrak’s books on military tactics, strategy, and personal improvement (Leading Through Intimidation; How to Make People Think you Like them so They Will do Your Bidding; etc.)
+Hedrack’s books on military tactics, strategy, and personal improvement (Leading Through Intimidation; How to Make People Think you Like them so They Will do Your Bidding; etc.)
 
 == Hides ==
 2 Adult White Dragon
@@ -353,3 +363,6 @@ Hedrak’s books on military tactics, strategy, and personal improvement (Leadin
 2 Adult Black Dragon
 1 Juvenile Red Dragon
 Silver Fox furs 4 x 4000 gp each
+
+== Artifacts ==
+Golden Skull of Death with all Elemental Gems
