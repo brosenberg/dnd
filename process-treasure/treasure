@@ -1,9 +1,9 @@
 = Treasure Sheet =
 Coins:
-pp: 7212 gp: 2323 ep: 10259 sp: 7215 cp: 6342
+pp: 7322 gp: 2323 ep: 10259 sp: 7235 cp: 6342
 
 == Gems ==
-Agate: 28 x 10 gp each; 1 x 100 gp; 1 x 500 gp
+Agate: 36 x 10 gp; 1 x 100 gp; 1 x 500 gp
 Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
 Alexandrite:
@@ -20,9 +20,9 @@ Chrysopate:
 Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
 Coral, Crimson: 1 x 100 gp
 Coral, Pink: 1 x 100 gp
-Diamond: 2 x 5000 gp
+Diamond: 2 x 1000 gp, 2 x 5000 gp
 Eye Agate:
-Garnet, Red: 10 x 100 gp, 1 x 500 gp
+Garnet, Red: 10 x 100 gp, 2 x 500 gp
 Garnet, Violet: 1 x 100 gp; 8 x 500 gp
 Hematite: 1 x 5 gp, 9 x 10 gp each
 Ioun Stone, Ellipsoid, Lavender/Green (Dead): 500 gp
@@ -30,11 +30,11 @@ Jade:
 Jasper: 1 x 100 gp; 2 x 50 gp
 Lapis Lazuli: Several huge chunks (approx 200 lbs) 75000 gp
 Malachite:
-Moonstone:
+Moonstone: 5 x 50 gp
 Moonstone, Pale Blue: 2 x 75 gp
 Obsidian: 2 x 50 gp
 Onyx, Black: 4 x 50 gp
-Opal: 7 x 1000 gp
+Opal: 8 x 100 gp, 7 x 1000 gp
 Opal, Black:
 Opal, Fire: 3 x 1000 gp
 Pearl: 12 x 100 gp
@@ -48,7 +48,7 @@ Sapphire, Black: 1 x 7500 gp
 Sapphire, Star: 1 x 1000 gp 
 Spinel, Brown: 28 x 100 gp
 Tiger Eye: 13 x 10 gp
-Topaz: 1 x 500 gp
+Topaz: 5 x 500 gp
 Tourmaline: 10 x 100 gp
 Tourmaline, Black: 9 x 500 gp
 Tourmaline, Volcanic: 1 x 5000 gp
@@ -96,6 +96,12 @@ Gold and ruby earrings 4000 gp
 Single large gold earring 20 gp
 Necklace 1000 gp
 Ring 250 gp
+Ring with Three Rubies 7000 gp
+Platinum and Silver Necklace with Emeralds 7000 gp
+Giant's Bracelet 700 gp
+Giant's Bracelet 800 gp
+Giant's Bracelet 1000 gp
+Silver Earring 100 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -152,14 +158,19 @@ Bone Fish Carved Scroll Case 75 gp.
 Iron Ring 1 gp
 Onyx Abstract Statuette 800 gp
 Glass Box 10 gp
-Citrine Encrusted Silver Goblet 1400gp
+Citrine Encrusted Silver Goblet 1400 gp
 Bone scrollcase x 2
 Steel scrollcase
 Brass scrollcase
 Giant Mountain Goat Horn
+Solid Gold Belt Buckle 100 gp
+Silver Comb 300 gp
+Copper Mirror 200 gp
+Gold Hair Pin with Pearl 800 gp
+Comb 5000 gp
  
 == Magical Arms ==
-Adjatha the Drinker 35000gp
+Adjatha the Drinker 35000 gp
     Scimitar +2
     When it touches a magic item, it absorbs the magic from that item.
     When it drains an item, it drains a charge. When it deals a hitpoint of damage, it loses a charge.
@@ -172,7 +183,7 @@ Ringmail +1 2600gp
 Chainmail +2 (from Ashremm) 5075gp
 Medium Shield +1 (from Ashremm), 1 x 2507gp
 2 Medium Shields +2, 2 x 5007gp
-Hammer +2, 5000gp
+2 Hammer +2, 2 x 5000gp
 Morningstar +1, 2510gp
 1 Battle Axe +1, 1 x 2505gp
 Mace +1, 2500gp
@@ -184,6 +195,10 @@ St. Moreman's Trident +1, +4
     Can speak to Aquatic creatures. If wielder is Aquatic: +4 vs. Non-Aquatic, Control Aquatic Creatures, Paralyzing
 Whip +1
 Poisoned Spear Head (Fire Node #21)
+Magic Shield +3
+5x Javelins of Lightning (Drogo has these)
+Hammer with Magic Mouth
+Two-Handed Sword of Giant Slaying +2, +4 vs. Giants. Speaks Dwarf, Hill Giant, Stone Giant, Frost Giant. Forged by Dwarves and gifted to a Cloud Giant centuries ago.
  
 == Normal Arms and Armor ==
 Various exotic weapons (non-magical) (from Smigmal Rehand)
@@ -215,6 +230,7 @@ Silver Lined White Linen Robe w/ Jet and Crystal (Air Temple High Priest) 1500 g
 5 Silk Robes (1 for each Temple) (with matching slippers from Hedrack)
 Senshock's Wizard Robe (Stars and Moons and Clovers like a leaper Shawn)
 Hill Giant Uniform
+Giant Otter Skin Cape 2000 gp (Balderdash)
 
 == Equipment ==
 50’ hemp rope 2 x 1 gp
@@ -281,6 +297,8 @@ Potion of Confusion (#521)
 Potion of Clay (Turns the recipient into clay for 20 minutes, which can be sculpted)
 Spent Ring of Demon Holding
 Bracers of Not-Archery (from Senshok)
+Potion of Hill Giant Control (1 dose) (Balderdash has this)
+Potion of Invulnerability (Immunity vs. Non-magic weapon, protects against creatures with <4HD, +2 AC, +2 saves, 5d4 rounds) Has a Quirk.
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -317,7 +335,6 @@ Wizard Scroll
     Wizard Lock (2nd level)
     Fly (3rd level)
 Wizard Scroll
-    Run (1st level)
     Preserve (2nd level)
     Item (3rd level)
     Contingency (6th level)
