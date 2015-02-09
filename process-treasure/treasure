@@ -1,6 +1,6 @@
 = Treasure Sheet =
 Coins:
-pp: 7322 gp: 2323 ep: 10259 sp: 7235 cp: 6342
+pp: 11461 gp: 26163 ep: 17399 sp: 34535 cp: 14342
 
 == Gems ==
 Agate: 36 x 10 gp; 1 x 100 gp; 1 x 500 gp
@@ -8,9 +8,9 @@ Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
 Alexandrite:
 Amber: 4 x 100 gp
-Amethyst: 23 x 100 gp
+Amethyst: 43 x 100 gp
 Amethyst, Deep Purple: 1 x 1000 gp
-Aquamarine: 1 x 5000 gp
+Aquamarine: 11 x 500 gp; 1 x 5000 gp
 Azurites: 6 x 10 gp
 Bloodstone: 17 x 50 gp
 Calcedony, White: 1 x 50 gp
@@ -19,7 +19,7 @@ Carnelian, Reddish Brown: 1 x 50 gp
 Chrysopate:
 Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
 Coral, Crimson: 1 x 100 gp
-Coral, Pink: 1 x 100 gp
+Coral, Pink: 22 x 100 gp
 Diamond: 2 x 1000 gp, 2 x 5000 gp
 Eye Agate:
 Garnet, Red: 10 x 100 gp, 2 x 500 gp
@@ -35,16 +35,18 @@ Moonstone, Pale Blue: 2 x 75 gp
 Obsidian: 2 x 50 gp
 Onyx, Black: 4 x 50 gp
 Opal: 8 x 100 gp, 7 x 1000 gp
-Opal, Black:
-Opal, Fire: 3 x 1000 gp
-Pearl: 12 x 100 gp
+Opal, Black: 4 x 1000 gp
+Opal, Fire: 5 x 1000 gp
+Pearl: 12 x 100 gp; 2 x 500 gp
 Pearl, Black: 6 x 450 gp
 Pearl, Seed: 40 x 10 gp; 25 x 2 gp
 Peridot: 3 x 500 gp
+Quartz: 980 x 1 gp
 Quartz, Blue: 3 x 10 gp
 Ruby: 1 x 1000 gp
+Sapphire: 1 x 1000 gp
 Sapphire, Blue: 1 x 500 gp
-Sapphire, Black: 1 x 7500 gp
+Sapphire, Black: 1 x 5000; 1 x 7500 gp
 Sapphire, Star: 1 x 1000 gp 
 Spinel, Brown: 28 x 100 gp
 Tiger Eye: 13 x 10 gp
@@ -102,6 +104,7 @@ Giant's Bracelet 700 gp
 Giant's Bracelet 800 gp
 Giant's Bracelet 1000 gp
 Silver Earring 100 gp
+Manticore Jewelry 17 x 500 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -168,6 +171,7 @@ Silver Comb 300 gp
 Copper Mirror 200 gp
 Gold Hair Pin with Pearl 800 gp
 Comb 5000 gp
+1 tun (250 gal) of Exceptional Wine
  
 == Magical Arms ==
 Adjatha the Drinker 35000 gp
@@ -175,7 +179,7 @@ Adjatha the Drinker 35000 gp
     When it touches a magic item, it absorbs the magic from that item.
     When it drains an item, it drains a charge. When it deals a hitpoint of damage, it loses a charge.
     You get bonus HP equal to the number of charges.
-5 suits of Chainmail +1, 5 x 2575gp
+5 suits of Chainmail +1, 5 x 2575gp (One given to Dunwich)
 2 suits of Leather Armour +1, 2 x 2505gp
 Chain Vest +1; can add an additional +1 to AC if worn with Studded leather or lighter
 Banded Mail +1 (from Moltub) 2700gp
@@ -183,27 +187,37 @@ Ringmail +1 2600gp
 Chainmail +2 (from Ashremm) 5075gp
 Medium Shield +1 (from Ashremm), 1 x 2507gp
 2 Medium Shields +2, 2 x 5007gp
+Medium Shield +3
 2 Hammer +2, 2 x 5000gp
 Morningstar +1, 2510gp
-1 Battle Axe +1, 1 x 2505gp
+1 Battle Axe +1, 1 x 2505gp (One given to Dunwich)
 Mace +1, 2500gp
 4 Short Swords +1, 4 x 2510gp
 Crossbow of Speed (Drogo has this)
 5 Crossbow Bolts +3
-2 Longsword +1, 3 x 2515gp
+2 Longsword +1, 3 x 2515gp (One given to Elsavir)
 St. Moreman's Trident +1, +4
     Can speak to Aquatic creatures. If wielder is Aquatic: +4 vs. Non-Aquatic, Control Aquatic Creatures, Paralyzing
 Whip +1
 Poisoned Spear Head (Fire Node #21)
-Magic Shield +3
 5x Javelins of Lightning (Drogo has these)
-Hammer with Magic Mouth
+Non-magical vorpal hammer
 Two-Handed Sword of Giant Slaying +2, +4 vs. Giants. Speaks Dwarf, Hill Giant, Stone Giant, Frost Giant. Forged by Dwarves and gifted to a Cloud Giant centuries ago.
+11x Arrows +2 (Aaryn has these)
+Tribal Spear of Accuracy +1, +2 when thrown (Elmo has this)
+Sylvan Stiletto "Mage Slayer" +1, +2 vs. Mages (Balderdash has this)
+Flameblade +1 (Drogo has this)
+    Erupts in Flame on hit.
+    +1d6 fire damage
+    +1d8 fire damage vs. cold
+    Also functions as a ring of warmth
+    Glows of Faerie Fire
+    Solid ruby inlaid fuller and a Manticore hide wrapped hilt
  
 == Normal Arms and Armor ==
 Various exotic weapons (non-magical) (from Smigmal Rehand)
 Black Leather armour with matching leather mask
-2 suits of human sized bronze platemail 2 x 400 gp
+2 suits of human sized bronze platemail 2 x 400 gp (1 worn by Elsavir)
 2 suits of normal Platemail (1 from Water Temple; 1 from Earth Temple) 2 x 600 gp
 4 shields embossed with the Earth Temple Triangle 4 x 7 gp
 Med. Shield (embossed w/ Octopus) 7 gp
@@ -253,7 +267,7 @@ Lute
 2 silvered mirrors 2 x 10 gp
 
 == Miscellaneous Magic ==
-Wand of Identification (99 charges)
+Wand of Identification (96 charges)
 Nefrandum's Identifier (46 uses. Lineas has it.)
 Oil of Trinity
     Raise your prime statistics by 1 point each for 1 day
@@ -299,6 +313,11 @@ Spent Ring of Demon Holding
 Bracers of Not-Archery (from Senshok)
 Potion of Hill Giant Control (1 dose) (Balderdash has this)
 Potion of Invulnerability (Immunity vs. Non-magic weapon, protects against creatures with <4HD, +2 AC, +2 saves, 5d4 rounds) Has a Quirk.
+Thin black ring of chain. Radiates strong Alteration magic attuned to the Giant's map. Might do teleport?
+Scarab of Insanity (13 charges) (Balderdash has this)
+    20' Radius Save vs. Spell (-2 penalty), -10% penalty on Magic Resistance
+    Failure is 1d4+8 of Insanity
+    Command Word "Optus"
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -357,11 +376,14 @@ Gold dust 20 gp
 Electrum dust 30 gp
 Silver dust 20 gp
 Copper dust 10 gp
+copper ingots 27 x 4 gp
+Ivory tusks 11 x 1000 gp
 1 flask of mercury 10000 gp
 Vial of Quicksilver 1000 gp
 Jar of Wolfsbane
 Jar of Magic Ink (for scrolls)
 Senshok's Golden Skull (enchanted by the paladin)
+Map showing a route from giant steading to the highest point in the mountains, ends in a rift or cavern area
 
 == Library ==
 Includes the spell books of Falrinth the Favored and Senshock the Skull-less
