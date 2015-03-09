@@ -1,9 +1,9 @@
 = Treasure Sheet =
 Coins:
-pp: 11461 gp: 26163 ep: 17399 sp: 34535 cp: 14342
+pp: 11461 gp: 30291 ep: 17399 sp: 35106 cp: 14342
 
 == Gems ==
-Agate: 36 x 10 gp; 1 x 100 gp; 1 x 500 gp
+Agate: 73 x 10 gp; 1 x 100 gp; 1 x 500 gp
 Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
 Alexandrite:
@@ -105,6 +105,7 @@ Giant's Bracelet 800 gp
 Giant's Bracelet 1000 gp
 Silver Earring 100 gp
 Manticore Jewelry 17 x 500 gp
+Platinum Necklace 3000 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -172,6 +173,8 @@ Copper Mirror 200 gp
 Gold Hair Pin with Pearl 800 gp
 Comb 5000 gp
 1 tun (250 gal) of Exceptional Wine
+Silver Belt 1600 gp
+Jeweled Belt 7000 gp
  
 == Magical Arms and Armor ==
 Adjatha the Drinker 35000 gp
@@ -184,8 +187,10 @@ Adjatha the Drinker 35000 gp
 Chain Vest +1; can add an additional +1 to AC if worn with Studded leather or lighter
 Banded Mail +1 (from Moltub) 2700gp
 Ringmail +1 2600gp
+Chainmail +1
 Chainmail +2 (from Ashremm) 5075gp
-Platemail +3
+Platemail +2
+Platemail +3 (Dunwich has this)
 Medium Shield +1 (from Ashremm), 1 x 2507gp
 2 Medium Shields +2, 2 x 5007gp
 Medium Shield +3
@@ -203,7 +208,7 @@ Whip +1
 Poisoned Spear Head (Fire Node #21)
 5x Javelins of Lightning (Drogo has these)
 Non-magical vorpal hammer
-Two-Handed Sword of Giant Slaying +2, +4 vs. Giants. Speaks Dwarf, Hill Giant, Stone Giant, Frost Giant. Forged by Dwarves and gifted to a Cloud Giant centuries ago.
+Two-Handed Sword of Giant Slaying +2, +4 vs. Giants. Speaks Dwarf, Hill Giant, Stone Giant, Frost Giant. Forged by Dwarves and gifted to a Cloud Giant centuries ago. (Aaryn has this)
 11x Arrows +2 (Aaryn has these)
 Tribal Spear of Accuracy +1, +2 when thrown (Elmo has this)
 Sylvan Stiletto "Mage Slayer" +1, +2 vs. Mages (Balderdash has this)
@@ -214,6 +219,7 @@ Flameblade +1 (Drogo has this)
     Also functions as a ring of warmth
     Glows of Faerie Fire
     Solid ruby inlaid fuller and a Manticore hide wrapped hilt
+Dwarf Thrower (Dunwich has this)
  
 == Normal Arms and Armor ==
 Various exotic weapons (non-magical) (from Smigmal Rehand)
@@ -269,6 +275,7 @@ Lute
 2 silvered mirrors 2 x 10 gp
 
 == Miscellaneous Magic ==
+Wand of Cold (16 charges, Derving has this)
 Wand of Identification (96 charges)
 Nefrandum's Identifier (46 uses. Lineas has it.)
 Oil of Trinity
@@ -320,6 +327,7 @@ Scarab of Insanity (13 charges) (Balderdash has this)
     20' Radius Save vs. Spell (-2 penalty), -10% penalty on Magic Resistance
     Failure is 1d4+8 of Insanity
     Command Word "Optus"
+Ring of Warmth - Fragile, -2 on saves it has to make.
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -360,6 +368,12 @@ Wizard Scroll
     Item (3rd level)
     Contingency (6th level)
     Eyebite (6th level)
+Wizard Scroll
+    Cantrip (1st level)
+    Stinking Cloud (2nd level)
+    Minor Malison (3rd level)
+    Rary's Mnemonic Enhancer (4th level)
+    Anti-Magic Shell (6th level)
 
 == Misc Items ==
 Elemental Fire Lab 2000gp
