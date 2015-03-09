@@ -1,14 +1,14 @@
 = Treasure Sheet =
 Coins:
-pp: 11461 gp: 30291 ep: 17399 sp: 35106 cp: 14342
+pp: 11461 gp: 39291 ep: 18091 sp: 37217 cp: 15642
 
 == Gems ==
 Agate: 73 x 10 gp; 1 x 100 gp; 1 x 500 gp
 Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
-Alexandrite:
-Amber: 4 x 100 gp
-Amethyst: 43 x 100 gp
+Alexandrite: 5 x 100 gp
+Amber: 8 x 100 gp
+Amethyst: 45 x 100 gp
 Amethyst, Deep Purple: 1 x 1000 gp
 Aquamarine: 11 x 500 gp; 1 x 5000 gp
 Azurites: 6 x 10 gp
@@ -19,14 +19,15 @@ Carnelian, Reddish Brown: 1 x 50 gp
 Chrysopate:
 Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
 Coral, Crimson: 1 x 100 gp
-Coral, Pink: 22 x 100 gp
+Coral, Pink: 25 x 100 gp
+Chrysoberyl: 7 x 100 gp
 Diamond: 2 x 1000 gp, 2 x 5000 gp
 Eye Agate:
 Garnet, Red: 10 x 100 gp, 2 x 500 gp
 Garnet, Violet: 1 x 100 gp; 8 x 500 gp
 Hematite: 1 x 5 gp, 9 x 10 gp each
 Ioun Stone, Ellipsoid, Lavender/Green (Dead): 500 gp
-Jade:
+Jade: 1 x 100 gp
 Jasper: 1 x 100 gp; 2 x 50 gp
 Lapis Lazuli: Several huge chunks (approx 200 lbs) 75000 gp
 Malachite:
@@ -37,7 +38,7 @@ Onyx, Black: 4 x 50 gp
 Opal: 8 x 100 gp, 7 x 1000 gp
 Opal, Black: 4 x 1000 gp
 Opal, Fire: 5 x 1000 gp
-Pearl: 12 x 100 gp; 2 x 500 gp
+Pearl: 17 x 100 gp; 2 x 500 gp
 Pearl, Black: 6 x 450 gp
 Pearl, Seed: 40 x 10 gp; 25 x 2 gp
 Peridot: 3 x 500 gp
@@ -51,7 +52,7 @@ Sapphire, Star: 1 x 1000 gp
 Spinel, Brown: 28 x 100 gp
 Tiger Eye: 13 x 10 gp
 Topaz: 5 x 500 gp
-Tourmaline: 10 x 100 gp
+Tourmaline: 13 x 100 gp
 Tourmaline, Black: 9 x 500 gp
 Tourmaline, Volcanic: 1 x 5000 gp
 Turquoise: 15 x 10 gp
@@ -106,6 +107,8 @@ Giant's Bracelet 1000 gp
 Silver Earring 100 gp
 Manticore Jewelry 17 x 500 gp
 Platinum Necklace 3000 gp
+Silver Jewelry 6 x 300 gp
+Gold Jewelry 8 x 200 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -175,6 +178,7 @@ Comb 5000 gp
 1 tun (250 gal) of Exceptional Wine
 Silver Belt 1600 gp
 Jeweled Belt 7000 gp
+Gold Armband with Ivory and Amber Bear set into it 11 x 2000 gp
  
 == Magical Arms and Armor ==
 Adjatha the Drinker 35000 gp
@@ -189,7 +193,7 @@ Banded Mail +1 (from Moltub) 2700gp
 Ringmail +1 2600gp
 Chainmail +1
 Chainmail +2 (from Ashremm) 5075gp
-Platemail +2
+Cursed Platemail -2
 Platemail +3 (Dunwich has this)
 Medium Shield +1 (from Ashremm), 1 x 2507gp
 2 Medium Shields +2, 2 x 5007gp
@@ -219,7 +223,7 @@ Flameblade +1 (Drogo has this)
     Also functions as a ring of warmth
     Glows of Faerie Fire
     Solid ruby inlaid fuller and a Manticore hide wrapped hilt
-Dwarf Thrower (Dunwich has this)
+Cursed Dwarven Thrower
  
 == Normal Arms and Armor ==
 Various exotic weapons (non-magical) (from Smigmal Rehand)
@@ -275,7 +279,7 @@ Lute
 2 silvered mirrors 2 x 10 gp
 
 == Miscellaneous Magic ==
-Wand of Cold (16 charges, Derving has this)
+Yatl Wand of Zooming (16 charges, Derving has this)
 Wand of Identification (96 charges)
 Nefrandum's Identifier (46 uses. Lineas has it.)
 Oil of Trinity
@@ -328,6 +332,7 @@ Scarab of Insanity (13 charges) (Balderdash has this)
     Failure is 1d4+8 of Insanity
     Command Word "Optus"
 Ring of Warmth - Fragile, -2 on saves it has to make.
+Potion of Healing
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
