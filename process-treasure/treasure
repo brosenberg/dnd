@@ -1,6 +1,6 @@
 = Treasure Sheet =
 Coins:
-pp: 11461 gp: 39291 ep: 18091 sp: 37217 cp: 15642
+pp: 14427 gp: 39291 ep: 35411 sp: 109231 cp: 15642
 
 == Gems ==
 Agate: 73 x 10 gp; 1 x 100 gp; 1 x 500 gp
@@ -21,7 +21,7 @@ Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
 Coral, Crimson: 1 x 100 gp
 Coral, Pink: 25 x 100 gp
 Chrysoberyl: 7 x 100 gp
-Diamond: 2 x 1000 gp, 2 x 5000 gp
+Diamond: 6 x 1000 gp, 2 x 5000 gp
 Eye Agate:
 Garnet, Red: 10 x 100 gp, 2 x 500 gp
 Garnet, Violet: 1 x 100 gp; 8 x 500 gp
@@ -35,15 +35,16 @@ Moonstone: 5 x 50 gp
 Moonstone, Pale Blue: 2 x 75 gp
 Obsidian: 2 x 50 gp
 Onyx, Black: 4 x 50 gp
-Opal: 8 x 100 gp, 7 x 1000 gp
+Opal: 8 x 100 gp, 15 x 1000 gp
 Opal, Black: 4 x 1000 gp
 Opal, Fire: 5 x 1000 gp
 Pearl: 17 x 100 gp; 2 x 500 gp
 Pearl, Black: 6 x 450 gp
 Pearl, Seed: 40 x 10 gp; 25 x 2 gp
 Peridot: 3 x 500 gp
-Quartz: 980 x 1 gp
+Quartz: 2880 x 1 gp
 Quartz, Blue: 3 x 10 gp
+Rock Crystal: 17 x 10 gp
 Ruby: 1 x 1000 gp
 Sapphire: 1 x 1000 gp
 Sapphire, Blue: 1 x 500 gp
@@ -179,6 +180,11 @@ Comb 5000 gp
 Silver Belt 1600 gp
 Jeweled Belt 7000 gp
 Gold Armband with Ivory and Amber Bear set into it 11 x 2000 gp
+Silver boxes 8 x 1500 gp
+Raw ivory 8 x 4500 gp
+Alabaster statue of a warrior 4000 gp
+White marble figurines of animals 7 x 1gp
+11 pewter serving dishes
  
 == Magical Arms and Armor ==
 Adjatha the Drinker 35000 gp
@@ -224,19 +230,36 @@ Flameblade +1 (Drogo has this)
     Glows of Faerie Fire
     Solid ruby inlaid fuller and a Manticore hide wrapped hilt
 Cursed Dwarven Thrower
+Harpoon of Howling +3 (Drogo has this)
+    When thrown, it creates a horrifying howl. All within 40' have to save vs. paralyze or run as far as possible for 2d6 turns.
+    Continues to wail for 1d4 rounds.
+The Nightwatcher (Drogo has this)
+    Black Longsword with Adamantite blade
+    +3 Longsword
+    Bearer can see at night as if it were daylight
+    Dispels all magic darkness in 30'
+    When planted into the ground will hum loudly if anyone intending harm to the owner approaches within 60'
+    Family owner: Anauroch
+Dagger +2 (Balderdash has this)
+Silvered Chainmail +3
  
 == Normal Arms and Armor ==
+Assortment of weapons and armor from White Dragons
 Various exotic weapons (non-magical) (from Smigmal Rehand)
 Black Leather armour with matching leather mask
 2 suits of human sized bronze platemail 2 x 400 gp (1 worn by Elsavir)
 2 suits of normal Platemail (1 from Water Temple; 1 from Earth Temple) 2 x 600 gp
 4 shields embossed with the Earth Temple Triangle 4 x 7 gp
-Full Platemail 10000 gp
 Med. Shield (embossed w/ Octopus) 7 gp
-1 Bronze Mace (15 gp)
+1 Bronze Mace 15 gp
 3 longswords 3 x 15 gp
 short sword 10 gp
 2 Salamander Spears
+1 suit of Elven Platemail (Lineas has this)
+2 suits of Platemail 2 x 600 gp
+2 suits of Chainmail 2 x 75 gp
+1 suit of Banded Mail 1 x 200 gp
+1 suit of Splintmail 1 x 80 gp
  
 == Clothing ==
 Ceremonial Robes of Earth: 28 x 10 gp Hematites; 8 x 50 gp Jaspers
@@ -333,6 +356,11 @@ Scarab of Insanity (13 charges) (Balderdash has this)
     Command Word "Optus"
 Ring of Warmth - Fragile, -2 on saves it has to make.
 Potion of Healing
+Rod of Ressurection
+    40 charges
+Potion of Fire Resistance
+Potion of Frost Resistance (Derving has this)
+Potion of Extra Healing (has a quirk) (Balderdash has this)
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -433,6 +461,7 @@ Hedrack’s books on military tactics, strategy, and personal improvement (Leadi
 2 Adult Black Dragon
 1 Juvenile Red Dragon
 Silver Fox furs 4 x 4000 gp each
+Yeti Pelts 5 x 300 gp each
 
 == Artifacts ==
 Golden Skull of Death with all Elemental Gems (Broken)
