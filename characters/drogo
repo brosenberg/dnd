@@ -9,17 +9,24 @@ Titles: Major of the Verbobonc Military
 Experience: 394,389/500,000
 +10% bonus
 
-Temporary Effects: 7 Stoneskins
+Temporary Effects: 4 Stoneskins
 
 Armor Class: -6
 
 Hit Points: 83 (10+10+7+9+9+8+7+6+8)
-Wounds: 0
+Wounds: 38
 Deaths to Date: 0
+
+Elmotis HP: 79
+Elmotis Wounds: 66
+
+
+Speed: 11/22/33/44/55
 
 THAC0 12
 Non-Prof Penalty: -2
-Speed: 11/22/33/44/55
+10 9 8 7 6 5 4 3  2  1  0 -1 -2 -3 -4 -5 -6 -7 -8 -9 -10
+ 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  22
 
 Weapons                 #AT Size Type Spd Hit/Dmg   Damage   Notes
 Sword of Lyons          2/1  M    S    4  +2/+4    1d8/1d12  Cast invis when sheathed
@@ -32,7 +39,7 @@ The Nightwatcher +3     2/1  M    S    2  +4/+6    1d8/1d12  Adamantite Blade, N
                                                              When planted in ground will hum loudly,
                                                              if enemies within 60' feet
                                                              Family owner: Anauroch
-Flametongue             2/1  M    S    4  +2/+4    1d8/1d12  +2 v. Regen, +3 v. Cold
+Flametongue +0          2/1  M    S    4  +1/+3    1d8/1d12  +2 v. Regen, +3 v. Cold
                                                              +3 v. Avian, +4 v. Undead
 Rod of Smiting +3 (35)  2/1  M    B    4  +4/+6    1d8/1d8   2d6+6 vs. Golems
                                                              On nat 20 destroy golems
@@ -73,7 +80,8 @@ Rod/Staff/Wand:        8 (10+2)
 Petrify/Polymorph:     7 (9+2)
 Breath Weapons:        7 (9+2)
 Spell:                 9 (11+2)
-Spell Resistance: +2 vs. Cold, -1 damage per die vs. Cold
+Spell Resistance: 
+Resistance: +2 vs. Cold, -1 damage per die vs. Cold
 
 Weapon Proficiencies:
 1 Longsword (Specalized)
@@ -154,7 +162,7 @@ Hair: Black     Eyes: Blue  Skin: White
 Vision: Normal  Handedness: Right   Origin: Greyhawk
 Birth Rank: First
 
-
+Retinue:
 10 Mounted Knights
     1st level fighters
     Field Plate, Large Shields, Lance, Broadsword, Morningstar
