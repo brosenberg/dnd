@@ -1,6 +1,6 @@
 = Treasure Sheet =
 Coins:
-pp: 14427 gp: 39291 ep: 35411 sp: 109231 cp: 15642
+pp: 18227 gp: 56861 ep: 35411 sp: 109231 cp: 15642
 
 == Gems ==
 Agate: 73 x 10 gp; 1 x 100 gp; 1 x 500 gp
@@ -38,18 +38,18 @@ Onyx, Black: 4 x 50 gp
 Opal: 8 x 100 gp, 15 x 1000 gp
 Opal, Black: 4 x 1000 gp
 Opal, Fire: 5 x 1000 gp
-Pearl: 17 x 100 gp; 2 x 500 gp
+Pearl: 68 x 100 gp; 2 x 500 gp
 Pearl, Black: 6 x 450 gp
 Pearl, Seed: 40 x 10 gp; 25 x 2 gp
-Peridot: 3 x 500 gp
+Peridot: 39 x 500 gp
 Quartz: 2880 x 1 gp
 Quartz, Blue: 3 x 10 gp
 Rock Crystal: 17 x 10 gp
-Ruby: 1 x 1000 gp
+Ruby: 4 x 1000 gp
 Sapphire: 1 x 1000 gp
 Sapphire, Blue: 1 x 500 gp
-Sapphire, Black: 1 x 5000; 1 x 7500 gp
-Sapphire, Star: 1 x 1000 gp 
+Sapphire, Black: 2 x 5000; 1 x 7500 gp
+Sapphire, Star: 4 x 1000 gp 
 Spinel, Brown: 28 x 100 gp
 Tiger Eye: 13 x 10 gp
 Topaz: 5 x 500 gp
@@ -57,7 +57,7 @@ Tourmaline: 13 x 100 gp
 Tourmaline, Black: 9 x 500 gp
 Tourmaline, Volcanic: 1 x 5000 gp
 Turquoise: 15 x 10 gp
-Zircon: 3 x 100 gp, 13 x 50 gp
+Zircon: 3 x 100 gp, 117 x 50 gp
 
 == Jewelry (Jewellery if you’re Canadian) ==
 Gold Ring w/ Ruby 4000 gp
@@ -186,6 +186,9 @@ Alabaster statue of a warrior 4000 gp
 White marble figurines of animals 7 x 1gp
 11 pewter serving dishes
 Large scroll tube
+Tapestry 1875 gp
+Gem encrusted platinum drinking horn 9000 gp
+Gem encrusted gold flagon 6000 gp
  
 == Magical Arms and Armor ==
 Adjatha the Drinker 35000 gp
@@ -243,6 +246,16 @@ The Nightwatcher (Drogo has this)
     Family owner: Anauroch
 Dagger +2 (Balderdash has this)
 Silvered Chainmail +3
+Goblin's Bane +1
+    Bow +1
+    If used by Elven Fighters:
+    Bow +2, double range, 2d6+2 vs. Monstrous Humanoids
+    Famous Elven Bow
+Shield +2, Famous Elven Crest
+Hammer of Thunderbolts +3
+    2d4+4/2d4+3
+    Bunch of cool stuff if you have Gauntlets of Ogre Power and Girdle of Giant Strength
+Giant Two-Handed Sword +4
  
 == Normal Arms and Armor ==
 Assortment of weapons and armor from White Dragons
@@ -265,6 +278,8 @@ short sword 10 gp
 2 suits of Chainmail 2 x 75 gp
 1 suit of Banded Mail 1 x 200 gp
 1 suit of Splintmail 1 x 80 gp
+1 suit of Dwarven Splintmail
+Giant Sized Mace
  
 == Clothing ==
 Ceremonial Robes of Earth: 28 x 10 gp Hematites; 8 x 50 gp Jaspers
@@ -366,6 +381,27 @@ Rod of Ressurection
 Potion of Fire Resistance
 Potion of Frost Resistance (Derving has this)
 Potion of Extra Healing (has a quirk) (Balderdash has this)
+Potion of Speed
+Potion of Extra Healing
+Oil of Slipperiness
+Potion of Healing
+Potion of Storm Giant Strength (Drogo has this)
+Leaf of Colors (Balderdash has this)
+    Can be commanded to magically detect the race of any creature.
+Quaal's Feather Token (Finger)
+    Teleports at the pointed to location
+Wand of Misplaced Objects (40 charges) (Lineas has this)
+    A multitude of golden orbs shoot out of the wand and surround a target.
+    The target is confused for 1 round.
+    At the end of the round, the victim is freed.
+    All of the objects on their person have been moved.
+    Takes 1d4 rounds to get everything in order
+Ointment of Soothing - Cures all fire damage
+Potion of Frost Giant Control (Balderdash has these)
+Potion of Cloud Giant Control (Balderdash has these)
+Pearl of Wisdom
+    +1 wisdom if worn for one month. Must wear forever
+Fex Tree Chess Set
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -412,6 +448,10 @@ Wizard Scroll
     Minor Malison (3rd level)
     Rary's Mnemonic Enhancer (4th level)
     Anti-Magic Shell (6th level)
+Wizard Scroll
+    Crystal Brittle (9th)
+    Energy Drain (9th)
+Scrolls of Communication (Balderdash and Derving have these)
 
 == Misc Items ==
 Elemental Fire Lab 2000gp
@@ -461,13 +501,31 @@ Record of Temple Troops
 List of creatures categorized as AEFW
 Hedrack’s books on military tactics, strategy, and personal improvement (Leading Through Intimidation; How to Make People Think you Like them so They Will do Your Bidding; etc.)
 
-== Hides ==
+== Hides and Animal Parts ==
 2 Adult White Dragon
 1 Baby White Dragon
 2 Adult Black Dragon
 1 Juvenile Red Dragon
 Silver Fox furs 4 x 4000 gp each
 Yeti Pelts 5 x 300 gp each
+
+Worthless Ivory Tusks for poor scrimshaw
+Cave Bear Hide
+Su-Monster Hide
+Wyvern Hide
+Rack of an Elk
+Teeth and Claws of an Umber Hulk
+Giant Scorpion Claws
+Horn of a Wooly Rhino
+Pair of Mammoth Tusks
+Pair of Mastodon Tusks
+Giant Boar Head
+Griffin Hide
+Dwarven Skull with Iron Crown
+Wings of a Giant Eagle
+Head of a Shedu
+Giant Lynx Pelt
+Jaws of a Subterranean Lizard
 
 == Artifacts ==
 Golden Skull of Death with all Elemental Gems (Broken)

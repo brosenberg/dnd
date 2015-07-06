@@ -9,12 +9,14 @@ def roll(die, sides):
     return r
 
 def main():
-    base_damage = roll(1,8)+4
-    large_damage = roll(1,12)+4
+    base_damage = roll(1,8)
+    large_damage = roll(1,12)
+    bonus = 4
     to_hit = roll(1,20+2)
     print "To hit: %d  AC: %d" % (to_hit, 12-to_hit)
-    print "Medium Damage: %d" % (base_damage+roll(1,6),)
-    print " Large Damage: %d" % (large_damage+roll(1,6),)
+    print "Medium Damage: %d" % (base_damage+roll(1,6)+bonus,)
+    print " Large Damage: %d" % (large_damage+roll(1,6)+bonus,)
+    print "ELarge Damage: %d" % (2*(.5+large_damage)+roll(1,6)+bonus,)
 
 if __name__ == '__main__':
     main()
