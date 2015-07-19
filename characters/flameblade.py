@@ -9,6 +9,7 @@ def roll(die, sides):
     return r
 
 def main():
+    print "Attacking with Flame Blade"
     base_damage = roll(1,8)
     large_damage = roll(1,12)
     bonus = 4
