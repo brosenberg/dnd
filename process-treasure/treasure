@@ -1,6 +1,6 @@
 = Treasure Sheet =
 Coins:
-pp: 18227 gp: 56861 ep: 35411 sp: 109231 cp: 15642
+pp: 8227 gp: 4845 ep: 1 sp: 1 cp: 42
 
 == Gems ==
 Agate: 73 x 10 gp; 1 x 100 gp; 1 x 500 gp
@@ -196,7 +196,7 @@ Adjatha the Drinker 35000 gp
     When it touches a magic item, it absorbs the magic from that item.
     When it drains an item, it drains a charge. When it deals a hitpoint of damage, it loses a charge.
     You get bonus HP equal to the number of charges.
-5 suits of Chainmail +1, 5 x 2575gp (One given to Dunwich)
+5 suits of Chainmail +1, 5 x 2575gp
 2 suits of Leather Armour +1, 2 x 2505gp
 Chain Vest +1; can add an additional +1 to AC if worn with Studded leather or lighter
 Banded Mail +1 (from Moltub) 2700gp
@@ -204,13 +204,13 @@ Ringmail +1 2600gp
 Chainmail +1
 Chainmail +2 (from Ashremm) 5075gp
 Cursed Platemail -2
-Platemail +3 (Dunwich has this)
+Platemail +3
 Medium Shield +1 (from Ashremm), 1 x 2507gp
 2 Medium Shields +2, 2 x 5007gp
 Medium Shield +3
 2 Hammer +2, 2 x 5000gp
 Morningstar +1, 2510gp
-1 Battle Axe +1, 1 x 2505gp (One given to Dunwich)
+1 Battle Axe +1, 1 x 2505gp
 Mace +1, 2500gp
 4 Short Swords +1, 4 x 2510gp
 Crossbow of Speed (Drogo has this)
@@ -322,6 +322,7 @@ Lute
 2 silvered mirrors 2 x 10 gp
 
 == Miscellaneous Magic ==
+Hat of Holding
 Yatl Wand of Zooming (16 charges, Derving has this)
 Wand of Identification (96 charges)
 Nefrandum's Identifier (46 uses. Lineas has it.)
@@ -402,6 +403,8 @@ Potion of Cloud Giant Control (Balderdash has these)
 Pearl of Wisdom
     +1 wisdom if worn for one month. Must wear forever
 Fex Tree Chess Set
+10x Pot of Extra Healing (3d8+3) (Lineas has these)
+2x Elixir of Health (Lineas has these)
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -502,7 +505,7 @@ List of creatures categorized as AEFW
 Hedrack’s books on military tactics, strategy, and personal improvement (Leading Through Intimidation; How to Make People Think you Like them so They Will do Your Bidding; etc.)
 
 == Hides and Animal Parts ==
-2 Adult White Dragon
+1 Adult White Dragon
 1 Baby White Dragon
 2 Adult Black Dragon
 1 Juvenile Red Dragon
