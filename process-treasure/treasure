@@ -1,9 +1,9 @@
 = Treasure Sheet =
 Coins:
-pp: 8227 gp: 4845 ep: 1 sp: 1 cp: 42
+pp: 12227 gp: 4845 ep: 1 sp: 1 cp: 4042
 
 == Gems ==
-Agate: 73 x 10 gp; 1 x 100 gp; 1 x 500 gp
+Agate: 73 x 10 gp; 49 x 100 gp; 1 x 500 gp
 Agate, Banded: 9 x 10 gp
 Agate, Moss: 9 x 10 gp; 2 x 100 gp
 Alexandrite: 5 x 100 gp
@@ -14,7 +14,7 @@ Aquamarine: 11 x 500 gp; 1 x 5000 gp
 Azurites: 6 x 10 gp
 Bloodstone: 17 x 50 gp
 Calcedony, White: 1 x 50 gp
-Carnelian: 3 x 50 gp
+Carnelian: 3 x 50 gp, 1 x 1000 gp
 Carnelian, Reddish Brown: 1 x 50 gp
 Chrysopate:
 Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
@@ -112,6 +112,8 @@ Silver Jewelry 6 x 300 gp
 Gold Jewelry 8 x 200 gp
 Snurr's Necklace 15000 gp
 Snurr's Crown 22000 gp (6 x 1000 gp rubies, 6 x 1000 gp diamonds, 1 jacinth 10000 gp) (Sonja's wearing this)
+Ruby inlaid Gold Torc 2000 gp
+Necklace and Earrings 8000 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -191,6 +193,7 @@ Large scroll tube
 Tapestry 1875 gp
 Gem encrusted platinum drinking horn 9000 gp
 Gem encrusted gold flagon 6000 gp
+Elaborately carved jade box 5000 gp
  
 == Magical Arms and Armor ==
 Adjatha the Drinker 35000 gp
@@ -326,7 +329,7 @@ Lute
 == Miscellaneous Magic ==
 Hat of Holding
 Yatl Wand of Zooming (16 charges, Derving has this)
-Wand of Identification (96 charges)
+Wand of Identification (85 charges)
 Nefrandum's Identifier (46 uses. Lineas has it.)
 Oil of Trinity
     Raise your prime statistics by 1 point each for 1 day
@@ -407,6 +410,8 @@ Pearl of Wisdom
 Fex Tree Chess Set
 10x Pot of Extra Healing (3d8+3) (Lineas has these)
 2x Elixir of Health (Lineas has these)
+Pendant of Scrying? Radiates evil.
+    Can operate like the spell Wizard Eye.
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -531,6 +536,8 @@ Wings of a Giant Eagle
 Head of a Shedu
 Giant Lynx Pelt
 Jaws of a Subterranean Lizard
+8x Weasel Pelts 8 x 2000 gp
+5x Giant Ermine Pelts 5 x 3000 gp
 
 White Dragon Hide Cloak (Sonja's wearing this)
 
