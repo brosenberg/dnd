@@ -1,4 +1,4 @@
-Chaotic Neutral High-Elf Wizard (Sage) 1
+Chaotic Neutral High-Elf Diviner (Sage) 1
 Male 5'8 118 lbs.
 Str 8  Dex 12  Con 14  Wis 13  Int 16  Cha 12
 Medium
@@ -36,16 +36,16 @@ Languages: Common, Elvish, Draconic, Infernal, Celestial.
 Attacks:
 Dagger +1 1d4+1, Finesse, Light, Thrown (20/60)
 Shortsword +1 1d6+1, Finesse, Light
-Ray of Cold +4 1d8 +slow
+Fire Bolt +4 1d10
 
 Spell save DC: 13
 Spell attack mod: +5
 Spells Known:
 0: 4
     Mage Hand
-    Message
+    Minor Illusion
     Prestidigitation
-    Ray of Frost (VS 60' 1d8 cold, speed reduced by 10)
+    Fire Bolt (VS 120' 1d10 fire, ignites unattended objects)
 1: 6
     Detect Magic
     Find Familiar
@@ -59,12 +59,13 @@ Spells Slots:
 
 Cantrips:
     Mage Hand
-    Message
+    Minor Illusion
     Prestidigitation
-    Ray of Frost (VS 60' 1d8 cold, speed reduced by 10)
+    Fire Bolt (VS 120' 1d10 fire, ignites unattended objects)
 Spells Prepared (4):
     Sleep
-    Tasha's Hideous Laughter
+    Find Familiar
+    #Tasha's Hideous Laughter
     Magic Missile
     Detect Magic
 
@@ -105,5 +106,3 @@ Flask
 Waterskin
 Robes
 
-
-School: Abjuration, Necromancy?
