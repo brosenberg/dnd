@@ -6,16 +6,15 @@ Titles: Major of the Verbobonc Military
         Lord of Veluna
         Friend of the Welkwood
 
-Experience: 502882/750000
-  +10% bonus
+Experience: 603807/750000
+    +10% bonus
 
 Temporary Effects:
-3 Stoneskins
 
-Armor Class: -6
+Armor Class: -7
 
-Hit Points: 86 (10+10+7+9+9+8+7+6+8 +9 +3)
-Inner Focus HP: 104 (86+18)
+Hit Points: 86 (10+10+7+9+9+8+7+6+8+9 +3)
+Inner Focus HP: 113 (86+27)
 Wounds: 0
 Deaths to Date: 0
 
@@ -36,37 +35,39 @@ Non-Prof Penalty: -2
  1 2 3 4 5 6 7 8  9 10 11 12 13 14 15 16 17 18 19 20  21
 
 Weapons                    #AT Size Type Spd Hit/Dmg   Damage    Notes
-Hammer of Thunderbolts +3  3/2  M    B    1  +7/+12   2d4+1/2d4  Worn with Gauntlets of Ogre Power & Girdle of Giant Strength:
+Base                                         +7/+15
+Hammer of Thunderbolts +5  3/2  M    B   -1  +12/+20  2d4+1/2d4  Worn with Gauntlets of Ogre Power & Girdle of Giant Strength:
                                                                  +5 instead of +3, slays Giants on Hit,
                                                                  can be thrown 180' which creates a thunderclap that stuns all within 90' for 1 round.
-Sword of Lyons +1          2/1  M    S    4  +6/+12   1d8/1d12   Cast invis when sheathed
-Longsword +2, +3 vs Mages  2/1  M    S    3  +7/+13   1d8/1d12   +3 vs. Magic Users
-Flameblade +1              2/1  M    S    4  +6/+12   1d8/1d12   +1d6 fire, +1d8 fire vs. Cold
+Adamantine Mace +4         3/2  M    B    2  +11/+19  1d12/1d8   Special Mace from Fire Giant Fortress
+Sword of Lyons +1          2/1  M    S    4  +9/+18   1d8/1d12   Cast invis when sheathed
+Longsword +2, +3 vs Mages  2/1  M    S    3  +10/+19  1d8/1d12   +3 vs. Magic Users
+Flameblade +1              2/1  M    S    4  +9/+18   1d8/1d12   +1d6 fire, +1d8 fire vs. Cold
                                                                  Functions as Ring of Warmth, Faerie Fire
                                                                  Solid ruby inlaid fuller
-The Nightwatcher +3        2/1  M    S    2  +8/+14   1d8/1d12   Adamantite Blade, Nightvision
+The Nightwatcher +3        2/1  M    S    2  +11/+20  1d8/1d12   Adamantite Blade, Nightvision
                                                                  Dispels magic darkness in 30'
                                                                  When planted in ground will hum loudly, if enemies within 60' feet
                                                                  Family owner: Anauroch
-Flametongue +0             2/1  M    S    4  +5/+11   1d8/1d12   +2 v. Regen, +3 v. Cold
+Flametongue +0             2/1  M    S    4  +8/+17   1d8/1d12   +2 v. Regen, +3 v. Cold
                                                                  +3 v. Avian, +4 v. Undead
-Rod of Smiting +3 (35)     2/1  M    B    4  +8/+14   1d8/1d8    2d6+6 vs. Golems
+Rod of Smiting +3 (35)     2/1  M    B    4  +11/+20  1d8/1d8    2d6+6 vs. Golems
                                                                  On nat 20 destroy golems
                                                                  On nat 20 x3 vs. Extraplanar
-Harpoon of Howling +3      3/2  M    P    2  +7/+13   1d4//1d6   40' Paralyze, flee 2d6
+Harpoon of Howling +3      3/2  M    P    2  +10/+19  1d4//1d6   40' Paralyze, flee 2d6
                                                                  Persist 1d4
 Crossbow of Speed +1       2/1  M    P    6*                     Always fires first, x2 ROF
-  49x light quarrels                         +5/+9    1d4/1d4
-  11x bolts +2                               +7/+11   1d4/1d4
-Heavy Horse Lance          3/2  L    P    8  +4/+9    1d8+1/3d6  x2 Damage on a Charge
-Rod of Striking (3)        2/1  M    B    4  +8/+14   1d8/1d8    1ch/+3 2ch/+6 3ch/+9
-Javelin of Piercing        3/2  M    P    4  +10/+9   1d6/1d6    Range: 2/4/6
-Javelin +2                 3/2  M    P    2  +6/+11   1d6/1d6    Range: 2/4/6
-Javelin of Lightning x5    3/2  M    P    4  +6/+11   1d6/1d6    Range: 2/4/6
-Silver Dagger              3/2  S    P    2  +4/+9    1d4/1d3
-Stiletto                   3/2  S    P    2  +4/+9    1d4/1d3
-Lucerne Hammer             3/2  L    P/B  9  +4/+9    2d4/1d6
-Short Sword +1             3/2  S    P    2  +5/+10   1d6/1d8
+  47x light quarrels                         +8/+15   1d4/1d4
+  11x bolts +2                               +10/+17  1d4/1d4
+Heavy Horse Lance          3/2  L    P    8  +7/+15   1d8+1/3d6  x2 Damage on a Charge
+Rod of Striking (3)        2/1  M    B    4  +11/+20  1d8/1d8    1ch/+3 2ch/+6 3ch/+9
+Javelin of Piercing        3/2  M    P    4  +13/+15  1d6/1d6    Range: 2/4/6
+Javelin +2                 3/2  M    P    2  +9/+17   1d6/1d6    Range: 2/4/6
+Javelin of Lightning x6    3/2  M    P    4  +9/+17   1d6/1d6    Range: 2/4/6
+Silver Dagger              3/2  S    P    2  +7/+15   1d4/1d3
+Stiletto                   3/2  S    P    2  +7/+15   1d4/1d3
+Lucerne Hammer             3/2  L    P/B  9  +7/+15   2d4/1d6
+Short Sword +1             3/2  S    P    2  +8/+16   1d6/1d8
 
 ## Base Strength
 Str 17
@@ -90,8 +91,8 @@ Con 15
     HP Adj: 1  System Shock: 90%  Ress Surv: 94%
     Poison Save: 0  Regen: -
 ## Raised by Inner Focus
-Con 15
-    HP Adj: 3  System Shock: 97%  Ress Surv: 98%
+Con 18
+    HP Adj: 4  System Shock: 99%  Ress Surv: 100%
     Poison Save: 0  Regen: -
 
 Int 14
@@ -103,11 +104,11 @@ Cha 13
     Henchmen: 5  Loyalty: 0  React Adj: -
 
 Saves:
-Paralyze/Poison/Death: 6 (8+2)
-Rod/Staff/Wand:        8 (10+2)
-Petrify/Polymorph:     7 (9+2)
-Breath Weapons:        7 (9+2)
-Spell:                 9 (11+2)
+Paralyze/Poison/Death: 5 (8+3)
+Rod/Staff/Wand:        7 (10+3)
+Petrify/Polymorph:     6 (9+3)
+Breath Weapons:        6 (9+3)
+Spell:                 8 (11+3)
 Spell Resistance: 
 Resistances:
     Flameblade: +2 vs. Cold, -1 damage per die vs. Cold
@@ -139,11 +140,12 @@ High Level Abilities:
 
 Magic Equipment:
 Ring of Fire Protection
-Ring of Protection +2
+Ring of Protection +3
 Aegis Shield
 Cloak of a Manta Ray (22ft)
 Silver Lamp (continual light)
 Girdle of Frost Giant Strength
+Gauntlets of Ogre Power
 
 Magic Items:
 Fire Proof Scroll Case
@@ -153,9 +155,9 @@ Walrus Tusk Horn of Valhalla (Iron)
     1d4+1 5th level berserkers
     30hp, AC4
     +5 to hit, 1d8/1d12
+Ring of Protection +2
 
 Potions:
-Keoghtom's Ointment (Cure poison, disease, 1d4+8)
 2x Healing (2d4+2)
 3x Extra Healing (3d8+3)
 Noxious Resistance
@@ -186,6 +188,7 @@ Explosive Rune Note Pocket      -
 Knights of Veluna Shield
 Net
 Silvered Mirror
+Belt with Six Rakshasa hands hanging from it.
 
 In Bag of Holding?
 Giant Wooden Spoon
@@ -209,8 +212,11 @@ Retinue:
     10 HP  AC 1
 
 Notes:
-Days since Norris died: 52
+Days since Norris died: 53
 Eclavdra - Drow Woman
+    Her head is now exploded.
+    We found her notes saying that she was trying to regain her lost status with the Drow by gathering the giants to attack the humans.
+    Got a map to Menzoberranzan
 Elsavur of the Vymier Wood
 Milbrin the Engineer
 Dunwich the Dwarf - Indebted to the party. "My family would greet you with open arms."
@@ -219,8 +225,11 @@ Martin the Wizard has our spellbook
 Sonja the blonde Storm Giant
 Hall of Snurr
 King Snurr - Ruler of the Fire Giants
+Rescued Elven Princess
+Rescued Bruce the Titan of Law
+The Elves are in our debt
+The Centaurs are in our debt
 
-Kills:
-20 Ogres
-4 Ogre Magi
-4 Frost Giants
+We are granted lands around Hommlet
+
+One of the Centaurs and of the Elves join the party
