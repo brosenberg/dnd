@@ -1,21 +1,25 @@
 Navaros Kogarune
-Chaotic Neutral High-Elf Diviner (Sage) 1
-Male 5'8 118 lbs.
-Str 8  Dex 12  Con 14  Wis 13  Int 16  Cha 12
+Chaotic Neutral High-Elf Diviner (Sage) 2
+Male 5'8 118 lbs. 136 years old
+Str 8  Dex 12  Con 14  Wis 14  Int 16  Cha 10
 Medium
 Speed 30
 Darkvision 60'
-HP 8
+HP 14
+2 hit die
 
 Proficiency Bonus: +2
+Spell save DC: 13
+Spell attack mod: +5
 
-Keen Senses
+Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
 Trance: Don't need to sleep, meditate for 4 hours a day.
 Elf weapon training
 Cantrip
 Spellcasting
 Arcane Recovery (Level/1 slots)
+Portent: Roll 2d20 after a long rest. Can replace any attack roll, save, or ability check by me or a creature that I can see.
 
 Proficiencies:
 Armor: None
@@ -37,50 +41,38 @@ Languages: Common, Elvish, Draconic, Infernal, Celestial.
 Attacks:
 Dagger +1 1d4+1, Finesse, Light, Thrown (20/60)
 Shortsword +1 1d6+1, Finesse, Light
-Fire Bolt +4 1d10
+Fire Bolt +5 1d10
 
-Spell save DC: 13
-Spell attack mod: +5
 Spells Known:
 0: 4
     Mage Hand
     Minor Illusion
     Prestidigitation
     Fire Bolt (VS 120' 1d10 fire, ignites unattended objects)
-1: 6
-    Detect Magic
-    Find Familiar
-    Identify
+1: 8
+    Detect Magic (Ritual)
+    Find Familiar (Ritual)
+    Identify (Ritual)
     Magic Missile
     Sleep
     Tasha's Hideous Laughter
+    Comprehend Languages (Ritual)
+    Feather Fall
 
 Spells Slots:
-1: 2
-
-Cantrips:
-    Mage Hand
-    Minor Illusion
-    Prestidigitation
-    Fire Bolt (VS 120' 1d10 fire, ignites unattended objects)
-Spells Prepared (4):
-    Sleep
-    Find Familiar
-    #Tasha's Hideous Laughter
-    Magic Missile
-    Detect Magic
+1: 3
 
 Equipment:
-44gp 3sp
+45gp 3sp
+100sp worth of silver candlesticks and things
 Dagger
 Shortsword
-(10 gp worth of charcoal, incense and herbs for Find Familiar)
 Arcane focus - rod
 Arcane focus - staff
 Backpack
     Blank book
     Book of Lore
-    Spellbook
+    Gold leaf Spellbook
     A brass orb etched with strange runes
     Silk Rope 50'
     Mess kit
@@ -92,18 +84,25 @@ Belt Pouch
 Belt Pouch
     Chalk, 8 pieces
     Ink pen
+    Quill
+    Black Ink, 2 bottles
+    Little bag of sand
     Scroll case
-        Parchment, 10 sheets
+        Parchment, 9 sheets
     Scroll case
         Letter from a dead colleague
     Scroll case
-    Little bag of sand
-    Black Ink, 2 bottles
-    Quill
     2x Small knife
     4x Sealing wax
 3x Vial
 Flask
 Waterskin
 Robes
+Dragon Cultist Mask, 5x
+Cultist's Tooth
 
+Notes:
+Purple Cloaks:
+    Frulom - Leader
+    Astarath - We captured him
+    Lendidrosa
