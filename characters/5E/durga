@@ -1,17 +1,18 @@
 Durga Woadveig, Daughter of Brün
-Chaotic Neutral Half-Orc Barbarian 1
+Chaotic Neutral Half-Orc Barbarian 2
 Height: 6'6"  Weight: 215
 Age: 15
 
-HP: 15
-Naked AC: 14
+HP: 28
+Naked AC: 15
 
 Str 16
-Dex 13
+Dex 14
 Con 16
 Wis 12
-Int 10
+Int  8
 Cha  8
+
 
 Abilities:
 Speed 30
@@ -26,6 +27,8 @@ Relentless Endurance: When you are reduced to 0 hit points but not killed outrig
 Savage Attacks: When you score a critical hit with a melee weapon attack, you can roll one of the weapon’s damage dice one additional time and add it to the extra damage of the critical hit.
 Unarmored Defense: When not wearing armor, gain AC 10 + dex mod + con mod. Can still use a shield.
 Wanderer: Excellent memory for maps and geography. Can find food and fresh water for you and 5 people each day, provided the land can provide it.
+Reckless attack: At the beginning of your turn you can decide if you want to attack recklessly. You gain advantage on melee weapon rolls using strength for the turn, but attacks against you have advantage until next turn
+Danger Sense: You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can’t be blinded, deafened, or incapacitated.
 
 Proficiencies: Light Armor, Medium Armor, Shields, Simple Weapons, Martial Weapons
 Saving Throws: Strength, Constitution
@@ -64,3 +67,5 @@ Sledge Hammer
 Horn
 An ornate scabbard that fits no blade you have found so far
 10 gp 9 sp 9 cp
+10 gp worth of silver furnishings
+Scale Mail
