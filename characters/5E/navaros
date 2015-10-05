@@ -51,19 +51,26 @@ Fire Bolt +5 1d10
 
 Spells Known:
 0: 4
-    Mage Hand
-    Minor Illusion
-    Prestidigitation
-    Fire Bolt (VS 120' 1d10 fire, ignites unattended objects)
+    Mage Hand  VS
+    Minor Illusion  VS
+    Prestidigitation  VS
+    Fire Bolt  VS
+        120' 1d10 fire, ignites unattended objects
 1: 8
-    Detect Magic (Ritual)
-    Find Familiar (Ritual)
-    Identify (Ritual)
-    Comprehend Languages (Ritual)
-    Magic Missile
-    Sleep
-    Tasha's Hideous Laughter
-    Feather Fall
+    Comprehend Languages  VSM R
+    Detect Magic  VS R C (10 minutes)
+    Find Familiar  VSM (10gp) R
+    Identify  VSM (100gp) R
+    Magic Missile  VS
+        120' Three 1d4+1 darts. +1 dart per spell slot.
+    Sleep  VSM
+        Effect 5d8 hp. +2d8 hp per spell slot.
+    Tasha's Hideous Laughter  VSM C (1 minute)
+    Feather Fall  VM
+2: 2
+    Detect Thoughts  VSM C (10 minutes)
+    Invisibility  VSM C (1 hour)
+
 
 Spells Slots:
 1: 4
@@ -125,3 +132,12 @@ Iriaebor next target?
 Possibly Proskur.
 
 Next time: Watch the camp and see if anything happens.
+
+
+Spells to get:
+Misty Step
+Locate Object
+Web
+Crown of Madness
+Suggestion
+Phantasmal Force
