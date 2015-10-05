@@ -1,16 +1,22 @@
 Navaros Kogarune
-Chaotic Neutral High-Elf Diviner (Sage) 2
+Chaotic Neutral High-Elf Diviner (Sage) 3
+Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
-Str 8  Dex 12  Con 14  Wis 14  Int 16  Cha 10
-Medium
-Speed 30
-Darkvision 60'
-HP 14
-2 hit die
+Str 8  Dex 14  Con 14  Wis 14  Int 16  Cha 8
+
+Medium  Speed 30  Darkvision 60'
+Initiative +2
+
+HP 20
+3 hit die
+AC 12
+Mage Armor AC 15
 
 Proficiency Bonus: +2
 Spell save DC: 13
 Spell attack mod: +5
+
+Portents: 
 
 Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
@@ -53,18 +59,19 @@ Spells Known:
     Detect Magic (Ritual)
     Find Familiar (Ritual)
     Identify (Ritual)
+    Comprehend Languages (Ritual)
     Magic Missile
     Sleep
     Tasha's Hideous Laughter
-    Comprehend Languages (Ritual)
     Feather Fall
 
 Spells Slots:
-1: 3
+1: 4
+2: 2
 
 Equipment:
-45gp 3sp
-100sp worth of silver candlesticks and things
+246gp 3sp
+114sp worth of silver candlesticks and things
 Dagger
 Shortsword
 Arcane focus - rod
@@ -98,11 +105,23 @@ Belt Pouch
 Flask
 Waterskin
 Robes
-Dragon Cultist Mask, 5x
+Dragon Cultist Mask, 7x
 Cultist's Tooth
+Black leather tunic with flared accents
 
 Notes:
-Purple Cloaks:
-    Frulom - Leader
+Purple Cloaks - Elite of the Cult of the Dragon
     Astarath - We captured him
-    Lendidrosa
+    Frulom Londath - In charge of the raid
+    Lendidrosa Cyanrath - Half blue dragon
+    Lady Resnir - Half black dragon In charge of the operation
+Leosin Erlanthar - A missing monk from Berdusk
+    Captured by the Cult of the Dragon, but kept alive and healthy-ish
+Naseem Miladro
+
+How many, who their leaders, what's their motivation, where they are attacking next
+
+Iriaebor next target?
+Possibly Proskur.
+
+Next time: Watch the camp and see if anything happens.
