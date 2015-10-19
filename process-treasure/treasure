@@ -1,10 +1,6 @@
 = Treasure Sheet =
 Coins:
-pp: 13627 gp: 22245 ep: 13101 sp: 72101 cp: 92142
-8493 gp
-4188 gp
-904 pp
-8438 sp
+pp: 14531 gp: 34926 ep: 13101 sp: 80539 cp: 92142
 
 == Gems ==
 Agate: 73 x 10 gp; 49 x 100 gp; 1 x 500 gp
@@ -25,14 +21,14 @@ Citrine: 1 x 45 gp, 6 x 50 gp, 2 x 100 gp
 Coral, Crimson: 1 x 100 gp
 Coral, Pink: 25 x 100 gp
 Chrysoberyl: 7 x 100 gp
-Diamond: 6 x 1000 gp, 2 x 5000 gp
+Diamond: 6 x 1000 gp, 4 x 5000 gp
 Eye Agate:
 Garnet, Red: 76 x 100 gp, 2 x 500 gp
 Garnet, Violet: 1 x 100 gp; 8 x 500 gp
 Hematite: 1 x 5 gp, 9 x 10 gp each
 Ioun Stone, Ellipsoid, Lavender/Green (Dead): 500 gp
-Jade: 1 x 100 gp
-Jasper: 1 x 100 gp; 2 x 50 gp
+Jade: 42 x 100 gp
+Jasper: 1 x 100 gp; 20 x 50 gp
 Lapis Lazuli: Several huge chunks (approx 200 lbs) 75000 gp
 Malachite:
 Moonstone: 5 x 50 gp
@@ -40,9 +36,9 @@ Moonstone, Pale Blue: 2 x 75 gp
 Obsidian: 2 x 50 gp
 Onyx, Black: 4 x 50 gp
 Opal: 8 x 100 gp, 15 x 1000 gp
-Opal, Black: 4 x 1000 gp
+Opal, Black: 32 x 1000 gp
 Opal, Fire: 17 x 1000 gp
-Pearl: 68 x 100 gp; 2 x 500 gp
+Pearl: 68 x 100 gp; 45 x 500 gp
 Pearl, Black: 6 x 450 gp
 Pearl, Seed: 40 x 10 gp; 25 x 2 gp
 Peridot: 39 x 500 gp
@@ -118,6 +114,9 @@ Snurr's Necklace 15000 gp
 Snurr's Crown 22000 gp (6 x 1000 gp rubies, 6 x 1000 gp diamonds, 1 jacinth 10000 gp) (Sonja's wearing this)
 Ruby inlaid Gold Torc 2000 gp
 Necklace and Earrings 8000 gp
+Bag of Jewelry: 11 x 5000 gp
+Jewelry: 6 x 2000 gp
+72 rings 72 x 20 gp
 
 == Misc. Valuables ==
 Ruby Red Dragon Statuette 7500 gp
@@ -198,6 +197,7 @@ Tapestry 1875 gp
 Gem encrusted platinum drinking horn 9000 gp
 Gem encrusted gold flagon 6000 gp
 Elaborately carved jade box 5000 gp
+Jeweled Scepter 10000 gp
  
 == Magical Arms and Armor ==
 Adjatha the Drinker 35000 gp
@@ -265,6 +265,12 @@ Hammer of Thunderbolts +3
     2d4+4/2d4+3
     Bunch of cool stuff if you have Gauntlets of Ogre Power and Girdle of Giant Strength
 Giant Two-Handed Sword +4
+Dwarf Platemail +2
+Shield +2
+Axe +1
+Hammer +3
+Adamantine Mace +4, 1d12 to Medium, 1d8 to Large
+Giant sized Axe +2
  
 == Normal Arms and Armor ==
 Assortment of weapons and armor from White Dragons
@@ -329,6 +335,16 @@ bag of marbles
 Lute
 2 bottles of wine
 2 silvered mirrors 2 x 10 gp
+3 cubic feet of silk 9000 gp
+8 pieces of rare wood 8 x 1000 gp
+12 fine ivory tusks 12 x 1500 gp
+Finely carved throwing rocks
+Spices 9000 gp
+6 bone batons with Giantish runes carved into them
+    On official business of King Snuhrr
+Jasper Basin and Ewer 3000 gp
+3 Bars of Adamantite 3 x 3500 gp
+Silver Mirror 500 gp
 
 == Miscellaneous Magic ==
 Hat of Holding
@@ -416,6 +432,21 @@ Fex Tree Chess Set
 2x Elixir of Health (Lineas has these)
 Pendant of Scrying? Radiates evil.
     Can operate like the spell Wizard Eye.
+12 potions
+Potion of Extra Healing (Lineas has this)
+Potion of Undead Control
+Potion of ESP
+Potion of Invulnerability
+Potion of Poison
+Potion of Fire Giant Control
+Potion of Human Control
+Philter of Love
+Philter of Persuasiveness
+Potion of Polymorph Self
+Ring of Protection +3
+Ring of Commanding Water Elementals
+Cursed Ring of Delusion
+Black Boots and Cloak: 75% to Move Silently underground
 
 == Scrolls ==
 Scroll of Protection vs. Non-Magical Weapons
@@ -466,6 +497,13 @@ Wizard Scroll
     Crystal Brittle (9th)
     Energy Drain (9th)
 Scrolls of Communication (Balderdash and Derving have these)
+8 scrolls
+Cleric Spell
+    Word of Recall
+Cleric Spell
+    Gate
+    Unholy Word
+    Restoration
 
 == Misc Items ==
 Elemental Fire Lab 2000gp
@@ -493,6 +531,7 @@ Jar of Magic Ink (for scrolls)
 Senshok's Golden Skull (enchanted by the paladin)
 Map showing a route from giant steading to the highest point in the mountains, ends in a rift or cavern area
 Map showing the 2nd level of the Jarl's underground lair
+Invasion Map for the surrounding area, with entrances to the Underdark noted
 
 == Library ==
 Includes the spell books of Falrinth the Favored and Senshock the Skull-less
@@ -553,57 +592,6 @@ White Dragon Hide Cloak (Sonja's wearing this)
 
 == Artifacts ==
 Golden Skull of Death with all Elemental Gems (Broken)
-
-
-== G3 Treasure ==
-Bag of Jewelry: 11 x 5000 gp
-3 cubic feet of silk 9000 gp
-8 pieces of rare wood 8 x 1000 gp
-12 fine ivory tusks 12 x 1500 gp
-Jewelry: 6 x 2000 gp
-Finely carved throwing rocks
-12 potions
-8 scrolls
-Black Boots and Cloak: 75% to Move Silently underground
-72 rings 72 x 20 gp
-Ring of Protection +3
-Ring of Commanding Water Elementals
-Cursed Ring of Delusion
-Spices 9000 gp
-Dwarf Platemail +2
-Shield +2
-Axe +1
-Hammer +3
-Gems: 2 x 5000 gp
-Gems: 28 x 1000 gp
-Gems: 43 x 500 gp
-Gems: 41 x 100 gp
-Gems: 18 x 50 gp
-6 bone batons with Giantish runes carved into them
-    On official business of King Snuhrr
-Invasion Map for the surrounding area, with entrances to the Underdark noted
-Jeweled Scepter 10000 gp
-Potion of Extra Healing (Lineas has this)
-Potion of Undead Control
-Potion of ESP
-Potion of Invulnerability
-Adamantine Mace +4, 1d12 to Medium, 1d8 to Large
-Giant sized Axe +2
-Jasper Basin and Ewer 3000 gp
-Cleric Spell
-    Word of Recall
-Cleric Spell
-    Gate
-    Unholy Word
-    Restoration
-3 Bars of Adamantite 3 x 3500 gp
-Silver Mirror 500 gp
-Potion of Poison
-Potion of Fire Giant Control
-Potion of Human Control
-Philter of Love
-Philter of Persuasiveness
-Potion of Polymorph Self
 
 == Elf Princess Dowry ==
 10000 gp
