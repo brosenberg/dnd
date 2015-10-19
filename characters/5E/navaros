@@ -16,7 +16,7 @@ Proficiency Bonus: +2
 Spell save DC: 13
 Spell attack mod: +5
 
-Portents: 
+Portents: 4
 
 Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
@@ -24,7 +24,7 @@ Trance: Don't need to sleep, meditate for 4 hours a day.
 Elf weapon training
 Cantrip
 Spellcasting
-Arcane Recovery (Level/1 slots)
+Arcane Recovery: 1/day gain level/2 rounded up spell slots back. Can't be 6th or higher.
 Portent: Roll 2d20 after a long rest. Can replace any attack roll, save, or ability check by me or a creature that I can see.
 
 Proficiencies:
@@ -45,73 +45,76 @@ Flaw: Unlocking an ancient mystery is worth the price of a civilization.
 Languages: Common, Elvish, Draconic, Infernal, Celestial.
 
 Attacks:
-Dagger +1 1d4+1, Finesse, Light, Thrown (20/60)
+Dagger     +1 1d4+1, Finesse, Light, Thrown (20/60)
 Shortsword +1 1d6+1, Finesse, Light
-Fire Bolt +5 1d10
+Fire Bolt  +5 1d10
 
+V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
 Spells Known:
 0: 4
-    Mage Hand  VS
-    Minor Illusion  VS
-    Prestidigitation  VS
-    Fire Bolt  VS
+    Mage Hand                 VS
+    Minor Illusion            VS
+    Prestidigitation          VS
+    Fire Bolt                 VS
         120' 1d10 fire, ignites unattended objects
 1: 8
-    Comprehend Languages  VSM R
-    Detect Magic  VS R C (10 minutes)
-    Find Familiar  VSM (10gp) R
-    Identify  VSM (100gp) R
-    Magic Missile  VS
+    Comprehend Languages      VSM R
+    Detect Magic              VS R C(10 minutes)
+    Find Familiar             VSM(10gp) R
+    Identify                  VSM(100gp) R
+    Magic Missile             VS
         120' Three 1d4+1 darts. +1 dart per spell slot.
-    Sleep  VSM
+    Sleep                     VSM
         Effect 5d8 hp. +2d8 hp per spell slot.
-    Tasha's Hideous Laughter  VSM C (1 minute)
-    Feather Fall  VM
+    Tasha's Hideous Laughter  VSM C(1 minute)
+    Feather Fall              VM
 2: 2
-    Detect Thoughts  VSM C (10 minutes)
-    Invisibility  VSM C (1 hour)
+    Detect Thoughts           VSM C(10 minutes)
+    Invisibility              VSM C(1 hour)
 
 
 Spells Slots:
 1: 4
 2: 2
 
-Equipment:
-246gp 3sp
+Spells Used:
+1: 0
+2: 1
+
+Equipment (Carrying Capacity: 40/80/120)
+248gp 6sp
 114sp worth of silver candlesticks and things
-Dagger
-Shortsword
-Arcane focus - rod
-Arcane focus - staff
-Backpack
-    Blank book
-    Book of Lore
-    Gold leaf Spellbook
+176gp 6sp 6cp worth of gems
+Dagger : 1 lbs
+Shortsword : 2 lbs
+Arcane focus - wand: 1 lbs
+Arcane focus - staff : 4 lbs
+Backpack : 5 lbs
+    Blank book : 5 lbs
+    Book of Lore : 5 lbs
+    Gold leaf Spellbook : 3 lbs
     A brass orb etched with strange runes
-    Silk Rope 50'
-    Mess kit
-    Rations, 10 days
-    Blanket
-Common clothes
-Belt Pouch
-    Oil, 6 pints
-Belt Pouch
-    Chalk, 8 pieces
-    Ink pen
-    Quill
-    Black Ink, 2 bottles
-    Little bag of sand
-    Scroll case
-        Parchment, 9 sheets
-    Scroll case
-        Letter from a dead colleague
-    Scroll case
-    2x Small knife
-    4x Sealing wax
-3x Vial
-Flask
-Waterskin
-Robes
+    Silk Rope 50' : 5 lbs
+    Mess kit : 1 lbs
+    Rations, 10 days : 20 lbs (On Zorion's dog)
+    Blanket : 3 lbs
+Common clothes : 3 lbs
+Belt Pouch : 1 lbs
+    Chalk, 8 pieces : 0 lbs
+    Ink pen : 0 lbs
+    Quill : 0 lbs
+    Black Ink, 2 bottles : 0 lbs
+    Little bag of sand : 0 lbs
+    Scroll case : 1 lbs
+        Parchment, 8 sheets : 0 lbs
+        Letter from a dead colleague : 0 lbs
+    Scroll case : 1 lbs
+    2x Small knife : 0 lbs
+    4x Sealing wax : 0 lbs
+3x Vial : 0 lbs
+Flask : 0 lbs
+Waterskin : 5 lbs
+Robes : 4 lbs
 Dragon Cultist Mask, 7x
 Cultist's Tooth
 Black leather tunic with flared accents
@@ -120,7 +123,7 @@ Notes:
 Purple Cloaks - Elite of the Cult of the Dragon
     Astarath - We captured him
     Frulom Londath - In charge of the raid
-    Lendidrosa Cyanrath - Half blue dragon
+    Lendidrosa Cyanrath - Half blue dragon. We killed him.
     Lady Resnir - Half black dragon In charge of the operation
 Leosin Erlanthar - A missing monk from Berdusk
     Captured by the Cult of the Dragon, but kept alive and healthy-ish
