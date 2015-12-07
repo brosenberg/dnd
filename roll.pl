@@ -2,15 +2,17 @@
 
 use strict;
 
+my $lastroll = -1;
 for (split(',', join('',@ARGV))) {
     if (/^([0-9]+)\s*d\s*([0-9]+)\s*([-+\/*])?\s*([0-9]+)?\s*$/) {
         my $mod = defined $3 && defined $4 ? "$3$4" : undef;
         printf "%9s: ", sprintf "%sd%s%s", $1, $2, defined $mod?$mod:'';
-        &roll($1, $2, $mod);
+        $lastroll = &roll($1, $2, $mod);
     } else {
         warn "I don't understand: $_\n";
     }
 }
+exit $lastroll;
 
 sub roll {
     my ($die, $sides, $mod) = @_;
@@ -28,4 +30,5 @@ sub roll {
         }
     }
     print " = $total\n";
+    return $total;
 }
