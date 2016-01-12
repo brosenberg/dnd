@@ -1,15 +1,13 @@
 Navaros Kogarune
-Chaotic Neutral High-Elf Diviner (Sage) 3
+Chaotic Neutral High-Elf Diviner (Sage) 4
 Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
 Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 
-LEVEL UP BEFORE NEXT TIME
-
 Medium  Speed 30  Darkvision 60'
 Initiative +2
 
-HP 26
+HP 26/26
 4 hit die
 AC 12
 Mage Armor AC 15
@@ -18,7 +16,7 @@ Proficiency Bonus: +2
 Spell save DC: 14
 Spell attack mod: +6
 
-Portents: 
+Portents: 2 18
 
 Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
@@ -31,7 +29,7 @@ Portent: Roll 2d20 after a long rest. Can replace any attack roll, save, or abil
 
 Proficiencies:
 Armor: None
-Weapons: Daggers, darts, slings, quarterstaffs, light crossbows, longsword, shortsword, longbow, short bow.
+Weapons: Daggers, darts, slings, quarterstaffs, light crossbows, longsword, shortsword, longbow, shortbow.
 Tools: None
 Saving Throws: Int, Wis
 Skills: Arcana, History, Investigation, Perception, Religion
@@ -49,19 +47,23 @@ Languages: Common, Elvish, Draconic, Infernal, Celestial.
 Attacks:
 Dagger     +1 1d4+1, Finesse, Light, Thrown (20/60)
 Shortsword +1 1d6+1, Finesse, Light
-Fire Bolt  +5 1d10
+Longsword  +1 1d8+1, Versatile
+Longbow +1 +4 1d8+1, Range (150/600), Heavy, Two-Handed
+Fire Bolt  +6 1d10
 
 V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
 Spells Known:
 0: 4
     Mage Hand                 VS
+    Message                   VSM
     Minor Illusion            VS
     Prestidigitation          VS
     Fire Bolt                 VS
         120' 1d10 fire, ignites unattended objects
-1: 8
+1: 9
     Comprehend Languages      VSM R
     Detect Magic              VS R C(10 minutes)
+    Disguise Self             VS
     Find Familiar             VSM(10gp) R
     Identify                  VSM(100gp) R
     Magic Missile             VS
@@ -70,25 +72,31 @@ Spells Known:
         Effect 5d8 hp. +2d8 hp per spell slot.
     Tasha's Hideous Laughter  VSM C(1 minute)
     Feather Fall              VM
-2: 2
-    Detect Thoughts           VSM C(10 minutes)
+        1 Reaction
+2: 6
+    Detect Thoughts           VSM C(1 minutes)
     Invisibility              VSM C(1 hour)
+    Locate Object             VSM C(10 minutes)
+    Misty Step                V
+        1 Bonus Action
+    Suggestion                VSM C(1 minute)
+    Web                       VSM C(1 web)
 
 
 Spells Slots:
 1: 4
-2: 2
+2: 3
 
 Spells Used:
 1: 0
-2: 1
+2: 0
 
 Equipment (Carrying Capacity: 40/80/120)
-273gp 7sp 6c
-114sp worth of silver candlesticks and things
-176gp 6sp 6cp worth of gems
+443ep 3sp 2c
 Dagger : 1 lbs
 Shortsword : 2 lbs
+Longbow +1
+Longsword
 Arcane focus - wand: 1 lbs
 Arcane focus - staff : 4 lbs
 Backpack : 5 lbs
@@ -127,10 +135,15 @@ Purple Cloaks - Elite of the Cult of the Dragon
     Frulom Londath - In charge of the raid. We killed her too.
     Lendidrosa Cyanrath - Half blue dragon. We killed him.
     Lady Resnir - Half black dragon In charge of the operation
+        Snuck into Baldur's Gate.
 Leosin Erlanthar - A missing monk from Berdusk
     Captured by the Cult of the Dragon, but kept alive and healthy-ish
     Reports in Eltarel
 Naseem Miladro
+
+Azbara Jose the Red Wizard
+    Male Human
+    Wool cap with ear and neck flaps
 
 Map of Greenfields. Arrow sketched towards Beregost, and then north.
 "Everything must be freighted north to Naerytar."
@@ -142,11 +155,33 @@ Possibly Proskur.
 
 2nd mission: Watch the camp and see if anything happens.
 
+
+
+
+"Poop is funny!" - Chris (Seymour)
+"Never give a child a triangle." - Chris (Seymour)
+"He grew up in the Nazi Shire with the Fuhrer." - Kelly
+
 Spells to get:
-Misty Step
-Locate Object
-Web
+2:
 Crown of Madness
-Suggestion
 Phantasmal Force
 
+3:
+Animate Dead
+
+Bestow Curse
+Clairvoyance
+Counterspell
+Dispel Magic
+Fear
+Fireball
+Fly
+Haste
+Lightning Bolt
+Major Image
+Nondetection
+Remove Curse
+Sleet Storm
+Slow
+Tongues
