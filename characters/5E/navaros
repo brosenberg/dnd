@@ -1,5 +1,5 @@
 Navaros Kogarune
-Chaotic Neutral High-Elf Diviner (Sage) 4
+Chaotic Neutral High-Elf Diviner (Sage) 5
 Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
 Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
@@ -7,14 +7,14 @@ Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 Medium  Speed 30  Darkvision 60'  Passive Perception 14
 Initiative +2
 
-HP 26/26
-4 hit die
+HP 33/33
+5 hit die
 AC 12
 Mage Armor AC 15
 
-Proficiency Bonus: +2
-Spell save DC: 14
-Spell attack mod: +6
+Proficiency Bonus: +3
+Spell save DC: 15
+Spell attack mod: +7
 
 Portents: 1 12
 
@@ -45,11 +45,11 @@ Flaw: Unlocking an ancient mystery is worth the price of a civilization.
 Languages: Common, Elvish, Draconic, Infernal, Celestial.
 
 Attacks:
-Dagger     +1 1d4+1, Finesse, Light, Thrown (20/60)
-Shortsword +1 1d6+1, Finesse, Light
-Longsword  +1 1d8+1, Versatile
-Longbow +1 +4 1d8+1, Range (150/600), Heavy, Two-Handed
-Fire Bolt  +6 1d10
+Dagger     +2 1d4+1, Finesse, Light, Thrown (20/60)
+Shortsword +2 1d6+1, Finesse, Light
+Longsword  +2 1d8+1, Versatile
+Longbow +1 +5 1d8+1, Range (150/600), Heavy, Two-Handed
+Fire Bolt  +7 2d10
 
 V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
 Spells Known:
@@ -59,7 +59,7 @@ Spells Known:
     Minor Illusion            VS
     Prestidigitation          VS
     Fire Bolt                 VS
-        120' 1d10 fire, ignites unattended objects
+        120' 2d10 fire, ignites unattended objects
 1: 9
     Comprehend Languages      VSM R
     Detect Magic              VS R C(10 minutes)
@@ -80,11 +80,16 @@ Spells Known:
 2: 6
     Detect Thoughts           VSM C(1 minutes)
     Invisibility              VSM C(1 hour)
+        +1 target per spell slot.
     Locate Object             VSM C(10 minutes)
     Misty Step                V
         1 Bonus Action, teleport 30'
     Suggestion                VSM C(1 minute)
     Web                       VSM C(1 web)
+3:
+    Animate Dead              VSM
+        +2 undead per spell slot.
+    Clairvoyance              VSM(100gp)
 
 Can Prepare: 8 (int mod+level)
     Disguise Self
@@ -99,6 +104,7 @@ Can Prepare: 8 (int mod+level)
 Spells Slots:
 1: 4
 2: 3
+3: 2
 
 Spells Used:
 1: 0
@@ -178,26 +184,24 @@ Bogluk - Guy who shipment is being handed off to.
 "Never give a child a triangle." - Chris (Seymour)
 "He grew up in the Nazi Shire with the Fuhrer." - Kelly
 
+
 Spells to get:
 2:
 Crown of Madness
 Phantasmal Force
 
 3:
-Animate Dead
-
-Bestow Curse
-Clairvoyance
-Counterspell
-Dispel Magic
-Fear
-Fireball
 Fly
+Dispel Magic
+Bestow Curse
+Fireball
+Remove Curse
+Counterspell
+Fear
 Haste
 Lightning Bolt
 Major Image
 Nondetection
-Remove Curse
 Sleet Storm
 Slow
 Tongues
