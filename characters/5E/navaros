@@ -4,7 +4,7 @@ Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
 Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 
-Medium  Speed 30  Darkvision 60'
+Medium  Speed 30  Darkvision 60'  Passive Perception 14
 Initiative +2
 
 HP 26/26
@@ -16,7 +16,7 @@ Proficiency Bonus: +2
 Spell save DC: 14
 Spell attack mod: +6
 
-Portents: 2 18
+Portents: 1 12
 
 Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
@@ -71,6 +71,10 @@ Spells Known:
     Sleep                     VSM
         Effect 5d8 hp. +2d8 hp per spell slot.
     Tasha's Hideous Laughter  VSM C(1 minute)
+    Tenser's Floating Disk    VSM R
+        Duration: 1 hour
+    Unseen Servant            VSM R
+        Duration: 1 hour
     Feather Fall              VM
         1 Reaction
 2: 6
@@ -78,10 +82,19 @@ Spells Known:
     Invisibility              VSM C(1 hour)
     Locate Object             VSM C(10 minutes)
     Misty Step                V
-        1 Bonus Action
+        1 Bonus Action, teleport 30'
     Suggestion                VSM C(1 minute)
     Web                       VSM C(1 web)
 
+Can Prepare: 8 (int mod+level)
+    Disguise Self
+    Feather Fall
+    Sleep
+    Detect Thoughts
+    Invisibility
+    Locate Object
+    Misty Step
+    Web
 
 Spells Slots:
 1: 4
@@ -89,12 +102,11 @@ Spells Slots:
 
 Spells Used:
 1: 0
-2: 0
+2: 3
 
 Equipment (Carrying Capacity: 40/80/120)
-443ep 3sp 2c
+33gp 173ep 3sp 2c
 Dagger : 1 lbs
-Shortsword : 2 lbs
 Longbow +1
 Longsword
 Arcane focus - wand: 1 lbs
@@ -109,6 +121,7 @@ Backpack : 5 lbs
     Rations, 10 days : 20 lbs (On Zorion's dog)
     Blanket : 3 lbs
 Common clothes : 3 lbs
+Traveler's clothes : 4 lbs
 Belt Pouch : 1 lbs
     Chalk, 8 pieces : 0 lbs
     Ink pen : 0 lbs
@@ -128,6 +141,7 @@ Robes : 4 lbs
 Dragon Cultist Mask, 7x
 Cultist's Tooth
 Black leather tunic with flared accents
+Bag of Lizardfolk fingers
 
 Notes:
 Purple Cloaks - Elite of the Cult of the Dragon
@@ -155,6 +169,8 @@ Possibly Proskur.
 
 2nd mission: Watch the camp and see if anything happens.
 
+
+Bogluk - Guy who shipment is being handed off to.
 
 
 
