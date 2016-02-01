@@ -4,7 +4,7 @@ Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
 Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 
-Medium  Speed 30  Darkvision 60'  Passive Perception 14
+Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
 HP 33/33
@@ -16,7 +16,7 @@ Proficiency Bonus: +3
 Spell save DC: 15
 Spell attack mod: +7
 
-Portents: 1 12
+Portents:
 
 Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
@@ -42,13 +42,12 @@ Ideal: No limits. Nothing should fetter the infinite possibility inherent in all
 Bond: I've been searching my whole life for the answer to a certain question.
 Flaw: Unlocking an ancient mystery is worth the price of a civilization.
 
-Languages: Common, Elvish, Draconic, Infernal, Celestial.
+Languages: Common, Elvish, Draconic, Infernal, Celestial
 
 Attacks:
 Dagger     +2 1d4+1, Finesse, Light, Thrown (20/60)
 Shortsword +2 1d6+1, Finesse, Light
 Longsword  +2 1d8+1, Versatile
-Longbow +1 +5 1d8+1, Range (150/600), Heavy, Two-Handed
 Fire Bolt  +7 2d10
 
 V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
@@ -103,17 +102,17 @@ Can Prepare: 8 (int mod+level)
 
 Spells Slots:
 1: 4
-2: 3
+2: 4
 3: 2
 
 Spells Used:
 1: 0
-2: 3
+2: 2
+3: 1
 
 Equipment (Carrying Capacity: 40/80/120)
-33gp 173ep 3sp 2c
+329gp 273ep 8sp 9c
 Dagger : 1 lbs
-Longbow +1
 Longsword
 Arcane focus - wand: 1 lbs
 Arcane focus - staff : 4 lbs
@@ -148,6 +147,7 @@ Dragon Cultist Mask, 7x
 Cultist's Tooth
 Black leather tunic with flared accents
 Bag of Lizardfolk fingers
+15 frog tongues
 
 Notes:
 Purple Cloaks - Elite of the Cult of the Dragon
@@ -183,6 +183,9 @@ Bogluk - Guy who shipment is being handed off to.
 "Poop is funny!" - Chris (Seymour)
 "Never give a child a triangle." - Chris (Seymour)
 "He grew up in the Nazi Shire with the Fuhrer." - Kelly
+"I ama big smelly poo!" - (Said in Draonic) Chris (Seymour)
+"I'm not saying it's pornographic, I'm just saying there's dicks everywhere." - Seymour
+"I could have gone to grad school, but I hit this orc instead." - Craig
 
 
 Spells to get:
@@ -205,3 +208,8 @@ Nondetection
 Sleet Storm
 Slow
 Tongues
+
+
+Loot:
+30,000cp
+Mahogany Box
