@@ -7,7 +7,7 @@ Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
-HP 33/33
+HP 24/33
 5 hit die
 AC 12
 Mage Armor AC 15
@@ -90,7 +90,7 @@ Spells Known:
         +2 undead per spell slot.
     Clairvoyance              VSM(100gp)
 
-Can Prepare: 8 (int mod+level)
+Can Prepare: 9 (int mod+level)
     Disguise Self
     Feather Fall
     Sleep
@@ -99,6 +99,7 @@ Can Prepare: 8 (int mod+level)
     Locate Object
     Misty Step
     Web
+    Animate Dead
 
 Spells Slots:
 1: 4
