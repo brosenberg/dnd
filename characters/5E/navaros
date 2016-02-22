@@ -7,7 +7,7 @@ Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
-HP 24/33
+HP 33/33
 5 hit die
 AC 12
 Mage Armor AC 15
@@ -18,6 +18,14 @@ Spell attack mod: +7
 
 Portents:
 
+Proficiencies::
+Armor: None
+Weapons: Daggers, darts, slings, quarterstaffs, light crossbows, longsword, shortsword, longbow, shortbow.
+Tools: None
+Saving Throws: Int (+7), Wis (+5)
+Skills: Arcana (+7), History (+7), Investigation (+7), Perception (+5), Religion (+7)
+
+Abilities::
 Keen Senses: Proficiency in Perception
 Fey Ancestry: Advantage on saves vs. charm, magic can't put me to sleep
 Trance: Don't need to sleep, meditate for 4 hours a day.
@@ -26,13 +34,6 @@ Cantrip
 Spellcasting
 Arcane Recovery: 1/day gain level/2 rounded up spell slots back. Can't be 6th or higher.
 Portent: Roll 2d20 after a long rest. Can replace any attack roll, save, or ability check by me or a creature that I can see.
-
-Proficiencies:
-Armor: None
-Weapons: Daggers, darts, slings, quarterstaffs, light crossbows, longsword, shortsword, longbow, shortbow.
-Tools: None
-Saving Throws: Int, Wis
-Skills: Arcana, History, Investigation, Perception, Religion
 
 Sage:
 Specialty: Researcher
@@ -81,6 +82,7 @@ Spells Known:
     Invisibility              VSM C(1 hour)
         +1 target per spell slot.
     Locate Object             VSM C(10 minutes)
+        Sense direction of a familiar object within 1000'
     Misty Step                V
         1 Bonus Action, teleport 30'
     Suggestion                VSM C(1 minute)
@@ -88,7 +90,7 @@ Spells Known:
 3:
     Animate Dead              VSM
         +2 undead per spell slot.
-    Clairvoyance              VSM(100gp)
+    Clairvoyance              VSM(100gp) (Range 1 mile)
 
 Can Prepare: 9 (int mod+level)
     Disguise Self
@@ -112,7 +114,7 @@ Spells Used:
 3: 1
 
 Equipment (Carrying Capacity: 40/80/120)
-329gp 273ep 8sp 9c
+11pp 558gp 273ep 94sp 280c
 Dagger : 1 lbs
 Longsword
 Arcane focus - wand: 1 lbs
@@ -149,6 +151,9 @@ Cultist's Tooth
 Black leather tunic with flared accents
 Bag of Lizardfolk fingers
 15 frog tongues
+Telescope lens worth 100gp
+Bag of less expensive telescope lenses
+3x Star Charts (Owe people 700gp)
 
 Notes:
 Purple Cloaks - Elite of the Cult of the Dragon
@@ -211,6 +216,7 @@ Slow
 Tongues
 
 
-Loot:
+Treasure:
 30,000cp
 Mahogany Box
+
