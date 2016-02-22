@@ -4,7 +4,7 @@ import sys
 import random
 import re
 
-def roll(input_dice, verbose=True):
+def roll(input_dice, verbose=False):
     r = re.match('^([0-9]+)\s*d\s*([0-9]+)\s*([-+\/*x])?\s*([0-9]+)?\s*$', input_dice)
     result = 0
     rolls = []
