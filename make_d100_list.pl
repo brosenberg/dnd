@@ -26,7 +26,7 @@ foreach my $entry (@ary) {
     $count += $inc+1;
 }
 
-if ($count <= $die_size) {
+if (int($count) <= $die_size) {
     my $entry = "Roll twice";
     my $dice = sprintf("%d - %d", int($count), $die_size);
     if (int($count) == $die_size) {
