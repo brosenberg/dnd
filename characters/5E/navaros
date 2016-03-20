@@ -1,8 +1,6 @@
 Navaros Kogarune
 
-LEVEL UP NEXT TIME (To 6)
-
-Chaotic Neutral High-Elf Diviner (Sage) 5
+Chaotic Neutral High-Elf Diviner (Sage) 7
 Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
 Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
@@ -10,8 +8,8 @@ Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
 Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
-HP 31/33
-5 hit die
+HP 45/45
+7 hit die
 AC 12
 Mage Armor AC 15
 
@@ -19,7 +17,7 @@ Proficiency Bonus: +3
 Spell save DC: 15
 Spell attack mod: +7
 
-Portents:
+Portents: 3 15
 
 Proficiencies::
 Armor: None
@@ -37,6 +35,7 @@ Cantrip
 Spellcasting
 Arcane Recovery: 1/day gain level/2 rounded up spell slots back. Can't be 6th or higher.
 Portent: Roll 2d20 after a long rest. Can replace any attack roll, save, or ability check by me or a creature that I can see.
+Expert Divination: When I cast a divination spell using a 2nd level or higher spell slot, I regain 1 expended spell slot. The slot must be of a lower level than the spell cast, and can't be higher than 5th level.
 
 Sage:
 Specialty: Researcher
@@ -94,27 +93,40 @@ Spells Known:
     Animate Dead              VSM
         +2 undead per spell slot.
     Clairvoyance              VSM(100gp) (Range 1 mile)
+    Counterspell              S (1 reaction)
+    Dispel Magic              VS
+4:
+    Blight                    VS
+        8d8 necrotic, Con save for half, 30'
+        Plants and magical plants save at disadvantage and take max damage
+        Nonmagical non-creature plants don't make saves and wither and die
+    Dimension Door            V
+        Can teleport self and one willing creature 500'
 
-Can Prepare: 9 (int mod+level)
-    Disguise Self
-    Feather Fall
-    Sleep
-    Detect Thoughts
-    Invisibility
-    Locate Object
-    Misty Step
-    Web
-    Animate Dead
+Can Prepare: 10 (int mod+level)
+ 1  Disguise Self (1)
+ 2  Feather Fall (1)
+ 3  Sleep (1)
+ 4  Detect Thoughts (2)
+ 5  Invisibility (2)
+ 6  Locate Object (2)
+ 7  Misty Step (2)
+ 8  Web (2)
+ 9  Counterspell (3)
+ 0  Dispel Magic (3)
+ 1  Fly (3)
 
 Spells Slots:
 1: 4
 2: 4
-3: 2
+3: 3
+4: 1
 
+Arcane Recovery: (level/2) 3
 Spells Used:
 1: 0
-2: 2
-3: 1
+2: 0
+3: 0
 
 Equipment (Carrying Capacity: 40/80/120)
 11pp 286gp 273ep 101sp 280c
@@ -157,6 +169,7 @@ Bag of Lizardfolk fingers
 Telescope lens worth 100gp
 Bag of less expensive telescope lenses
 3x Star Charts (Owe people 700gp)
+Standard Cultist Robes
 
 Notes:
 Purple Cloaks - Elite of the Cult of the Dragon
@@ -165,6 +178,19 @@ Purple Cloaks - Elite of the Cult of the Dragon
     Lendidrosa Cyanrath - Half blue dragon. We killed him.
     Lady Resnir - Half black dragon In charge of the operation
         Snuck into Baldur's Gate.
+        Has a dwarf friend
+    Talus - Half-Elf from the lodge.
+Wyrmspeakers - The heads of the different colors of the Cult of the Dragon
+    Severin the Red
+        Stronghold located in Thay
+    Gelvin the Blue
+        Stronghold located in the Desert of Mulhorand
+    Neronvane the Green
+        Stronghold is in an unknown location
+    Resnir the Black
+        Stronghold was the place in the Mere of Dead Men
+    Varam the White
+        Stronghold in the Far North
 Leosin Erlanthar - A missing monk from Berdusk
     Captured by the Cult of the Dragon, but kept alive and healthy-ish
     Reports in Eltarel
@@ -184,17 +210,14 @@ Possibly Proskur.
 
 2nd mission: Watch the camp and see if anything happens.
 
-
 Bogluk - Guy who shipment is being handed off to.
 
+Lodge is near Parnast, a small town in the Graypeak Mountains
 
+Resnir is going to Parnast and then to Skyreach Castle.
+Skyreach Castle is a cloud giant castle that is not stationary.
 
-"Poop is funny!" - Chris (Seymour)
-"Never give a child a triangle." - Chris (Seymour)
-"He grew up in the Nazi Shire with the Fuhrer." - Kelly
-"I ama big smelly poo!" - (Said in Draonic) Chris (Seymour)
-"I'm not saying it's pornographic, I'm just saying there's dicks everywhere." - Seymour
-"I could have gone to grad school, but I hit this orc instead." - Craig
+Cloudchaser - Command word to teleport to the white dragon place to the north
 
 
 Spells to get:
@@ -204,11 +227,9 @@ Phantasmal Force
 
 3:
 Fly
-Dispel Magic
 Bestow Curse
 Fireball
 Remove Curse
-Counterspell
 Fear
 Haste
 Lightning Bolt
@@ -217,6 +238,19 @@ Nondetection
 Sleet Storm
 Slow
 Tongues
+
+4:
+Confusion
+Arcane Eye
+Locate Creature
+Polymorph
+
+Banishment
+Evard's Black Tentacles
+Fabricate
+Greater Invisibility
+Stoneskin
+Wall of Fire
 
 
 Treasure:
