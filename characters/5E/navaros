@@ -1,3 +1,5 @@
+LEVEL UP TO 8 TO NEXT TIME
+
 Navaros Kogarune
 
 Chaotic Neutral High-Elf Diviner (Sage) 7
@@ -48,10 +50,10 @@ Flaw: Unlocking an ancient mystery is worth the price of a civilization.
 Languages: Common, Elvish, Draconic, Infernal, Celestial
 
 Attacks:
-Dagger     +2 1d4+1, Finesse, Light, Thrown (20/60)
-Shortsword +2 1d6+1, Finesse, Light
-Longsword  +2 1d8+1, Versatile
-Fire Bolt  +7 2d10
+Dagger      +2 1d4+1, Finesse, Light, Thrown (20/60)
+Shortsword  +2 1d6+1, Finesse, Light
+Longsword   +2 1d8+1, Versatile
+Fire Bolt   +7 2d10
 
 V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
 Spells Known:
@@ -92,9 +94,10 @@ Spells Known:
 3:
     Animate Dead              VSM
         +2 undead per spell slot.
-    Clairvoyance              VSM(100gp) (Range 1 mile)
+    Clairvoyance              VSM(100gp) C(10 minutes) (Range 1 mile)
     Counterspell              S (1 reaction)
     Dispel Magic              VS
+    Fly                       VSM C(10 minutes)
 4:
     Blight                    VS
         8d8 necrotic, Con save for half, 30'
@@ -113,8 +116,8 @@ Can Prepare: 11 (int mod+level)
  7  Counterspell (3)
  8  Dispel Magic (3)
  9  Fly (3)
- 0  Dimension Door (4)
- 1  Blight (4)
+10  Dimension Door (4)
+11  Blight (4)
 
 Spells Slots:
 1: 4
@@ -124,10 +127,10 @@ Spells Slots:
 
 Arcane Recovery: (level/2) 3
 Spells Used:
-1: 0/4
+1: 2/4
 2: 1/4
 3: 2/3
-4: 0/1
+4: 1/1
 
 Equipment (Carrying Capacity: 40/80/120)
 11pp 286gp 273ep 101sp 280c
@@ -177,7 +180,7 @@ Purple Cloaks - Elite of the Cult of the Dragon
     Astarath - We captured him
     Frulom Londath - In charge of the raid. We killed her too.
     Lendidrosa Cyanrath - Half blue dragon. We killed him.
-    Lady Resnir - Half black dragon In charge of the operation
+    Lady Resnir - Half black dragon In charge of the operation. I killed her.
         Snuck into Baldur's Gate.
         Has a dwarf friend
     Talus - Half-Elf from the lodge.
@@ -221,6 +224,8 @@ Skyreach Castle is a cloud giant castle that is not stationary.
 
 Cloudchaser - Command word to teleport to the white dragon place to the north
 
+Esclarata - Dwarven Name, sounds like a Giantess's name
+
 
 Spells to get:
 2:
@@ -259,3 +264,11 @@ Treasure:
 30,000cp
 Mahogany Box
 
+
+Haziran the Sentient Sword
+    +1 Greatsword if not attuned
+    +2 Greatsword, +2d6 necrotic damage when attuned
+        Can cast Detect Magic, Evil, Good for 1 charge
+        Can cast Detect Thoughts for 2 charges
+        Has 4 charges, regains 1d4 charges each day
+        Targets wounded can't regain HP for 1 minute
