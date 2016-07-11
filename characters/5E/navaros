@@ -1,23 +1,20 @@
-LEVEL UP TO 8 TO NEXT TIME
-
 Navaros Kogarune
 
-Chaotic Neutral High-Elf Diviner (Sage) 7
+Chaotic Neutral High-Elf Diviner (Sage) 8
 Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
-Str 8  Dex 14  Con 14  Wis 14  Int 18  Cha 8
+Str 8  Dex 14  Con 14  Wis 14  Int 20  Cha 8
 
 Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
-HP 39/45
-7 hit die
-AC 12
-Mage Armor AC 15
+HP 51/51
+8 hit die
+AC 16 (Elven Chain Shirt)
 
 Proficiency Bonus: +3
-Spell save DC: 15
-Spell attack mod: +7
+Spell save DC: 16
+Spell attack mod: +8
 
 Portents: 3 15
 
@@ -25,8 +22,8 @@ Proficiencies::
 Armor: None
 Weapons: Daggers, darts, slings, quarterstaffs, light crossbows, longsword, shortsword, longbow, shortbow.
 Tools: None
-Saving Throws: Int +7, Wis +5
-Skills: Arcana +7, History +7, Investigation +7, Perception +5, Religion +7
+Saving Throws: Int +8, Wis +5
+Skills: Arcana +8, History +8, Investigation +8, Perception +5, Religion +8
 
 Abilities::
 Keen Senses: Proficiency in Perception
@@ -53,7 +50,7 @@ Attacks:
 Dagger      +2 1d4+1, Finesse, Light, Thrown (20/60)
 Shortsword  +2 1d6+1, Finesse, Light
 Longsword   +2 1d8+1, Versatile
-Fire Bolt   +7 2d10
+Fire Bolt   +8 2d10
 
 V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
 Spells Known:
@@ -66,10 +63,10 @@ Spells Known:
         120' 2d10 fire, ignites unattended objects
 1: 9
     Comprehend Languages      VSM R
-    Detect Magic              VS R C(10 minutes)
+    Detect Magic              VS R C(10 minutes) D
     Disguise Self             VS
     Find Familiar             VSM(10gp) R
-    Identify                  VSM(100gp) R
+    Identify                  VSM(100gp) R D
     Magic Missile             VS
         120' Three 1d4+1 darts. +1 dart per spell slot.
     Sleep                     VSM
@@ -82,58 +79,113 @@ Spells Known:
     Feather Fall              VM
         1 Reaction
 2: 6
-    Detect Thoughts           VSM C(1 minutes)
+    Crown of Madness          VS C(1 minute)
+        Wis save or charmed. Must use its action to make a melee attack against another creature.
+        Must use an action to maintain the spell.
+    Detect Thoughts           VSM C(1 minutes) D
     Invisibility              VSM C(1 hour)
         +1 target per spell slot.
-    Locate Object             VSM C(10 minutes)
+    Locate Object             VSM C(10 minutes) D
         Sense direction of a familiar object within 1000'
     Misty Step                V
         1 Bonus Action, teleport 30'
     Suggestion                VSM C(1 minute)
     Web                       VSM C(1 web)
-3:
+3: 6
     Animate Dead              VSM
         +2 undead per spell slot.
-    Clairvoyance              VSM(100gp) C(10 minutes) (Range 1 mile)
+    Bestow Curse              VS C(1 Min)
+        * Disadvantage on ability checks or saving throws for ability score
+        * Disadvantage on attack rolls against me
+        * Must make Wis save or do nothing for their turn
+        * Damage I do is increased by 1d8 necrotic damage
+        4th: C(10 min)
+        5th: 8 hours
+        7th: 24 hours
+        9th: Permanent
+    Clairvoyance              VSM(100gp) C(10 minutes) (Range 1 mile) D
     Counterspell              S (1 reaction)
     Dispel Magic              VS
+    Fireball                  VSM
+        150', 8d6 fire damage 20' radius, Dex save for half
+        +1d6 per additional spell slot
     Fly                       VSM C(10 minutes)
-4:
+    Haste                     VSM C(1 minute)
+        30', One creature gets +2 AC, advatange to Dex, +1 action
+    Major Image               VSM C(10 minutes)
+        Awesome illusions
+    Remove Curse              VS
+    Slow                      VSM C(1 minute)
+        120' six creatures in 40' cube, Wis save
+        -2 AC and Dex saves, can't use reactions
+        Can only make one melee or ranged attack per turn
+        Spells: Roll d20, on 11 or higher the spell doesn't happen til next turn, need to spend their action on that turn to finish the spell.
+    Tongues                   VM D
+    Water Breathing           VSM R
+        Duration 24 hours
+4: 3
     Blight                    VS
         8d8 necrotic, Con save for half, 30'
         Plants and magical plants save at disadvantage and take max damage
         Nonmagical non-creature plants don't make saves and wither and die
     Dimension Door            V
         Can teleport self and one willing creature 500'
+    Evard's Black Tentacles   VSM C(1 minute)
+        90', 20' square. Dex save or be restrained and take 3d6 bludg
+    Fabricate                 VS
+        10 min casting time
+        120', make cool stuff
+    Locate Creature           VSM C(1 hour) D
+    Polymorph                 VSM C(1 hour)
+    Wall of Fire              VSM C(1 minute)
+        120' range, 60'x20'x1' or 20'x20'x1 ring.
+        5d8 fire damage, dex save for half
+        +1d8 damage for each slot
 
-Can Prepare: 11 (int mod+level)
+Can Prepare: 13 (int mod+level)
  1  Feather Fall (1)
- 2  Sleep (1)
- 3  Detect Thoughts (2)
+ 2  Detect Thoughts (2)
+ 3  Crown of Madness(2)
  4  Invisibility (2)
  5  Locate Object (2)
- 6  Misty Step (2)
- 7  Counterspell (3)
- 8  Dispel Magic (3)
- 9  Fly (3)
-10  Dimension Door (4)
-11  Blight (4)
+ 6  Counterspell (3)
+ 7  Dispel Magic (3)
+ 8  Fly (3)
+ 9  Tongues (3)
+10  Fireball (3)
+11  Dimension Door (4)
+12  Blight (4)
+13  Locate Creature (4)
 
 Spells Slots:
 1: 4
 2: 4
 3: 3
-4: 1
+4: 2
 
-Arcane Recovery: (level/2) 3
+PoP (3rd level spell slot)
+
+Arcane Recovery: (level/2) 4
 Spells Used:
-1: 2/4
+1: 0/4
 2: 1/4
-3: 2/3
-4: 1/1
+3: 1/3
+4: 0/2
 
 Equipment (Carrying Capacity: 40/80/120)
-11pp 286gp 273ep 101sp 280c
+0pp 795gp 1ep 9sp cp
+Elven Chain
+Cap of Water Breathing
+Ring of Mind Shielding (attuned)
+Slippers of Spider Climb (attuned)
+Pearl of Power (attuned)
+Wand of Magic Missile
+    7 Charges
+    3*(1d4+1), +1d4+1 per charge
+    9d4+9 on max charge (18-45)
+    1d6+1 charges per day
+Bag of Holding
+4 Healing Potions
 Dagger : 1 lbs
 Longsword
 Arcane focus - wand: 1 lbs
@@ -156,7 +208,8 @@ Belt Pouch : 1 lbs
     Black Ink, 2 bottles : 0 lbs
     Little bag of sand : 0 lbs
     Scroll case : 1 lbs
-        Parchment, 8 sheets : 0 lbs
+        Parchment, 7 sheets : 0 lbs
+        Parchment with Water Deep Druid Circle Sigils : 0 lbs
         Letter from a dead colleague : 0 lbs
     Scroll case : 1 lbs
     2x Small knife : 0 lbs
@@ -190,10 +243,12 @@ Wyrmspeakers - The heads of the different colors of the Cult of the Dragon
     Gelvin the Blue
         Stronghold located in the Desert of Mulhorand
     Neronvane the Green
+        The elven son of King Mellengrok of the Misty Forest
         Stronghold is in an unknown location
     Resnir the Black
         Stronghold was the place in the Mere of Dead Men
     Varam the White
+        A Male Dwarf
         Stronghold in the Far North
 Leosin Erlanthar - A missing monk from Berdusk
     Captured by the Cult of the Dragon, but kept alive and healthy-ish
@@ -233,7 +288,6 @@ Crown of Madness
 Phantasmal Force
 
 3:
-Fly
 Bestow Curse
 Fireball
 Remove Curse
@@ -244,25 +298,16 @@ Major Image
 Nondetection
 Sleet Storm
 Slow
-Tongues
 
 4:
 Confusion
 Arcane Eye
-Locate Creature
 Polymorph
 
-Banishment
-Evard's Black Tentacles
 Fabricate
 Greater Invisibility
 Stoneskin
 Wall of Fire
-
-
-Treasure:
-30,000cp
-Mahogany Box
 
 
 Haziran the Sentient Sword
@@ -272,3 +317,88 @@ Haziran the Sentient Sword
         Can cast Detect Thoughts for 2 charges
         Has 4 charges, regains 1d4 charges each day
         Targets wounded can't regain HP for 1 minute
+
+
+== Council Notes ==
+
+Arthagast Ulbrintr : Husband of Remy Haventree of the Harpers
+    Has been assassinated
+Remy is gathering the lords of the Sword Coast, Emerald Enclave, and the Harpers to combat the Cult of the Dragon.
+The gathering is known as the Council.
+Groups there
+    Lords of Waterdeep
+    Emerald Enclave
+    Enclave
+    Baldur's Gate
+    Misty Forest
+    Harper's
+    Silvery Moon
+    Dwarves
+    Purple Dragon Knights
+
+Halls of Power
+
+Council has 10 people
+
+Lady Laeral Silverhand
+    Water Deep
+        Worried that the dragons might burn Greenest to the ground for the eggs
+Lord Daegult Neverember
+    Neverwinter
+        Wants to sell the dragon eggs
+Ambassador Conrad Brawnanvil
+    Dwarf of Citadels Adbar and Feldbar
+Marshall Ulder Ravengard
+    Baldur's Gate
+King Mellengrok
+    Misty Forest
+        Says that Neronvane can not be amongst the enemy
+        Because Neronvane is his son
+Taern Thunderspell's Hornblade
+    Silvery Moon
+Sir Istaval
+    Purple Dragon Knight
+    Cormyr
+    Settlement of Daggerford
+        Wanted to use the dragon eggs as leverage
+Remalia Haventree
+    Grey Elf
+    Harpers
+        Thinks we might be able to separate some evil dragons from the Cult
+Delon Winterhound
+    Emerald Enclave
+Anthar Frum
+    Order of the Gauntlet
+
+Leosin
+    Advisor
+
+
+More attacks across the Sword Coast
+    Many cities have been attacked
+
+Sounding of the Drak Horn
+    Alerts dragons across Faerun that important things are at hand
+
+Things to do:
+ 1. Investigate Neronvane
+ 2. Talk to Varam
+ 3. Find more information about the Drak Horn
+
+Path of Alagranthas
+
+Writ of official sanction on business of the council
+Deputize with emergency powers
+
+Theocracy of Oltigard
+    A new nation of Paladins
+
+Dwarf in purple robes took off to the hills with an entourage
+    Cloaked and hooded warriors. Barbarian mercenaries?
+
+
+
+Dederius the Stone Faces
+
+
+Advantage on Intelligence checks for 24 hours for looking within the cowls.
