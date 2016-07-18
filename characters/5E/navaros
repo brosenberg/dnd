@@ -8,7 +8,7 @@ Str 8  Dex 14  Con 14  Wis 14  Int 20  Cha 8
 Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
-HP 51/51
+HP 25/51
 8 hit die
 AC 16 (Elven Chain Shirt)
 
@@ -16,7 +16,7 @@ Proficiency Bonus: +3
 Spell save DC: 16
 Spell attack mod: +8
 
-Portents: 3 15
+Portents: 3
 
 Proficiencies::
 Armor: None
@@ -124,6 +124,8 @@ Spells Known:
     Water Breathing           VSM R
         Duration 24 hours
 4: 3
+    Arcane Eye                VSM C(1 hour) D
+    Banishment                VSM C(1 minute)
     Blight                    VS
         8d8 necrotic, Con save for half, 30'
         Plants and magical plants save at disadvantage and take max damage
@@ -145,7 +147,7 @@ Spells Known:
 Can Prepare: 13 (int mod+level)
  1  Feather Fall (1)
  2  Detect Thoughts (2)
- 3  Crown of Madness(2)
+ 3  Arcane Eye (4)
  4  Invisibility (2)
  5  Locate Object (2)
  6  Counterspell (3)
@@ -169,39 +171,48 @@ Arcane Recovery: (level/2) 4
 Spells Used:
 1: 0/4
 2: 1/4
-3: 1/3
-4: 0/2
+3: 3/3
+4: 1/2
 
 Equipment (Carrying Capacity: 40/80/120)
-0pp 795gp 1ep 9sp cp
-Elven Chain
+0pp 795gp 1ep 9sp 0cp
+Elven Chain : 20 lbs
 Cap of Water Breathing
 Ring of Mind Shielding (attuned)
 Slippers of Spider Climb (attuned)
 Pearl of Power (attuned)
-Wand of Magic Missile
-    7 Charges
+Wand of Magic Missile : 1 lbs
+    0 Charges (6 charges tomorrow)
     3*(1d4+1), +1d4+1 per charge
     9d4+9 on max charge (18-45)
     1d6+1 charges per day
-Bag of Holding
 4 Healing Potions
 Dagger : 1 lbs
 Longsword
 Arcane focus - wand: 1 lbs
 Arcane focus - staff : 4 lbs
-Backpack : 5 lbs
+Bag of Holding :
+  Backpack : 5 lbs
     Blank book : 5 lbs
     Book of Lore : 5 lbs
     Gold leaf Spellbook : 3 lbs
     A brass orb etched with strange runes
     Silk Rope 50' : 5 lbs
     Mess kit : 1 lbs
-    Rations, 10 days : 20 lbs (On Zorion's dog)
+    Rations, 10 days : 20 lbs
     Blanket : 3 lbs
-Common clothes : 3 lbs
+    Common clothes : 3 lbs
+  Dragon Cultist Mask, 7x
+  Black leather tunic with flared accents
+  Standard Cultist Robes
+  Bag of less expensive telescope lenses
+  Bag : 
+    Lizardfolk fingers
+    15 frog tongues
 Traveler's clothes : 4 lbs
 Belt Pouch : 1 lbs
+    2x Vials of Mummy Dust : 0 lbs
+    Telescope lens worth 100gp
     Chalk, 8 pieces : 0 lbs
     Ink pen : 0 lbs
     Quill : 0 lbs
@@ -214,19 +225,12 @@ Belt Pouch : 1 lbs
     Scroll case : 1 lbs
     2x Small knife : 0 lbs
     4x Sealing wax : 0 lbs
-3x Vial : 0 lbs
+Vial : 0 lbs
 Flask : 0 lbs
 Waterskin : 5 lbs
 Robes : 4 lbs
-Dragon Cultist Mask, 7x
 Cultist's Tooth
-Black leather tunic with flared accents
-Bag of Lizardfolk fingers
-15 frog tongues
-Telescope lens worth 100gp
-Bag of less expensive telescope lenses
 3x Star Charts (Owe people 700gp)
-Standard Cultist Robes
 
 Notes:
 Purple Cloaks - Elite of the Cult of the Dragon
@@ -284,30 +288,17 @@ Esclarata - Dwarven Name, sounds like a Giantess's name
 
 Spells to get:
 2:
-Crown of Madness
 Phantasmal Force
 
 3:
-Bestow Curse
-Fireball
-Remove Curse
 Fear
-Haste
 Lightning Bolt
-Major Image
 Nondetection
 Sleet Storm
-Slow
 
 4:
 Confusion
-Arcane Eye
-Polymorph
-
-Fabricate
 Greater Invisibility
-Stoneskin
-Wall of Fire
 
 
 Haziran the Sentient Sword
@@ -393,12 +384,10 @@ Deputize with emergency powers
 Theocracy of Oltigard
     A new nation of Paladins
 
+Varam
 Dwarf in purple robes took off to the hills with an entourage
     Cloaked and hooded warriors. Barbarian mercenaries?
 
-
-
-Dederius the Stone Faces
 
 
 Advantage on Intelligence checks for 24 hours for looking within the cowls.
