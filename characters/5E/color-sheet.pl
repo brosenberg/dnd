@@ -69,12 +69,15 @@ while (<>) {
         )\b)
     /$colors->{'purple'}$1$colors->{'reset'}/igx;
 
+    # Sections
+    s/^(.+::)/$colors->{'blue'}$1$colors->{'reset'}/igx;
+    s/^(.+:)/$colors->{'dim_white'}$1$colors->{'reset'}/igx;
+
+    # Modifiers
     s/(\s\+[0-9]+)(,)(\s)/$colors->{'green'}$1$colors->{'reset'}$2$3/igx;
     s/(\s\+[0-9]+)(\s)/$colors->{'green'}$1$colors->{'reset'}$2/igx;
     s/(\s\-[0-9]+)(,)(\s)/$colors->{'dim_red'}$1$colors->{'reset'}$2$3/igx;
     s/(\s\-[0-9]+)(\s)/$colors->{'dim_red'}$1$colors->{'reset'}$2/igx;
-    s/^(.+::)/$colors->{'blue'}$1$colors->{'reset'}/igx;
-    s/^(.+:)/$colors->{'dim_white'}$1$colors->{'reset'}/igx;
 
     # Numbers
     s/(\s[0-9]+)(,?\s)/$colors->{'cyan'}$1$colors->{'reset'}$2/igx;
