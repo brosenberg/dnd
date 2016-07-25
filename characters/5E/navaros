@@ -1,6 +1,6 @@
 Navaros Kogarune
 
-Chaotic Neutral High-Elf Diviner (Sage) 8
+Chaotic Neutral High-Elf Diviner (Sage) 9
 Deity: Oghma (Not particularly devout)
 Male 5'8 118 lbs. 136 years old
 Str 8  Dex 14  Con 14  Wis 14  Int 20  Cha 8
@@ -8,22 +8,22 @@ Str 8  Dex 14  Con 14  Wis 14  Int 20  Cha 8
 Medium  Speed 30  Darkvision 60'  Passive Perception 15
 Initiative +2
 
-HP 25/51
-8 hit die
+HP 57/57
+9 hit die
 AC 16 (Elven Chain Shirt)
 
-Proficiency Bonus: +3
+Proficiency Bonus: +4
 Spell save DC: 16
-Spell attack mod: +8
+Spell attack mod: +9
 
-Portents: 3
+Portents: 1 4
 
 Proficiencies::
 Armor: None
 Weapons: Daggers, darts, slings, quarterstaffs, light crossbows, longsword, shortsword, longbow, shortbow.
 Tools: None
-Saving Throws: Int +8, Wis +5
-Skills: Arcana +8, History +8, Investigation +8, Perception +5, Religion +8
+Saving Throws: Int +9, Wis +6
+Skills: Arcana +9, History +9, Investigation +9, Perception +6, Religion +9
 
 Abilities::
 Keen Senses: Proficiency in Perception
@@ -47,10 +47,10 @@ Flaw: Unlocking an ancient mystery is worth the price of a civilization.
 Languages: Common, Elvish, Draconic, Infernal, Celestial
 
 Attacks:
-Dagger      +2 1d4+1, Finesse, Light, Thrown (20/60)
-Shortsword  +2 1d6+1, Finesse, Light
-Longsword   +2 1d8+1, Versatile
-Fire Bolt   +8 2d10
+Dagger      +3 1d4+1, Finesse, Light, Thrown (20/60)
+Shortsword  +3 1d6+1, Finesse, Light
+Longsword   +3 1d8+1, Versatile
+Fire Bolt   +9 2d10
 
 V=Verbal S=Somatic M=Material(Cost) R=Ritual C=Concentration(Duration)
 Spells Known:
@@ -78,13 +78,14 @@ Spells Known:
         Duration: 1 hour
     Feather Fall              VM
         1 Reaction
-2: 6
+2: 8
     Crown of Madness          VS C(1 minute)
         Wis save or charmed. Must use its action to make a melee attack against another creature.
         Must use an action to maintain the spell.
     Detect Thoughts           VSM C(1 minutes) D
     Invisibility              VSM C(1 hour)
         +1 target per spell slot.
+    Levitate                  VSM C(10 minutes)
     Locate Object             VSM C(10 minutes) D
         Sense direction of a familiar object within 1000'
     Misty Step                V
@@ -123,7 +124,7 @@ Spells Known:
     Tongues                   VM D
     Water Breathing           VSM R
         Duration 24 hours
-4: 3
+4: 9
     Arcane Eye                VSM C(1 hour) D
     Banishment                VSM C(1 minute)
     Blight                    VS
@@ -143,11 +144,14 @@ Spells Known:
         120' range, 60'x20'x1' or 20'x20'x1 ring.
         5d8 fire damage, dex save for half
         +1d8 damage for each slot
+5: 2
+    Scrying                   VSM(1000gp) C(10 minutes)
+    Teleportation Circle      VM(50gp)
 
-Can Prepare: 13 (int mod+level)
+Can Prepare: 14 (int mod+level)
  1  Feather Fall (1)
- 2  Detect Thoughts (2)
- 3  Arcane Eye (4)
+ 2  Suggestion (2)
+ 3  Crown of Madness (2)
  4  Invisibility (2)
  5  Locate Object (2)
  6  Counterspell (3)
@@ -158,21 +162,24 @@ Can Prepare: 13 (int mod+level)
 11  Dimension Door (4)
 12  Blight (4)
 13  Locate Creature (4)
+14  Arcane Eye (4)
 
 Spells Slots:
 1: 4
 2: 4
 3: 3
-4: 2
+4: 3
+5: 1
 
 PoP (3rd level spell slot)
 
 Arcane Recovery: (level/2) 4
 Spells Used:
 1: 0/4
-2: 1/4
-3: 3/3
-4: 1/2
+2: 0/4
+3: 0/(3+1)
+4: 0/3
+5: 0/1
 
 Equipment (Carrying Capacity: 40/80/120)
 0pp 795gp 1ep 9sp 0cp
@@ -182,7 +189,7 @@ Ring of Mind Shielding (attuned)
 Slippers of Spider Climb (attuned)
 Pearl of Power (attuned)
 Wand of Magic Missile : 1 lbs
-    0 Charges (6 charges tomorrow)
+    6 Charges
     3*(1d4+1), +1d4+1 per charge
     9d4+9 on max charge (18-45)
     1d6+1 charges per day
@@ -244,6 +251,7 @@ Purple Cloaks - Elite of the Cult of the Dragon
 Wyrmspeakers - The heads of the different colors of the Cult of the Dragon
     Severin the Red
         Stronghold located in Thay
+        Took the Dwarf's mask
     Gelvin the Blue
         Stronghold located in the Desert of Mulhorand
     Neronvane the Green
@@ -284,22 +292,6 @@ Skyreach Castle is a cloud giant castle that is not stationary.
 Cloudchaser - Command word to teleport to the white dragon place to the north
 
 Esclarata - Dwarven Name, sounds like a Giantess's name
-
-
-Spells to get:
-2:
-Phantasmal Force
-
-3:
-Fear
-Lightning Bolt
-Nondetection
-Sleet Storm
-
-4:
-Confusion
-Greater Invisibility
-
 
 Haziran the Sentient Sword
     +1 Greatsword if not attuned
@@ -391,3 +383,42 @@ Dwarf in purple robes took off to the hills with an entourage
 
 
 Advantage on Intelligence checks for 24 hours for looking within the cowls.
+
+
+Loots:
+4 rubies (1000gp ea)
+
+
+Spells to get:
+2:
+Phantasmal Force
+
+3:
+Fear
+Lightning Bolt
+Nondetection
+Sleet Storm
+
+4:
+Confusion
+Greater Invisibility
+
+5:
+Geas
+Modify Memory
+Passwall
+Planar Binding
+Rary's Telepathic Bond
+Telekinses
+
+Bigby's Hand
+Cloudkill
+Conjure Elemental
+Contact Other Plane
+Dominate Person
+Dream
+Hold Monster
+Legend Lore
+Mislead
+Seeming
+Wall of Force
