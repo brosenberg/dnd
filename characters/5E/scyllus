@@ -1,8 +1,8 @@
 Scyllus (need last name)
 Chaotic Good Triton Cleric 1
 
-Domain: Tempest
 Deity: Procan
+Domain: Tempest
 
 Stats:
     Str 16 +3
@@ -13,9 +13,18 @@ Stats:
     Cha 10 +0
 
 Proficiency Bonus: +2
-HP: 10
+Initiative +2
+HP: 10/10
 AC: 18
 Speed 30, Swim 30
+
+Attacks:
+    Warhammer         +5 1d8+3, bludg - Versatile (1d10)
+    Belaying Pin      +5 1d4+3, bludg - Light
+    Saber             +5 1d8+3, slash - Versatile (1d10)
+    Trident           +5 1d6+3, pierce - Thrown (20/60), Versatile (1d8)
+    Net               +2 Special, Thrown (5/15)
+    Light crossbow    +2 1d8, pierce - Ammo (80/320), loading, two-handed
 
 History:
     Scyllus spent decades serving as both holy man and a warrior on a primarily human naval vessel known as the Wavecrasher. As a follower of Procan he was considered to be the ship's good luck charm, but whether it was truly luck or the skill of the crew, the ship was always victorious in combat and never experienced much in the way of misfortune.
@@ -24,7 +33,7 @@ History:
 
 Description:
     Scyllus is both somewhat tall for a Triton and built very wide and bulky. His once charismatic face is covered in scars and marred by a nose that has been broken countless times. More than a few of his teeth have been replaced by ones made of gold or electrum.
-    He typically fights with a either a longsword or warhammer, and a shield. He also carries a trident and net as a symbol of both his heritage and his god. He also keeps a crossbow handy for battling foes on neighboring vessels or for long range underwater combat.
+    He typically fights with a either a saber or warhammer, and a shield. He also carries a trident and net as a symbol of both his heritage and his god. He also keeps a crossbow handy for battling foes on neighboring vessels or for long range underwater combat.
     He wears battered but functional chainmail and a barbute whose nose-guard was bent in a battle with some pirates years ago. He keeps a coil of silk rope wrapped around his torso and a grappling hook hangs from his belt. Two large metal chains serve as shoulder straps for a massive wooden chest he carries on his back, which contain the majority of his belongings.
     Age: 62
     Height: 5'7"
@@ -47,16 +56,16 @@ Proficiences:
     Saves: Wis, Cha
     Skills: Athletics (Str), Insight (Wis), Medicine (Wus), Perception (Wis)
 
-Languages: Common and Primordial
+Languages: Common, Primordial
 
 Weapons:
-    Warhammer  2lbs             1d8 bludg - Versatile (1d10)
-    Light crossbow  5lbs        1d8 pierce - Ammo (80/320), loading, two-handed
+    Warhammer  2lbs
+    Light crossbow  5lbs
         20x bolts  1.5lbs
-    Belaying Pin (club)  2lbs   1d4 bludg - Light
-    Net  3lbs                   Special, Thrown (5/15)
-    Longsword  3lbs             1d8 slash - Versatile (1d10)
-    Trident  4 lbs              1d6 pierce - Thrown (20/60), Versatile (1d8)
+    Belaying Pin (club)  2lbs
+    Net  3lbs
+    Saber (Longsword)  3lbs
+    Trident  4lbs
 
 Armor:
     Chain mail  55lbs
@@ -120,15 +129,20 @@ Spells:
 
     Prepared:
       1:
-        Fog Cloud (D)  VS  120'  1 Action  Concentration, 1 hour
+        Fog Cloud (D)  VS 
+            120'  1 Action  Concentration, 1 hour
             20' radius of fog, centered within 120'. Spreads around corners. Lasts for duration or until a moderate wind disperes it.
-        Thunderwave (D)  VS  15' Cube  1 Action  Instantaneous
+        Thunderwave (D)  VS
+            15' Cube  1 Action  Instantaneous
             2d8 Thunder damage and pushed 10' in 15' cube originating from caster. Con save for half damage and no push. Unsecured objects completely in the area are pushed 10' away. Thunderous boom audible to 300' away.
-        Bless  VSM  30'  1 Action  Concentration, 1 minute
+        Bless  VSM
+            30'  1 Action  Concentration, 1 minute
             Up to three creatures within range get +1d4 on attack rolls and saving throws.
-        Command  V  60'  1 Action  1 round
+        Command  V
+            60'  1 Action  1 round
             Wisdom save or follow one word command on next turn.
-        Cure Wounds  VS  Touch  1 Action  Instantaneous
+        Cure Wounds  VS
+            Touch  1 Action  Instantaneous
             Heals 1d8+(spellcasting ability mod)
 
     Domain Spells:
