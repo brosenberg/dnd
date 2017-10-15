@@ -14,16 +14,13 @@ Stats:
 
 Proficiency Bonus: +2
 Initiative +2
-HP: 10/10
+HP: 17/17
 AC: 18
 Speed 30, Swim 30
 
 Attacks:
     Warhammer         +5 1d8+3, bludg - Versatile (1d10)
     Belaying Pin      +5 1d4+3, bludg - Light
-    Saber             +5 1d8+3, slash - Versatile (1d10)
-    Trident           +5 1d6+3, pierce - Thrown (20/60), Versatile (1d8)
-    Net               +2 Special, Thrown (5/15)
     Light crossbow    +2 1d8, pierce - Ammo (80/320), loading, two-handed
 
 History:
@@ -58,66 +55,51 @@ Proficiences:
 
 Languages: Common, Primordial
 
+Equipment:
+
 Weapons:
     Warhammer  2lbs
     Light crossbow  5lbs
-        20x bolts  1.5lbs
+        18x bolts  1.5lbs
     Belaying Pin (club)  2lbs
-    Net  3lbs
-    Saber (Longsword)  3lbs
-    Trident  4lbs
 
 Armor:
     Chain mail  55lbs
     Shield w/ Holy Symbol  6lbs
 
 Currency:
-    18gp 7sp 4cp
+    10gp 1sp
 
 Gear:
     Common clothes  3lbs
     Silk Rope, 50'  5lbs
-    Grappling Hook  4lbs
+    A pair of knucklebone dice, each with a skull symbol on the side that would normally show six pips 
+    Backpack
+        Blanket
+        10x candles
+        Tinderbox
+        Alms box
+        2x blocks of incense
+        Censer
+        Vestments
+        3x rations
+        Waterskin
+        5x bottle of cheap wine
+        Hammer
+        Crowbar
+        Chain Mail
+    Belt Pouch
+        Silver flask of wine
 
-    Belt pouch
-        Conch shell (signal whistle)
-        A pair of knucklebone dice, each with a skull symbol on the side that would normally show six pips 
-        Whetstone  1lb
-        Mirror, steel  .5lbs
-        Crossbow bolt case  1lbs
-            20x Crossbow bolts
-
-    Chest with Chains  35lbs (53/300)
-        Backpack  5lbs (30/30)
-            Blanket  3lbs
-            10 candles
-            Tinderbox  1lbs
-            Alms box
-            2 blocks of incense
-            Censer
-            Rations, 2 days  4lbs
-            Waterskin  5lbs
-            Navigator's Tools
-            Fishing tackle  4lbs
-            Vestments  3lbs
-            Hammer  3lbs
-            Iron spikes x10  5lbs
-            Flask of Holy Salt Water x2  2lbs
-        Block and Tackle  5lbs
-        Lantern, hooded  2lbs
-        Flask of Oil x10  10lbs
-        Mess kit  1lbs
-
-Current Load: 183 lbs.
 Max Load:     240 lbs.
 
 Spells:
     Spell Save: DC 12 (8+Prof+WIS)
     Spell Attack: +4 (Prof+WIS)
-    Spells per Day: 3 (WIS+Level)
+    Spells per Day: 4 (WIS+Level)
     Spell Slots:
     0: 3
-    1: 2
+    1: 3
 
     Cantrips:
         Guidance  VS  Touch  1 Action  Concentration, 1 minute
@@ -153,6 +135,9 @@ Spells:
         9: Destructive Wave, Insect Plague
 
 Abilities:
+    Channel Divinity  1/rest
+        Destructive Wrath: When rolling lightning or thunder damage, can Channel Divinity to deal max damage instead.
+        Turn Undead: Undead that can see or hear within 30' make Wis saves. Fail and for 1 minute they must move as far away as possible, can't willing move within 30'. Can't take reactions. Can only take the Dash action. If there's nowhere to move, Dodge action.
     Wrath of the Storm:
         When a visible enemy within 5' hits you, can use a reaction to do 2d8 Lightning or Thunder damage, Dex save for Half. WIS/long rest
     Ships Passage:
@@ -176,3 +161,11 @@ Triton:
     Emissary of the Sea: Simple communication with beasts that breathe water.
     Guardian of the Depths: Resistance to Cold damage. Ignore any drawbacks of being in a deep, underwater environemnt.
     Languages: Common and Primordial
+
+Quests:
+    Return the severed hand
+    Find the governor's daughter
+
+Kills:
+    Manes - 4
+    Poltergeist - 1
