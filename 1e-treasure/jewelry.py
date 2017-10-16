@@ -4,6 +4,7 @@ import sys
 import random
 
 BASE_JEWELRY = [
+    # (Min value, Max value), ['materials']
     ((1,10), ['ivory', 'wrought silver']),
     ((2,12), ['wrought silver and gold']),
     ((3,18), ['wrought gold']),
@@ -54,9 +55,6 @@ JEWELRY_TYPES = [
 
 class Jewelry(object):
     def __init__(self):
-        self.value = 0
-        self.description = ""
-
         index = 0
         roll = random.randint(1, 100)
         if roll >= 91:
@@ -73,8 +71,7 @@ class Jewelry(object):
             index = 1
         self. value = 100 * random.randint(BASE_JEWELRY[index][0][0],
                                            BASE_JEWELRY[index][0][1])
-        self.description = random.choice(BASE_JEWELRY[index][1])
-        self.description = "%s %s" % (self.description,
+        self.description = "%s %s" % (random.choice(BASE_JEWELRY[index][1]),
                                       random.choice(JEWELRY_TYPES))
 
     def __str__(self):
