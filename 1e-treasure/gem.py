@@ -28,7 +28,10 @@ def main():
             count = count - 1
         for i in range(0, 6):
             if gems[i]:
-                print "%d %s gp gems" % (gems[i], values[i])
+                s = ""
+                if gems[i] > 1:
+                    s = "s"
+                print "%d %s gp gem%s" % (gems[i], values[i], s)
                 total += gems[i] * values[i]
         print "%d gp total" % (total,)
 
