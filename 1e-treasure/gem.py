@@ -3,6 +3,77 @@
 import sys
 import random
 
+# TODO: Add Gem Variations
+
+gem_types = [
+    [
+        'azurite',
+        'banded agate',
+        'blue quartz',
+        'cats\' eye agate',
+        'eye agate',
+        'hematite',
+        'lapis lazuli',
+        'malachite',
+        'moss agate',
+        'obsidian',
+        'rhodochrosite',
+        'tiger eye agate',
+        'turquoise'
+    ],
+    [
+        'bloodstone',
+        'carnelian',
+        'chalcedony',
+        'chrysoprase',
+        'citrine',
+        'jasper',
+        'moonstone',
+        'onyx',
+        'rock crystal',
+        'sardonyx',
+        'smoky quartz',
+        'star rose quartz',
+        'zircon',
+    ],
+    [
+        'amber',
+        'alexandrite',
+        'amethyst',
+        'chrysoberyl',
+        'coral',
+        'green spinel',
+        'jade',
+        'jet',
+        'pearl',
+        'red garnet',
+        'red spinel',
+        'tourmaline'
+    ],
+    [
+        'aquamarine',
+        'black pearl',
+        'blue spinel',
+        'peridot',
+        'topaz',
+        'violet garnet',
+    ],
+    [
+        'black opal',
+        'fire opal',
+        'opal',
+        'sapphire',
+    ],
+    [
+        'black sapphire',
+        'diamond',
+        'emerald',
+        'jacinth',
+        'ruby',
+        'star ruby',
+        'star sapphire'
+    ]
+]
 
 def main():
     gems = [0, 0, 0, 0, 0, 0]
@@ -28,10 +99,7 @@ def main():
             count = count - 1
         for i in range(0, 6):
             if gems[i]:
-                s = ""
-                if gems[i] > 1:
-                    s = "s"
-                print "%d %s gp gem%s" % (gems[i], values[i], s)
+                print "%d %s gp %s" % (gems[i], values[i], random.choice(gem_types[i]))
                 total += gems[i] * values[i]
         print "%d gp total" % (total,)
 

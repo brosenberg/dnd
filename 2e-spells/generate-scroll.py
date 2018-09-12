@@ -41,6 +41,7 @@ class Scroll(object):
                 spell_index = self.scroll[spell_level].index(new_spell)
                 cur_spell = self.scroll[spell_level][spell_index]
                 # Assume that no spells contain "(" in their name
+                # TODO: r'^.*(\([0-9]\))$'
                 if '(' in cur_spell:
                     count = int(cur_spell.split("(")[1][:-1])+1
                     cur_spell = "%s (%d)" % (new_spell, count)
