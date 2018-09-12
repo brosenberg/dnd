@@ -23,10 +23,10 @@ class Scroll(object):
     def __str__(self):
         s = ""
         if self.scroll_type:
-            s += "%s Scroll\n" % (self.scroll_type)
+            s += "%s Scroll: " % (self.scroll_type)
         for level in sorted(self.scroll.keys()):
-            s += "%s: %s\n" % (level, ', '.join(self.scroll[level]))
-        s = s.rstrip('\n')
+            s += "%s - %s; " % (level, ', '.join(sorted(self.scroll[level])))
+        s = s.rstrip('; ')
         return s
 
     def generate(self):
@@ -34,7 +34,21 @@ class Scroll(object):
             spell_level = str(random.randint(self.min_level, self.max_level))
             if spell_level not in self.scroll.keys():
                 self.scroll[spell_level] = []
-            self.scroll[spell_level].append(self.spells.random_spell(spell_level))
+            new_spell = self.spells.random_spell(spell_level)
+            # If the spell is already on the scroll, increase its count, rather
+            # than duplicating it in the list.
+            if [x for x in self.scroll[spell_level] if x.startswith(new_spell)]:
+                spell_index = self.scroll[spell_level].index(new_spell)
+                cur_spell = self.scroll[spell_level][spell_index]
+                # Assume that no spells contain "(" in their name
+                if '(' in cur_spell:
+                    count = int(cur_spell.split("(")[1][:-1])+1
+                    cur_spell = "%s (%d)" % (new_spell, count)
+                else:
+                    cur_spell = "%s (2)" % (new_spell,)
+                self.scroll[spell_level][spell_index] = cur_spell
+            else:
+                self.scroll[spell_level].append(new_spell)
 
 def random_spell_scroll(wizard_spells, priest_spells):
     scroll_roll = random.randint(1,19)
