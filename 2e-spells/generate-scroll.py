@@ -18,6 +18,7 @@ class Scroll(object):
         self.min_level = min_level
         self.max_level = max_level
         self.scroll_type = scroll_type
+        self.scroll_capacity = 25
         self.scroll = {}
 
     def __str__(self):
@@ -27,11 +28,16 @@ class Scroll(object):
         for level in sorted(self.scroll.keys()):
             s += "%s - %s; " % (level, ', '.join(sorted(self.scroll[level])))
         s = s.rstrip('; ')
+        s = "%s\nCapacity = %d" % (s, self.scroll_capacity)
         return s
 
     def generate(self):
         for i in range(0, self.spell_count):
-            spell_level = str(random.randint(self.min_level, self.max_level))
+            spell_level = random.randint(self.min_level, self.max_level)
+
+            self.scroll_capacity -= spell_level
+
+            spell_level = str(spell_level)
             if spell_level not in self.scroll.keys():
                 self.scroll[spell_level] = []
             new_spell = self.spells.random_spell(spell_level)
