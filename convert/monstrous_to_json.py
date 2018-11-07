@@ -86,7 +86,10 @@ def parse_monsters_rows(stat_block, title):
         monster_index = len(monsters.keys())
         if statistics[0].text.strip() == '':
             monster_index = previous_monster_index
-        elif previous_monster_index in  monsters and monsters[previous_monster_index]["Name"][-1] == ',':
+        elif statistics[0].text.strip() == 'Mantis':
+            monster_index = previous_monster_index
+            monsters[monster_index]["Name"] = "Praying Mantis"
+        elif previous_monster_index in monsters and monsters[previous_monster_index]["Name"][-1] == ',':
             monster_index = previous_monster_index
         else:
             previous_monster_index = monster_index
@@ -104,12 +107,17 @@ def cleanup_monsters(monsters, title):
     to_delete = []
 
     # Some pages are malformed, so some statistics don't get picked up properly.
-    if title == "Intellect Devourer":
+    if title == "Elf, Drow":
+        monsters[1]["Climate/Terrain"] = "Subterranean caves & cities"
+    elif title == "Intellect Devourer":
         monsters[0]["Name"] = "Intellect Devourer, Adult"
         monsters[1]["Name"] = "Intellect Devourer, Larva"
     elif title == "Mammal, Small":
         monsters[21]["Name"] = "Squirrel, Flying"
         monsters[22]["Name"] = "Squirrel, Giant black"
+    elif title == "Mammal, Herd":
+        monsters[3]["XP Value"] = "35"
+        monsters[4]["XP Value"] = "35"
     elif title == "Plant, Dangerous":
         monsters[5]["Name"] = "Tri-flower Frond"
         monsters[6]["Name"] = "Yellow Musk Creeper"
@@ -122,6 +130,8 @@ def cleanup_monsters(monsters, title):
     elif title == "Rat":
         monsters[0]["Name"] = "Rat, Giant"
         monsters[1]["Name"] = "Osquip"
+    elif title == "Swanmay":
+        monsters[1]["Treasure"] = "See below"
     elif title == "Tako":
         monsters[0]["Name"] = "Male Tako"
         monsters[1]["Name"] = "Female Tako"
@@ -155,6 +165,9 @@ def cleanup_monsters(monsters, title):
             monsters[monster]["Name"] += " (%s)" % (title,)
         monsters[monster]["Name"] = monsters[monster]["Name"].strip()
 
+        if "Notes" in monsters[monster] and monsters[monster]["Notes"] == '':
+            del(monsters[monster]["Notes"])
+
         for normal in normalize:
             if normal in monsters[monster]:
                 monsters[monster][ normalize[normal] ] = monsters[monster][normal]
@@ -182,6 +195,18 @@ def get_monsters(fname):
 
     return monsters
 
+def get_unique_statistics(monsters):
+    stats = set()
+    for monster in monsters:
+        stats.update(monsters[monster].keys())
+    return stats
+
+def monsters_with_empty_stats(monsters):
+    for monster in monsters:
+        for stat in monsters[monster].keys():
+            if monsters[monster][stat] == '':
+                print "%s %s == ''" % (monster, stat)
+
 def main():
     monsters = {}
     for fname in sys.argv[1:]:
@@ -201,11 +226,6 @@ def main():
         except:
             print fname
             raise
-    keys = set()
-    for monster in monsters:
-        keys.update(monsters[monster].keys())
-    #for key in sorted(keys):
-        #print key
     print json.dumps(monsters, sort_keys=True, indent=2)
 
 if __name__ == '__main__':
