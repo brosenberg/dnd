@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 
+# Consume the pages from http://dedpihto.narod.ru/games/Monsters1/MM00000.htm
+#   and dump them to JSON
+
 # TODO: Sanitize the data. Look for entries that are missing values.
 #       Ex: Sheep's XP Value
 # TODO: Normalize the stat names. Mammals, Small has nonstandard namings, for example.
+# TODO: Extract XP lists like the Fire Giant has
 
 import json
 import sys
@@ -45,13 +49,31 @@ def parse_monsters_columns(stat_block, title):
 
         for index in range(0, len(cols[1:])):
             text = cols[index+1].strip()
-            if index+index_mod not in monsters:
-                monsters[index+index_mod] = {}
-            if statistic in monsters[index+index_mod]:
+            index += index_mod
+            if index not in monsters:
+                monsters[index] = {}
+            if statistic in monsters[index]:
                 if text != '':
-                    monsters[index+index_mod][statistic] += " %s" % (text,)
+                    monsters[index][statistic] += " %s" % (text,)
             else:
-                monsters[index+index_mod][statistic] = text
+                monsters[index][statistic] = text
+
+    # Some pages are malformed, so some statistics don't get picked up properly.
+    if title == "Giant, Fire":
+        del(monsters[1])
+        del(monsters[2])
+    elif title == "Intellect Devourer":
+        monsters[0]["Name"] = "Intellect Devourer, Adult"
+        monsters[1]["Name"] = "Intellect Devourer, Larva"
+    elif title == "Ogre, Half-":
+        monsters[0]["Name"] = "Half-Ogre"
+        monsters[1]["Name"] = "Ogrillon"
+    elif title == "Rat":
+        monsters[0]["Name"] = "Rat, Giant"
+        monsters[1]["Name"] = "Osquip"
+    elif title == "Tako":
+        monsters[0]["Name"] = "Male Tako"
+        monsters[1]["Name"] = "Female Tako"
 
     return monsters
 
@@ -65,6 +87,8 @@ def parse_monsters_rows(stat_block, title):
         statistics = tr.find_all('td')
         monster_index = len(monsters.keys())
         if statistics[0].text.strip() == '':
+            monster_index = previous_monster_index
+        elif previous_monster_index in  monsters and monsters[previous_monster_index]["Name"][-1] == ',':
             monster_index = previous_monster_index
         else:
             previous_monster_index = monster_index
@@ -81,7 +105,7 @@ def parse_monsters_rows(stat_block, title):
 def get_monsters(fname):
     soup = BeautifulSoup(open(fname).read(), 'html.parser')
     stat_block = find_statblock(soup)
-    title = soup.title.text.replace("(Monstrous Manual)", "").strip()
+    title = soup.title.text.replace("(Monstrous Manual)", "").replace("--", ",").strip()
     monsters = {}
 
     # Detect if the monsters on this page are arranged in rows or columns.
@@ -107,13 +131,14 @@ def main():
     for fname in sys.argv[1:]:
         try:
             new_monsters = get_monsters(fname)
+            #print json.dumps(new_monsters, indent=2)
             for index in new_monsters:
                 monster = new_monsters[index]
                 # FIXME: This is caused by a bug. Fix it.
                 if len(monster.keys()) < 3:
                     continue
                 if monster["Name"] in monsters:
-                    print "WARN: %s already exists! %s" % (monster["Name"], fname)
+                    sys.stderr.write("WARN: %s already exists! %s\n" % (monster["Name"], fname))
                     continue
                 monsters[monster["Name"]] = monster
                 del monsters[monster["Name"]]["Name"]
