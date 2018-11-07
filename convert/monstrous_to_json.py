@@ -5,7 +5,6 @@
 
 # TODO: Sanitize the data. Look for entries that are missing values.
 #       Ex: Sheep's XP Value
-# TODO: Normalize the stat names. Mammals, Small has nonstandard namings, for example.
 # TODO: Extract XP lists like the Fire Giant has
 
 import json
@@ -42,7 +41,7 @@ def parse_monsters_columns(stat_block, title):
             statistic = u''
         if statistic in prefixes:
             prefix = statistic
-            statistic = u''
+            statistic = u'XP Value'
         if statistic == u'':
             if previous_statistic == None:
                 statistic = "Name"
@@ -101,31 +100,16 @@ def parse_monsters_rows(stat_block, title):
 
     return monsters
 
-def get_monsters(fname):
-    soup = BeautifulSoup(open(fname).read(), 'html.parser')
-    stat_block = find_statblock(soup)
-    title = soup.title.text.replace("(Monstrous Manual)", "").replace("--", ",").strip()
-    monsters = {}
-
-    # Detect if the monsters on this page are arranged in rows or columns.
-    # Column example: Satyr
-    # Row example: Mammals
-    # u'AC', u'# of Att', u'THAC0', u'#AP', u'Morale', u'MV', u'Dmg/Att', u'XP Value', u'HD'
-    row_page_headings = set([u'ac', u'mv', u'hd'])
-    if row_page_headings.issubset(set([x.text.strip().lower() for x in stat_block.find('tr').find_all('td')])):
-        monsters = parse_monsters_rows(stat_block, title)
-    else:
-        monsters = parse_monsters_columns(stat_block, title)
+def cleanup_monsters(monsters, title):
+    to_delete = []
 
     # Some pages are malformed, so some statistics don't get picked up properly.
-    if title == "Cat, Great":
-        del(monsters[9])
-    if title == "Giant, Fire":
-        del(monsters[1])
-        del(monsters[2])
-    elif title == "Intellect Devourer":
+    if title == "Intellect Devourer":
         monsters[0]["Name"] = "Intellect Devourer, Adult"
         monsters[1]["Name"] = "Intellect Devourer, Larva"
+    elif title == "Mammal, Small":
+        monsters[21]["Name"] = "Squirrel, Flying"
+        monsters[22]["Name"] = "Squirrel, Giant black"
     elif title == "Plant, Dangerous":
         monsters[5]["Name"] = "Tri-flower Frond"
         monsters[6]["Name"] = "Yellow Musk Creeper"
@@ -135,14 +119,19 @@ def get_monsters(fname):
     elif title == "Ogre, Half-":
         monsters[0]["Name"] = "Half-Ogre"
         monsters[1]["Name"] = "Ogrillon"
-    elif title == "Ooze/Slime/Jelly II":
-        del(monsters[5])
     elif title == "Rat":
         monsters[0]["Name"] = "Rat, Giant"
         monsters[1]["Name"] = "Osquip"
     elif title == "Tako":
         monsters[0]["Name"] = "Male Tako"
         monsters[1]["Name"] = "Female Tako"
+
+    for monster in monsters:
+        if [True for x in monsters[monster] if monsters[monster][x] != ''] == [True] or \
+            [True for x in monsters[monster] if monsters[monster][x] != ''] == []:
+            to_delete.append(monster)
+    for monster in to_delete:
+        del monsters[monster]
 
     normalize = {
                     "# AT": "No. of Attacks",
@@ -173,6 +162,26 @@ def get_monsters(fname):
 
     return monsters
 
+def get_monsters(fname):
+    soup = BeautifulSoup(open(fname).read(), 'html.parser')
+    stat_block = find_statblock(soup)
+    title = soup.title.text.replace("(Monstrous Manual)", "").replace("--", ",").strip()
+    monsters = {}
+
+    # Detect if the monsters on this page are arranged in rows or columns.
+    # Column example: Satyr
+    # Row example: Mammals
+    # u'AC', u'# of Att', u'THAC0', u'#AP', u'Morale', u'MV', u'Dmg/Att', u'XP Value', u'HD'
+    row_page_headings = set([u'ac', u'mv', u'hd'])
+    if row_page_headings.issubset(set([x.text.strip().lower() for x in stat_block.find('tr').find_all('td')])):
+        monsters = parse_monsters_rows(stat_block, title)
+    else:
+        monsters = parse_monsters_columns(stat_block, title)
+
+    monsters = cleanup_monsters(monsters, title)
+
+    return monsters
+
 def main():
     monsters = {}
     for fname in sys.argv[1:]:
@@ -195,9 +204,9 @@ def main():
     keys = set()
     for monster in monsters:
         keys.update(monsters[monster].keys())
-    for key in sorted(keys):
-        print key
-    #print json.dumps(monsters, sort_keys=True, indent=2)
+    #for key in sorted(keys):
+        #print key
+    print json.dumps(monsters, sort_keys=True, indent=2)
 
 if __name__ == '__main__':
     main()
