@@ -115,8 +115,14 @@ def cleanup_monsters(monsters, title):
             monsters[monster]["Climate/Terrain"] = "Various"
     elif title == "Crocodile":
         monsters[1]["Climate/Terrain"] = "Subtropical and tropical/Saltwater swamps and rivers"
+    elif title == "Elemental, Fire-Kin":
+        monsters[0]["Frequency"] = "Rare"
+        monsters[1]["Frequency"] = "Uncommon"
+    elif title == "Elf":
+        monsters[0]["Activity Cycle"] = "Any"
     elif title == "Elf, Drow":
         monsters[1]["Climate/Terrain"] = "Subterranean caves & cities"
+        monsters[1]["Activity Cycle"] = "Any underground, night aboveground"
     elif title == "Fish":
         for monster in monsters:
             monsters[monster]["Climate/Terrain"] = "Water"
@@ -179,10 +185,13 @@ def cleanup_monsters(monsters, title):
     elif title == "Rat":
         monsters[0]["Name"] = "Rat, Giant"
         monsters[1]["Name"] = "Osquip"
+    elif title == "Shedu":
+        monsters[1]["Activity Cycle"] = "Hottest part of the day"
     elif title == "Swanmay":
         monsters[1]["Treasure"] = "See below"
     elif title == "Tabaxi":
         monsters[1]["Climate/Terrain"] = "Tropical or subtropical jungle"
+        monsters[1]["Special Defenses"] = "Surprise, surprised only on a 1"
     elif title == "Tako":
         monsters[0]["Name"] = "Male Tako"
         monsters[1]["Name"] = "Female Tako"
@@ -215,6 +224,9 @@ def cleanup_monsters(monsters, title):
         else:
             monsters[monster]["Name"] += " (%s)" % (title,)
         monsters[monster]["Name"] = monsters[monster]["Name"].strip()
+
+        if monsters[monster].get("Frequency") == "Very Rare":
+            monsters[monster]["Frequency"] = "Very rare"
 
         if "Notes" in monsters[monster] and monsters[monster]["Notes"] == '':
             del(monsters[monster]["Notes"])
@@ -265,10 +277,37 @@ def monsters_with_empty_stats(monsters):
             if monsters[monster][stat] == '':
                 print "%s %s == ''" % (monster, stat)
 
-def monsters_with_no_climate(monsters):
+def monsters_with_no_stat(monsters, stat):
     for monster in monsters:
-        if monsters[monster].get("Climate/Terrain") is None:
-            print "%s has no Climate/Terrain" % (monster,)
+        if monsters[monster].get(stat) is None:
+            print "%s has no %s" % (monster, stat)
+
+def monsters_missing_important_stats(monsters):
+    stats = [
+        'Activity Cycle',
+        'Alignment',
+        'Armor Class',
+        'Climate/Terrain',
+        'Damage/Attack',
+        'Diet',
+        'Frequency',
+        'Hit Dice',
+        'Intelligence',
+        'Magic Resistance',
+        'Morale',
+        'Movement',
+        'No. Appearing',
+        'No. of Attacks',
+        'Organization',
+        'Size',
+        'Special Attacks',
+        'Special Defenses',
+        'THAC0',
+        'Treasure',
+        'XP Value'
+    ]
+    for stat in stats:
+        monsters_with_no_stat(monsters, stat)
 
 def main():
     monsters = {}
