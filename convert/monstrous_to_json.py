@@ -28,8 +28,21 @@ def parse_monsters_columns(stat_block, title):
     index_mod = 0
     for row in stat_block.find_all('tr'):
         cols = [x.text.strip() for x in row.find_all('td')]
+        prefixes = [
+                    "Bugbear leader",
+                    "Bugbear chief",
+                    "Bugbear shaman",
+                    "Elder",
+                    "Jaculi",
+                   ]
 
-        statistic = cols[0].strip(":")
+        statistic = cols[0].strip(':')
+        prefix = None
+        if not cols[0].endswith(':'):
+            statistic = u''
+        if statistic in prefixes:
+            prefix = statistic
+            statistic = u''
         if statistic == u'':
             if previous_statistic == None:
                 statistic = "Name"
@@ -54,26 +67,12 @@ def parse_monsters_columns(stat_block, title):
                 monsters[index] = {}
             if statistic in monsters[index]:
                 if text != '':
-                    monsters[index][statistic] += " %s" % (text,)
+                    if prefix:
+                        monsters[index][statistic] += " %s: %s" % (prefix, text)
+                    else:
+                        monsters[index][statistic] += " %s" % (text,)
             else:
                 monsters[index][statistic] = text
-
-    # Some pages are malformed, so some statistics don't get picked up properly.
-    if title == "Giant, Fire":
-        del(monsters[1])
-        del(monsters[2])
-    elif title == "Intellect Devourer":
-        monsters[0]["Name"] = "Intellect Devourer, Adult"
-        monsters[1]["Name"] = "Intellect Devourer, Larva"
-    elif title == "Ogre, Half-":
-        monsters[0]["Name"] = "Half-Ogre"
-        monsters[1]["Name"] = "Ogrillon"
-    elif title == "Rat":
-        monsters[0]["Name"] = "Rat, Giant"
-        monsters[1]["Name"] = "Osquip"
-    elif title == "Tako":
-        monsters[0]["Name"] = "Male Tako"
-        monsters[1]["Name"] = "Female Tako"
 
     return monsters
 
@@ -99,7 +98,7 @@ def parse_monsters_rows(stat_block, title):
                     monsters[monster_index][headings[index]] += " %s" % (statistics[index].text.strip(),)
             else:
                 monsters[monster_index][headings[index]] = statistics[index].text.strip()
-            
+
     return monsters
 
 def get_monsters(fname):
@@ -118,11 +117,59 @@ def get_monsters(fname):
     else:
         monsters = parse_monsters_columns(stat_block, title)
 
+    # Some pages are malformed, so some statistics don't get picked up properly.
+    if title == "Cat, Great":
+        del(monsters[9])
+    if title == "Giant, Fire":
+        del(monsters[1])
+        del(monsters[2])
+    elif title == "Intellect Devourer":
+        monsters[0]["Name"] = "Intellect Devourer, Adult"
+        monsters[1]["Name"] = "Intellect Devourer, Larva"
+    elif title == "Plant, Dangerous":
+        monsters[5]["Name"] = "Tri-flower Frond"
+        monsters[6]["Name"] = "Yellow Musk Creeper"
+        monsters[7]["Name"] = "Yellow Musk Zombie"
+    elif title == "Plant, Intelligent":
+        monsters[7]["Name"] = "Thorny"
+    elif title == "Ogre, Half-":
+        monsters[0]["Name"] = "Half-Ogre"
+        monsters[1]["Name"] = "Ogrillon"
+    elif title == "Ooze/Slime/Jelly II":
+        del(monsters[5])
+    elif title == "Rat":
+        monsters[0]["Name"] = "Rat, Giant"
+        monsters[1]["Name"] = "Osquip"
+    elif title == "Tako":
+        monsters[0]["Name"] = "Male Tako"
+        monsters[1]["Name"] = "Female Tako"
+
+    normalize = {
+                    "# AT": "No. of Attacks",
+                    "# of Att": "No. of Attacks",
+                    "#Att": "No. of Attacks",
+                    "#AP": "No. Appearing",
+                    "AC": "Armor Class",
+                    "App.": "No. Appearing",
+                    "Dmg/AT": "Damage/Attack",
+                    "Dmg/Att": "Damage/Attack",
+                    "HD": "Hit Dice",
+                    "MV": "Movement",
+                    "Mv": "Movement",
+                    "XP": "XP Value"
+    }
+
     for monster in monsters:
         if "Name" not in monsters[monster]:
             monsters[monster]["Name"] = title
         else:
             monsters[monster]["Name"] += " (%s)" % (title,)
+        monsters[monster]["Name"] = monsters[monster]["Name"].strip()
+
+        for normal in normalize:
+            if normal in monsters[monster]:
+                monsters[monster][ normalize[normal] ] = monsters[monster][normal]
+                del monsters[monster][normal]
 
     return monsters
 
@@ -145,7 +192,12 @@ def main():
         except:
             print fname
             raise
-    print json.dumps(monsters, sort_keys=True, indent=2)
+    keys = set()
+    for monster in monsters:
+        keys.update(monsters[monster].keys())
+    for key in sorted(keys):
+        print key
+    #print json.dumps(monsters, sort_keys=True, indent=2)
 
 if __name__ == '__main__':
     main()
