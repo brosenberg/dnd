@@ -5,7 +5,7 @@
 
 # TODO: Sanitize the data. Look for entries that are missing values.
 #       Ex: Sheep's XP Value
-# TODO: Extract XP lists like the Fire Giant has
+# TODO: Extract XP lists like the Fire Giant, Treant, and Vampire have
 
 import json
 import sys
@@ -107,17 +107,66 @@ def cleanup_monsters(monsters, title):
     to_delete = []
 
     # Some pages are malformed, so some statistics don't get picked up properly.
-    if title == "Elf, Drow":
+    # Some monster entries are missing data or have strangely formatted data.
+    # TODO: Automatically pull out Climates that span the entire width of the
+    #       table and use it to populate everything in that table.
+    if title == "Bird":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Various"
+    elif title == "Crocodile":
+        monsters[1]["Climate/Terrain"] = "Subtropical and tropical/Saltwater swamps and rivers"
+    elif title == "Elf, Drow":
         monsters[1]["Climate/Terrain"] = "Subterranean caves & cities"
+    elif title == "Fish":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Water"
+    elif title == "Gargoyle":
+        monsters[1]["Climate/Terrain"] = "Any land, subterranean, ocean"
+    elif title == "Giant, Cyclcops":
+        monsters[1]["Climate/Terrain"] = "Temperate/Hills and mountains"
+    elif title == "Horses":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Any non-mountainous"
+    elif title == "Human":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Any"
+    elif title == "Insect":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Any"
     elif title == "Intellect Devourer":
         monsters[0]["Name"] = "Intellect Devourer, Adult"
         monsters[1]["Name"] = "Intellect Devourer, Larva"
+    elif title == "Lamia":
+        monsters[1]["Climate/Terrain"] = "Deserts, caves and ruined cities"
+    elif title == "Lammasu":
+        monsters[1]["Climate/Terrain"] = "Warm, with visits to other climes"
+    elif title == "Leech":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Temperate/Swamps and marshes"
+    elif title == "Mammal":
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Various"
     elif title == "Mammal, Small":
         monsters[21]["Name"] = "Squirrel, Flying"
         monsters[22]["Name"] = "Squirrel, Giant black"
+        for monster in monsters:
+            monsters[monster]["Climate/Terrain"] = "Various"
+            monsters[monster]["Frequency"] = "Common"
+            monsters[monster]["Intelligence"] = "Animal (1)"
+            monsters[monster]["Alignment"] = "Neutral"
+            monsters[monster]["Magic Resistance"] = "Nil"
+            monsters[monster]["Morale"] = "Unreliable to Average (2-9)"
+            monsters[monster]["THAC0"] = "20"
+        monsters[9]["THAC0"] = "19"
+        monsters[14]["THAC0"] = "19"
+        monsters[15]["THAC0"] = "19"
+        monsters[17]["THAC0"] = "19"
+        monsters[22]["THAC0"] = "19"
     elif title == "Mammal, Herd":
         monsters[3]["XP Value"] = "35"
         monsters[4]["XP Value"] = "35"
+    elif title == "Mimic":
+        monsters[1]["Climate/Terrain"] = "Subterranean"
     elif title == "Plant, Dangerous":
         monsters[5]["Name"] = "Tri-flower Frond"
         monsters[6]["Name"] = "Yellow Musk Creeper"
@@ -132,6 +181,8 @@ def cleanup_monsters(monsters, title):
         monsters[1]["Name"] = "Osquip"
     elif title == "Swanmay":
         monsters[1]["Treasure"] = "See below"
+    elif title == "Tabaxi":
+        monsters[1]["Climate/Terrain"] = "Tropical or subtropical jungle"
     elif title == "Tako":
         monsters[0]["Name"] = "Male Tako"
         monsters[1]["Name"] = "Female Tako"
@@ -173,6 +224,13 @@ def cleanup_monsters(monsters, title):
                 monsters[monster][ normalize[normal] ] = monsters[monster][normal]
                 del monsters[monster][normal]
 
+        for stat in monsters[monster]:
+            monsters[monster][stat] = monsters[monster][stat].replace('/ ', '/') \
+                                                             .replace('- ', '-') \
+                                                             .replace('\n', '-') \
+                                                             .replace(', -', ', ') \
+                                                             .replace(' -', ' ') \
+
     return monsters
 
 def get_monsters(fname):
@@ -207,6 +265,11 @@ def monsters_with_empty_stats(monsters):
             if monsters[monster][stat] == '':
                 print "%s %s == ''" % (monster, stat)
 
+def monsters_with_no_climate(monsters):
+    for monster in monsters:
+        if monsters[monster].get("Climate/Terrain") is None:
+            print "%s has no Climate/Terrain" % (monster,)
+
 def main():
     monsters = {}
     for fname in sys.argv[1:]:
@@ -224,7 +287,7 @@ def main():
                 monsters[monster["Name"]] = monster
                 del monsters[monster["Name"]]["Name"]
         except:
-            print fname
+            print "Problem parsing %s" % (fname,)
             raise
     print json.dumps(monsters, sort_keys=True, indent=2)
 
