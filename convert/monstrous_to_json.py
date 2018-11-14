@@ -67,7 +67,7 @@ def parse_monsters_columns(stat_block, title):
             if statistic in monsters[index]:
                 if text != '':
                     if prefix:
-                        monsters[index][statistic] += " %s: %s" % (prefix, text)
+                        monsters[index][statistic] += " %s:%s" % (prefix, text)
                     else:
                         monsters[index][statistic] += " %s" % (text,)
             else:
@@ -115,9 +115,15 @@ def cleanup_monsters(monsters, title):
             monsters[monster]["Climate/Terrain"] = "Various"
     elif title == "Crocodile":
         monsters[1]["Climate/Terrain"] = "Subtropical and tropical/Saltwater swamps and rivers"
+    elif title == "Dracolich":
+        monsters[0]["Climate/Terrain"] = "Same as base dragon type"
     elif title == "Elemental, Fire-Kin":
         monsters[0]["Frequency"] = "Rare"
         monsters[1]["Frequency"] = "Uncommon"
+        monsters[0]["Climate/Terrain"] = "Elemental Plane of Fire, extreme heat"
+        monsters[1]["Climate/Terrain"] = "Fires"
+    elif title == "Elemental, Air-kin":
+        monsters[1]["Climate/Terrain"] = "Elemental Plane of Air, Extreme Weather"
     elif title == "Elf":
         monsters[0]["Activity Cycle"] = "Any"
     elif title == "Elf, Drow":
@@ -130,6 +136,8 @@ def cleanup_monsters(monsters, title):
         monsters[1]["Climate/Terrain"] = "Any land, subterranean, ocean"
     elif title == "Giant, Cyclcops":
         monsters[1]["Climate/Terrain"] = "Temperate/Hills and mountains"
+    elif title == "Giant, Storm":
+        monsters[0]["Climate/Terrain"] = "Cloud islands, mountains, underwater"
     elif title == "Horses":
         for monster in monsters:
             monsters[monster]["Climate/Terrain"] = "Any non-mountainous"
@@ -185,7 +193,10 @@ def cleanup_monsters(monsters, title):
     elif title == "Rat":
         monsters[0]["Name"] = "Rat, Giant"
         monsters[1]["Name"] = "Osquip"
+    elif title == "Spider":
+        monsters[5]["Climate/Terrain"] = "Jungle, Underdark"
     elif title == "Shedu":
+        monsters[0]["Climate/Terrain"] = "Any hot arid"
         monsters[1]["Activity Cycle"] = "Hottest part of the day"
     elif title == "Swanmay":
         monsters[1]["Treasure"] = "See below"
@@ -219,10 +230,15 @@ def cleanup_monsters(monsters, title):
     }
 
     for monster in monsters:
+        title = title.replace(' , ', ', ')
         if "Name" not in monsters[monster]:
             monsters[monster]["Name"] = title
         else:
-            monsters[monster]["Name"] += " (%s)" % (title,)
+            if monsters[monster]["Name"].startswith("Cover") and \
+               monsters[monster]["Name"].endswith("2nd Edition"):
+                monsters[monster]["Name"] = title
+            else:
+                monsters[monster]["Name"] += " (%s)" % (title,)
         monsters[monster]["Name"] = monsters[monster]["Name"].strip()
 
         if monsters[monster].get("Frequency") == "Very Rare":
@@ -242,11 +258,15 @@ def cleanup_monsters(monsters, title):
                                                              .replace('\n', '-') \
                                                              .replace(', -', ', ') \
                                                              .replace(' -', ' ') \
+                                                             .replace('  ', ' ')
 
     return monsters
 
 def get_monsters(fname):
-    soup = BeautifulSoup(open(fname).read(), 'html.parser')
+    raw_html = ''
+    with open(fname) as f:
+        raw_html = f.read().replace('<br>', '').replace('  ', ' ')
+    soup = BeautifulSoup(raw_html, 'html.parser')
     stat_block = find_statblock(soup)
     title = soup.title.text.replace("(Monstrous Manual)", "").replace("--", ",").strip()
     monsters = {}
