@@ -13,8 +13,10 @@ CLIMATES = set([
     "arctic",
     "arid",
     "cold",
+    "freshwater",
     "nonarctic",
     "nontropical",
+    "saltwater",
     "subarctic",
     "subterranean",
     "subtropical",
@@ -50,7 +52,41 @@ def handle_separates(separate):
             return (climates, ' '.join(terrain))
     return (None, separate)
 
-def norm_climate(raw_climate):
+def normalize_terrain(terrains):
+    normalize = {
+        'coastal marine': 'sea coast',
+        'deep ocean': 'deep sea',
+        'deep waters': 'deep aquatic',
+        'forest with oaks': 'oak forests',
+        'forest': 'forests',
+        'lake shore': 'lake shores',
+        'large areas of water': 'aquatic',
+        'magical cloud islands': 'cloud islands',
+        'marine': 'aquatic',
+        'mountain': 'mountains',
+        'mountainous': 'mountains',
+        'ocean': 'sea',
+        'oceans': 'sea',
+        'plain': 'plains',
+        'river': 'rivers',
+        'sea coast': 'sea coasts',
+        'sea shore': 'sea shores',
+        'seacoast': 'sea coasts',
+        'seashore': 'sea shores',
+        'swamp': 'swamps',
+        'very deep oceans': 'very deep sea',
+        'waters': 'aquatic',
+        'woodlands': 'forests'
+    }
+    new_terrains = set()
+    for terrain in terrains:
+        if terrain in normalize:
+            new_terrains.add(normalize[terrain])
+        else:
+            new_terrains.add(terrain)
+    return new_terrains
+
+def read_climates(raw_climate):
     climates = set()
     terrains = set()
     SEPS = [
@@ -89,46 +125,22 @@ def doit(monsters):
                                                       .replace('hills,and', 'hills, and') \
                                                       .replace('hill and mountain caverns', 'hill caverns and mountain caverns') \
                                                       .replace(', with visits to other climes', '') \
-                                                      .replace('magical cloud', 'cloud') \
                                                       .replace('any ruins', 'ruins') \
                                                       .replace('any underground', 'subterranean') \
                                                       .replace('any pool', 'any, pools') \
-                                                      .replace('mountainous', 'mountain') \
-                                                      .replace('mountains', 'mountain') \
-                                                      .replace('mountain', 'mountains') \
-                                                      .replace('plains', 'plain') \
-                                                      .replace('plain', 'plains') \
-                                                      .replace('rivers', 'river') \
-                                                      .replace('river', 'rivers') \
-                                                      .replace('waters', 'water') \
-                                                      .replace('coastal marine', 'sea coast') \
-                                                      .replace('seacoast', 'sea coast') \
-                                                      .replace('sea coasts', 'sea coast') \
-                                                      .replace('sea shores', 'sea shore') \
-                                                      .replace('seashore', 'sea shore') \
-                                                      .replace('lake shores', 'lake shore') \
-                                                      .replace('swamps', 'swamp') \
-                                                      .replace('swamp', 'swamps') \
-                                                      .replace('tropical marine', 'tropical sea') \
-                                                      .replace('oceans', 'sea') \
-                                                      .replace('ocean', 'sea') \
                                                       .replace('below ground', 'subterranean') \
                                                       .replace('terrain', 'land') \
-                                                      .replace('woodlands', 'forest') \
-                                                      .replace('forests', 'forest') \
-                                                      .replace('forest with oaks', 'oak forest') \
-                                                      .replace('freshwater aquatic', 'freshwater') \
-                                                      .replace('large areas of water', 'water') \
                                                       .replace(', in wilderness areas', '') \
                                                       .replace('temperature', 'temperate') \
                                                       .replace('demiplane of shadow', 'plane of shadow') \
                                                       .replace(' (preferred)', '') \
                                                       .replace('(rarely temperate ', ' and ') \
-                                                      .replace('and forest.)', 'and forest')
+                                                      .replace('and forests.)', 'and forests')
         #print monster.encode('utf-8'), norm_climate(climate)
-        normalized = norm_climate(climate)
+        normalized = read_climates(climate)
         climates.update(normalized[0])
         terrains.update(normalized[1])
+    terrains = normalize_terrain(terrains)
     print '\n'.join(sorted(climates))
     print '\n\n'
     print '\n'.join(sorted(terrains))
