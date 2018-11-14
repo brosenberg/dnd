@@ -15,6 +15,7 @@ CLIMATES = set([
     "cold",
     "freshwater",
     "nonarctic",
+    "nonmountainous",
     "nontropical",
     "saltwater",
     "subarctic",
@@ -31,7 +32,8 @@ def handle_separates(separate):
     if separate in CLIMATES:
         return (set([separate]), None)
     if separate == 'any except arctic':
-        return (CLIMATES.difference(['any', 'arctic']), None)
+        return ('nonarctic')
+        #return (CLIMATES.difference(['any', 'arctic']), None)
     subseparates = separate.split()
     terrain = copy.deepcopy(subseparates)
     for subseparate in subseparates:
@@ -54,37 +56,140 @@ def handle_separates(separate):
 
 def normalize_terrain(terrains):
     normalize = {
-        'coastal marine': 'sea coast',
-        'deep ocean': 'deep sea',
-        'deep waters': 'deep aquatic',
-        'forest with oaks': 'oak forests',
-        'forest': 'forests',
-        'lake shore': 'lake shores',
-        'large areas of water': 'aquatic',
-        'magical cloud islands': 'cloud islands',
-        'marine': 'aquatic',
-        'mountain': 'mountains',
-        'mountainous': 'mountains',
-        'ocean': 'sea',
-        'oceans': 'sea',
-        'plain': 'plains',
-        'river': 'rivers',
-        'sea coast': 'sea coasts',
-        'sea shore': 'sea shores',
-        'seacoast': 'sea coasts',
-        'seashore': 'sea shores',
-        'swamp': 'swamps',
-        'very deep oceans': 'very deep sea',
-        'waters': 'aquatic',
-        'woodlands': 'forests'
+        'coast': (
+            ['coastal'],
+            []
+        ),
+        'coastal marine': (
+            ['aquatic', 'coastal'],
+            ['saltwater']
+        ),
+        'deep ocean': (
+            ['aquatic', 'deep sea'],
+            ['saltwater']
+        ),
+        'deep waters': (
+            ['deep aquatic'],
+            []
+        ),
+        'fresh': (
+            ['aquatic'],
+            ['freshwater']
+        ),
+        'fresh water': (
+            ['aquatic'],
+            ['freshwater']
+        ),
+        'forest with oaks': (
+            ['oak forests'],
+            []
+        ),
+        'forest': (
+           ['forests'],
+           []
+        ),
+        'lake shore': (
+           ['aquatic'],
+           ['freshwater']
+        ),
+        'large areas of water': (
+           ['aquatic'],
+           []
+        ),
+        'magical cloud islands': (
+           ['cloud islands'],
+           []
+        ),
+        'marine': (
+           ['aquatic'],
+           ['saltwater']
+        ),
+        'mountain': (
+           ['mountains'],
+           []
+        ),
+        'mountainous': (
+           ['mountains'],
+           []
+        ),
+        'ocean': (
+           ['aquatic'],
+           ['saltwater']
+        ),
+        'oceans': (
+           ['aquatic'],
+           ['saltwater']
+        ),
+        'plain': (
+           ['plains'],
+           []
+        ),
+        'river': (
+           ['aquatic', 'rivers'],
+           ['freshwater']
+        ),
+        'salt water': (
+            ['aquatic'],
+            ['saltwater']
+        ),
+        'salt water depths': (
+            ['aquatic', 'deep sea'],
+            ['saltwater']
+        ),
+        'sea bed': (
+            ['aquatic'],
+            ['saltwater']
+        ),
+        'sea coasts': (
+           ['aquatic', 'coastal'],
+           ['saltwater']
+        ),
+        'sea shore': (
+           ['aquatic', 'coastal'],
+           ['saltwater']
+        ),
+        'seacoast': (
+           ['aquatic', 'coastal'],
+           ['saltwater']
+        ),
+        'seashore': (
+           ['aquatic', 'coastal'],
+           ['saltwater']
+        ),
+        'shallow salt water': (
+           ['aquatic', 'coastal'],
+           ['saltwater']
+        ),
+        'swamp': (
+           ['swamps'],
+           []
+        ),
+        'very deep oceans': (
+           ['aquatic', 'very deep sea'],
+           ['saltwater']
+        ),
+        'water': (
+           ['aquatic'],
+           []
+        ),
+        'waters': (
+           ['aquatic'],
+           []
+        ),
+        'woodlands': (
+           ['forests'],
+           []
+        )
     }
     new_terrains = set()
+    new_climates = set()
     for terrain in terrains:
         if terrain in normalize:
-            new_terrains.add(normalize[terrain])
+            new_terrains.update(normalize[terrain][0])
+            new_climates.update(normalize[terrain][1])
         else:
             new_terrains.add(terrain)
-    return new_terrains
+    return (new_climates, new_terrains)
 
 def read_climates(raw_climate):
     climates = set()
@@ -137,13 +242,26 @@ def doit(monsters):
                                                       .replace('(rarely temperate ', ' and ') \
                                                       .replace('and forests.)', 'and forests')
         #print monster.encode('utf-8'), norm_climate(climate)
-        normalized = read_climates(climate)
-        climates.update(normalized[0])
-        terrains.update(normalized[1])
-    terrains = normalize_terrain(terrains)
-    print '\n'.join(sorted(climates))
-    print '\n\n'
-    print '\n'.join(sorted(terrains))
+        (climates, terrains) = read_climates(climate)
+        (new_climates, terrains) = normalize_terrain(terrains)
+        climates.update(new_climates)
+        if True in [x.startswith('non') for x in climates]:
+            climates.discard('any')
+        #print monster.encode('utf-8'), climates, terrains
+        monsters[monster]["Normalized Climates"] = list(climates)
+        monsters[monster]["Normalized Terrains"] = list(terrains)
+
+    print json.dumps(monsters, sort_keys=True, indent=2)
+
+    ###
+    #    climates.update(normalized[0])
+    #    terrains.update(normalized[1])
+    #(new_climates, terrains) = normalize_terrain(terrains)
+    #climates.update(new_climates)
+    #print '\n'.join(sorted(climates))
+    #print '\n\n'
+    #print '\n'.join(sorted(terrains))
+    ###
 
 def main():
     monsters = json.load(open(sys.argv[1]))
