@@ -7,7 +7,7 @@ import json
 import re
 import sys
 
-
+# TODO: Transform non* climates into sane lists of terrains or climates.
 CLIMATES = set([
     "any",
     "arctic",
