@@ -172,14 +172,18 @@ def roll_treasure(ttypes):
     for ttype in ttypes:
         if ttype in TREASURE:
             for thing in ORDER:
+                # Initialize treasure
                 if thing not in treasure:
                     if thing == 'special magic':
                         treasure['special magic'] = {}
                     else:
                         treasure[thing] = 0
+                # Don't roll for treasure not present in this treasure type
                 if thing not in TREASURE[ttype]:
                     continue
+                # See if we successfully rolled for this treasure
                 if percentile_check(TREASURE[ttype][thing][0]):
+                    # Handle weird magic items, like "Any 3 + 1 scroll"
                     if thing == 'special magic':
                         for special in TREASURE[ttype]['special magic'][1]:
                             if special[1] in ORDER:
