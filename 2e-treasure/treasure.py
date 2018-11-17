@@ -3,7 +3,7 @@
 import random
 import sys
 
-ORDER = ['cp', 'sp', 'gp', 'pp', 'gems', 'art', 'potions', 'scrolls', 'magic items', 'special magic']
+ORDER = ['cp', 'sp', 'gp', 'pp', 'gems', 'art', 'potions', 'scrolls', 'magic items', 'complex']
 
 TREASURE = {
     'A': {
@@ -22,7 +22,7 @@ TREASURE = {
         'pp': [25, 100, 1000],
         'gems': [30, 1, 8],
         'art': [20, 1, 4],
-        'special magic': [10, [
+        'complex': [10, [
                 [1, 'magic armor or magic weapon']
             ]
          ]
@@ -42,7 +42,7 @@ TREASURE = {
         'pp': [15, 100, 600],
         'gems': [30, 1, 10],
         'art': [25, 1, 6],
-        'special magic': [15, [
+        'complex': [15, [
                 [2, 'magic items'],
                 [1, 'potions']
             ]
@@ -55,7 +55,7 @@ TREASURE = {
         'pp': [25, 300, 1800],
         'gems': [15, 1, 12],
         'art': [10, 1, 6],
-        'special magic': [25, [
+        'complex': [25, [
                 [3, 'magic items'],
                 [1, 'scrolls'],
             ]
@@ -67,7 +67,7 @@ TREASURE = {
         'pp': [15, 1000, 4000],
         'gems': [20, 2, 20],
         'art': [10, 1, 8],
-        'special magic': [30, [[5, 'non-weapon magic items']]]
+        'complex': [30, [[5, 'non-weapon magic items']]]
     },
     'G': {
         'gp': [50, 2000, 20000],
@@ -174,8 +174,8 @@ def roll_treasure(ttypes):
             for thing in ORDER:
                 # Initialize treasure
                 if thing not in treasure:
-                    if thing == 'special magic':
-                        treasure['special magic'] = {}
+                    if thing == 'complex':
+                        treasure['complex'] = {}
                     else:
                         treasure[thing] = 0
                 # Don't roll for treasure not present in this treasure type
@@ -184,15 +184,15 @@ def roll_treasure(ttypes):
                 # See if we successfully rolled for this treasure
                 if percentile_check(TREASURE[ttype][thing][0]):
                     # Handle weird magic items, like "Any 3 + 1 scroll"
-                    if thing == 'special magic':
-                        for special in TREASURE[ttype]['special magic'][1]:
+                    if thing == 'complex':
+                        for special in TREASURE[ttype]['complex'][1]:
                             if special[1] in ORDER:
                                 treasure[special[1]] += special[0]
                             else:
-                                if special[1] not in treasure['special magic']:
-                                    treasure['special magic'][special[1]] = special[0]
+                                if special[1] not in treasure['complex']:
+                                    treasure['complex'][special[1]] = special[0]
                                 else:
-                                    treasure['special magic'][special[1]] += special[0]
+                                    treasure['complex'][special[1]] += special[0]
                     else:
                         amount = random.randint(TREASURE[ttype][thing][1],
                                                 TREASURE[ttype][thing][2])
@@ -207,9 +207,9 @@ def print_treasure(treasure):
         if thing in treasure:
             if not treasure[thing]:
                 continue
-            if thing == 'special magic':
-                for special in treasure['special magic']:
-                    valuables.append("%s %s" % ('{:,}'.format(treasure['special magic'][special]),
+            if thing == 'complex':
+                for special in treasure['complex']:
+                    valuables.append("%s %s" % ('{:,}'.format(treasure['complex'][special]),
                                                 special))
             else:
                 valuables.append("%s %s" % ('{:,}'.format(treasure[thing]), thing))
