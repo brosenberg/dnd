@@ -185,14 +185,14 @@ def roll_treasure(ttypes):
                 if percentile_check(TREASURE[ttype][thing][0]):
                     # Handle weird magic items, like "Any 3 + 1 scroll"
                     if thing == 'complex':
-                        for special in TREASURE[ttype]['complex'][1]:
-                            if special[1] in ORDER:
-                                treasure[special[1]] += special[0]
+                        for complex_item in TREASURE[ttype]['complex'][1]:
+                            if complex_item[1] in ORDER:
+                                treasure[complex_item[1]] += complex_item[0]
                             else:
-                                if special[1] not in treasure['complex']:
-                                    treasure['complex'][special[1]] = special[0]
+                                if complex_item[1] not in treasure['complex']:
+                                    treasure['complex'][complex_item[1]] = complex_item[0]
                                 else:
-                                    treasure['complex'][special[1]] += special[0]
+                                    treasure['complex'][complex_item[1]] += complex_item[0]
                     else:
                         amount = random.randint(TREASURE[ttype][thing][1],
                                                 TREASURE[ttype][thing][2])
@@ -208,9 +208,9 @@ def print_treasure(treasure):
             if not treasure[thing]:
                 continue
             if thing == 'complex':
-                for special in treasure['complex']:
-                    valuables.append("%s %s" % ('{:,}'.format(treasure['complex'][special]),
-                                                special))
+                for complex_item in treasure['complex']:
+                    valuables.append("%s %s" % ('{:,}'.format(treasure['complex'][complex_item]),
+                                                complex_item))
             else:
                 valuables.append("%s %s" % ('{:,}'.format(treasure[thing]), thing))
     print ', '.join(valuables)
