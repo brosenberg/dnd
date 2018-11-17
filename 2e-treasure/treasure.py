@@ -3,9 +3,18 @@
 import random
 import sys
 
-ORDER = ['cp', 'sp', 'gp', 'pp', 'gems', 'art', 'potions', 'scrolls', 'magic']
+ORDER = ['cp', 'sp', 'gp', 'pp', 'gems', 'art', 'potions', 'scrolls', 'magic items', 'special magic']
 
 TREASURE = {
+    'A': {
+        'cp': [25, 1000, 3000],
+        'sp': [30, 200, 2000],
+        'gp': [40, 1000, 6000],
+        'pp': [35, 100, 1000],
+        'gems': [60, 10, 40],
+        'art': [50, 2, 12],
+        'magic items': [30, 3, 3],
+    },
     'B': {
         'cp': [50, 1000, 6000],
         'sp': [25, 1000, 3000],
@@ -13,7 +22,97 @@ TREASURE = {
         'pp': [25, 100, 1000],
         'gems': [30, 1, 8],
         'art': [20, 1, 4],
-        'magic': [10, 'Armor Weapon']
+        'special magic': [10, [
+                [1, 'magic armor or magic weapon']
+            ]
+         ]
+    },
+    'C': {
+        'cp': [20, 1000, 10000],
+        'sp': [30, 1000, 6000],
+        'pp': [10, 100, 600],
+        'gems': [25, 1, 6],
+        'art': [20, 1, 3],
+        'magic items': [10, 2, 2],
+    },
+    'D': {
+        'cp': [10, 1000, 6000],
+        'sp': [15, 1000, 10000],
+        'gp': [50, 1000, 3000],
+        'pp': [15, 100, 600],
+        'gems': [30, 1, 10],
+        'art': [25, 1, 6],
+        'special magic': [15, [
+                [2, 'magic items'],
+                [1, 'potions']
+            ]
+        ]
+    },
+    'E': {
+        'cp': [5, 1000, 6000],
+        'sp': [25, 1000, 10000],
+        'gp': [25, 1000, 4000],
+        'pp': [25, 300, 1800],
+        'gems': [15, 1, 12],
+        'art': [10, 1, 6],
+        'special magic': [25, [
+                [3, 'magic items'],
+                [1, 'scrolls'],
+            ]
+        ]
+    },
+    'F': {
+        'sp': [10, 3000, 18000],
+        'gp': [40, 1000, 6000],
+        'pp': [15, 1000, 4000],
+        'gems': [20, 2, 20],
+        'art': [10, 1, 8],
+        'special magic': [30, [[5, 'non-weapon magic items']]]
+    },
+    'G': {
+        'gp': [50, 2000, 20000],
+        'pp': [50, 1000, 10000],
+        'gems': [30, 3, 18],
+        'art': [25, 1, 6],
+        'magic items': [35, 5, 5],
+    },
+    'H': {
+        'cp': [25, 3000, 18000],
+        'sp': [40, 2000, 20000],
+        'gp': [55, 2000, 20000],
+        'pp': [40, 1000, 8000],
+        'gems': [50, 3, 30],
+        'art': [50, 2, 20],
+        'magic items': [15, 6, 6],
+    },
+    'I': {
+        'pp': [30, 100, 600],
+        'gems': [55, 2, 12],
+        'art': [50, 2, 8],
+        'magic items': [15, 1, 1],
+    },
+    'J': {
+        'cp': [100, 3, 24],
+    },
+    'K': {
+        'sp': [100, 3, 18],
+    },
+    'L': {
+        'pp': [100, 2, 12],
+    },
+    'M': {
+        'gp': [100, 2, 8],
+    },
+    'N': {
+        'pp': [100, 1, 6],
+    },
+    'O': {
+        'cp': [100, 10, 40],
+        'sp': [100, 10, 30],
+    },
+    'P': {
+        'sp': [100, 10, 60],
+        'pp': [100, 1, 20],
     },
     'Q': {
         'gems': [100, 1, 4],
@@ -25,10 +124,40 @@ TREASURE = {
         'art': [100, 1, 3],
     },
     'S': {
-        'magic': [100, 1, 8, 'potions'],
+        'potions': [100, 1, 8],
     },
     'T': {
-        'magic': [100, 1, 8, 'scrolls'],
+        'scrolls': [100, 1, 8],
+    },
+    'U': {
+        'gems': [90, 2, 16],
+        'art': [80, 1, 6],
+        'magic items': [70, 1, 1],
+    },
+    'V': {
+        'magic items': [100, 2, 2],
+    },
+    'W': {
+        'gp': [100, 5, 30],
+        'pp': [100, 1, 8],
+        'gems': [60, 2, 16],
+        'art': [50, 1, 8],
+        'magic items': [60, 2, 2],
+    },
+    'X': {
+        'potions': [100, 2, 2],
+    },
+    'Y': {
+        'gp': [100, 200, 1200,],
+    },
+    'Z': {
+        'cp': [100, 100, 300],
+        'sp': [100, 100, 400],
+        'gp': [100, 100, 600],
+        'pp': [100, 100, 400],
+        'gems': [55, 1, 6],
+        'art': [50, 2, 12],
+        'magic items': [50, 3, 3],
     },
 }
 
@@ -44,20 +173,22 @@ def roll_treasure(ttypes):
         if ttype in TREASURE:
             for thing in ORDER:
                 if thing not in treasure:
-                    if thing == "magic":
-                        treasure["magic"] = []
+                    if thing == 'special magic':
+                        treasure['special magic'] = {}
                     else:
                         treasure[thing] = 0
                 if thing not in TREASURE[ttype]:
                     continue
                 if percentile_check(TREASURE[ttype][thing][0]):
-                    if thing == "magic":
-                        if len(TREASURE[ttype][thing]) == 2:
-                            treasure["magic"].append(TREASURE[ttype][thing][1])
-                        else:
-                            amount = random.randint(TREASURE[ttype][thing][1],
-                                                    TREASURE[ttype][thing][2])
-                            treasure[TREASURE[ttype][thing][3]] += amount
+                    if thing == 'special magic':
+                        for special in TREASURE[ttype]['special magic'][1]:
+                            if special[1] in ORDER:
+                                treasure[special[1]] += special[0]
+                            else:
+                                if special[1] not in treasure['special magic']:
+                                    treasure['special magic'][special[1]] = special[0]
+                                else:
+                                    treasure['special magic'][special[1]] += special[0]
                     else:
                         amount = random.randint(TREASURE[ttype][thing][1],
                                                 TREASURE[ttype][thing][2])
@@ -72,13 +203,13 @@ def print_treasure(treasure):
         if thing in treasure:
             if not treasure[thing]:
                 continue
-            if thing == "magic":
-                continue
+            if thing == 'special magic':
+                for special in treasure['special magic']:
+                    valuables.append("%s %s" % ('{:,}'.format(treasure['special magic'][special]),
+                                                special))
             else:
                 valuables.append("%s %s" % ('{:,}'.format(treasure[thing]), thing))
     print ', '.join(valuables)
-    if treasure.get("magic"):
-        print 'Magic Items: ' + ', '.join(treasure[thing])
 
 def main():
     t = roll_treasure(sys.argv[1:])
