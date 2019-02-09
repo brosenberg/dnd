@@ -361,6 +361,9 @@ class Hero(object):
         ability_mod = 0
         ability_column = None
 
+        # Initial health multiplier
+        self.health_mod = 1
+
         if self.origin == "Alien":
             ability_mod = 10
 
@@ -476,7 +479,7 @@ class Hero(object):
                 self.popularity = set_ability("Shift 0")
                 if random.randint(0, 1):
                     self._note("You are venomous")
-                 self._note("+1CS to Escape")
+                self._note("+1CS to Escape")
             elif self.subtype == "Merhuman":
                 ability_column = 2
                 self.popularity = column_shift(self.popularity[0], 1)
@@ -556,6 +559,49 @@ class Hero(object):
             self._note("Promoting a religion based on yourself causes -1CS on all Abilities and Powers")
         elif self.origin == "Animal":
             ability_column = 1
+            # TODO: Add a way to have Alien subtype
+            if self.subtype == "Alien":
+                ability_column = 5
+            self.powers -= 1
+            self.resources = set_ability("Shift 0")
+            self._note("Have to have a human Contact")
+            # TODO: Add these as actual powers
+            self._note("Two bonus Detection Powers at Good rank")
+        elif self.origin == "Vegetable":
+            ability_column = 1
+            self.resources = set_ability("Shift 0")
+            self._cs_primary("Fighting", -2)
+            self._cs_primary("Endurance", 2)
+            self.contacts = 0
+            # TODO: Add this as an actual power
+            self._note("Power: Good rank Absorption Power")
+            self._note("Light or water deprivation causes -1CS in Strength and Endurance per day after 3 days")
+            self._note("You have no legal rights")
+        elif self.origin == "Abnormal Chemistry":
+            ability_column = 2
+            self._cs_primary("Endurance", 1)
+            self._note("Blood is poisonous to those who consume it")
+        elif self.origin == "Mineral":
+            ability_column = 2
+            self.health_mod = 2
+            self._note("Immune to normal Poisons and Diseases")
+            self._note("-1CS Movement rate")
+        elif self.origin == "Gaseous":
+            ability_column = 5
+            self.resources = set_ability("Shift 0")
+            self.contacts = 0
+            self._note("Immobilized if turned into a liquid or solid")
+            # TODO: Add this as an actual power
+            self._note("Bonus Power: Phasing to penetrate solids")
+        elif self.origin == "Liquid":
+            ability_column = 5
+            self._note("If Endurance and Psyche are at least Excellent, can take a human form")
+            self._note("If frozen, immobilized until melted, but immune to damage")
+            self._note("Vaporization is fatal")
+            self._note("Initial contacts can only be with same race")
+            # TODO: Add this as an actual power
+            self._note("Bonus Power: Phasing, for porous materials")
+            
 
 
         elif self.origin == "High-Tech":
@@ -614,7 +660,7 @@ class Hero(object):
         health = 0
         for ability in ["Fighting", "Agility", "Strength", "Endurance"]:
             health += self.abilities[ability][1]
-        return health
+        return health*self.health_mod
 
     def get_karma(self):
         karma = 0
