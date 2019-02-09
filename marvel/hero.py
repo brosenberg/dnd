@@ -147,19 +147,139 @@ POWERS_TALENTS_CONTACTS = [
     (100, 5)
 ]
 
-POWER_CATEGORIES = [
-    (5, "Resistances"),
-    (10, "Sensory"),
-    (15, "Movement"),
-    (25, "Matter Control"),
-    (40, "Energy Control"),
-    (55, "Body Control"),
-    (70, "Ranged Attack"),
-    (75, "Mental Powers"),
-    (85, "Body Offense"),
-    (100, "Body Defense"),
+P_RESISTANCES = [
+    (1, "Resistance to Fire and Heat"),
+    (2, "Resistance to Cold"),
+    (3, "Resistance to Electricity"),
+    (4, "Resistance to Radiation"),
+    (5, "Resistance to Toxins"),
+    (6, "Resistance to Corrosives"),
+    (7, "Resistance to Emotion Attacks"),
+    (8, "Resistance to Mental Attacks"),
+    (9, "Resistance to Magical Attacks"),
+    (10, "Resistance to Disease Invulnerability *"),
 ]
 
+P_SENSE = [
+    (1, "Protected Senses"),
+    (2, "Enhanced Senses"),
+    (3, "Infravision"),
+    (4, "Computer Links"),
+    (5, "Emotion Detection"),
+    (6, "Energy Detection"),
+    (7, "Magnetic Detection"),
+    (8, "Psionic Detection"),
+    (9, "Astral Detection"),
+    (10, "Tracking Ability"),
+]
+
+P_MOVEMENT = [
+    (2, "Flight"),
+    (3, "Gliding"),
+    (4, "Leaping"),
+    (6, "Wall-Crawling"),
+    (7, "Lightning Speed Teleportation*"),
+    (8, "Levitation"),
+    (9, "Swimming"),
+    (10, "Climbing"),
+]
+
+P_MATTER = [
+    (2, "Earth Control"),
+    (4, "Air Control"),
+    (6, "Fire Control"),
+    (8, "Water Control"),
+    (10, "Weather Control"),
+]
+
+P_ENERGY = [
+    (2, "Magnetic Manipulation"),
+    (4, "Electrical Manipulation"),
+    (6, "Light Manipulation"),
+    (8, "Sound Manipulation"),
+    (9, "Darkforce Manipulation"),
+    (10, "Gravity Manipulation"),
+]
+
+P_BODY_CONTROL = [
+    (1, "Growth"),
+    (2, "Shrinking"),
+    (3, "Invisibility"),
+    (4, "Plasticity"),
+    (5, "Shape-Shifting"),
+    (6, "Body Transformation*"),
+    (7, "Animal Transformation- Self"),
+    (8, "Raise Lowest Ability"),
+    (9, "Blending"),
+    (10, "Alter Ego"),
+]
+
+P_RANGED_ATTACK = [
+    (1, "Projectile Missile"),
+    (2, "Ensnaring Missile"),
+    (3, "Ice Generation"),
+    (4, "Fire Generation"),
+    (5, "Energy Generation"),
+    (6, "Sound Generation"),
+    (7, "Stunning Missile"),
+    (8, "Corrosive Missile"),
+    (9, "Slashing Missile"),
+    (10, "Darkforce Generation"),
+]
+
+P_MENTAL = [
+    (1, "Telepathy"),
+    (2, "Image Generation*"),
+    (3, "Telekinesis"),
+    (4, "Force Field Generation"),
+    (5, "Animal Communication and Control Mechanical Intuition"),
+    (6, "Empathy"),
+    (7, "Psi-Screen"),
+    (8, "Mental Probe"),
+    (9, "Astral Projection"),
+    (10, "Psionic Attack"),
+]
+
+P_BODY_OFFENSE = [
+    (3, "Extra Body Parts"),
+    (4, "Extra Attacks"),
+    (5, "Energy Touch"),
+    (6, "Paralyzing Touch"),
+    (8, "Claws"),
+    (9, "Rotting Touch"),
+    (10, "Corrosive Touch"),
+]
+
+P_BODY_DEFENSE = [
+    (3, "Body Armor"),
+    (4, "Water Breathing"),
+    (5, "Absorption"),
+    (6, "Regeneration"),
+    (7, "Solar Regeneration"),
+    (9, "Recovery"),
+    (10, "Life Support"),
+]
+
+P_CATEGORIES = [
+    (5, P_RESISTANCES),
+    (10, P_SENSE),
+    (15, P_MOVEMENT),
+    (25, P_MATTER),
+    (40, P_ENERGY),
+    (55, P_BODY_CONTROL),
+    (70, P_RANGED_ATTACK),
+    (75, P_MENTAL),
+    (90, P_BODY_OFFENSE),
+    (100, P_BODY_DEFENSE),
+]
+
+
+def d10(table, roll_mod=0):
+    roll = random.randint(1, 10)+roll_mod
+    for row in table:
+        if roll <= row[0]:
+            return row[1]
+    return table[-1][1]
 
 def percentile(table, roll_mod=0):
     roll = random.randint(1, 100)+roll_mod
@@ -182,10 +302,12 @@ def roll_primary_ability(origin, roll_mod=0):
      rank = INITIAL_RANKS[level]
      return (level, rank)
 
-def column_shift(ability, shift):
+def column_shift(ability, shift, initial=False):
     new = POWER_LEVELS.index(ability)+shift
     if new < 0:
         new = 0
+    if initial:
+        return (POWER_LEVELS[new], INITIAL_RANKS[POWER_LEVELS[new]])
     return (POWER_LEVELS[new], POWER_RANKS[POWER_LEVELS[new]])
 
 class Hero(object):
@@ -216,11 +338,11 @@ class Hero(object):
             self.popularity = set_ability("Shift 0")
             if powers_available < 5:
                 powers_available += 1
-            self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1)
+            self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
         elif self.origin == "High-Tech":
             self.notes = "Max ASE = Remarkable. One talent must be scientific or professional"
             self.resources = column_shift(self.resources[0], 1)
-            self.abilities["Reason"] = column_shift(self.abilities["Reason"][0], 2)
+            self.abilities["Reason"] = column_shift(self.abilities["Reason"][0], 2, True)
             if self.contacts == 0:
                 self.contacts = 1
         elif self.origin == "Robot":
@@ -233,7 +355,7 @@ class Hero(object):
 
         self.powers = []
         for _ in range(0, powers_available):
-            self.powers.append(percentile(POWER_CATEGORIES))
+            self.powers.append(d10(percentile(P_CATEGORIES)))
 
 
     def __str__(self):
