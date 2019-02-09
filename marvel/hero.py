@@ -87,7 +87,8 @@ ORIGINS = [
     (60, ("Demihuman", "Faun")),
     (62, ("Demihuman", "Felinoid")),
     (64, ("Demihuman", "Lupinoid")),
-    (66, ("Demihuman", "Avian")),
+    (66, ("Demihuman", "Avian-Angel")),
+    (66, ("Demihuman", "Avian-Harpy")),
     (67, ("Demihuman", "Chiropteran")),
     (68, ("Demihuman", "Lamian")),
     (69, ("Demihuman", "Merhuman")),
@@ -355,7 +356,7 @@ class Hero(object):
         self.origin = base_origin[0]
         self.subform = base_origin[1]
 
-        self.notes = ""
+        self.notes = []
 
         ability_mod = 0
         ability_column = None
@@ -442,16 +443,119 @@ class Hero(object):
                 self._note("Fast: Move 4 areas/turn horizontally")
                 self._note("Can fight with hooves")
                 self._note("Feeble Climbing ability")
-            if self.subtype == "Equiman":
+            elif self.subtype == "Equiman":
                 ability_column = 3
                 self._note("Kicking does +1CS damage")
-            if self.subtype == "Faun":
+            elif self.subtype == "Faun":
                 ability_column = 2
                 self._note("Feeble Mental Domination over human(oid) females")
                 self._note("Slow popularity progression")
                 self.popularity = set_ability("Shift 0")
+            elif self.subtype == "Felinoid":
+                ability_column = 1
+                self._note("Excellent night vision")
+                self._note("+1CS Climbing")
+            elif self.subtype == "Lupinoid":
+                ability_column = 4
+                self.popularity = column_shift(self.popularity[0], -1)
+                self._note("Excellent sense of smell")
+                self._note("Starting popularity is minimum")
+            elif self.subtype == "Avian-Angel":
+                ability_column = 3
+                self.popularity = column_shift(self.popularity[0], 1)
+            elif self.subtype == "Avian-Harpy":
+                ability_column = 2
+                self._cs_primary("Fighting", 1)
+            elif self.subtype == "Chiropteran":
+                ability_column = 2
+                # TODO: Actually put this in as a power later
+                self._note("Active Sonar Power at Good")
+                self.popularity = set_ability("Feeble")
+            elif self.subtype == "Lamian":
+                ability_column = 3
+                self.popularity = set_ability("Shift 0")
+                if random.randint(0, 1):
+                    self._note("You are venomous")
+                 self._note("+1CS to Escape")
+            elif self.subtype == "Merhuman":
+                ability_column = 2
+                self.popularity = column_shift(self.popularity[0], 1)
+                self._note("Dries out away from water")
+                self._note("Limited to crawling on dry land")
+                self._note("Can fascinate Normal Humans")
+            elif self.subtype == "Other":
+                # This section effectively says "make it up"
+                ability_column = 2
+                self._note("Work with the Judge to come up with stats")
+        elif self.origin == "Cyborg":
+            if self.subtype == "Artificial limbs/organs":
+                ability_column = 2
+                self._cs_primary("Intuition", -1)
+            elif self.subtype == "Exoskeleton":
+                ability_column = 2
+            elif self.subtype == "Mechanical Body":
+                ability_column = 4
+                self._cs_primary("Intuition", -1)
+                self._cs_primary("Psyche", -1)
+                self.contacts = 1
+                self._note("Monstrous Resistance to Disease and Poison")
+                self._note("Vulnerable to Magnetic attacks and rust")
+                self._note("Contact is the lab that created you")
+            elif self.subtype == "Mechanically Augmented":
+                ability_column = 3
+                self.powers -= 1
+        elif self.origin == "Robot":
+            ability_column = 4
+            if self.subtype == "Human Shape":
+                self.popularity = column_shift(self.popularity[0], 1)
+            elif self.subtype == "Usuform":
+                pass
+            elif self.subtype == "Metamorphic":
+                # TODO: Actually roll this
+                self._note("Two forms with different Abiltiies and Powers")
+                self._note("Additional forms at -1CS to all Primary Abilities")
+            elif self.subtype == "Computer":
+                self._note("Possess at least one remotely controlled industrial robot")
+                self._cs_primary("Reason", 2)
+                self._cs_primary("Fighting", -1)
+                self.resources = column_shift(self.resources[0], 1)
+                self._note("Decreased Resistance to Electrical, Magnetic, and Phasing attacks")
+                self._note("Loss of electircal power causes loss of all Karma and -1CS to all Abilities and Powers")
+        elif self.origin == "Angel/Demon":
+            ability_column = 5
+            self.contacts = 0
+            self._cs_primary("Fighting", 1)
+            self._cs_primary("Agility", 1)
+            self._cs_primary("Strength", 1)
+            self._cs_primary("Endurance", 1)
+            self._note("Psychological Weakness that Negates your Power")
 
-                
+            self.subtype = "Angel"
+            if random.randint(0, 1):
+                self.subtype = "Demon"
+                self.popularity = column_shift(self.popularity[0], -2)
+                # TODO: Add these as powers
+                self._note("Power: Good Fire Generation")
+                self._note("Power: Specific Invulnerability to Heat and Fire")
+            else:
+                self.popularity = column_shift(self.popularity[0], 2)
+                self._note("Power: Artifact Creation - Create Excellent magical sword")
+        elif self.origin == "Deity":
+            ability_column = 5
+            self._cs_primary("Fighting", 2)
+            self._cs_primary("Agility", 2)
+            self._cs_primary("Strength", 2)
+            self._cs_primary("Endurance", 2)
+            self._cs_primary("Reason", 2)
+            self._cs_primary("Intuition", 2)
+            self._cs_primary("Psyche", 2)
+            self.powers += 2
+            # TODO: Actually roll this
+            self._note("Bonus Travel Power")
+            self._note("+2CS Popularity with public, Shift 0 popularity with religious organizations")
+            self._note("Promoting a religion based on yourself causes -1CS on all Abilities and Powers")
+        elif self.origin == "Animal":
+            ability_column = 1
 
 
         elif self.origin == "High-Tech":
@@ -504,9 +608,7 @@ class Hero(object):
         self.abilities[ability] = column_shift(self.abilities[ability][0], shift, True)
 
     def _note(self, note):
-        if self.notes:
-            self.notes += '; '
-        self.notes += note
+        self.notes.append(note)
 
     def get_health(self):
         health = 0
