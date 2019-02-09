@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# TODO: Incorporate Ultimate Powers
+
 # This uses the Advanced Rules
 
 import random
