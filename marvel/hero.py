@@ -71,11 +71,48 @@ INITIAL_RANKS = {
 }
 
 ORIGINS = [
-    (30, 'Altered Human'),
-    (60, 'Mutant'),
-    (90, 'High-Tech'),
-    (95, 'Robot'),
-    (100, 'Alien')
+    (26, ("Normal Human", "-")),
+    (30, ("Mutant", "Induced")),
+    (33, ("Mutant", "Random")),
+    (35, ("Mutant", "Breed")),
+    (38, ("Android", "-")),
+    (46, ("Humanoid Race", "-")),
+    (47, ("Surgical Composite", "-")),
+    (49, ("Modified Human", "Organic")),
+    (51, ("Modified Human", "Muscular")),
+    (53, ("Modified Human", "Skeletal")),
+    (57, ("Modified Human", "Extra Parts")),
+    (58, ("Demihuman", "Centaur")),
+    (59, ("Demihuman", "Equiman")),
+    (60, ("Demihuman", "Faun")),
+    (62, ("Demihuman", "Felinoid")),
+    (64, ("Demihuman", "Lupinoid")),
+    (66, ("Demihuman", "Avian")),
+    (67, ("Demihuman", "Chiropteran")),
+    (68, ("Demihuman", "Lamian")),
+    (69, ("Demihuman", "Merhuman")),
+    (70, ("Demihuman", "Other")),
+    (72, ("Cyborg", "Artificial limbs/organs")),
+    (74, ("Cyborg", "Exoskeleton")),
+    (76, ("Cyborg", "Mechanical Body")),
+    (79, ("Cyborg", "Mechanically Augmented")),
+    (82, ("Robot", "Human Shape")),
+    (84, ("Robot", "Usuform")),
+    (86, ("Robot", "Metamorphic")),
+    (87, ("Robot", "Computer")),
+    (88, ("Angel/Demon", "-")),
+    (89, ("Deity", "-")),
+    (90, ("Animal", "-")),
+    (91, ("Vegetable", "-")),
+    (92, ("Abnormal Chemistry", "-")),
+    (93, ("Mineral", "-")),
+    (94, ("Gaseous", "-")),
+    (95, ("Liquid", "-")),
+    (96, ("Energy", "-")),
+    (97, ("Ethereal", "-")),
+    (98, ("Undead", "-")),
+    (99, ("Compound", "-")),
+    (100, ("Changeling", "-")),
 ]
 
 MAJOR_ABILITY = [
@@ -86,7 +123,7 @@ MAJOR_ABILITY = [
     (60, "Excellent"),
     (80, "Remarkable"),
     (96, "Incredible"),
-    (200, "Amazing")
+    (100, "Amazing")
 ]
 
 PRIMARY_ABILITY = {
@@ -314,9 +351,14 @@ def column_shift(ability, shift, initial=False):
 
 class Hero(object):
     def __init__(self):
-        self.origin = percentile(ORIGINS)
+        base_origin = percentile(ORIGINS)
+        self.origin = base_origin[0]
+        self.subform = base_origin[1]
+
+        self.notes = ""
 
         ability_mod = 0
+        ability_column = None
 
         if self.origin == "Alien":
             ability_mod = 10
@@ -332,15 +374,86 @@ class Hero(object):
         self.talents = percentile(POWERS_TALENTS_CONTACTS)-1
         self.contacts = percentile(POWERS_TALENTS_CONTACTS)-2
 
-        if self.origin == "Altered Human":
-            self.notes = "Raise one primary ability by one rank"
+        if self.origin == "Normal Human":
+            ability_column = 2
+            self.resources = column_shift(self.resources[0], 1)
         elif self.origin == "Mutant":
-            self.notes = "Increase one power by one rank"
-            self.resources = column_shift(self.resources[0], -1)
-            self.popularity = set_ability("Shift 0")
-            if powers_available < 5:
+            ability_column = 1
+            if self.subform == "Induced":
+                self._note("Raise any one Primary Ability +1CS")
+            elif self.subform == "Random":
                 powers_available += 1
-            self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
+                self.resources = column_shift(self.resources[0], -1)
+                self._cs_primary("Endurance", 1)
+                #self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
+            elif self.subform == "Breed":
+                self._cs_primary("Endurance", 1)
+                self._cs_primary("Intuition", 1)
+                if self.contacts == 0:
+                    self.contacts = 1
+            #self.notes = "Increase one power by one rank"
+            #self.popularity = set_ability("Shift 0")
+            #if powers_available < 5:
+                #powers_available += 1
+            #self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
+        elif self.origin == "Android":
+            ability_column = 4
+            self.popularity = column_shift(self.popularity[0], -1)
+            self._note("Raise any one Primary Ability +1CS")
+            self._note("One contact is your creator")
+            powers_available += 1
+            if self.contacts == 0:
+                self.contacts = 1
+        elif self.origin == "Humanoid Race":
+            ability_column = 5
+            self._note("Raise any one Primary Ability +1CS")
+            self._note("Contact must be your race")
+            self.resources = set_ability("Poor")
+            self.contacts = 1
+        elif self.origin == "Surgical Composite":
+            ability_column = 2
+            self._cs_primary("Strength", 1)
+            self._cs_primary("Fighting", 1)
+            self._cs_primary("Endurance", 1)
+            self._note("Resistance to Mental Domination -1CS")
+            self._note("Heal twice as quickly as Normal Humans")
+            self.popularity = set_ability("Shift 0")
+            self.resources = set_ability("Poor")
+        elif self.origin == "Modified Human":
+            ability_column = 1
+            if self.subtype == "Organic":
+                self.notes = "Heal twice as quickly as Normal Humans"
+            elif self.subtype == "Muscular":
+                self._cs_primary("Strength", 1)
+                self._cs_primary("Endurance", 1)
+            elif self.subtype == "Skeletal":
+                self._note("+1CS Resistance to Physical Attacks")
+            elif self.subtype == "Extra Parts":
+                self._cs_primary("Fighting", 1)
+                self._note("Duplicate organs double Health")
+                self._note("Tails give +1 attack per tail when using blunt attacks")
+                self._note("Wings give Flight")
+            self._note("One contact from organization responsible for modification")
+            powers_available -= 1
+        elif self.origin == "Demihuman":
+            if self.subtype == "Centaur":
+                ability_column = 5
+                self._cs_primary("Strength", 1)
+                self._note("Fast: Move 4 areas/turn horizontally")
+                self._note("Can fight with hooves")
+                self._note("Feeble Climbing ability")
+            if self.subtype == "Equiman":
+                ability_column = 3
+                self._note("Kicking does +1CS damage")
+            if self.subtype == "Faun":
+                ability_column = 2
+                self._note("Feeble Mental Domination over human(oid) females")
+                self._note("Slow popularity progression")
+                self.popularity = set_ability("Shift 0")
+
+                
+
+
         elif self.origin == "High-Tech":
             self.notes = "Max ASE = Remarkable. One talent must be scientific or professional"
             self.resources = column_shift(self.resources[0], 1)
@@ -359,10 +472,10 @@ class Hero(object):
         for _ in range(0, powers_available):
             self.powers.append(d10(percentile(P_CATEGORIES)))
 
-
     def __str__(self):
         s = ""
         s += "Origin: %s\n" % (self.origin,)
+        s += "Subtype: %s\n" % (self.subtype,)
         s += "\n"
 
         for ability in FASERIP:
@@ -382,7 +495,18 @@ class Hero(object):
 
         s += "Talents: %d\n" % (self.talents,)
         s += "Contacts: %d\n" % (self.contacts,)
+        s += "\n"
+
+        s += "Notes: %s" % (self.notes,)
         return s
+
+    def _cs_primary(self, ability, shift):
+        self.abilities[ability] = column_shift(self.abilities[ability][0], shift, True)
+
+    def _note(self, note):
+        if self.notes:
+            self.notes += '; '
+        self.notes += note
 
     def get_health(self):
         health = 0
@@ -395,6 +519,7 @@ class Hero(object):
         for ability in ["Reason", "Intuition", "Psyche"]:
             karma += self.abilities[ability][1]
         return karma
+
 
 def main():
     hero = Hero()
