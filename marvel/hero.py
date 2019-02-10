@@ -201,7 +201,7 @@ P_AVAILABLE = [
     (100, (14, 18)),
 ]
 
-P_CAT_DEFENSIVE = [
+P_DEFENSIVE = [
     (15, "Body Armor (D1)"),
     (20, "Force Field (D2)"),
     (23, "Force Field vs. Emotion (D3)"),
@@ -221,7 +221,7 @@ P_CAT_DEFENSIVE = [
     (100, "Resist: Vampirism (D17)"),
 ]
 
-P_CAT_DETECTION = [
+P_DETECTION = [
     (02, "Abnormal Sensitivity (DT1)"),
     (04, "Circular Vision (DT2)"),
     (10, "Energy Detection (DT3)"),
@@ -246,7 +246,7 @@ P_CAT_DETECTION = [
     (100, "Weakness Detection (DT22)"),
 ]
 
-P_CAT_ENERGY_CONTROL = [
+P_ENERGY_CONTROL = [
     (07, "Absorption Power (EC1)"),
     (10, "Catalytic Control (EC2)"),
     (15, "Coldshaping (EC3)"),
@@ -270,7 +270,7 @@ P_CAT_ENERGY_CONTROL = [
     (100, "Vibration Control (EC21)"),
 ]
 
-P_CAT_ENERGY_EMISSION = [
+P_ENERGY_EMISSION = [
     (10, "Cold Generation (EE1)"),
     (20, "Electrical Generation (EE2)"),
     (22, "Energy Doppelganger (EE3)"),
@@ -287,7 +287,7 @@ P_CAT_ENERGY_EMISSION = [
     (100, "Vibration (EE14)"),
 ]
 
-P_CAT_FIGHTING = [
+P_FIGHTING = [
     (20, "Berserker (F1)"),
     (60, "Martial Supremacy (F2)"),
     (75, "Natural Weaponry (F3)"),
@@ -295,17 +295,17 @@ P_CAT_FIGHTING = [
     (100, "Weapons Tinkering (F5)"),
 ]
 
-P_CAT_ILLUSORY = [
+P_ILLUSORY = [
     (15, "Animate Image (I1)"),
     (70, "Illusion-Casting* (I2)"),
     (85, "Illusory Invisibility (I3)"),
     (100, "Illusory Duplication (I4)"),
 ]
 
-P_CAT_LIFEFORM_CONTROL = [
+P_LIFEFORM_CONTROL = [
     (14, "Biophysical Control* (L1)"),
     (15, "Bio-Vampirism * (L2)"),
-    (18, "Body Transformation—Others (L3)"),
+    (18, "Body Transformation-Others (L3)"),
     (26, "Emotion Control (L4)"),
     (32, "Exorcism (L5)"),
     (34, "Force Field vs. Hostiles (L6)"),
@@ -326,7 +326,7 @@ P_CAT_LIFEFORM_CONTROL = [
     (100, "Undead Control (L21)"),
 ]
 
-P_CAT_MAGICAL = [
+P_MAGICAL = [
     (8, "Enchantment* (MG1)"),
     (15, "Energy Source (MG2)"),
     (17, "Internal Limbo (MG3)"),
@@ -342,7 +342,7 @@ P_CAT_MAGICAL = [
     (100, "Warding (MG13)"),
 ]
 
-P_CAT_MATTER_CONTROL = [
+P_MATTER_CONTROL = [
     (05, "Bonding (MC1)"),
     (17, "Collection (MC2)"),
     (22, "Crystallization (MC3)"),
@@ -358,7 +358,7 @@ P_CAT_MATTER_CONTROL = [
     (100, "Zombie Animation* (MC13)"),
 ]
 
-P_CAT_MATTER_CONVERSION = [
+P_MATTER_CONVERSION = [
     (10, "Coloration (MCo1)"),
     (25, "Combustion (MCo2)"),
     (45, "Disintegration (MCo3)"),
@@ -367,7 +367,7 @@ P_CAT_MATTER_CONVERSION = [
     (100, "Molecular Conversion* (MCo6)"),
 ]
 
-P_CAT_MATTER_CREATION = [
+P_MATTER_CREATION = [
     (10, "Artifact Creation* (MCr1)"),
     (24, "Elemental Creation (MCr2)"),
     (29, "Lifeform Creation* (MCr3)"),
@@ -378,7 +378,7 @@ P_CAT_MATTER_CREATION = [
     (100, "Webcasting (MCr8)"),
 ]
 
-P_CAT_MENTAL_ENHANCEMENT = [
+P_MENTAL_ENHANCEMENT = [
     (4, "Clairaudience (M1)"),
     (8, "Clairvoyance (M2)"),
     (11, "Communicate with Animals (M3)"),
@@ -414,7 +414,7 @@ P_CAT_MENTAL_ENHANCEMENT = [
     (100, "Total Memory (M33)"),
 ]
 
-P_CAT_PHYSICAL_ENHANCEMENT = [
+P_PHYSICAL_ENHANCEMENT = [
     (14, "Armor Skin (P1)"),
     (28, "Body Resistance (P2)"),
     (30, "Chemical Touch (P3)"),
@@ -434,7 +434,7 @@ P_CAT_PHYSICAL_ENHANCEMENT = [
     (100, "Water Freedom (P17)"),
 ]
 
-P_CAT_POWER_CONTROL = [
+P_POWER_CONTROL = [
     (8, "Control* (PC1)"),
     (12, "Creation (PC2)"),
     (18, "Domination* (PC3)"),
@@ -451,7 +451,7 @@ P_CAT_POWER_CONTROL = [
     (100, "Weakness Creation* (PC14)"),
 ]
 
-P_CAT_SELF_ALTERATION = [
+P_SELF_ALTERATION = [
     (2, "Age-Shift (S1)"),
     (9, "Alter Ego (S2)"),
     (10, "Anatomical Separation (S3)"),
@@ -486,7 +486,7 @@ P_CAT_SELF_ALTERATION = [
     (100, "Two-dimensionality (S32)"),
 ]
 
-P_CAT_TRAVEL = [
+P_TRAVEL = [
     (2, "Astral Body (T1)"),
     (6, "Carrier Wave (T2)"),
     (10, "Dimension Travel (T3)"),
@@ -512,133 +512,6 @@ P_CAT_TRAVEL = [
     (100, "Whirlwind (T23)"),
 ]
 
-####
-P_RESISTANCES = [
-    (1, "Resistance to Fire and Heat"),
-    (2, "Resistance to Cold"),
-    (3, "Resistance to Electricity"),
-    (4, "Resistance to Radiation"),
-    (5, "Resistance to Toxins"),
-    (6, "Resistance to Corrosives"),
-    (7, "Resistance to Emotion Attacks"),
-    (8, "Resistance to Mental Attacks"),
-    (9, "Resistance to Magical Attacks"),
-    (10, "Resistance to Disease Invulnerability *"),
-]
-
-P_SENSE = [
-    (1, "Protected Senses"),
-    (2, "Enhanced Senses"),
-    (3, "Infravision"),
-    (4, "Computer Links"),
-    (5, "Emotion Detection"),
-    (6, "Energy Detection"),
-    (7, "Magnetic Detection"),
-    (8, "Psionic Detection"),
-    (9, "Astral Detection"),
-    (10, "Tracking Ability"),
-]
-
-P_MOVEMENT = [
-    (2, "Flight"),
-    (3, "Gliding"),
-    (4, "Leaping"),
-    (6, "Wall-Crawling"),
-    (7, "Lightning Speed Teleportation*"),
-    (8, "Levitation"),
-    (9, "Swimming"),
-    (10, "Climbing"),
-]
-
-P_MATTER = [
-    (2, "Earth Control"),
-    (4, "Air Control"),
-    (6, "Fire Control"),
-    (8, "Water Control"),
-    (10, "Weather Control"),
-]
-
-P_ENERGY = [
-    (2, "Magnetic Manipulation"),
-    (4, "Electrical Manipulation"),
-    (6, "Light Manipulation"),
-    (8, "Sound Manipulation"),
-    (9, "Darkforce Manipulation"),
-    (10, "Gravity Manipulation"),
-]
-
-P_BODY_CONTROL = [
-    (1, "Growth"),
-    (2, "Shrinking"),
-    (3, "Invisibility"),
-    (4, "Plasticity"),
-    (5, "Shape-Shifting"),
-    (6, "Body Transformation*"),
-    (7, "Animal Transformation- Self"),
-    (8, "Raise Lowest Ability"),
-    (9, "Blending"),
-    (10, "Alter Ego"),
-]
-
-P_RANGED_ATTACK = [
-    (1, "Projectile Missile"),
-    (2, "Ensnaring Missile"),
-    (3, "Ice Generation"),
-    (4, "Fire Generation"),
-    (5, "Energy Generation"),
-    (6, "Sound Generation"),
-    (7, "Stunning Missile"),
-    (8, "Corrosive Missile"),
-    (9, "Slashing Missile"),
-    (10, "Darkforce Generation"),
-]
-
-P_MENTAL = [
-    (1, "Telepathy"),
-    (2, "Image Generation*"),
-    (3, "Telekinesis"),
-    (4, "Force Field Generation"),
-    (5, "Animal Communication and Control Mechanical Intuition"),
-    (6, "Empathy"),
-    (7, "Psi-Screen"),
-    (8, "Mental Probe"),
-    (9, "Astral Projection"),
-    (10, "Psionic Attack"),
-]
-
-P_BODY_OFFENSE = [
-    (3, "Extra Body Parts"),
-    (4, "Extra Attacks"),
-    (5, "Energy Touch"),
-    (6, "Paralyzing Touch"),
-    (8, "Claws"),
-    (9, "Rotting Touch"),
-    (10, "Corrosive Touch"),
-]
-
-P_BODY_DEFENSE = [
-    (3, "Body Armor"),
-    (4, "Water Breathing"),
-    (5, "Absorption"),
-    (6, "Regeneration"),
-    (7, "Solar Regeneration"),
-    (9, "Recovery"),
-    (10, "Life Support"),
-]
-
-P_CATEGORIES = [
-    (5, P_RESISTANCES),
-    (10, P_SENSE),
-    (15, P_MOVEMENT),
-    (25, P_MATTER),
-    (40, P_ENERGY),
-    (55, P_BODY_CONTROL),
-    (70, P_RANGED_ATTACK),
-    (75, P_MENTAL),
-    (90, P_BODY_OFFENSE),
-    (100, P_BODY_DEFENSE),
-]
-
 P_ORIGIN = [
     (10, "Natal"),
     (20, "Maturity"),
@@ -651,6 +524,25 @@ P_ORIGIN = [
     (87, "Chemical Exposure"),
     (98, "Energy Exposure"),
     (00, "Rebirth"),
+]
+
+P_CLASS = [
+    (5, P_DEFENSIVE),
+    (11, P_DETECTION),
+    (16, P_ENERGY_CONTROL),
+    (24, P_ENERGY_EMISSION),
+    (29, P_FIGHTING),
+    (31, P_ILLUSORY),
+    (35, P_LIFEFORM_CONTROL),
+    (40, P_MAGICAL),
+    (47, P_MATTER_CONTROL),
+    (53, P_MATTER_CONVERSION),
+    (57, P_MATTER_CREATION),
+    (71, P_MENTAL_ENHANCEMENT),
+    (85, P_PHYSICAL_ENHANCEMENT),
+    (88, P_POWER_CONTROL),
+    (92, P_SELF_ALTERATION),
+    (100, P_TRAVEL),
 ]
 
 # WEAKNESS
@@ -788,7 +680,7 @@ class Hero(object):
         self.power_origin = percentile(P_ORIGIN)
         self.powers = []
         for _ in range(0, self.powers_available):
-            self.powers.append(d10(percentile(P_CATEGORIES)))
+            self.powers.append(percentile(percentile(P_CLASS)))
 
     def __str__(self):
         s = ""
