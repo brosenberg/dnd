@@ -340,18 +340,18 @@ def percentile(table, roll_mod=0):
     return table[-1][1]
 
 def set_ability(level):
-     rank = POWER_RANKS[level]
-     return (level, rank)
+    rank = POWER_RANKS[level]
+    return (level, rank)
 
 def roll_ability(roll_mod=0):
-     level = percentile(MAJOR_ABILITY, roll_mod)
-     rank = POWER_RANKS[level]
-     return (level, rank)
+    level = percentile(MAJOR_ABILITY, roll_mod)
+    rank = POWER_RANKS[level]
+    return (level, rank)
 
 def roll_primary_ability(ability_column):
-     level = percentile(PRIMARY_ABILITY[ability_column])
-     rank = INITIAL_RANKS[level]
-     return (level, rank)
+    level = percentile(PRIMARY_ABILITY[ability_column])
+    rank = INITIAL_RANKS[level]
+    return (level, rank)
 
 def column_shift(ability, shift, initial=False):
     new = POWER_LEVELS.index(ability)+shift
@@ -380,7 +380,7 @@ class Hero(object):
         self.resources = roll_ability()
         self.popularity = set_ability("Good")
 
-        powers_available = percentile(POWERS_TALENTS_CONTACTS)
+        self.powers_available = percentile(POWERS_TALENTS_CONTACTS)
         self.talents = percentile(POWERS_TALENTS_CONTACTS)-1
         self.contacts = percentile(POWERS_TALENTS_CONTACTS)-2
 
@@ -388,7 +388,7 @@ class Hero(object):
 
         self.power_origin = percentile(P_ORIGIN)
         self.powers = []
-        for _ in range(0, powers_available):
+        for _ in range(0, self.powers_available):
             self.powers.append(d10(percentile(P_CATEGORIES)))
 
     def __str__(self):
@@ -417,7 +417,8 @@ class Hero(object):
         s += "Contacts: %d\n" % (self.contacts,)
         s += "\n"
 
-        s += "Notes:\n%s" % ('\n'.join(self.notes),)
+        if self.notes:
+            s += "Notes:\n%s" % ('\n'.join(self.notes),)
         return s
 
     def _cs_primary(self, ability, shift):
@@ -489,7 +490,7 @@ class Hero(object):
             if self.subform == "Induced":
                 self._note("Raise any one Primary Ability +1CS")
             elif self.subform == "Random":
-                powers_available += 1
+                self.powers_available += 1
                 self.resources = column_shift(self.resources[0], -1)
                 self._cs_primary("Endurance", 1)
                 #self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
@@ -500,14 +501,14 @@ class Hero(object):
                     self.contacts = 1
             #self.notes = "Increase one power by one rank"
             #self.popularity = set_ability("Shift 0")
-            #if powers_available < 5:
-                #powers_available += 1
+            #if self.powers_available < 5:
+                #self.powers_available += 1
             #self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
         elif self.origin == "Android":
             self.popularity = column_shift(self.popularity[0], -1)
             self._note("Raise any one Primary Ability +1CS")
             self._note("One contact is your creator")
-            powers_available += 1
+            self.powers_available += 1
             if self.contacts == 0:
                 self.contacts = 1
         elif self.origin == "Humanoid Race":
@@ -537,7 +538,7 @@ class Hero(object):
                 self._note("Tails give +1 attack per tail when using blunt attacks")
                 self._note("Wings give Flight")
             self._note("One contact from organization responsible for modification")
-            powers_available -= 1
+            self.powers_available -= 1
         elif self.origin == "Demihuman":
             if self.subform == "Centaur":
                 self._cs_primary("Strength", 1)
