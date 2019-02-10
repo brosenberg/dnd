@@ -679,8 +679,16 @@ class Hero(object):
 
         self.power_origin = percentile(P_ORIGIN)
         self.powers = []
+        powers = []
         for _ in range(0, self.powers_available):
-            self.powers.append(percentile(percentile(P_CLASS)))
+            new_power = percentile(percentile(P_CLASS))
+            # Ignore duplicates
+            while new_power in powers:
+                new_power = percentile(percentile(P_CLASS))
+            powers.append(new_power)
+
+        for power in powers:
+            self.powers.append((power, percentile(PRIMARY_ABILITY[4])))
 
     def __str__(self):
         s = ""
@@ -705,7 +713,7 @@ class Hero(object):
 
         s += "Power Origin: %s\n" % (self.power_origin,)
         s += "Powers (%d/%d):\n" % (self.powers_available, self.powers_max)
-        for power in self.powers:
+        for power in sorted(self.powers):
             s += "%s\n" % (power,)
         s += "\n"
 
@@ -1011,6 +1019,10 @@ def test_origins():
     for origin in ORIGINS:
         print origin[1]
         hero = Hero(origin[1])
+
+def test_gen_powers():
+    for p_class in P_CLASS:
+        percentile(p_class[1])
 
 def main():
     hero = Hero()
