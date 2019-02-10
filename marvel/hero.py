@@ -313,6 +313,19 @@ P_CATEGORIES = [
     (100, P_BODY_DEFENSE),
 ]
 
+P_ORIGIN = [
+    (10, "Natal"),
+    (20, "Maturity"),
+    (30, "Self-Achievement"),
+    (35, "Endowment"),
+    (50, "Technical Mishap"),
+    (60, "Technical Procedure"),
+    (65, "Creation"),
+    (76, "Biological Exposure"),
+    (87, "Chemical Exposure"),
+    (98, "Energy Exposure"),
+    (00, "Rebirth"),
+]
 
 def d10(table, roll_mod=0):
     roll = random.randint(1, 10)+roll_mod
@@ -358,15 +371,11 @@ class Hero(object):
 
         self.notes = []
 
-        ability_mod = 0
-        ability_column = None
-
         # Initial health multiplier
         self.health_mod = 1
 
-        if self.origin == "Alien":
-            ability_mod = 10
-
+        ability_mod = 0
+        ability_column = self.get_ability_column()
         self.abilities = {}
         for ability in FASERIP:
             self.abilities[ability] = roll_primary_ability(self.origin, ability_mod)
@@ -378,6 +387,103 @@ class Hero(object):
         self.talents = percentile(POWERS_TALENTS_CONTACTS)-1
         self.contacts = percentile(POWERS_TALENTS_CONTACTS)-2
 
+        self.postprocess_origin()
+
+        self.power_origin = percentile(P_ORIGIN)
+        self.powers = []
+        for _ in range(0, powers_available):
+            self.powers.append(d10(percentile(P_CATEGORIES)))
+
+    def __str__(self):
+        s = ""
+        s += "Origin: %s\n" % (self.origin,)
+        s += "Subtype: %s\n" % (self.subtype,)
+        s += "\n"
+
+        for ability in FASERIP:
+            s += "%s: %s\n" % (ability, self.abilities[ability])
+        s += "\n"
+
+        s += "Health: %d\n" % (self.get_health(),)
+        s += "Karma: %d\n" % (self.get_karma(),)
+        s += "Resources: %s\n" % (self.resources,)
+        s += "Popularity: %s\n" % (self.popularity,)
+        s += "\n"
+
+        s += "Powers:\n"
+        for power in self.powers:
+            s += "%s\n" % (power,)
+        s += "\n"
+
+        s += "Talents: %d\n" % (self.talents,)
+        s += "Contacts: %d\n" % (self.contacts,)
+        s += "\n"
+
+        s += "Notes: %s" % (self.notes,)
+        return s
+
+    def _cs_primary(self, ability, shift):
+        self.abilities[ability] = column_shift(self.abilities[ability][0], shift, True)
+
+    def _note(self, note):
+        self.notes.append(note)
+
+    def get_health(self):
+        health = 0
+        for ability in ["Fighting", "Agility", "Strength", "Endurance"]:
+            health += self.abilities[ability][1]
+        return health*self.health_mod
+
+    def get_karma(self):
+        karma = 0
+        for ability in ["Reason", "Intuition", "Psyche"]:
+            karma += self.abilities[ability][1]
+        return karma
+
+    def get_ability_column(self):
+        if self.origin == "Animal" or
+           self.origin == "Ethereal" or
+           self.subtype == "Felinoid" or
+           self.origin == "Modified Human" or
+           self.origin == "Mutant" or
+           self.origin == "Undead" or
+           self.origin == "Vegetable":
+            return 1
+        elif self.origin == "Abnormal Chemistry" or
+             self.subtype == "Artificial limbs/organs" or
+             self.subtype == "Avian-Harpy" or
+             self.subtype == "Chiropteran" or
+             self.origin == "Compound" or
+             self.subtype == "Exoskeleton" or
+             self.subtype == "Faun" or
+             self.subtype == "Merhuman" or
+             self.origin == "Mineral" or
+             self.origin == "Normal Human" or
+             self.subtype == "Other" or
+             self.origin == "Surgical Composite":
+            return 2
+        elif self.subtype == "Avian-Angel" or
+             self.subtype == "Equiman" or
+             self.subtype == "Lamian" or
+             self.subtype == "Mechanically Augmented":
+            return 3
+        elif self.origin == "Android" or
+             self.subtype == "Lupinoid" or
+             self.subtype == "Mechanical Body" or
+             self.origin == "Robot":
+            return 4
+        elif self.origin == "Alien" or
+             self.subtype == "Angel/Demon" or
+             self.subtype == "Centaur" or
+             self.origin == "Changeling" or
+             self.origin == "Deity" or
+             self.origin == "Energy" or
+             self.origin == "Gaseous" or
+             self.origin == "Humanoid Race" or
+             self.origin == "Liquid":
+            return 5
+
+    def postprocess_origin(self):
         if self.origin == "Normal Human":
             ability_column = 2
             self.resources = column_shift(self.resources[0], 1)
@@ -601,72 +707,41 @@ class Hero(object):
             self._note("Initial contacts can only be with same race")
             # TODO: Add this as an actual power
             self._note("Bonus Power: Phasing, for porous materials")
-            
-
-
-        elif self.origin == "High-Tech":
-            self.notes = "Max ASE = Remarkable. One talent must be scientific or professional"
-            self.resources = column_shift(self.resources[0], 1)
-            self.abilities["Reason"] = column_shift(self.abilities["Reason"][0], 2, True)
-            if self.contacts == 0:
-                self.contacts = 1
-        elif self.origin == "Robot":
-            self.popularity = set_ability("Shift 0")
-        elif self.origin == "Alien":
-            self.resources = set_ability("Poor")
-            self.contacts = 1
-            if powers_available > 2:
-                powers_available -= 1
-
-        self.powers = []
-        for _ in range(0, powers_available):
-            self.powers.append(d10(percentile(P_CATEGORIES)))
-
-    def __str__(self):
-        s = ""
-        s += "Origin: %s\n" % (self.origin,)
-        s += "Subtype: %s\n" % (self.subtype,)
-        s += "\n"
-
-        for ability in FASERIP:
-            s += "%s: %s\n" % (ability, self.abilities[ability])
-        s += "\n"
-
-        s += "Health: %d\n" % (self.get_health(),)
-        s += "Karma: %d\n" % (self.get_karma(),)
-        s += "Resources: %s\n" % (self.resources,)
-        s += "Popularity: %s\n" % (self.popularity,)
-        s += "\n"
-
-        s += "Powers:\n"
-        for power in self.powers:
-            s += "%s\n" % (power,)
-        s += "\n"
-
-        s += "Talents: %d\n" % (self.talents,)
-        s += "Contacts: %d\n" % (self.contacts,)
-        s += "\n"
-
-        s += "Notes: %s" % (self.notes,)
-        return s
-
-    def _cs_primary(self, ability, shift):
-        self.abilities[ability] = column_shift(self.abilities[ability][0], shift, True)
-
-    def _note(self, note):
-        self.notes.append(note)
-
-    def get_health(self):
-        health = 0
-        for ability in ["Fighting", "Agility", "Strength", "Endurance"]:
-            health += self.abilities[ability][1]
-        return health*self.health_mod
-
-    def get_karma(self):
-        karma = 0
-        for ability in ["Reason", "Intuition", "Psyche"]:
-            karma += self.abilities[ability][1]
-        return karma
+        elif self.origin == "Energy":
+            ability_column = 5
+            self._note("-1CS vulnerability to Plasma C control")
+            self._note("Can be immobilized in special storage batteries")
+            self._note("Can only be destroyed by Negate or Solidify Energy")
+            self._note("Physical contact caused Feeble damage")
+            # TODO: Add this as sn actual power
+            self._note("Bonus Power: Energy Emission")
+            self._note("Optional Power: Energy Control")
+        elif self.origin == "Ethereal":
+            ability_column = 1
+            self._note("Immune to physical attacks lower than Monstrous")
+            self._note("Vulnerable to Mental and Magical attacks")
+            self._note("Completely destroyed by Spirit Vampirism")
+            self._note("Turned into a Poltergeist by Psi-Vampirism")
+            self._note("Fighting is Shift Zero unless fighting another Ethereal")
+            self._note("Physical attacks are -9CS less effective")
+            self._note("At least one contact can be a Spiritual Medium")
+        elif self.origin == "Undead":
+            ability_column = 1
+            self._cs_primary("Strength", 1)
+            self._cs_primary("Endurance", 1)
+            self._note("Requires a maintenance procedure unless you have Vampiric Power")
+            self._note("Psychological Weakness: Power negated when within 10' of a religious symbol")
+            self._note("If near religious symbol of own religion, suffer Excellent damage")
+        # TODO: Make this work.
+        elif self.origin == "Compound":
+            ability_column = 2
+            self._note("Run this program multiple times and combine what you get")
+        # TODO: Make this work.
+        elif self.origin == "Changeling":
+            ability_column = 5
+            self._note("You have complicated transformation abilities, consult the relevant section of the rules to learn more")
+        else:
+            raise(Exception("Invalid origin: %s" % (self.origin,)))
 
 
 def main():
