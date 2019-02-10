@@ -185,6 +185,22 @@ POWERS_TALENTS_CONTACTS = [
     (100, 5)
 ]
 
+# POWERS
+P_AVAILABLE = [
+    (12, (1, 3)),
+    (26, (2, 4)),
+    (41, (3, 5)),
+    (55, (4, 6)),
+    (66, (5, 7)),
+    (75, (6, 8)),
+    (83, (7, 9)),
+    (89, (8, 10)),
+    (94, (9, 12)),
+    (97, (10, 12)),
+    (99, (12, 14)),
+    (100, (14, 18)),
+]
+
 P_RESISTANCES = [
     (1, "Resistance to Fire and Heat"),
     (2, "Resistance to Cold"),
@@ -325,6 +341,62 @@ P_ORIGIN = [
     (00, "Rebirth"),
 ]
 
+# WEAKNESS
+W_STIMULUS = [
+    (13, "Elemental Allergy"),
+    (18, "Molecular Allergy"),
+    (43, "Energy Allergy"),
+    (68, "Energy Depletion"),
+    (81, "Energy Dampening"),
+    (94, "Finite Limit"),
+    (100, "Psychological"),
+]
+
+W_EFFECT = [
+    (50, "Power Negation"),
+    (90, "Incapacitation"),
+    (100, "Fatal"),
+]
+
+W_DURATION = [
+    (40, "Continuous with Contact"),
+    (60, "Limited Duration with Contact"),
+    (90, "Limited Duration after Contact"),
+    (100, "Permanent"),
+]
+
+# Talents
+T_AVAILABLE = [
+    (12, (0, 3)),
+    (26, (1, 4)),
+    (41, (1, 6)),
+    (55, (2, 4)),
+    (66, (2, 6)),
+    (75, (2, 8)),
+    (83, (3, 4)),
+    (89, (3, 6)),
+    (94, (4, 8)),
+    (97, (4, 4)),
+    (99, (5, 6)),
+    (100, (6, 8)),
+]
+
+# Contacts
+C_AVAILABLE = [
+    (12, (0, 2)),
+    (26, (0, 4)),
+    (41, (1, 3)),
+    (55, (2, 4)),
+    (66, (2, 6)),
+    (75, (3, 3)),
+    (83, (3, 4)),
+    (89, (3, 6)),
+    (94, (4, 4)),
+    (97, (4, 5)),
+    (99, (5, 5)),
+    (100, (6, 6)),
+]
+
 def d10(table, roll_mod=0):
     roll = random.randint(1, 10)+roll_mod
     for row in table:
@@ -358,12 +430,19 @@ def column_shift(ability, shift, initial=False):
     if new < 0:
         new = 0
     if initial:
+        # Abilities can't start lower than Feeble
+        if new < 1:
+            new = 1
+        # Abilities can't start higher than Monstrous
+        if new > 9:
+            new = 9
         return (POWER_LEVELS[new], INITIAL_RANKS[POWER_LEVELS[new]])
     return (POWER_LEVELS[new], POWER_RANKS[POWER_LEVELS[new]])
 
 class Hero(object):
-    def __init__(self):
-        base_origin = percentile(ORIGINS)
+    def __init__(self, base_origin=None):
+        if not base_origin:
+            base_origin = percentile(ORIGINS)
         self.origin = base_origin[0]
         self.subform = base_origin[1]
 
@@ -380,11 +459,17 @@ class Hero(object):
         self.resources = roll_ability()
         self.popularity = set_ability("Good")
 
-        self.powers_available = percentile(POWERS_TALENTS_CONTACTS)
-        self.talents = percentile(POWERS_TALENTS_CONTACTS)-1
-        self.contacts = percentile(POWERS_TALENTS_CONTACTS)-2
+        self.powers_available, self.powers_max = percentile(P_AVAILABLE)
+        self.talents, self.talents_max = percentile(T_AVAILABLE)
+        self.contacts, self.contacts_max = percentile(C_AVAILABLE)
 
         self.postprocess_origin()
+
+        self.weakness = {
+            "Stimulus": percentile(W_STIMULUS),
+            "Effect": percentile(W_EFFECT),
+            "Duration": percentile(W_DURATION)
+        }
 
         self.power_origin = percentile(P_ORIGIN)
         self.powers = []
@@ -407,14 +492,19 @@ class Hero(object):
         s += "Popularity: %s\n" % (self.popularity,)
         s += "\n"
 
+        s += "Weakness:\n"
+        for key in ["Stimulus", "Duration", "Effect"]:
+            s += "%s: %s\n" % (key, self.weakness[key])
+        s += "\n"
+
         s += "Power Origin: %s\n" % (self.power_origin,)
-        s += "Powers:\n"
+        s += "Powers (%d/%d):\n" % (self.powers_available, self.powers_max)
         for power in self.powers:
             s += "%s\n" % (power,)
         s += "\n"
 
-        s += "Talents: %d\n" % (self.talents,)
-        s += "Contacts: %d\n" % (self.contacts,)
+        s += "Talents (%d/%d):\n" % (self.talents, self.talents_max)
+        s += "Contacts (%d/%d):\n" % (self.contacts, self.contacts_max)
         s += "\n"
 
         if self.notes:
@@ -473,7 +563,7 @@ class Hero(object):
             return 4
         elif self.origin == "Alien" or \
              self.subform == "Alien" or \
-             self.subform == "Angel/Demon" or \
+             self.origin == "Angel/Demon" or \
              self.subform == "Centaur" or \
              self.origin == "Changeling" or \
              self.origin == "Deity" or \
@@ -593,7 +683,7 @@ class Hero(object):
                 self._note("Vulnerable to Magnetic attacks and rust")
                 self._note("Contact is the lab that created you")
             elif self.subform == "Mechanically Augmented":
-                self.powers -= 1
+                self.powers_available -= 1
         elif self.origin == "Robot":
             if self.subform == "Human Shape":
                 self.popularity = column_shift(self.popularity[0], 1)
@@ -636,7 +726,7 @@ class Hero(object):
             self._cs_primary("Reason", 2)
             self._cs_primary("Intuition", 2)
             self._cs_primary("Psyche", 2)
-            self.powers += 2
+            self.powers_available += 2
             # TODO: Actually roll this
             self._note("Bonus Travel Power")
             self._note("+2CS Popularity with public, Shift 0 popularity with religious organizations")
@@ -645,7 +735,7 @@ class Hero(object):
             # TODO: Add a way to have Alien subform
             if self.subform == "Alien":
                 pass
-            self.powers -= 1
+            self.powers_available -= 1
             self.resources = set_ability("Shift 0")
             self._note("Have to have a human Contact")
             # TODO: Add these as actual powers
@@ -710,6 +800,11 @@ class Hero(object):
         else:
             raise(Exception("Invalid origin: %s" % (self.origin,)))
 
+
+def test_origins():
+    for origin in ORIGINS:
+        print origin[1]
+        hero = Hero(origin[1])
 
 def main():
     hero = Hero()
