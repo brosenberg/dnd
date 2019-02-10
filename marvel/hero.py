@@ -526,7 +526,7 @@ class Hero(object):
             self.resources = set_ability("Poor")
         elif self.origin == "Modified Human":
             if self.subform == "Organic":
-                self.notes = "Heal twice as quickly as Normal Humans"
+                self._note("Heal twice as quickly as Normal Humans")
             elif self.subform == "Muscular":
                 self._cs_primary("Strength", 1)
                 self._cs_primary("Endurance", 1)
