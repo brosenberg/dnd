@@ -201,6 +201,318 @@ P_AVAILABLE = [
     (100, (14, 18)),
 ]
 
+P_CAT_DEFENSIVE = [
+    (15, "Body Armor (D1)"),
+    (20, "Force Field (D2)"),
+    (23, "Force Field vs. Emotion (D3)"),
+    (30, "Force Field vs. Energy (D4)"),
+    (35, "Force Field vs. Magic (D5)"),
+    (40, "Force Field vs. Mental (D6)"),
+    (48, "Force Field vs. Physical (D7)"),
+    (50, "Force Field vs. Power Manipulation (D8)"),
+    (53, "Force Field vs. Vampirism (D9)"),
+    (65, "Reflection (D10)"),
+    (70, "Resist: Emotion (D11)"),
+    (77, "Resist: Energy (D12)"),
+    (82, "Resist: Magic (D13)"),
+    (87, "Resist: Mental (D14)"),
+    (94, "Resist: Physical (D15)"),
+    (97, "Resist: Power Manipulation (D16)"),
+    (100, "Resist: Vampirism (D17)"),
+]
+
+P_CAT_DETECTION = [
+    (02, "Abnormal Sensitivity (DT1)"),
+    (04, "Circular Vision (DT2)"),
+    (10, "Energy Detection (DT3)"),
+    (14, "Environmental Awareness (DT4)"),
+    (20, "Extradimensional (DT5)"),
+    (28, "Hyper-Hearing (DT6)"),
+    (34, "Hyper-Olfactory (DT7)"),
+    (40, "Hyper-Touch (DT8)"),
+    (42, "Life Detection (DT9)"),
+    (44, "Magic Detection (DT10)"),
+    (50, "Microscopic Vision (DT11)"),
+    (54, "Penetration Vision (DT12)"),
+    (56, "Power Detection (DT13)"),
+    (58, "Psionic Detection (DT14)"),
+    (59, "Radarsense (DT15)"),
+    (62, "Sonar (DT16)"),
+    (69, "Telescopic Vision (DT17)"),
+    (79, "Thermal Vision (DT18)"),
+    (90, "Tracking (DT19)"),
+    (94, "True Sight (DT20)"),
+    (98, "UV Vision (DT21)"),
+    (100, "Weakness Detection (DT22)"),
+]
+
+P_CAT_ENERGY_CONTROL = [
+    (07, "Absorption Power (EC1)"),
+    (10, "Catalytic Control (EC2)"),
+    (15, "Coldshaping (EC3)"),
+    (18, "Darkforce Manipulation (EC4)"),
+    (25, "Electrical Control (EC5)"),
+    (28, "Energy Conversion (EC6)"),
+    (31, "Energy Solidification (EC7)"),
+    (36, "Energy Sponge (EC8)"),
+    (38, "Energy Vampirism (EC9)"),
+    (45, "Fire Control (EC10)"),
+    (49, "Gravity Manipulation (EC11)"),
+    (53, "Hard Radiation Control (EC12)"),
+    (59, "Kinetic Control (EC13)"),
+    (66, "Light Control (EC14)"),
+    (73, "Magnetic Manipulation (EC15)"),
+    (77, "Plasma Control (EC16)"),
+    (80, "Radiowave Control (EC17)"),
+    (84, "Shadowshaping (EC18)"),
+    (90, "Sound Manipulation (EC19)"),
+    (97, "Thermal Control (EC20)"),
+    (100, "Vibration Control (EC21)"),
+]
+
+P_CAT_ENERGY_EMISSION = [
+    (10, "Cold Generation (EE1)"),
+    (20, "Electrical Generation (EE2)"),
+    (22, "Energy Doppelganger (EE3)"),
+    (34, "Fire Generation (EE4)"),
+    (37, "Hard Radiation (EE5)"),
+    (42, "Heat (EE6)"),
+    (52, "Kinetic Bolt (EE7)"),
+    (62, "Light Emission (EE8)"),
+    (72, "Magnetism (EE9)"),
+    (75, "Plasma Generation (EE10)"),
+    (78, "Radiowave Generation (EE11)"),
+    (83, "Shadowcasting (EE12)"),
+    (93, "Sonic Generation (EE13)"),
+    (100, "Vibration (EE14)"),
+]
+
+P_CAT_FIGHTING = [
+    (20, "Berserker (F1)"),
+    (60, "Martial Supremacy (F2)"),
+    (75, "Natural Weaponry (F3)"),
+    (80, "Weapons Creation* (F4)"),
+    (100, "Weapons Tinkering (F5)"),
+]
+
+P_CAT_ILLUSORY = [
+    (15, "Animate Image (I1)"),
+    (70, "Illusion-Casting* (I2)"),
+    (85, "Illusory Invisibility (I3)"),
+    (100, "Illusory Duplication (I4)"),
+]
+
+P_CAT_LIFEFORM_CONTROL = [
+    (14, "Biophysical Control* (L1)"),
+    (15, "Bio-Vampirism * (L2)"),
+    (18, "Body Transformation—Others (L3)"),
+    (26, "Emotion Control (L4)"),
+    (32, "Exorcism (L5)"),
+    (34, "Force Field vs. Hostiles (L6)"),
+    (35, "Forced Reincarnation (L7)"),
+    (39, "Grafting* (L8)"),
+    (51, "Hypnotic Control (L9)"),
+    (60, "Mind Control* (L10)"),
+    (62, "Mind Transferral* (L11)"),
+    (65, "Neural Manipulation (L12)"),
+    (66, "Plague Carrier (L13)"),
+    (69, "Plant Control (L14)"),
+    (71, "Plant Growth (L15)"),
+    (80, "Sense Alteration (L16)"),
+    (83, "Shapechange-Others* (L17)"),
+    (89, "Sleep-Induced (L18)"),
+    (90, "Spirit Storage (L19)"),
+    (95, "Summoning (L20)"),
+    (100, "Undead Control (L21)"),
+]
+
+P_CAT_MAGICAL = [
+    (8, "Enchantment* (MG1)"),
+    (15, "Energy Source (MG2)"),
+    (17, "Internal Limbo (MG3)"),
+    (25, "Magic Control* (MG4)"),
+    (28, "Magic Creation* (MG5)"),
+    (33, "Magic Domination (MG6)"),
+    (39, "Magic Transferral (MG7)"),
+    (41, "Magic Vampirism (MG8)"),
+    (71, "Power Simulation (MG9)"),
+    (77, "Reality Alteration* (MG10)"),
+    (79, "Spirit Vampirism* (MG11)"),
+    (95, "Sympathetic Magic (MG12)"),
+    (100, "Warding (MG13)"),
+]
+
+P_CAT_MATTER_CONTROL = [
+    (05, "Bonding (MC1)"),
+    (17, "Collection (MC2)"),
+    (22, "Crystallization (MC3)"),
+    (29, "Diminution (MC4)"),
+    (39, "Disruption (MC5)"),
+    (46, "Enlargement (MC6)"),
+    (51, "Geoforce (MC7)"),
+    (61, "Matter Animation* (MC8)"),
+    (68, "Machine Animation* (MC9)"),
+    (73, "Micro-Environment (MC10)"),
+    (83, "Molding (MC11)"),
+    (93, "Weather (MC12)"),
+    (100, "Zombie Animation* (MC13)"),
+]
+
+P_CAT_MATTER_CONVERSION = [
+    (10, "Coloration (MCo1)"),
+    (25, "Combustion (MCo2)"),
+    (45, "Disintegration (MCo3)"),
+    (70, "Elemental Conversion* (MCo4)"),
+    (80, "Ionization (MCo5)"),
+    (100, "Molecular Conversion* (MCo6)"),
+]
+
+P_CAT_MATTER_CREATION = [
+    (10, "Artifact Creation* (MCr1)"),
+    (24, "Elemental Creation (MCr2)"),
+    (29, "Lifeform Creation* (MCr3)"),
+    (35, "Mechanical Creation* (MCr4)"),
+    (59, "Missile Creation (MCr5)"),
+    (69, "Molecular Creation (MCr6)"),
+    (88, "Spray (MCr7)"),
+    (100, "Webcasting (MCr8)"),
+]
+
+P_CAT_MENTAL_ENHANCEMENT = [
+    (4, "Clairaudience (M1)"),
+    (8, "Clairvoyance (M2)"),
+    (11, "Communicate with Animals (M3)"),
+    (12, "Communicate with Cybernetics (M4)"),
+    (13, "Communicate with Non-Living (M5)"),
+    (15, "Communicate with Plants (M6)"),
+    (16, "Cosmic Awareness* (M7)"),
+    (22, "Danger Sense (M8)"),
+    (23, "Dreamtravel (M9)"),
+    (26, "Empathy (M10)"),
+    (27, "Free Spirit* (M11)"),
+    (31, "Hallucinations* (M12)"),
+    (40, "Hyper-Intelligence (M13)"),
+    (47, "Hyper-Invention (M14)"),
+    (48, "Incarnation Awareness (M15)"),
+    (58, "Iron Will (M16)"),
+    (65, "Linguistics (M17)"),
+    (66, "Mental Duplication (M18)"),
+    (67, "Mental Invisibility (M19)"),
+    (69, "Mental Probe (M20)"),
+    (72, "Mind Blast (M21)"),
+    (73, "Mind Drain (M22)"),
+    (74, "Postcognition (M23)"),
+    (75, "Precognition* (M24)"),
+    (76, "Psionic Vampirism* (M25)"),
+    (78, "Remote Sensing (M26)"),
+    (79, "Sensory Link (M27)"),
+    (80, "Serial Immortality* (M28)"),
+    (81, "Speechthrowing (M29)"),
+    (85, "Telekinesis (M30)"),
+    (86, "Telelocation (M31)"),
+    (96, "Telepathy (M32)"),
+    (100, "Total Memory (M33)"),
+]
+
+P_CAT_PHYSICAL_ENHANCEMENT = [
+    (14, "Armor Skin (P1)"),
+    (28, "Body Resistance (P2)"),
+    (30, "Chemical Touch (P3)"),
+    (33, "Digestive Adaptation (P4)"),
+    (40, "Hyper-Speed (P5)"),
+    (42, "Hypnotic Voice (P6)"),
+    (45, "Lung Adaptability (P7)"),
+    (47, "Pheromones (P8)"),
+    (60, "Regeneration* (P9)"),
+    (62, "Self-Revival* (P10)"),
+    (67, "Self-Sustenance (P11)"),
+    (71, "Stealth (P12)"),
+    (76, "Suspended Animation (P13)"),
+    (78, "True Invulnerability* (P14)"),
+    (82, "Vocal Control (P15)"),
+    (90, "Waterbreathing (P16)"),
+    (100, "Water Freedom (P17)"),
+]
+
+P_CAT_POWER_CONTROL = [
+    (8, "Control* (PC1)"),
+    (12, "Creation (PC2)"),
+    (18, "Domination* (PC3)"),
+    (23, "Duplication (PC4)"),
+    (37, "Energy Source (PC5)"),
+    (39, "Energy Source Creation (PC6)"),
+    (49, "Focus (PC7)"),
+    (55, "Gestalt (PC8)"),
+    (60, "Nemesis (PC9)"),
+    (64, "Power Transferral (PC10)"),
+    (73, "Power Vampirism * (PC11)"),
+    (83, "Residual Absorption (PC12)"),
+    (96, "Selection (PC13)"),
+    (100, "Weakness Creation* (PC14)"),
+]
+
+P_CAT_SELF_ALTERATION = [
+    (2, "Age-Shift (S1)"),
+    (9, "Alter Ego (S2)"),
+    (10, "Anatomical Separation (S3)"),
+    (13, "Animal Transformation (S4)"),
+    (19, "Animal Mimicry (S5)"),
+    (21, "Blending (S6)"),
+    (27, "Body Adaptation* (S7)"),
+    (30, "Body Transformation* (S8)"),
+    (33, "Body Coating (S9)"),
+    (37, "Bouncing Ball (S10)"),
+    (38, "Chemical Mimicry (S11)"),
+    (42, "Elongation (S12)"),
+    (44, "Energy Body* (S13)"),
+    (49, "Energy Sheath (S14)"),
+    (55, "Evolution (S15)"),
+    (57, "Growth (S16)"),
+    (58, "Imitation-Face Changer (S17)"),
+    (60, "Imitation-Human Changeling (S18)"),
+    (61, "Invisibility (S19)"),
+    (62, "Mass Decrease (S20)"),
+    (63, "Mass Increase (S21)"),
+    (67, "Phasing (S22)"),
+    (70, "Physical Gestalt (S23)"),
+    (71, "Plant Mimicry (S24)"),
+    (74, "Plasticity (S25)"),
+    (78, "Prehensile Hair (S26)"),
+    (81, "Self-Duplication* (S27)"),
+    (84, "Self-Vegetation (S28)"),
+    (90, "Shapeshifting (S29)"),
+    (94, "Shrinking (S30)"),
+    (99, "Spirit Gestalt (S31)"),
+    (100, "Two-dimensionality (S32)"),
+]
+
+P_CAT_TRAVEL = [
+    (2, "Astral Body (T1)"),
+    (6, "Carrier Wave (T2)"),
+    (10, "Dimension Travel (T3)"),
+    (12, "Energy Path (T4)"),
+    (14, "Floating Disc (T5)"),
+    (20, "Gateway* (T6)"),
+    (26, "Gliding (T7)"),
+    (28, "Hyper-Digging (T8)"),
+    (34, "Hyper-Leaping (T9)"),
+    (42, "Hyper-Running (T10)"),
+    (46, "Hyper-Swimming (T11)"),
+    (52, "Levitation (T12)"),
+    (56, "Rocket (T13)"),
+    (58, "Skywalk (T14)"),
+    (64, "Spiderclimb (T15)"),
+    (72, "Teleport Self* (T16)"),
+    (76, "Teleport Others* (T17)"),
+    (78, "Telereformation (T18)"),
+    (80, "Time Travel* (T19)"),
+    (82, "Troubleseeker (T20)"),
+    (93, "True Flight (T21)"),
+    (97, "Water Walking (T22)"),
+    (100, "Whirlwind (T23)"),
+]
+
+####
 P_RESISTANCES = [
     (1, "Resistance to Fire and Heat"),
     (2, "Resistance to Cold"),
@@ -425,8 +737,8 @@ def roll_primary_ability(ability_column):
     rank = INITIAL_RANKS[level]
     return (level, rank)
 
-def column_shift(ability, shift, initial=False):
-    new = POWER_LEVELS.index(ability)+shift
+def column_shift(rank, shift, initial=False):
+    new = POWER_LEVELS.index(rank)+shift
     if new < 0:
         new = 0
     if initial:
@@ -464,6 +776,8 @@ class Hero(object):
         self.contacts, self.contacts_max = percentile(C_AVAILABLE)
 
         self.postprocess_origin()
+        if self.powers_available < 1:
+            self.powers_available = 1
 
         self.weakness = {
             "Stimulus": percentile(W_STIMULUS),
