@@ -128,7 +128,7 @@ MAJOR_ABILITY = [
 ]
 
 PRIMARY_ABILITY = {
-    "Altered Human": [
+    1: [
         (5, "Feeble"),
         (10, "Poor"),
         (20, "Typical"),
@@ -138,24 +138,22 @@ PRIMARY_ABILITY = {
         (96, "Incredible"),
         (100, "Amazing")
     ],
-    "Mutant": [
+    2: [
         (5, "Feeble"),
-        (10, "Poor"),
-        (20, "Typical"),
-        (40, "Good"),
-        (60, "Excellent"),
-        (80, "Remarkable"),
-        (96, "Incredible"),
-        (100, "Amazing")
+        (25, "Poor"),
+        (75, "Typical"),
+        (95, "Good"),
+        (100, "Excellent"),
     ],
-    "High-Tech": [
+    3: [
         (5, "Feeble"),
         (10, "Poor"),
         (40, "Typical"),
         (80, "Good"),
-        (100, "Excellent"),
+        (95, "Excellent"),
+        (100, "Remarkable"),
     ],
-    "Robot": [
+    4: [
         (5, "Feeble"),
         (10, "Poor"),
         (15, "Typical"),
@@ -166,7 +164,7 @@ PRIMARY_ABILITY = {
         (98, "Amazing"),
         (100, "Monstrous")
     ],
-    "Alien": [
+    5: [
         (10, "Feeble"),
         (20, "Poor"),
         (30, "Typical"),
@@ -350,8 +348,8 @@ def roll_ability(roll_mod=0):
      rank = POWER_RANKS[level]
      return (level, rank)
 
-def roll_primary_ability(origin, roll_mod=0):
-     level = percentile(PRIMARY_ABILITY[origin], roll_mod)
+def roll_primary_ability(ability_column):
+     level = percentile(PRIMARY_ABILITY[ability_column])
      rank = INITIAL_RANKS[level]
      return (level, rank)
 
@@ -374,11 +372,10 @@ class Hero(object):
         # Initial health multiplier
         self.health_mod = 1
 
-        ability_mod = 0
         ability_column = self.get_ability_column()
         self.abilities = {}
         for ability in FASERIP:
-            self.abilities[ability] = roll_primary_ability(self.origin, ability_mod)
+            self.abilities[ability] = roll_primary_ability(ability_column)
 
         self.resources = roll_ability()
         self.popularity = set_ability("Good")
@@ -397,7 +394,7 @@ class Hero(object):
     def __str__(self):
         s = ""
         s += "Origin: %s\n" % (self.origin,)
-        s += "Subtype: %s\n" % (self.subtype,)
+        s += "Subform: %s\n" % (self.subform,)
         s += "\n"
 
         for ability in FASERIP:
@@ -410,6 +407,7 @@ class Hero(object):
         s += "Popularity: %s\n" % (self.popularity,)
         s += "\n"
 
+        s += "Power Origin: %s\n" % (self.power_origin,)
         s += "Powers:\n"
         for power in self.powers:
             s += "%s\n" % (power,)
@@ -419,7 +417,7 @@ class Hero(object):
         s += "Contacts: %d\n" % (self.contacts,)
         s += "\n"
 
-        s += "Notes: %s" % (self.notes,)
+        s += "Notes:\n%s" % ('\n'.join(self.notes),)
         return s
 
     def _cs_primary(self, ability, shift):
@@ -441,54 +439,53 @@ class Hero(object):
         return karma
 
     def get_ability_column(self):
-        if self.origin == "Animal" or
-           self.origin == "Ethereal" or
-           self.subtype == "Felinoid" or
-           self.origin == "Modified Human" or
-           self.origin == "Mutant" or
-           self.origin == "Undead" or
+        if self.origin == "Animal" or \
+           self.origin == "Ethereal" or \
+           self.subform == "Felinoid" or \
+           self.origin == "Modified Human" or \
+           self.origin == "Mutant" or \
+           self.origin == "Undead" or \
            self.origin == "Vegetable":
             return 1
-        elif self.origin == "Abnormal Chemistry" or
-             self.subtype == "Artificial limbs/organs" or
-             self.subtype == "Avian-Harpy" or
-             self.subtype == "Chiropteran" or
-             self.origin == "Compound" or
-             self.subtype == "Exoskeleton" or
-             self.subtype == "Faun" or
-             self.subtype == "Merhuman" or
-             self.origin == "Mineral" or
-             self.origin == "Normal Human" or
-             self.subtype == "Other" or
+        elif self.origin == "Abnormal Chemistry" or \
+             self.subform == "Artificial limbs/organs" or \
+             self.subform == "Avian-Harpy" or \
+             self.subform == "Chiropteran" or \
+             self.origin == "Compound" or \
+             self.subform == "Exoskeleton" or \
+             self.subform == "Faun" or \
+             self.subform == "Merhuman" or \
+             self.origin == "Mineral" or \
+             self.origin == "Normal Human" or \
+             self.subform == "Other" or \
              self.origin == "Surgical Composite":
             return 2
-        elif self.subtype == "Avian-Angel" or
-             self.subtype == "Equiman" or
-             self.subtype == "Lamian" or
-             self.subtype == "Mechanically Augmented":
+        elif self.subform == "Avian-Angel" or \
+             self.subform == "Equiman" or \
+             self.subform == "Lamian" or \
+             self.subform == "Mechanically Augmented":
             return 3
-        elif self.origin == "Android" or
-             self.subtype == "Lupinoid" or
-             self.subtype == "Mechanical Body" or
+        elif self.origin == "Android" or \
+             self.subform == "Lupinoid" or \
+             self.subform == "Mechanical Body" or \
              self.origin == "Robot":
             return 4
-        elif self.origin == "Alien" or
-             self.subtype == "Angel/Demon" or
-             self.subtype == "Centaur" or
-             self.origin == "Changeling" or
-             self.origin == "Deity" or
-             self.origin == "Energy" or
-             self.origin == "Gaseous" or
-             self.origin == "Humanoid Race" or
+        elif self.origin == "Alien" or \
+             self.subform == "Alien" or \
+             self.subform == "Angel/Demon" or \
+             self.subform == "Centaur" or \
+             self.origin == "Changeling" or \
+             self.origin == "Deity" or \
+             self.origin == "Energy" or \
+             self.origin == "Gaseous" or \
+             self.origin == "Humanoid Race" or \
              self.origin == "Liquid":
             return 5
 
     def postprocess_origin(self):
         if self.origin == "Normal Human":
-            ability_column = 2
             self.resources = column_shift(self.resources[0], 1)
         elif self.origin == "Mutant":
-            ability_column = 1
             if self.subform == "Induced":
                 self._note("Raise any one Primary Ability +1CS")
             elif self.subform == "Random":
@@ -507,7 +504,6 @@ class Hero(object):
                 #powers_available += 1
             #self.abilities["Endurance"] = column_shift(self.abilities["Endurance"][0], 1, True)
         elif self.origin == "Android":
-            ability_column = 4
             self.popularity = column_shift(self.popularity[0], -1)
             self._note("Raise any one Primary Ability +1CS")
             self._note("One contact is your creator")
@@ -515,13 +511,11 @@ class Hero(object):
             if self.contacts == 0:
                 self.contacts = 1
         elif self.origin == "Humanoid Race":
-            ability_column = 5
             self._note("Raise any one Primary Ability +1CS")
             self._note("Contact must be your race")
             self.resources = set_ability("Poor")
             self.contacts = 1
         elif self.origin == "Surgical Composite":
-            ability_column = 2
             self._cs_primary("Strength", 1)
             self._cs_primary("Fighting", 1)
             self._cs_primary("Endurance", 1)
@@ -530,15 +524,14 @@ class Hero(object):
             self.popularity = set_ability("Shift 0")
             self.resources = set_ability("Poor")
         elif self.origin == "Modified Human":
-            ability_column = 1
-            if self.subtype == "Organic":
+            if self.subform == "Organic":
                 self.notes = "Heal twice as quickly as Normal Humans"
-            elif self.subtype == "Muscular":
+            elif self.subform == "Muscular":
                 self._cs_primary("Strength", 1)
                 self._cs_primary("Endurance", 1)
-            elif self.subtype == "Skeletal":
+            elif self.subform == "Skeletal":
                 self._note("+1CS Resistance to Physical Attacks")
-            elif self.subtype == "Extra Parts":
+            elif self.subform == "Extra Parts":
                 self._cs_primary("Fighting", 1)
                 self._note("Duplicate organs double Health")
                 self._note("Tails give +1 attack per tail when using blunt attacks")
@@ -546,84 +539,70 @@ class Hero(object):
             self._note("One contact from organization responsible for modification")
             powers_available -= 1
         elif self.origin == "Demihuman":
-            if self.subtype == "Centaur":
-                ability_column = 5
+            if self.subform == "Centaur":
                 self._cs_primary("Strength", 1)
                 self._note("Fast: Move 4 areas/turn horizontally")
                 self._note("Can fight with hooves")
                 self._note("Feeble Climbing ability")
-            elif self.subtype == "Equiman":
-                ability_column = 3
+            elif self.subform == "Equiman":
                 self._note("Kicking does +1CS damage")
-            elif self.subtype == "Faun":
-                ability_column = 2
+            elif self.subform == "Faun":
                 self._note("Feeble Mental Domination over human(oid) females")
                 self._note("Slow popularity progression")
                 self.popularity = set_ability("Shift 0")
-            elif self.subtype == "Felinoid":
-                ability_column = 1
+            elif self.subform == "Felinoid":
                 self._note("Excellent night vision")
                 self._note("+1CS Climbing")
-            elif self.subtype == "Lupinoid":
-                ability_column = 4
+            elif self.subform == "Lupinoid":
                 self.popularity = column_shift(self.popularity[0], -1)
                 self._note("Excellent sense of smell")
                 self._note("Starting popularity is minimum")
-            elif self.subtype == "Avian-Angel":
-                ability_column = 3
+            elif self.subform == "Avian-Angel":
                 self.popularity = column_shift(self.popularity[0], 1)
-            elif self.subtype == "Avian-Harpy":
-                ability_column = 2
+            elif self.subform == "Avian-Harpy":
                 self._cs_primary("Fighting", 1)
-            elif self.subtype == "Chiropteran":
-                ability_column = 2
+            elif self.subform == "Chiropteran":
                 # TODO: Actually put this in as a power later
                 self._note("Active Sonar Power at Good")
                 self.popularity = set_ability("Feeble")
-            elif self.subtype == "Lamian":
-                ability_column = 3
+            elif self.subform == "Lamian":
                 self.popularity = set_ability("Shift 0")
                 if random.randint(0, 1):
                     self._note("You are venomous")
                 self._note("+1CS to Escape")
-            elif self.subtype == "Merhuman":
-                ability_column = 2
+            elif self.subform == "Merhuman":
                 self.popularity = column_shift(self.popularity[0], 1)
                 self._note("Dries out away from water")
                 self._note("Limited to crawling on dry land")
                 self._note("Can fascinate Normal Humans")
-            elif self.subtype == "Other":
+            elif self.subform == "Other":
                 # This section effectively says "make it up"
-                ability_column = 2
                 self._note("Work with the Judge to come up with stats")
         elif self.origin == "Cyborg":
-            if self.subtype == "Artificial limbs/organs":
-                ability_column = 2
+            if self.subform == "Artificial limbs/organs":
                 self._cs_primary("Intuition", -1)
-            elif self.subtype == "Exoskeleton":
-                ability_column = 2
-            elif self.subtype == "Mechanical Body":
-                ability_column = 4
+            elif self.subform == "Exoskeleton":
+                # Nothing to do here
+                pass
+            elif self.subform == "Mechanical Body":
                 self._cs_primary("Intuition", -1)
                 self._cs_primary("Psyche", -1)
                 self.contacts = 1
                 self._note("Monstrous Resistance to Disease and Poison")
                 self._note("Vulnerable to Magnetic attacks and rust")
                 self._note("Contact is the lab that created you")
-            elif self.subtype == "Mechanically Augmented":
-                ability_column = 3
+            elif self.subform == "Mechanically Augmented":
                 self.powers -= 1
         elif self.origin == "Robot":
-            ability_column = 4
-            if self.subtype == "Human Shape":
+            if self.subform == "Human Shape":
                 self.popularity = column_shift(self.popularity[0], 1)
-            elif self.subtype == "Usuform":
+            elif self.subform == "Usuform":
                 pass
-            elif self.subtype == "Metamorphic":
+            elif self.subform == "Metamorphic":
                 # TODO: Actually roll this
                 self._note("Two forms with different Abiltiies and Powers")
                 self._note("Additional forms at -1CS to all Primary Abilities")
-            elif self.subtype == "Computer":
+            elif self.subform == "Computer":
                 self._note("Possess at least one remotely controlled industrial robot")
                 self._cs_primary("Reason", 2)
                 self._cs_primary("Fighting", -1)
@@ -631,7 +610,6 @@ class Hero(object):
                 self._note("Decreased Resistance to Electrical, Magnetic, and Phasing attacks")
                 self._note("Loss of electircal power causes loss of all Karma and -1CS to all Abilities and Powers")
         elif self.origin == "Angel/Demon":
-            ability_column = 5
             self.contacts = 0
             self._cs_primary("Fighting", 1)
             self._cs_primary("Agility", 1)
@@ -639,9 +617,9 @@ class Hero(object):
             self._cs_primary("Endurance", 1)
             self._note("Psychological Weakness that Negates your Power")
 
-            self.subtype = "Angel"
+            self.subform = "Angel"
             if random.randint(0, 1):
-                self.subtype = "Demon"
+                self.subform = "Demon"
                 self.popularity = column_shift(self.popularity[0], -2)
                 # TODO: Add these as powers
                 self._note("Power: Good Fire Generation")
@@ -650,7 +628,6 @@ class Hero(object):
                 self.popularity = column_shift(self.popularity[0], 2)
                 self._note("Power: Artifact Creation - Create Excellent magical sword")
         elif self.origin == "Deity":
-            ability_column = 5
             self._cs_primary("Fighting", 2)
             self._cs_primary("Agility", 2)
             self._cs_primary("Strength", 2)
@@ -664,17 +641,15 @@ class Hero(object):
             self._note("+2CS Popularity with public, Shift 0 popularity with religious organizations")
             self._note("Promoting a religion based on yourself causes -1CS on all Abilities and Powers")
         elif self.origin == "Animal":
-            ability_column = 1
-            # TODO: Add a way to have Alien subtype
-            if self.subtype == "Alien":
-                ability_column = 5
+            # TODO: Add a way to have Alien subform
+            if self.subform == "Alien":
+                pass
             self.powers -= 1
             self.resources = set_ability("Shift 0")
             self._note("Have to have a human Contact")
             # TODO: Add these as actual powers
             self._note("Two bonus Detection Powers at Good rank")
         elif self.origin == "Vegetable":
-            ability_column = 1
             self.resources = set_ability("Shift 0")
             self._cs_primary("Fighting", -2)
             self._cs_primary("Endurance", 2)
@@ -684,23 +659,19 @@ class Hero(object):
             self._note("Light or water deprivation causes -1CS in Strength and Endurance per day after 3 days")
             self._note("You have no legal rights")
         elif self.origin == "Abnormal Chemistry":
-            ability_column = 2
             self._cs_primary("Endurance", 1)
             self._note("Blood is poisonous to those who consume it")
         elif self.origin == "Mineral":
-            ability_column = 2
             self.health_mod = 2
             self._note("Immune to normal Poisons and Diseases")
             self._note("-1CS Movement rate")
         elif self.origin == "Gaseous":
-            ability_column = 5
             self.resources = set_ability("Shift 0")
             self.contacts = 0
             self._note("Immobilized if turned into a liquid or solid")
             # TODO: Add this as an actual power
             self._note("Bonus Power: Phasing to penetrate solids")
         elif self.origin == "Liquid":
-            ability_column = 5
             self._note("If Endurance and Psyche are at least Excellent, can take a human form")
             self._note("If frozen, immobilized until melted, but immune to damage")
             self._note("Vaporization is fatal")
@@ -708,7 +679,6 @@ class Hero(object):
             # TODO: Add this as an actual power
             self._note("Bonus Power: Phasing, for porous materials")
         elif self.origin == "Energy":
-            ability_column = 5
             self._note("-1CS vulnerability to Plasma C control")
             self._note("Can be immobilized in special storage batteries")
             self._note("Can only be destroyed by Negate or Solidify Energy")
@@ -717,7 +687,6 @@ class Hero(object):
             self._note("Bonus Power: Energy Emission")
             self._note("Optional Power: Energy Control")
         elif self.origin == "Ethereal":
-            ability_column = 1
             self._note("Immune to physical attacks lower than Monstrous")
             self._note("Vulnerable to Mental and Magical attacks")
             self._note("Completely destroyed by Spirit Vampirism")
@@ -726,7 +695,6 @@ class Hero(object):
             self._note("Physical attacks are -9CS less effective")
             self._note("At least one contact can be a Spiritual Medium")
         elif self.origin == "Undead":
-            ability_column = 1
             self._cs_primary("Strength", 1)
             self._cs_primary("Endurance", 1)
             self._note("Requires a maintenance procedure unless you have Vampiric Power")
@@ -734,11 +702,9 @@ class Hero(object):
             self._note("If near religious symbol of own religion, suffer Excellent damage")
         # TODO: Make this work.
         elif self.origin == "Compound":
-            ability_column = 2
             self._note("Run this program multiple times and combine what you get")
         # TODO: Make this work.
         elif self.origin == "Changeling":
-            ability_column = 5
             self._note("You have complicated transformation abilities, consult the relevant section of the rules to learn more")
         else:
             raise(Exception("Invalid origin: %s" % (self.origin,)))
