@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-# TODO: Incorporate Ultimate Powers
-
-# This uses the Advanced Rules
+# TODO: Add talents
 
 import random
 
@@ -222,8 +220,8 @@ P_DEFENSIVE = [
 ]
 
 P_DETECTION = [
-    (02, "Abnormal Sensitivity (DT1)"),
-    (04, "Circular Vision (DT2)"),
+    (2, "Abnormal Sensitivity (DT1)"),
+    (4, "Circular Vision (DT2)"),
     (10, "Energy Detection (DT3)"),
     (14, "Environmental Awareness (DT4)"),
     (20, "Extradimensional (DT5)"),
@@ -247,7 +245,7 @@ P_DETECTION = [
 ]
 
 P_ENERGY_CONTROL = [
-    (07, "Absorption Power (EC1)"),
+    (7, "Absorption Power (EC1)"),
     (10, "Catalytic Control (EC2)"),
     (15, "Coldshaping (EC3)"),
     (18, "Darkforce Manipulation (EC4)"),
@@ -343,7 +341,7 @@ P_MAGICAL = [
 ]
 
 P_MATTER_CONTROL = [
-    (05, "Bonding (MC1)"),
+    (5, "Bonding (MC1)"),
     (17, "Collection (MC2)"),
     (22, "Crystallization (MC3)"),
     (29, "Diminution (MC4)"),
