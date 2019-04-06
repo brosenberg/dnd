@@ -1,0 +1,141 @@
+Human (Variant)
+Mystic (Awakened) 3
+Chaotic Neutral
+
+
+Name:
+         __________
+        / ________  \
+       / / _______ \ \
+\_____/_/_/___.___\_\_\____|_|_/_
+/            /|\           | |
+            / | \
+          \/  |  \//
+          /\  |  /X
+       __/   -|-   \
+      | . |   |     \
+      |___|   |     |\
+     /       \|/
+              |
+S  8
+D 15
+C 12
+I 17
+W 14
+Ch 8
+
+HD: 1d8
+HP: 21
+AC 14 (studded leather)
+
+Quirks:
+    You always wear a mask
+    Has no tongue, communicates either with telepathy or pantomime
+Background: Far Traveler (Exile)
+Personality: I have different assumptions from those around me concerning personal space, blithely invading others' space in innocence, or reacting to ignorant invasion of my own.
+Ideal: Adventure. I'm far from home, and everything is strange and wonderful!
+Bond: I'm fascinated by the beauty and wonder of this new land.
+Flaw: I pretend not to understand the local language in order to avoid interactions I would rather not have.
+
+Proficiency Bonus: +2
+Proficiencies: Light Armor, Simple Weapons, Instrument (Gong)
+Languages: Common, Goblin, Giant
+Saves: Int, Wis
+Skills: Arcana (+5), Insight (+4), Investigation (+5), Nature (+5), Perception (+4), Religion (+5)
+Feats: Arcanist
+
+Features:
+    Psionics
+    Mystic Order (Awakened)
+    All Eyes on You
+        Your accent, mannerisms, figures of speech, and perhaps even your appearance all mark you as foreign. Curious glances are directed your way wherever you go, which can be a nuisance, but you also gain the friendly interest of scholars and others intrigued by far-off lands, to say nothing of everyday folk who are eager to hear stories of your homeland.
+        You can parley this attention into access to people and places you might not otherwise have, for you and your traveling companions. Noble lords, scholars, and merchant princes, to name a few, might be interested in hearing about your distant homeland and people.
+    Psionic Investigation
+        Starting at 3rd level, you can focus your mind to read the psionic imprint left on an object. If you hold an object and concentrate on it for 10 minutes (as if concentrating on a psionic discipline), you learn a few basic facts about it. You gain a mental image from the object's point of view, showing the last creature to hold the object within the past 24 hours.
+        You also learn of any events that have occurred within 20 feet of the object within the past hour. The events you perceive unfold from the object's perspective. You see and hear such events as if you were there, but can't use other senses.
+        Additionally, you can embed an intangible psionic sensor within the object. For the next 24 hours, you can use an action to learn the object's location relative to you (its distance and direction) and to look at the object's surroundings from its point of view as if you were there. This perception lasts until the start of your next turn.
+        Once you use this feature, you can't use it again until you finish a short or long rest.
+
+Spells (from Arcanist):
+    Prestidigitation
+    Detect Magic 1/day
+
+Psionics:
+    Talents: 1; Disciplines: 2+2; PP: 14; Psi Limit: 3
+    Save (8+prof+int): 13
+    Attack (prof+int): +5 
+    Disciplines:
+        Nomadic Step
+            Focus: +10 walk speed after teleporting.
+            Step of a Dozen Paces (1-7 PP): If you haven’t moved yet on your turn, you take a bonus action to teleport up to 20 feet per psi point spent to an unoccupied space you can see, and your speed is reduced to 0 until the end of the turn.
+            Nomadic Anchor (1 PP): As an action, you create an invisible, intangible teleportation anchor in a 5-foot cube you can see within 120 feet of you. For the next 8 hours, whenever you use this psionic discipline to teleport, you can instead teleport to the anchor, even if you can’t see it, but it must be within range of the teleportation ability
+            Defensive Step (2 PP): When you are hit by an attack, you can use your reaction to gain a +4 bonus to AC against that attack, possibly turning it into a miss. You then teleport up to 10 feet to an unoccupied space you can see.
+            There and Back Again (2 PP): As a bonus action, you teleport up to 20 feet to an unoccupied space you can see and then move up to half your speed. At the end of your turn, you can teleport back to the spot you occupied before teleporting, unless it is now occupied or on a different plane of existence
+            Transposition (3 PP): If you haven't moved yet on your turn, choose an ally you can see within 60 feet of you. As a bonus action, you and that creature teleport, swapping places, and your speed is reduced to 0 until the end of the turn. This ability fails and is wasted if either of you can't fit in the destination space.
+
+        Psychic Assault
+            Focus: +2 to damage rolls with talents that deal psychic damage.
+            Psionic Blast (1-7 PP): Action: One creature that I can see within 60' takes 1d8 psychic damage per PP spent.
+            Ego Whip (3 PP): As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, the creature takes 3d8 psychic damage, and it is filled with self-doubt, leaving it able to use its action on its next turn only to take the Dodge, Disengage, or Hide action. On a successful saving throw, it takes half as much damage.
+
+        Telepathic Contact
+            Focus: Telepathy class feature with up to six creatures at once.
+            Exacting Query (2 PP): As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, the target truthfully answers one question you ask it via telepathy. On a successful save, the target is unaffected, and you can’t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.
+            Occluded Mind (2 PP): As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, the target believes one statement of your choice for the next 5 minutes that you communicate to it via telepathy. The statement can be up to ten words long, and it must describe you or a creature or an object the target can see. On a successful save, the target is unaffected, and you can’t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.
+
+        Mastery of Light and Darkness
+            Focus: While focused on this discipline, natural and magical darkness within 30 feet of you has no effect on your vision.
+            Darkness (1-7 PP, 60'):  10' per PP of magical darkness. Light produced by 2nd level or lower spells suppressed.
+            Light (2 PP; conc, 1 min): 20' light, 20' dim.
+            Shadow Beasts (3 PP; conc, 1 min; 60'): Summon 2x Shadows. Obey verbal commands. Roll their own init.
+                AC 12, 16 HP, Spd 40, Atk +4 2d6+2 necro + 1d4 Str dmg
+                SD: resist (acid, cold, fire, lightning, thunder, (bludg, pierce, slashing) non-magic), Immune (necro, poison, exhaust, fright, grapple, paralyze, petrify, poison, prone, restrained); SQ: Amorphous, Shadow Stealth, Darkvision 60', Pasv Perc 10; SW: Sunlight Weakness, radiant dmg
+                S 6, D 14, C 13, I 6, W 10, Ch 8
+
+
+
+    Talents:
+        Mind Thrust (120'; 1d10 psychic)
+        Blind Spot: (120'; Wisdom save or Invis to target for 1 turn)
+
+Attacks:
+    dagger
+        finesse, light, thrown (20/60)
+        +4 to hit, 1d4+2 piercing
+    dart
+        finesse, thrown (20/60)
+        +4 to hit, 1d4+2 piercing
+
+Coin: 5gp
+
+Equipment:
+    alabaster mask
+    gong
+    traveler's clothes
+    poorly wrought maps from my homeland that depict where I am
+    a small piece of jewelry worth 10 gp in the style of your homeland's craftsmanship
+    pouch
+
+    dagger
+    dart x40
+    studded leather
+    camel
+        riding saddle
+        bit and bridle
+        saddlebags
+            feed x10
+            iron, 8 pounds
+    a backpack
+        bag of 1,000 ball bearings
+        10 feet of string
+        bell
+        candles x5
+        crowbar
+        hammer
+        pitons x10
+        hooded lantern
+        flask of oil x2
+        rations x5
+        tinderbox
+        waterskin
+        silk rope, 50'
