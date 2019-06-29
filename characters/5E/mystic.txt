@@ -1,42 +1,6 @@
-Human (Variant)
-Mystic (Awakened) 3
-Chaotic Neutral
-
-
-Name:
-         __________
-        / ________  \
-       / / _______ \ \
-\_____/_/_/___.___\_\_\____|_|_/_
-/            /|\           | |
-            / | \
-          \/  |  \//
-          /\  |  /X
-       __/   -|-   \
-      | . |   |     \
-      |___|   |     |\
-     /       \|/
-              |
-
-
-                 , - ~ ~ ~ - ,
-             , '    _ _ _ _    ' ,
-           ,    . `         ` .    ,
-          ,    ,                    ,
-         ,   ,                       ,
-         ,   ,                       ,
-
-
-S  8
-D 15
-C 12
-I 17
-W 14
-Ch 8
-
-HD: 1d8
-HP: 21
-AC 14 (studded leather)
+Human (Variant), Mystic (Awakened) 3, Chaotic Neutral
+S 8, D 15, C 12, I 17, W 14, Ch 8
+HD: 1d8  HP: 21  AC 14 (studded leather)
 
 Quirks:
     You always wear a mask
@@ -67,9 +31,7 @@ Features:
         Additionally, you can embed an intangible psionic sensor within the object. For the next 24 hours, you can use an action to learn the object's location relative to you (its distance and direction) and to look at the object's surroundings from its point of view as if you were there. This perception lasts until the start of your next turn.
         Once you use this feature, you can't use it again until you finish a short or long rest.
 
-Spells (from Arcanist):
-    Prestidigitation
-    Detect Magic 1/day
+Spells (from Arcanist): Prestidigitation, Detect Magic 1/day
 
 Psionics:
     Talents: 1; Disciplines: 2+2; PP: 14; Psi Limit: 3
@@ -108,12 +70,8 @@ Psionics:
         Blind Spot: (120'; Wisdom save or Invis to target for 1 turn)
 
 Attacks:
-    dagger
-        finesse, light, thrown (20/60)
-        +4 to hit, 1d4+2 piercing
-    dart
-        finesse, thrown (20/60)
-        +4 to hit, 1d4+2 piercing
+    +4 dagger 1d4+2; finesse, light, thrown (20/60)
+    +4 dart 1d4+2; finesse, thrown (20/60)
 
 Coin: 1206gp 1sp 4cp
 
@@ -126,7 +84,7 @@ Equipment:
     pouch
 
     dagger
-    dart x40
+    dart x39
     studded leather
     camel
         riding saddle
@@ -155,10 +113,4 @@ Equipment:
     Winged Boots
     Cloak of Billowing
 
-Smells Known:
-    mint
-    cheese
-    troglodyte
-    Scar Ash
-    smoke
-    brimstone
+Smells Known: mint, cheese, troglodyte, Scar Ash, smoke, brimstone
