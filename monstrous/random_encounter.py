@@ -34,7 +34,7 @@ def gen_enc_table(monsters, terrain):
         for roll in TABLE[freq]:
             monster = random.choice(possible[freq])
             possible[freq].remove(monster)
-            print(f"{roll} {monster}")
+            print(f"{roll} {monster}  {monsters[monster]['No. Appearing']}")
         print()
 
 
