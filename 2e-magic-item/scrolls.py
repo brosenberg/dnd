@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import json
+import os
 import random
-import sys
+
 
 class Spells(object):
     def __init__(self, spell_file):
@@ -10,6 +11,7 @@ class Spells(object):
 
     def random_spell(self, spell_level):
         return random.choice(self.spell_list[spell_level])
+
 
 class Scroll(object):
     def __init__(self, spells, spell_count, min_level, max_level, scroll_type=None):
@@ -26,9 +28,9 @@ class Scroll(object):
         if self.scroll_type:
             s += "%s Scroll: " % (self.scroll_type)
         for level in sorted(self.scroll.keys()):
-            s += "%s - %s; " % (level, ', '.join(sorted(self.scroll[level])))
-        s = s.rstrip('; ')
-        s = "%s\nCapacity = %d" % (s, self.scroll_capacity)
+            s += "%s - %s; " % (level, ", ".join(sorted(self.scroll[level])))
+        s = s.rstrip("; ")
+        # s = "%s\nCapacity = %d" % (s, self.scroll_capacity)
         return s
 
     def generate(self):
@@ -48,8 +50,8 @@ class Scroll(object):
                 cur_spell = self.scroll[spell_level][spell_index]
                 # Assume that no spells contain "(" in their name
                 # TODO: r'^.*(\([0-9]\))$'
-                if '(' in cur_spell:
-                    count = int(cur_spell.split("(")[1][:-1])+1
+                if "(" in cur_spell:
+                    count = int(cur_spell.split("(")[1][:-1]) + 1
                     cur_spell = "%s (%d)" % (new_spell, count)
                 else:
                     cur_spell = "%s (2)" % (new_spell,)
@@ -57,8 +59,9 @@ class Scroll(object):
             else:
                 self.scroll[spell_level].append(new_spell)
 
+
 def random_spell_scroll(wizard_spells, priest_spells):
-    scroll_roll = random.randint(1,19)
+    scroll_roll = random.randint(1, 19)
     type_roll = random.randint(1, 100)
     scroll_type = "Wizard"
     spell_list = wizard_spells
@@ -99,16 +102,24 @@ def random_spell_scroll(wizard_spells, priest_spells):
     if scroll_type == "Priest" and max_level > 7:
         max_level = 7
 
-    scroll = Scroll(spell_list, spell_count, min_level, max_level, scroll_type=scroll_type)
+    scroll = Scroll(
+        spell_list, spell_count, min_level, max_level, scroll_type=scroll_type
+    )
     scroll.generate()
     return scroll
 
-def main():
-    wizard_spells = Spells('wizard-spells.json')
-    priest_spells = Spells('priest-spells.json')
-    
-    scroll = random_spell_scroll(wizard_spells, priest_spells)
-    print scroll
 
-if __name__ == '__main__':
+def generate_scroll():
+    base_dir = os.path.dirname(os.path.realpath(__file__))
+    wizard_spells = Spells(f"{base_dir}/spells/wizard-spells.json")
+    priest_spells = Spells(f"{base_dir}/spells/priest-spells.json")
+    return random_spell_scroll(wizard_spells, priest_spells)
+
+
+def main():
+    scroll = generate_scroll()
+    print(scroll)
+
+
+if __name__ == "__main__":
     main()
