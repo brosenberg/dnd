@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import os
 import random
@@ -233,24 +234,55 @@ def roll_category(category):
 
 def roll_random_category():
     category = load_and_roll("categories.json")[0]
-    print(category)
-    print(roll_category(category)[0])
+    return f'{category} - {roll_category(category)[0]}'
 
 
 def roll_random_misc():
     category = load_and_roll("misc_magic.json")[0]
-    print(category)
-    print(roll_category(category)[0])
+    return f'{category} - {roll_category(category)[0]}'
+
+
+def roll_nonweapon():
+    results = []
+    categories = list(load_table("categories.json").values())
+    categories.remove('Weapons')
+    category = random.choice(categories)
+    return f'{category} - {roll_category(category)[0]}'
 
 
 def roll_all_categories():
+    results = []
+    categories = load_table("categories.json").values()
+    for category in categories:
+        results.append(f"{category} - {roll_category(category)[0]}")
+    return results
+
+
+def print_all_categories():
     categories = load_table("categories.json")
     for category in categories.values():
-        print(f"{category} - {roll_category(category)[0]}")
+        print(category)
 
 
 def main():
-    roll_all_categories()
+    parser = argparse.ArgumentParser(description='Generate random magic items.')
+    parser.add_argument('-a', '--all', action="store_true", help="generate an item in every category")
+    parser.add_argument('-c', '--category', action="store", help="generate a magic item from a specific category")
+    parser.add_argument('-m', '--misc', action="store_true", help="generate a misc. magic item")
+    parser.add_argument('-n', '--nonweapon', action="store_true", help="generate a non-weapon magic item")
+    parser.add_argument('-p', '--print', action="store_true", help="print all valid categories")
+
+    args = parser.parse_args()
+    if args.all:
+        print('\n'.join(roll_all_categories()))
+    if args.category:
+        print(f'{args.category} - {roll_category(args.category)[0]}')
+    if args.misc:
+        print(roll_random_misc())
+    if args.nonweapon:
+        print(roll_nonweapon())
+    if args.print:
+        print_all_categories()
 
 
 if __name__ == "__main__":
