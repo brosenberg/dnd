@@ -10,10 +10,10 @@ LEVEL_RANGE = {
     "Very high": (1, 12, 8),
 }
 MAGIC_ITEMS = {
-    "Fighter": ["Armor", "Shield", "Sword", "Misc. Weapon", "Potion"],
-    "Wizard": ["Scroll", "Ring", "Wand/Staff/Rod", "Misc. Magic"],
-    "Cleric": ["Armor", "Shield", "Misc. Weapon", "Potion", "Scroll", "Misc. Magic"],
-    "Thief": ["Shield", "Sword", "Misc. Weapon", "Potion", "Ring", "Misc. Magic"],
+    "Fighter": ["Armor No Shields", "Shields", "Sword", "Nonsword", "Potions and Oils"],
+    "Wizard": ["Scrolls", "Rings", "Rod/Staff/Wand", "Misc Magic"],
+    "Cleric": ["Armor No Shields", "Shields", "Nonsword", "Potions and Oils", "Scrolls", "Misc Magic"],
+    "Thief": ["Shields", "Sword", "Nonsword", "Potions and Oils", "Rings", "Misc Magic"],
 }
 
 
@@ -40,15 +40,21 @@ class Adventurer(object):
             LEVEL_RANGE[level_range][2],
         )
         self.equipment = []
-        for magic_item in MAGIC_ITEMS[self.char_class]:
+        has_armor = False
+        has_shield = False
+        for category in MAGIC_ITEMS[self.char_class]:
             if roll(1, 100, 0) <= self.level * 5:
-                self.equipment.append("Magic " + magic_item)
+                if category == "Armor No Shields":
+                    has_armor = True
+                elif category == "Shields":
+                    has_shield = True
+                self.equipment.append(str(magic_item.roll_category(category)[0]))
         if self.level > 7 and (
             self.char_class == "Cleric" or self.char_class == "Fighter"
         ):
-            if "Magic Armor" not in self.equipment:
+            if not has_armor:
                 self.equipment.append("plate mail")
-            if "Magic Shield" not in self.equipment:
+            if not has_shield:
                 self.equipment.append("medium shield")
             self.equipment.append("unbarded medium warhorse")
 

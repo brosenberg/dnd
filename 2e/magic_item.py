@@ -168,6 +168,18 @@ def armor(mod=0):
         return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
 
 
+def armor_no_shields():
+    base_armor = load_and_roll("armor_no_shield.json")
+    adjustment = load_and_roll("armor_adjustment.json")
+    return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
+
+
+def shields():
+    base_armor = load_and_roll("shields.json")
+    adjustment = load_and_roll("armor_adjustment.json")
+    return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
+
+
 def weapon(mod=0):
     result = roll(1, 6, 0)
     base_weapon = None
@@ -202,9 +214,15 @@ def sword():
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
 def non_sword():
-    base_weapon = load_and_roll("non_sword_weapon.json")
+    base_weapon = load_and_roll("non_sword_weapons.json")
     adjustment = load_and_roll("weapon_adjustment.json")
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
+
+def misc_magic():
+    category = load_and_roll("misc_magic.json")[0]
+    return roll_category(category)
+
+
 
 def roll_category(category):
     if category == "Potions and Oils":
@@ -219,6 +237,9 @@ def roll_category(category):
         return staves()
     elif category == "Wands":
         return wands()
+    elif category == "Rod/Staff/Wand":
+        category = random.choice(["Rods", "Staves", "Wands"])
+        roll_category(category)
     elif category == "Books and Tomes":
         return books()
     elif category == "Jewels and Jewelry":
@@ -241,8 +262,18 @@ def roll_category(category):
         return weird()
     elif category == "Armor and Shields":
         return armor()
+    elif category == "Armor No Shields":
+        return armor_no_shields()
+    elif category == "Shields":
+        return shields()
     elif category == "Weapons":
         return weapon()
+    elif category == "Sword":
+        return sword()
+    elif category == "Nonsword":
+        return non_sword()
+    elif category == "Misc Magic":
+        return misc_magic()
     else:
         print(f"Unknown category '{category}'")
         return None
@@ -250,12 +281,7 @@ def roll_category(category):
 
 def roll_random_category():
     category = load_and_roll("categories.json")[0]
-    return f"{category}: {roll_category(category)[0]}"
-
-
-def roll_random_misc():
-    category = load_and_roll("misc_magic.json")[0]
-    return f"{category}: {roll_category(category)[0]}"
+    return roll_category(category)[0]
 
 
 def roll_nonweapon():
@@ -263,14 +289,14 @@ def roll_nonweapon():
     categories = list(load_table("categories.json").values())
     categories.remove("Weapons")
     category = random.choice(categories)
-    return f"{category}: {roll_category(category)[0]}"
+    return roll_category(category)[0]
 
 
 def roll_all_categories():
     results = []
     categories = load_table("categories.json").values()
     for category in categories:
-        results.append(f"{category}: {roll_category(category)[0]}")
+        results.append(roll_category(category)[0])
     return results
 
 
@@ -308,9 +334,9 @@ def main():
     if args.all:
         print("\n".join(roll_all_categories()))
     if args.category:
-        print(f"{args.category}: {roll_category(args.category)[0]}")
+        print(roll_category(args.category)[0])
     if args.misc:
-        print(roll_random_misc())
+        print(roll_category("Misc Magic")[0])
     if args.nonweapon:
         print(roll_nonweapon())
     if args.print:
