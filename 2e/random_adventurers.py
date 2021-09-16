@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import random
+import magic_item
 
 LEVEL_RANGE = {
     "Low": (1, 3, 0),

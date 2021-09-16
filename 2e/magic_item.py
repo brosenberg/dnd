@@ -187,11 +187,24 @@ def weapon(mod=0):
         else:
             return load_and_roll("special_weapons_c.json")
     elif base_weapon[0] == "Sword" or base_weapon[0] == "Scimitar":
+        if base_weapon[0] == "Sword":
+            base_weapon = (load_and_roll("sword_types.json")[0], base_weapon[1])
         adjustment = load_and_roll("sword_adjustment.json")
     else:
+        if base_weapon[0] == "Pole Arm":
+            base_weapon = (load_and_roll("polearms.json")[0], base_weapon[1])
         adjustment = load_and_roll("weapon_adjustment.json")
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
+def sword():
+    base_weapon = load_and_roll("sword_types.json")
+    adjustment = load_and_roll("sword_adjustment.json")
+    return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
+
+def non_sword():
+    base_weapon = load_and_roll("non_sword_weapon.json")
+    adjustment = load_and_roll("weapon_adjustment.json")
+    return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
 def roll_category(category):
     if category == "Potions and Oils":
@@ -231,6 +244,7 @@ def roll_category(category):
     elif category == "Weapons":
         return weapon()
     else:
+        print(f"Unknown category '{category}'")
         return None
 
 
