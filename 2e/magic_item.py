@@ -221,9 +221,27 @@ def non_sword():
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
 
+def armor_or_weapon():
+    category = load_and_roll("armor_or_weapon.json")[0]
+    return roll_category(category)
+
+
 def misc_magic():
     category = load_and_roll("misc_magic.json")[0]
     return roll_category(category)
+
+
+def random_magic_item():
+    category = load_and_roll("categories.json")[0]
+    return roll_category(category)[0]
+
+
+def roll_nonweapon():
+    results = []
+    categories = list(load_table("categories.json").values())
+    categories.remove("Weapons")
+    category = random.choice(categories)
+    return roll_category(category)[0]
 
 
 def roll_category(category):
@@ -281,19 +299,6 @@ def roll_category(category):
         return None
 
 
-def roll_random_category():
-    category = load_and_roll("categories.json")[0]
-    return roll_category(category)[0]
-
-
-def roll_nonweapon():
-    results = []
-    categories = list(load_table("categories.json").values())
-    categories.remove("Weapons")
-    category = random.choice(categories)
-    return roll_category(category)[0]
-
-
 def roll_all_categories():
     results = []
     categories = load_table("categories.json").values()
@@ -320,6 +325,9 @@ def main():
         help="generate a magic item from a specific category",
     )
     parser.add_argument(
+        "-i", "--item", action="store_true", help="generate a random magic item"
+    )
+    parser.add_argument(
         "-m", "--misc", action="store_true", help="generate a misc. magic item"
     )
     parser.add_argument(
@@ -337,6 +345,8 @@ def main():
         print("\n".join(roll_all_categories()))
     if args.category:
         print(roll_category(args.category)[0])
+    if args.item:
+        print(random_magic_item())
     if args.misc:
         print(roll_category("Misc Magic")[0])
     if args.nonweapon:
