@@ -12,8 +12,22 @@ LEVEL_RANGE = {
 MAGIC_ITEMS = {
     "Fighter": ["Armor No Shields", "Shields", "Sword", "Nonsword", "Potions and Oils"],
     "Wizard": ["Scrolls", "Rings", "Rod/Staff/Wand", "Misc Magic"],
-    "Cleric": ["Armor No Shields", "Shields", "Nonsword", "Potions and Oils", "Scrolls", "Misc Magic"],
-    "Thief": ["Shields", "Sword", "Nonsword", "Potions and Oils", "Rings", "Misc Magic"],
+    "Cleric": [
+        "Armor No Shields",
+        "Shields",
+        "Nonsword",
+        "Potions and Oils",
+        "Scrolls",
+        "Misc Magic",
+    ],
+    "Thief": [
+        "Shields",
+        "Sword",
+        "Nonsword",
+        "Potions and Oils",
+        "Rings",
+        "Misc Magic",
+    ],
 }
 
 

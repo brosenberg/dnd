@@ -208,20 +208,22 @@ def weapon(mod=0):
         adjustment = load_and_roll("weapon_adjustment.json")
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
+
 def sword():
     base_weapon = load_and_roll("sword_types.json")
     adjustment = load_and_roll("sword_adjustment.json")
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
+
 
 def non_sword():
     base_weapon = load_and_roll("non_sword_weapons.json")
     adjustment = load_and_roll("weapon_adjustment.json")
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
+
 def misc_magic():
     category = load_and_roll("misc_magic.json")[0]
     return roll_category(category)
-
 
 
 def roll_category(category):
