@@ -187,47 +187,67 @@ def weapon(mod=0):
     return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
 
 
-def main():
+def roll_category(category):
+    if category == "Potions and Oils":
+        return potions_and_oils()
+    elif category == "Scrolls":
+        return scrolls()
+    elif category == "Rings":
+        return rings()
+    elif category == "Rods":
+        return rods()
+    elif category == "Staves":
+        return staves()
+    elif category == "Wands":
+        return wands()
+    elif category == "Books and Tomes":
+        return books()
+    elif category == "Jewels and Jewelry":
+        return jewelry()
+    elif category == "Cloaks and Robes":
+        return cloaks_robes()
+    elif category == "Boots and Gloves":
+        return boots_bracers_gloves()
+    elif category == "Girdles and Helms":
+        return girdles_hats_helms()
+    elif category == "Bags and Bottles":
+        return containers()
+    elif category == "Dusts and Stones":
+        return candles_dust_stones()
+    elif category == "Household Items and Tools":
+        return household_tools()
+    elif category == "Musical Instruments":
+        return musical_instruments()
+    elif category == "The Weird Stuff":
+        return weird()
+    elif category == "Armor and Shields":
+        return armor()
+    elif category == "Weapons":
+        return weapon()
+    else:
+        return None
+
+
+def roll_random_category():
     category = load_and_roll("categories.json")[0]
     print(category)
-    if category == 'Potions and Oils':
-        print(potions_and_oils())
-    elif category == 'Scrolls':
-        print(scrolls())
-    elif category == 'Rings':
-        print(rings())
-    elif category == 'Rods':
-        print(rods())
-    elif category == 'Staves':
-        print(staves())
-    elif category == 'Wands':
-        print(wands())
-    elif category == 'Books and Tomes':
-        print(books())
-    elif category == 'Jewels and Jewelry':
-        print(jewelry())
-    elif category == 'Cloaks and Robes':
-        print(cloaks_robes())
-    elif category == 'Boots and Gloves':
-        print(boots_bracers_gloves())
-    elif category == 'Girdles and Helms':
-        print(girdles_hats_helms())
-    elif category == 'Bags and Bottles':
-        print(containers())
-    elif category == 'Dusts and Stones':
-        print(candles_dust_stones())
-    elif category == 'Household Items and Tools':
-        print(household_tools())
-    elif category == 'Musical Instruments':
-        print(musical_instruments())
-    elif category == 'The Weird Stuff':
-        print(weird())
-    elif category == 'Armor and Shields':
-        print(armor())
-    elif category == 'Weapons':
-        print(weapon())
-    else:
-        print(f"Unknown category '{category}'")
+    print(roll_category(category)[0])
+
+
+def roll_random_misc():
+    category = load_and_roll("misc_magic.json")[0]
+    print(category)
+    print(roll_category(category)[0])
+
+
+def roll_all_categories():
+    categories = load_table("categories.json")
+    for category in categories.values():
+        print(f"{category} - {roll_category(category)[0]}")
+
+
+def main():
+    roll_all_categories()
 
 
 if __name__ == "__main__":
