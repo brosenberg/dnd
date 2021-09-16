@@ -36,6 +36,13 @@ def potions_and_oils():
     else:
         return load_and_roll("potions_oils_c.json")
 
+def armor():
+    base_armor = load_and_roll('armor_type.json')
+    adjustment = load_and_roll('armor_adjustment.json')
+    if base_armor == 'Special':
+        return load_and_roll('special_armor.json')
+    else:
+        return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
 
 def weapon():
     result = roll(1, 6, 0)
@@ -58,6 +65,7 @@ def main():
     categories = load_table("categories.json")
     print(roll_table(categories))
     print(potions_and_oils())
+    print(armor())
     print(weapon())
 
 
