@@ -5,6 +5,8 @@ import json
 import os
 import random
 
+from scrolls import generate_scroll
+
 
 def roll(dice, sides, mod):
     total = mod
@@ -67,7 +69,7 @@ def potions_and_oils(mod=0):
 def scrolls(mod=0):
     result = roll(1, 6, 0)
     if result < 5:
-        return load_and_roll("scrolls_a.json", mod=mod)
+        return (generate_scroll(), result)
     else:
         return load_and_roll("scrolls_b.json", mod=mod)
 
@@ -234,12 +236,12 @@ def roll_category(category):
 
 def roll_random_category():
     category = load_and_roll("categories.json")[0]
-    return f'{category} - {roll_category(category)[0]}'
+    return f'{category}: {roll_category(category)[0]}'
 
 
 def roll_random_misc():
     category = load_and_roll("misc_magic.json")[0]
-    return f'{category} - {roll_category(category)[0]}'
+    return f'{category}: {roll_category(category)[0]}'
 
 
 def roll_nonweapon():
@@ -247,14 +249,14 @@ def roll_nonweapon():
     categories = list(load_table("categories.json").values())
     categories.remove('Weapons')
     category = random.choice(categories)
-    return f'{category} - {roll_category(category)[0]}'
+    return f'{category}: {roll_category(category)[0]}'
 
 
 def roll_all_categories():
     results = []
     categories = load_table("categories.json").values()
     for category in categories:
-        results.append(f"{category} - {roll_category(category)[0]}")
+        results.append(f"{category}: {roll_category(category)[0]}")
     return results
 
 
@@ -276,7 +278,7 @@ def main():
     if args.all:
         print('\n'.join(roll_all_categories()))
     if args.category:
-        print(f'{args.category} - {roll_category(args.category)[0]}')
+        print(f'{args.category}: {roll_category(args.category)[0]}')
     if args.misc:
         print(roll_random_misc())
     if args.nonweapon:
