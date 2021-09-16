@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import random
 
 
@@ -21,7 +22,9 @@ def roll_table(table, mod=0):
 
 
 def load_table(fname):
-    return json.load(open(fname))
+    base_dir = os.path.dirname(os.path.realpath(__file__))
+    path = f'{base_dir}/magic_items/{fname}'
+    return json.load(open(path))
 
 
 def load_and_roll(fname, mod=0):
