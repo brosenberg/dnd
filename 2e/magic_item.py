@@ -5,7 +5,7 @@ import json
 import os
 import random
 
-from scrolls import generate_scroll
+from generate_scroll import generate_scroll
 
 
 def roll(dice, sides, mod):
