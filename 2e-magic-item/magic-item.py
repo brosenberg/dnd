@@ -30,12 +30,63 @@ def load_and_roll(fname, mod=0):
 
 def potions_and_oils(mod=0):
     result = roll(1, 6, 0)
+    base_potion = None
     if result < 3:
-        return load_and_roll("potions_oils_a.json", mod=mod)
+        base_potion = load_and_roll("potions_oils_a.json", mod=mod)
     if result < 5:
-        return load_and_roll("potions_oils_b.json", mod=mod)
+        base_potion = load_and_roll("potions_oils_b.json", mod=mod)
     else:
-        return load_and_roll("potions_oils_c.json", mod=mod)
+        base_potion = load_and_roll("potions_oils_c.json", mod=mod)
+
+    if base_potion[0] == "Animal Control":
+        animal_control = load_and_roll("animal_control.json")[0]
+        base_potion = (f"{base_potion[0]} ({animal_control})", base_potion[1])
+    elif base_potion[0] == "Dragon Control":
+        dragon_control = load_and_roll("dragon_control.json")[0]
+        base_potion = (f"{base_potion[0]} ({dragon_control})", base_potion[1])
+    elif base_potion[0] == "Giant Control":
+        giant_control = load_and_roll("giant_control.json")[0]
+        base_potion = (f"{base_potion[0]} ({giant_control})", base_potion[1])
+    elif base_potion[0] == "Giant Strength":
+        giant_strength = load_and_roll("giant_strength.json")[0]
+        base_potion = (f"{base_potion[0]} ({giant_strength})", base_potion[1])
+    elif base_potion[0] == "Oil of Elemental Invulnerability":
+        elemental_invuln = load_and_roll("elemental_invuln.json")[0]
+        base_potion = (f"{base_potion[0]} ({elemental_invuln})", base_potion[1])
+    elif base_potion[0] == "Undead Control":
+        undead_control = load_and_roll("undead_control.json")[0]
+        base_potion = (f"{base_potion[0]} ({undead_control})", base_potion[1])
+
+    return base_potion
+
+
+def scrolls(mod=0):
+    result = roll(1, 6, 0)
+    if result < 5:
+        return load_and_roll("scrolls_a.json", mod=mod)
+    else:
+        return load_and_roll("scrolls_b.json", mod=mod)
+
+
+def rings(mod=0):
+    result = roll(1, 6, 0)
+    base_ring = None
+    if result < 5:
+        base_ring = load_and_roll("rings_a.json", mod=mod)
+    else:
+        base_ring = load_and_roll("rings_b.json", mod=mod)
+
+    if base_ring[0] == "Clumsiness":
+        clumsiness = load_and_roll("clumsiness.json")[0]
+        base_ring = (f"{base_ring[0]} {clumsiness}", base_ring[1])
+    elif base_ring[0] == "Contrariness":
+        contrariness = load_and_roll("contrariness.json")[0]
+        base_ring = (f"{base_ring[0]} {contrariness}", base_ring[1])
+    elif base_ring[0] == "Protection":
+        ring_protection = load_and_roll("ring_protection.json")[0]
+        base_ring = (f"{base_ring[0]} {ring_protection}", base_ring[1])
+
+    return base_ring
 
 
 def armor(mod=0):
@@ -76,6 +127,8 @@ def main():
     categories = load_table("categories.json")
     print(roll_table(categories))
     print(potions_and_oils())
+    print(scrolls())
+    print(rings())
     print(armor())
     print(weapon())
 

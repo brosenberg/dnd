@@ -1,0 +1,9 @@
+{
+    "4": "mammal/marsupial",
+    "8": "avian",
+    "12": "reptile/amphibian",
+    "15": "fish",
+    "17": "mammal/marsupial/avian",
+    "19": "reptile/amphibian/fish",
+    "20": "all animals"
+}
