@@ -76,8 +76,8 @@ def main():
     categories = load_table("categories.json")
     print(roll_table(categories))
     print(potions_and_oils())
-    print(armor(mod))
-    print(weapon(mod))
+    print(armor())
+    print(weapon())
 
 
 if __name__ == "__main__":
