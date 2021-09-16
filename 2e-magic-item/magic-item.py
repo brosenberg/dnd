@@ -89,6 +89,48 @@ def rings(mod=0):
     return base_ring
 
 
+def rods(mod=0):
+    return load_and_roll("rods.json", mod=mod)
+
+
+def staves(mod=0):
+    return load_and_roll("staves.json", mod=mod)
+
+
+def wands(mod=0):
+    return load_and_roll("wands.json", mod=mod)
+
+
+def books(mod=0):
+    return load_and_roll("books.json", mod=mod)
+
+
+def jewelry(mod=0):
+    result = roll(1, 6, 0)
+    base_ring = None
+    if result < 4:
+        base_ring = load_and_roll("jewelry_a.json", mod=mod)
+    else:
+        base_ring = load_and_roll("jewelry_b.json", mod=mod)
+    return base_ring
+
+
+def cloaks_robes(mod=0):
+    return load_and_roll("cloaks_robes.json", mod=mod)
+
+
+def boots_bracers_gloves(mod=0):
+    return load_and_roll("boots_bracers_gloves.json", mod=mod)
+
+
+def girdles_hats_helms(mod=0):
+    return load_and_roll("girdles_hats_helms.json", mod=mod)
+
+
+def containers(mod=0):
+    return load_and_roll("containers.json", mod=mod)
+
+
 def armor(mod=0):
     base_armor = load_and_roll("armor_type.json", mod=mod)
     adjustment = load_and_roll("armor_adjustment.json")
@@ -129,6 +171,15 @@ def main():
     print(potions_and_oils())
     print(scrolls())
     print(rings())
+    print(rods())
+    print(staves())
+    print(wands())
+    print(books())
+    print(jewelry())
+    print(cloaks_robes())
+    print(boots_bracers_gloves())
+    print(girdles_hats_helms())
+    print(containers())
     print(armor())
     print(weapon())
 
