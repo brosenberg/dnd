@@ -5,15 +5,9 @@ import json
 import os
 import random
 
+from dice import roll
 from generate_scroll import generate_scroll
 from generate_scroll import random_spell
-
-
-def roll(dice, sides, mod):
-    total = mod
-    for die in range(0, dice):
-        total += random.randint(1, sides)
-    return total
 
 
 def roll_table(table, mod=0):
@@ -194,7 +188,11 @@ def wands(mod=0):
 
 
 def books(mod=0):
-    return load_and_roll("books.json", mod=mod)
+    base_book = load_and_roll("books.json", mod=mod)
+    if base_book == "Book of Infinite Spells":
+        pages = (1, 8, 22)
+        base_book = f'{base_book} ({pages} pages)'
+    return base_book
 
 
 def jewelry(mod=0):
@@ -204,6 +202,11 @@ def jewelry(mod=0):
         base_jewelry = load_and_roll("jewelry_a.json", mod=mod)
     else:
         base_jewelry = load_and_roll("jewelry_b.json", mod=mod)
+
+    if base_jewelry == "Amulet Versus Undead":
+        amulet_versus_undead = load_and_roll("amulet_versus_undead.json")
+        base_jewelry = f'{base_jewelry} ({amulet_versus_undead} level)'
+
     return base_jewelry
 
 
@@ -220,7 +223,24 @@ def girdles_hats_helms(mod=0):
 
 
 def containers(mod=0):
-    return load_and_roll("containers.json", mod=mod)
+    base_container = load_and_roll("containers.json", mod=mod)
+    base_container = "Beaker of Plentiful Potions"
+    if base_container == "Bag of Beans":
+        beans = roll(3, 4, 0)
+        base_container = f"{base_container} ({beans} beans)"
+    elif base_container == "Bag of Holding":
+        bag_of_holding = load_and_roll("bag_of_holding.json")
+        base_container = f"{base_container} ({bag_of_holding})"
+    elif base_container == "Bag of Tricks":
+        bag_of_tricks = load_and_roll("bag_of_tricks.json")
+        base_container = f"{base_container} ({bag_of_tricks})"
+    elif base_container == "Beaker of Plentiful Potions":
+        potions = []
+        for _ in range(0, roll(1, 4, 1)):
+            doses = roll(1, 4, 1)
+            potions.append(f'{potions_and_oils()} ({doses} doses)')
+        base_container = f"{base_container} (Potions: {', '.join(potions)})"
+    return base_container
 
 
 def candles_dust_stones(mod=0):
