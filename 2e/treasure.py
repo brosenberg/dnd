@@ -3,6 +3,7 @@
 import random
 import sys
 
+import jewelry
 import gems
 import magic_item
 
@@ -243,7 +244,15 @@ def print_treasure(treasure):
 
 
 def generate_gems(treasure):
-    gems.generate_gems(treasure["gems"])
+    if treasure["gems"]:
+        print(f"\nGems ({treasure['gems']}):")
+        gems.generate_gems(treasure["gems"])
+
+
+def generate_jewelry(treasure):
+    if treasure["art/jewelry"]:
+        print(f"\nJewelry ({treasure['art/jewelry']}):")
+        jewelry.generate_jewelry(treasure["art/jewelry"])
 
 
 def generate_magic_items(treasure):
@@ -270,10 +279,12 @@ def generate_magic_items(treasure):
 def main():
     t = roll_treasure(list("".join(sys.argv[1:]).upper()))
     print_treasure(t)
-    print("\nGems:")
     generate_gems(t)
-    print("\nMagic Items, Potions, and Scrolls:")
-    print("\n".join(generate_magic_items(t)))
+    generate_jewelry(t)
+    magic_items = generate_magic_items(t)
+    if magic_items:
+        print("\nMagic Items, Potions, and Scrolls:")
+        print("\n".join(magic_items))
 
 
 if __name__ == "__main__":
