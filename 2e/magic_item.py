@@ -57,7 +57,10 @@ def potions_and_oils(mod=0):
     elif base_potion == "Potion of Giant Strength":
         giant_strength = load_and_roll("giant_strength.json")
         base_potion = f"{base_potion} ({giant_strength})"
-    elif base_potion == "Potion of Oil of Elemental Invulnerability":
+    elif base_potion == "Potion of Human Control":
+        potion_human_control = load_and_roll("potion_human_control.json")
+        base_potion = f"{base_potion} ({potion_human_control})"
+    elif base_potion == "Oil of Elemental Invulnerability":
         elemental_invuln = load_and_roll("elemental_invuln.json")
         base_potion = f"{base_potion} ({elemental_invuln})"
     elif base_potion == "Potion of Undead Control":
@@ -71,8 +74,15 @@ def scrolls(mod=0):
     result = roll(1, 6, 0)
     if result < 5:
         return str(generate_scroll())
-    else:
-        return load_and_roll("scrolls_b.json", mod=mod)
+    base_scroll = load_and_roll("scrolls_b.json", mod=mod)
+    if base_scroll == "Scroll of Protection - Elementals":
+        scroll_elementals = load_and_roll("scroll_elementals.json")
+        base_scroll = f"{base_scroll} ({scroll_elementals})"
+    elif base_scroll == "Scroll of Protection - Lycanthropes":
+        scroll_lycanthropes = load_and_roll("scroll_lycanthropes.json")
+        base_scroll = f"{base_scroll} ({scroll_lycanthropes})"
+
+    return base_scroll
 
 
 def rings(mod=0):
@@ -121,6 +131,19 @@ def rings(mod=0):
         for spell_level in spell_levels:
             spells.append(f"{spell_level}:{random_spell(spell_level, caster_class)}")
         base_ring = f"{base_ring} ({caster_class}): {', '.join(spells)}"
+    elif base_ring == "Ring of Telekinesis":
+        telekinesis = load_and_roll("telekinesis.json")
+        base_ring = f"{base_ring} ({telekinesis})"
+    elif base_ring == "Ring of Multiple Wishes":
+        wishes = roll(2, 4, 0)
+        base_ring = f"{base_ring} ({wishes} wishes)"
+    elif base_ring == "Ring of Three Wishes":
+        if roll(1, 100, 0) <= 25:
+            base_ring = f"{base_ring} (limited wish)"
+    elif base_ring == "Ring of Wizardry":
+        ring_of_wizardry = load_and_roll("ring_of_wizardry.json")
+        base_ring = f"{base_ring} ({ring_of_wizardry})"
+
     return base_ring
 
 
