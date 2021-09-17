@@ -177,7 +177,20 @@ def staves(mod=0):
 
 
 def wands(mod=0):
-    return load_and_roll("wands.json", mod=mod)
+    base_wand = load_and_roll("wands.json", mod=mod)
+    charges = roll(1, 20, 80)
+    trapped = False
+    if roll(1, 100, 0) == 1:
+        trapped = True
+
+    if base_wand == "Wand of Earth and Stone":
+        if roll(1, 100, 0) <= 50:
+            base_wand = f"{base_wand} (transmute mud to rock and transmute rock to mud)"
+
+    base_wand = f"{base_wand} ({charges} charges)"
+    if trapped:
+        base_wand = f"{base_wand} (trapped)"
+    return base_wand
 
 
 def books(mod=0):
