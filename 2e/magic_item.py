@@ -6,6 +6,7 @@ import os
 import random
 
 from generate_scroll import generate_scroll
+from generate_scroll import random_spell
 
 
 def roll(dice, sides, mod):
@@ -44,22 +45,22 @@ def potions_and_oils(mod=0):
     else:
         base_potion = load_and_roll("potions_oils_c.json", mod=mod)
 
-    if base_potion == "Animal Control":
+    if base_potion == "Potion of Animal Control":
         animal_control = load_and_roll("animal_control.json")
         base_potion = f"{base_potion} ({animal_control})"
-    elif base_potion == "Dragon Control":
+    elif base_potion == "Potion of Dragon Control":
         dragon_control = load_and_roll("dragon_control.json")
         base_potion = f"{base_potion} ({dragon_control})"
-    elif base_potion == "Giant Control":
+    elif base_potion == "Potion of Giant Control":
         giant_control = load_and_roll("giant_control.json")
         base_potion = f"{base_potion} ({giant_control})"
-    elif base_potion == "Giant Strength":
+    elif base_potion == "Potion of Giant Strength":
         giant_strength = load_and_roll("giant_strength.json")
         base_potion = f"{base_potion} ({giant_strength})"
-    elif base_potion == "Oil of Elemental Invulnerability":
+    elif base_potion == "Potion of Oil of Elemental Invulnerability":
         elemental_invuln = load_and_roll("elemental_invuln.json")
         base_potion = f"{base_potion} ({elemental_invuln})"
-    elif base_potion == "Undead Control":
+    elif base_potion == "Potion of Undead Control":
         undead_control = load_and_roll("undead_control.json")
         base_potion = f"{base_potion} ({undead_control})"
 
@@ -82,16 +83,44 @@ def rings(mod=0):
     else:
         base_ring = load_and_roll("rings_b.json", mod=mod)
 
-    if base_ring == "Clumsiness":
+    if base_ring == "Ring of Clumsiness":
         clumsiness = load_and_roll("clumsiness.json")
         base_ring = f"{base_ring} ({clumsiness})"
-    elif base_ring == "Contrariness":
+    elif base_ring == "Ring of Contrariness":
         contrariness = load_and_roll("contrariness.json")
         base_ring = f"{base_ring} ({contrariness})"
-    elif base_ring == "Protection":
+    elif base_ring == "Ring of Elemental Command":
+        element = random.choice(["Air", "Earth", "Fire", "Water"])
+        base_ring = f"{base_ring} ({element})"
+    elif base_ring == "Ring of Protection":
         ring_protection = load_and_roll("ring_protection.json")
         base_ring = f"{base_ring} {ring_protection}"
+    elif base_ring == "Ring of Regeneration":
+        if roll(1, 100, 0) >= 90:
+            base_ring = "Vampiric Ring of Regeneration"
+    elif base_ring == "Ring of Spell Storing":
 
+        def spell_storing_level(caster_class):
+            if caster_class == "Wizard":
+                spell_level = roll(1, 8, 0)
+                if spell_level == 8:
+                    spell_level = roll(1, 6, 0)
+            else:
+                spell_level = roll(1, 6, 0)
+                if spell_level == 6:
+                    spell_level = roll(1, 4, 0)
+            return spell_level
+
+        caster_class = "Wizard"
+        if roll(1, 100, 0) > 70:
+            caster_class = "Priest"
+        spell_levels = sorted(
+            [spell_storing_level(caster_class) for x in range(0, roll(1, 4, 1))]
+        )
+        spells = []
+        for spell_level in spell_levels:
+            spells.append(f"{spell_level}:{random_spell(spell_level, caster_class)}")
+        base_ring = f"{base_ring} ({caster_class}): {', '.join(spells)}"
     return base_ring
 
 
