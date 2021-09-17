@@ -249,7 +249,6 @@ def girdles_hats_helms(mod=0):
 
 def containers(mod=0):
     base_container = load_and_roll("containers.json", mod=mod)
-    base_container = "Beaker of Plentiful Potions"
     if base_container == "Bag of Beans":
         beans = roll(3, 4, 0)
         base_container = f"{base_container} ({beans} beans)"
