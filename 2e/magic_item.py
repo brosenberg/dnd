@@ -215,7 +215,32 @@ def cloaks_robes(mod=0):
 
 
 def boots_bracers_gloves(mod=0):
-    return load_and_roll("boots_bracers_gloves.json", mod=mod)
+    base_item = load_and_roll("boots_bracers_gloves.json", mod=mod)
+
+    if base_item == "Boots of Levitation":
+        weight = 280+(14*roll(1, 20, 0))
+        base_item = f'{base_item} ({weight} lbs.)'
+    elif base_item == "Boots of Varied Tracks":
+        def get_track_type():
+            table_roll = roll(1, 6, 0)
+            if table_roll < 4:
+                return load_and_roll("varied_tracks_a.json")
+            else:
+                return load_and_roll("varied_tracks_b.json")
+        track_types = []
+        while len(track_types) < 4:
+            new_track_type = get_track_type()
+            if new_track_type not in track_types:
+                track_types.append(new_track_type)
+        base_item = f"{base_item} (Track Types: {', '.join(track_types)})"
+    elif base_item == "Winged Boots":
+        winged_boots = load_and_roll("winged_boots.json")
+        base_item = f"{base_item} ({winged_boots})"
+    elif base_item == "Bracers of Defense":
+        bracers_of_defense = load_and_roll("bracers_of_defense.json")
+        base_item = f"{base_item} ({bracers_of_defense})"
+
+    return base_item
 
 
 def girdles_hats_helms(mod=0):
@@ -240,6 +265,9 @@ def containers(mod=0):
             doses = roll(1, 4, 1)
             potions.append(f'{potions_and_oils()} ({doses} doses)')
         base_container = f"{base_container} (Potions: {', '.join(potions)})"
+    elif base_container == "Bucknard's Everfull Purse":
+        everfull_purse = load_and_roll("everfull_purse.json")
+        base_container = f"{base_container} ({everfull_purse})"
     return base_container
 
 
@@ -248,7 +276,11 @@ def candles_dust_stones(mod=0):
 
 
 def household_tools(mod=0):
-    return load_and_roll("household_tools.json", mod=mod)
+    base_item = load_and_roll("household_tools.json", mod=mod)
+    if base_item == "Carpet of Flying":
+        carpet_of_flying = load_and_roll("carpet_of_flying.json")
+        base_item = f"{base_item} ({carpet_of_flying})"
+    return base_item
 
 
 def musical_instruments(mod=0):
