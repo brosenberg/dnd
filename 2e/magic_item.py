@@ -20,8 +20,8 @@ def roll_table(table, mod=0):
     result = roll(1, max_roll, mod)
     for value in sorted([int(x) for x in table.keys()]):
         if value >= result:
-            return (table[str(value)], result)
-    return (table[str(max_roll)], result)
+            return table[str(value)]
+    return table[str(max_roll)]
 
 
 def load_table(fname):
@@ -44,24 +44,24 @@ def potions_and_oils(mod=0):
     else:
         base_potion = load_and_roll("potions_oils_c.json", mod=mod)
 
-    if base_potion[0] == "Animal Control":
-        animal_control = load_and_roll("animal_control.json")[0]
-        base_potion = (f"{base_potion[0]} ({animal_control})", base_potion[1])
-    elif base_potion[0] == "Dragon Control":
-        dragon_control = load_and_roll("dragon_control.json")[0]
-        base_potion = (f"{base_potion[0]} ({dragon_control})", base_potion[1])
-    elif base_potion[0] == "Giant Control":
-        giant_control = load_and_roll("giant_control.json")[0]
-        base_potion = (f"{base_potion[0]} ({giant_control})", base_potion[1])
-    elif base_potion[0] == "Giant Strength":
-        giant_strength = load_and_roll("giant_strength.json")[0]
-        base_potion = (f"{base_potion[0]} ({giant_strength})", base_potion[1])
-    elif base_potion[0] == "Oil of Elemental Invulnerability":
-        elemental_invuln = load_and_roll("elemental_invuln.json")[0]
-        base_potion = (f"{base_potion[0]} ({elemental_invuln})", base_potion[1])
-    elif base_potion[0] == "Undead Control":
-        undead_control = load_and_roll("undead_control.json")[0]
-        base_potion = (f"{base_potion[0]} ({undead_control})", base_potion[1])
+    if base_potion == "Animal Control":
+        animal_control = load_and_roll("animal_control.json")
+        base_potion = f"{base_potion} ({animal_control})"
+    elif base_potion == "Dragon Control":
+        dragon_control = load_and_roll("dragon_control.json")
+        base_potion = f"{base_potion} ({dragon_control})"
+    elif base_potion == "Giant Control":
+        giant_control = load_and_roll("giant_control.json")
+        base_potion = f"{base_potion} ({giant_control})"
+    elif base_potion == "Giant Strength":
+        giant_strength = load_and_roll("giant_strength.json")
+        base_potion = f"{base_potion} ({giant_strength})"
+    elif base_potion == "Oil of Elemental Invulnerability":
+        elemental_invuln = load_and_roll("elemental_invuln.json")
+        base_potion = f"{base_potion} ({elemental_invuln})"
+    elif base_potion == "Undead Control":
+        undead_control = load_and_roll("undead_control.json")
+        base_potion = f"{base_potion} ({undead_control})"
 
     return base_potion
 
@@ -69,7 +69,7 @@ def potions_and_oils(mod=0):
 def scrolls(mod=0):
     result = roll(1, 6, 0)
     if result < 5:
-        return (generate_scroll(), result)
+        return str(generate_scroll())
     else:
         return load_and_roll("scrolls_b.json", mod=mod)
 
@@ -82,15 +82,15 @@ def rings(mod=0):
     else:
         base_ring = load_and_roll("rings_b.json", mod=mod)
 
-    if base_ring[0] == "Clumsiness":
-        clumsiness = load_and_roll("clumsiness.json")[0]
-        base_ring = (f"{base_ring[0]} {clumsiness}", base_ring[1])
-    elif base_ring[0] == "Contrariness":
-        contrariness = load_and_roll("contrariness.json")[0]
-        base_ring = (f"{base_ring[0]} {contrariness}", base_ring[1])
-    elif base_ring[0] == "Protection":
-        ring_protection = load_and_roll("ring_protection.json")[0]
-        base_ring = (f"{base_ring[0]} {ring_protection}", base_ring[1])
+    if base_ring == "Clumsiness":
+        clumsiness = load_and_roll("clumsiness.json")
+        base_ring = f"{base_ring} ({clumsiness})"
+    elif base_ring == "Contrariness":
+        contrariness = load_and_roll("contrariness.json")
+        base_ring = f"{base_ring} ({contrariness})"
+    elif base_ring == "Protection":
+        ring_protection = load_and_roll("ring_protection.json")
+        base_ring = f"{base_ring} {ring_protection}"
 
     return base_ring
 
@@ -162,22 +162,22 @@ def weird(mod=0):
 def armor(mod=0):
     base_armor = load_and_roll("armor_type.json", mod=mod)
     adjustment = load_and_roll("armor_adjustment.json")
-    if base_armor[0] == "Special":
+    if base_armor == "Special":
         return load_and_roll("special_armor.json")
     else:
-        return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
+        return f"{base_armor} {adjustment}"
 
 
 def armor_no_shields():
     base_armor = load_and_roll("armor_no_shield.json")
     adjustment = load_and_roll("armor_adjustment.json")
-    return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
+    return f"{base_armor} {adjustment}"
 
 
 def shields():
     base_armor = load_and_roll("shields.json")
     adjustment = load_and_roll("armor_adjustment.json")
-    return (f"{base_armor[0]} {adjustment[0]}", (base_armor[1], adjustment[1]))
+    return f"{base_armor} {adjustment}"
 
 
 def weapon(mod=0):
@@ -188,7 +188,7 @@ def weapon(mod=0):
         base_weapon = load_and_roll("weapon_type_a.json", mod=mod)
     else:
         base_weapon = load_and_roll("weapon_type_b.json", mod=mod)
-    if base_weapon[0] == "Special":
+    if base_weapon == "Special":
         result = roll(1, 10, 0)
         if result < 4:
             return load_and_roll("special_weapons_a.json")
@@ -198,42 +198,42 @@ def weapon(mod=0):
             return load_and_roll("special_weapons_c.json")
         else:
             return load_and_roll("special_weapons_c.json")
-    elif base_weapon[0] == "Sword" or base_weapon[0] == "Scimitar":
-        if base_weapon[0] == "Sword":
-            base_weapon = (load_and_roll("sword_types.json")[0], base_weapon[1])
+    elif base_weapon == "Sword" or base_weapon == "Scimitar":
+        if base_weapon == "Sword":
+            base_weapon = load_and_roll("sword_types.json")
         adjustment = load_and_roll("sword_adjustment.json")
     else:
-        if base_weapon[0] == "Pole Arm":
-            base_weapon = (load_and_roll("polearms.json")[0], base_weapon[1])
+        if base_weapon == "Pole Arm":
+            base_weapon = load_and_roll("polearms.json")
         adjustment = load_and_roll("weapon_adjustment.json")
-    return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
+    return f"{base_weapon} {adjustment}"
 
 
 def sword():
     base_weapon = load_and_roll("sword_types.json")
     adjustment = load_and_roll("sword_adjustment.json")
-    return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
+    return f"{base_weapon} {adjustment}"
 
 
 def non_sword():
     base_weapon = load_and_roll("non_sword_weapons.json")
     adjustment = load_and_roll("weapon_adjustment.json")
-    return (f"{base_weapon[0]} {adjustment[0]}", (base_weapon[1], adjustment[1]))
+    return f"{base_weapon} {adjustment}"
 
 
 def armor_or_weapon():
-    category = load_and_roll("armor_or_weapon.json")[0]
+    category = load_and_roll("armor_or_weapon.json")
     return roll_category(category)
 
 
 def misc_magic():
-    category = load_and_roll("misc_magic.json")[0]
+    category = load_and_roll("misc_magic.json")
     return roll_category(category)
 
 
 def random_magic_item():
-    category = load_and_roll("categories.json")[0]
-    return roll_category(category)[0]
+    category = load_and_roll("categories.json")
+    return roll_category(category)
 
 
 def roll_nonweapon():
@@ -241,7 +241,7 @@ def roll_nonweapon():
     categories = list(load_table("categories.json").values())
     categories.remove("Weapons")
     category = random.choice(categories)
-    return roll_category(category)[0]
+    return roll_category(category)
 
 
 def roll_category(category):
@@ -303,7 +303,7 @@ def roll_all_categories():
     results = []
     categories = load_table("categories.json").values()
     for category in categories:
-        results.append(roll_category(category)[0])
+        results.append(roll_category(category))
     return results
 
 
@@ -344,11 +344,11 @@ def main():
     if args.all:
         print("\n".join(roll_all_categories()))
     if args.category:
-        print(roll_category(args.category)[0])
+        print(roll_category(args.category))
     if args.item:
         print(random_magic_item())
     if args.misc:
-        print(roll_category("Misc Magic")[0])
+        print(roll_category("Misc Magic"))
     if args.nonweapon:
         print(roll_nonweapon())
     if args.print:

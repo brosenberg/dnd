@@ -3,6 +3,8 @@
 import random
 import sys
 
+import magic_item
+
 ORDER = [
     "cp",
     "sp",
@@ -215,7 +217,7 @@ def roll_treasure(ttypes):
                         )
                         treasure[thing] += amount
         else:
-            print "Unknown treasure type: %s" % (ttype,)
+            print("Unknown treasure type: %s" % (ttype,))
     return treasure
 
 
@@ -236,12 +238,34 @@ def print_treasure(treasure):
                     )
             else:
                 valuables.append("%s %s" % ("{:,}".format(treasure[thing]), thing))
-    print ", ".join(valuables)
+    print(", ".join(valuables))
 
+
+def generate_magic_items(treasure):
+    magic_items = []
+    for i in range(0, treasure['magic items']):
+        magic_items.append(magic_item.random_magic_item())
+    for i in range(0, treasure['potions']):
+        magic_items.append(magic_item.roll_category('Potions and Oils'))
+    for i in range(0, treasure['scrolls']):
+        magic_items.append(str(magic_item.roll_category('Scrolls')))
+    try:
+        for i in range(0, treasure['complex']['non-weapon magic items']):
+            magic_items.append(magic_item.roll_nonweapon())
+    except KeyError:
+        pass
+    try:
+        for i in range(0, treasure['complex']['magic armor or magic weapon']):
+            magic_items.append(magic_item.armor_or_weapon())
+    except KeyError:
+        pass
+    return sorted(magic_items)
 
 def main():
     t = roll_treasure(list("".join(sys.argv[1:]).upper()))
     print_treasure(t)
+    print('\nMagic Items, Potions, and Scrolls:')
+    print('\n'.join(generate_magic_items(t)))
 
 
 if __name__ == "__main__":
