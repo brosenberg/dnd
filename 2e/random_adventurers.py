@@ -62,7 +62,7 @@ class Adventurer(object):
                     has_armor = True
                 elif category == "Shields":
                     has_shield = True
-                self.equipment.append(str(magic_item.roll_category(category)[0]))
+                self.equipment.append(magic_item.roll_category(category))
         if self.level > 7 and (
             self.char_class == "Cleric" or self.char_class == "Fighter"
         ):
