@@ -152,7 +152,28 @@ def rods(mod=0):
 
 
 def staves(mod=0):
-    return load_and_roll("staves.json", mod=mod)
+    base_staff = load_and_roll("staves.json", mod=mod)
+    no_charge = ["Staff-Mace", "Staff-Spear", "Staff of the Serpent"]
+    has_charges = True
+    charges = roll(1, 6, 19)
+    if base_staff in no_charge:
+        has_charges = False
+
+    if base_staff == "Staff-Spear":
+        staff_spear = load_and_roll("staff_spear.json")
+        base_staff = f"{base_staff} {staff_spear}"
+    elif base_staff == "Staff of the Serpent":
+        snake = "Python"
+        if roll(1, 100, 0) > 60:
+            snake = "Adder"
+        base_staff = f"{base_staff} ({snake})"
+    elif base_staff == "Staff of Swarming Insects":
+        charges = roll(1, 6, 44)
+
+    if has_charges:
+        base_staff = f"{base_staff} ({charges} charges)"
+
+    return base_staff
 
 
 def wands(mod=0):
