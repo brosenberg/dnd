@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import random
+import re
 
 from dice import roll
 from generate_scroll import generate_scroll
@@ -536,13 +537,17 @@ def weapon(mod=0):
         if base_weapon == "Pole Arm":
             base_weapon = load_and_roll("polearms.json")
         adjustment = load_and_roll("weapon_adjustment.json")
-
+        ammo_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_weapon)
+        if ammo_match:
+            ammo = roll(int(ammo_match.group(1)), int(ammo_match.group(2)), 0)
+            base_weapon = re.sub(r"\s*\(\d+d\d+\)$", "", base_weapon)
+            return f"{base_weapon} {adjustment} ({ammo} {base_weapon.lower()}s)"
     if is_sword:
         if roll(1, 100, 0) <= 25:
-            return intelligent_weapon(base_weapon, adjustment)
+            return str(IntelligentWeapon(base_weapon, adjustment))
     elif can_be_intelligent(base_weapon):
         if roll(1, 100, 0) <= 5:
-            return intelligent_weapon(base_weapon, adjustment)
+            return str(IntelligentWeapon(base_weapon, adjustment))
 
     return f"{base_weapon} {adjustment}"
 
@@ -553,7 +558,7 @@ def sword():
     if roll(1, 100, 0) > 25:
         return f"{base_weapon} {adjustment}"
     else:
-        return intelligent_weapon(base_weapon, adjustment)
+        return str(IntelligentWeapon(base_weapon, adjustment))
 
 
 def non_sword():
@@ -562,7 +567,7 @@ def non_sword():
     if roll(1, 100, 0) > 5 and can_be_intelligent(base_weapon):
         return f"{base_weapon} {adjustment}"
     else:
-        return intelligent_weapon(base_weapon, adjustment)
+        return str(IntelligentWeapon(base_weapon, adjustment))
 
 
 def armor_or_weapon():
@@ -664,95 +669,97 @@ def can_be_intelligent(base_weapon):
         return True
 
 
-def intelligent_weapon(base_weapon, adjustment):
-    intelligence = load_and_roll("weapon_intelligence.json")
-    alignment = load_and_roll("weapon_alignment.json")
-    communication = "speech"
-    primary_abilities = 3
-    extraordinary_abilities = 0
-    has_special_purpose = False
-    special_purpose = "None"
-    abilities = []
-    languages_spoken = load_and_roll("weapon_languages.json")
-    ego = int(adjustment) + int(languages_spoken)
-    if intelligence == 12:
-        communication = "semi-empathy"
-        primary_abilities = 1
-    elif intelligence == 13:
-        communication = "empathy"
-        primary_abilities = 2
-    elif intelligence == 14:
-        primary_abilities = 2
-    elif intelligence == 16:
-        abilities.append("read nonmagical languages/maps")
-        ego += 1
-    elif intelligence == 17:
-        communication = "speech and telepathy"
-        extraordinary_abilities = 1
-        abilities.append("read magical languages/maps/writings")
-        ego += 4
+class IntelligentWeapon(object):
+    def __init__(self, base_weapon, adjustment):
+        self.base_weapon = base_weapon
+        self.adjustment = adjustment
+        self.intelligence = load_and_roll("weapon_intelligence.json")
+        self.alignment = load_and_roll("weapon_alignment.json")
+        self.communication = "speech"
+        self.primary_abilities = 3
+        self.extraordinary_abilities = 0
+        self.has_special_purpose = False
+        self.special_purpose = "None"
+        self.abilities = []
+        self.languages_spoken = load_and_roll("weapon_languages.json")
+        self.ego = int(adjustment) + int(self.languages_spoken)
+        if self.intelligence == 12:
+            self.communication = "semi-empathy"
+            self.primary_abilities = 1
+        elif self.intelligence == 13:
+            self.communication = "empathy"
+            self.primary_abilities = 2
+        elif self.intelligence == 14:
+            self.primary_abilities = 2
+        elif self.intelligence == 16:
+            self.abilities.append("read nonmagical languages/maps")
+            self.ego += 1
+        elif self.intelligence == 17:
+            self.communication = "speech and telepathy"
+            self.extraordinary_abilities = 1
+            self.abilities.append("read magical languages/maps/writings")
+            self.ego += 4
 
-    for _ in range(0, primary_abilities):
-        ability = load_and_roll("weapon_primary_abilities.json")
-        while ability in abilities:
+        for _ in range(0, self.primary_abilities):
             ability = load_and_roll("weapon_primary_abilities.json")
-        if ability == "Roll Twice":
+            while ability in self.abilities:
+                ability = load_and_roll("weapon_primary_abilities.json")
+            if ability == "Roll Twice":
+                self.roll_twice_primary()
+                self.roll_twice_primary()
+            elif ability == "Extraordinary Powers":
+                self.primary_abilities -= 1
+                self.extraordinary_abilities += 1
+            else:
+                self.abilities.append(ability)
 
-            def roll_twice_primary():
-                ability = load_and_roll("weapon_primary_abilities_nrt.json")
-                while ability in abilities:
-                    ability = load_and_roll("weapon_primary_abilities_nrt.json")
-                if ability == "Extraordinary Powers":
-                    primary_abilities -= 1
-                    extraordinary_abilities += 1
-                else:
-                    abilities.append(ability)
-
-            roll_twice_primary()
-            roll_twice_primary()
-        elif ability == "Extraordinary Powers":
-            primary_abilities -= 1
-            extraordinary_abilities += 1
-        else:
-            abilities.append(ability)
-
-    def special_purpose_roll():
-        has_special_purpose = True
-        ability = load_and_roll("weapon_extraordinary_abilities_nsp.json")
-        while ability in abilities:
-            ability = load_and_roll("weapon_extraordinary_abilities_nsp.json")
-        return ability
-
-    for _ in range(0, extraordinary_abilities):
-        ability = load_and_roll("weapon_extraordinary_abilities.json")
-        while ability in abilities:
+        for _ in range(0, self.extraordinary_abilities):
             ability = load_and_roll("weapon_extraordinary_abilities.json")
-        if ability == "Roll Twice":
+            while ability in self.abilities:
+                ability = load_and_roll("weapon_extraordinary_abilities.json")
+            if ability == "Roll Twice":
+                self.roll_twice_extra()
+                self.roll_twice_extra()
+            elif ability == "Special Purpose":
+                self.special_purpose_roll()
+            else:
+                self.abilities.append(ability)
 
-            def roll_twice_extra():
-                ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
-                while ability in abilities:
-                    ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
-                if ability == "Special Purpose":
-                    ability = special_purpose_roll()
-                abilties.append(ability)
+        if self.has_special_purpose:
+            self.special_purpose = load_and_roll("weapon_special_purpose.json")
+            special_power = load_and_roll("weapon_special_power.json")
+            self.abilities.append(f"Special Purpose: {special_power}")
+            self.ego += 5
 
-            roll_twice_extra()
-            roll_twice_extra()
-        elif ability == "Special Purpose":
-            abilities.append(special_purpose_roll())
+        self.ego += self.primary_abilities + self.extraordinary_abilities * 2
+
+    def __str__(self):
+        return f"{self.base_weapon} {self.adjustment} (Intelligent) - Int:{self.intelligence}  Ego:{self.ego}  Alignment:{self.alignment}  Communication:{self.communication} Languages:{self.languages_spoken}  Special Purpose:{self.special_purpose}  Abilities:{', '.join(sorted(self.abilities))}"
+
+    def roll_twice_primary(self):
+        ability = load_and_roll("weapon_primary_abilities_nrt.json")
+        while ability in self.abilities:
+            ability = load_and_roll("weapon_primary_abilities_nrt.json")
+        if ability == "Extraordinary Powers":
+            self.primary_abilities -= 1
+            self.extraordinary_abilities += 1
         else:
-            abilities.append(ability)
+            self.abilities.append(ability)
 
-    if has_special_purpose:
-        special_purpose = load_and_roll("weapon_special_purpose.json")
-        special_power = load_and_roll("weapon_special_power.json")
-        abilities.append(f"Special Purpose: {special_power}")
-        ego += 5
+    def roll_twice_extra(self):
+        ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
+        while ability in self.abilities:
+            ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
+        if ability == "Special Purpose":
+            ability = self.special_purpose_roll()
+        self.abilities.append(ability)
 
-    ego += primary_abilities + extraordinary_abilities * 2
-
-    return f"{base_weapon} {adjustment} (Intelligent) - Int:{intelligence}  Ego:{ego}  Alignment:{alignment}  Communication:{communication} Languages:{languages_spoken}  Special Purpose:{special_purpose}  Abilities:{', '.join(sorted(abilities))}"
+    def special_purpose_roll(self):
+        self.has_special_purpose = True
+        ability = load_and_roll("weapon_extraordinary_abilities_nsp.json")
+        while ability in self.abilities:
+            ability = load_and_roll("weapon_extraordinary_abilities_nsp.json")
+        self.abilities.append(ability)
 
 
 def print_all_categories():
