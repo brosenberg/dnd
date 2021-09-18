@@ -31,6 +31,19 @@ def load_and_roll(fname):
     return roll_table(load_table(fname))
 
 
+def print_all_categories():
+    categories = load_table("categories.json")
+    for category in categories.values():
+        print(category)
+
+
+def can_be_intelligent(base_weapon):
+    if "(" in base_weapon or "Net" in base_weapon:
+        return False
+    else:
+        return True
+
+
 class MagicItemGen(object):
     def __init__(self, expanded):
         self.expanded = expanded
@@ -429,8 +442,10 @@ class MagicItemGen(object):
         adjustment = load_and_roll("armor_adjustment.json")
         return f"{base_armor} {adjustment}"
 
-    def weapon(self):
-        if self.expanded and roll(1, 100, 0) <= 5:
+    def weapon(self, force_table=None):
+        if force_table:
+            base_weapon = load_and_roll(force_table)
+        elif self.expanded and roll(1, 100, 0) <= 5:
             base_weapon = load_and_roll("expanded_weapons.json")
         else:
             base_weapon = load_and_roll("weapon_types.json")
@@ -573,29 +588,16 @@ class MagicItemGen(object):
         return base_weapon
 
     def sword(self):
-        base_weapon = None
         if self.expanded:
-            base_weapon = load_and_roll("sword_types_expanded.json")
+            return self.weapon(force_table="sword_types_expanded.json")
         else:
-            base_weapon = load_and_roll("sword_types.json")
-        adjustment = load_and_roll("sword_adjustment.json")
-        if roll(1, 100, 0) > 25:
-            return f"{base_weapon} {adjustment}"
-        else:
-            return str(IntelligentWeapon(base_weapon, adjustment))
+            return self.weapon(force_table="sword_types.json")
 
     def non_sword(self):
-        base_weapon = None
         if self.expanded and roll(1, 100, 0) <= 5:
-            base_weapon = load_and_roll("expanded_weapons.json")
+            return self.weapon(force_table="expanded_weapons.json")
         else:
-            base_weapon = load_and_roll("non_sword_weapons.json")
-        base_weapon = self.diversify_weapon(base_weapon)
-        adjustment = load_and_roll("weapon_adjustment.json")
-        if roll(1, 100, 0) <= 5 and can_be_intelligent(base_weapon):
-            return str(IntelligentWeapon(base_weapon, adjustment))
-        else:
-            return f"{base_weapon} {adjustment}"
+            return self.weapon(force_table="non_sword_weapons.json")
 
     def armor_or_weapon(self):
         category = load_and_roll("armor_or_weapon.json")
@@ -676,13 +678,6 @@ class MagicItemGen(object):
         for category in categories:
             results.append(self.roll_category(category))
         return results
-
-
-def can_be_intelligent(base_weapon):
-    if "(" in base_weapon or "Net" in base_weapon:
-        return False
-    else:
-        return True
 
 
 class IntelligentWeapon(object):
@@ -778,12 +773,6 @@ class IntelligentWeapon(object):
         self.abilities.append(ability)
 
 
-def print_all_categories():
-    categories = load_table("categories.json")
-    for category in categories.values():
-        print(category)
-
-
 def main():
     parser = argparse.ArgumentParser(description="Generate random magic items.")
     parser.add_argument(
@@ -794,6 +783,9 @@ def main():
         "--category",
         action="store",
         help="generate a magic item from a specific category",
+    )
+    parser.add_argument(
+        "-d", "--debug", action="store_true"
     )
     parser.add_argument(
         "-i", "--item", action="store_true", help="generate a random magic item"
@@ -833,8 +825,9 @@ def main():
     if args.print:
         print_all_categories()
 
-    # for _ in range(0, 10):
-    #    print(mig.weapon())
+    if args.debug:
+        for _ in range(0, 10):
+           print(mig.weapon())
 
 
 if __name__ == "__main__":

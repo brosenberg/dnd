@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
+import argparse
 import random
+
 import magic_item
+
+from dice import roll
 
 LEVEL_RANGE = {
     "Low": (1, 3, 0),
@@ -9,6 +13,7 @@ LEVEL_RANGE = {
     "High": (1, 6, 6),
     "Very high": (1, 12, 8),
 }
+
 MAGIC_ITEMS = {
     "Fighter": ["Armor No Shields", "Shields", "Sword", "Nonsword", "Potions and Oils"],
     "Wizard": ["Scrolls", "Rings", "Rod/Staff/Wand", "Misc Magic"],
@@ -31,15 +36,9 @@ MAGIC_ITEMS = {
 }
 
 
-def roll(dice, sides, mod):
-    total = mod
-    for die in range(0, dice):
-        total += random.randint(1, sides)
-    return total
-
-
 class Adventurer(object):
-    def __init__(self, level_range):
+    def __init__(self, level_range, expanded):
+        mig = magic_item.MagicItemGen(expanded)
         class_roll = roll(1, 10, 0)
         self.char_class = "Fighter"
         if class_roll > 8:
@@ -62,7 +61,7 @@ class Adventurer(object):
                     has_armor = True
                 elif category == "Shields":
                     has_shield = True
-                self.equipment.append(magic_item.roll_category(category))
+                self.equipment.append(mig.roll_category(category))
         if self.level > 7 and (
             self.char_class == "Cleric" or self.char_class == "Fighter"
         ):
@@ -79,12 +78,21 @@ class Adventurer(object):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate adventurers")
+    parser.add_argument(
+        "-x",
+        "--expanded",
+        default=False,
+        action="store_true",
+        help="use expanded item generation tables",
+    )
+    args = parser.parse_args()
     no_appearing = roll(1, 8, 0)
     level_range = random.choice(list(LEVEL_RANGE.keys()))
     print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
     print()
     for adventurer in range(0, no_appearing):
-        print(Adventurer(level_range))
+        print(Adventurer(level_range, args.expanded))
         print()
 
 
