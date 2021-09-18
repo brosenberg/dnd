@@ -27,19 +27,12 @@ def load_table(fname):
     return json.load(open(path))
 
 
-def load_and_roll(fname, mod=0):
-    return roll_table(load_table(fname), mod=mod)
+def load_and_roll(fname):
+    return roll_table(load_table(fname))
 
 
-def potions_and_oils(mod=0):
-    result = roll(1, 6, 0)
-    base_potion = None
-    if result < 3:
-        base_potion = load_and_roll("potions_oils_a.json", mod=mod)
-    if result < 5:
-        base_potion = load_and_roll("potions_oils_b.json", mod=mod)
-    else:
-        base_potion = load_and_roll("potions_oils_c.json", mod=mod)
+def potions_and_oils():
+    base_potion = load_and_roll("potions_oils.json")
 
     if base_potion == "Potion of Animal Control":
         animal_control = load_and_roll("animal_control.json")
@@ -66,11 +59,11 @@ def potions_and_oils(mod=0):
     return base_potion
 
 
-def scrolls(mod=0):
+def scrolls():
     result = roll(1, 6, 0)
     if result < 5:
         return str(generate_scroll())
-    base_scroll = load_and_roll("scrolls_b.json", mod=mod)
+    base_scroll = load_and_roll("scrolls_b.json")
     if base_scroll == "Scroll of Protection - Elementals":
         scroll_elementals = load_and_roll("scroll_elementals.json")
         base_scroll = f"{base_scroll} ({scroll_elementals})"
@@ -81,13 +74,13 @@ def scrolls(mod=0):
     return base_scroll
 
 
-def rings(mod=0):
+def rings():
     result = roll(1, 6, 0)
     base_ring = None
     if result < 5:
-        base_ring = load_and_roll("rings_a.json", mod=mod)
+        base_ring = load_and_roll("rings_a.json")
     else:
-        base_ring = load_and_roll("rings_b.json", mod=mod)
+        base_ring = load_and_roll("rings_b.json")
 
     if base_ring == "Ring of Clumsiness":
         clumsiness = load_and_roll("clumsiness.json")
@@ -143,12 +136,12 @@ def rings(mod=0):
     return base_ring
 
 
-def rods(mod=0):
-    return load_and_roll("rods.json", mod=mod)
+def rods():
+    return load_and_roll("rods.json")
 
 
-def staves(mod=0):
-    base_staff = load_and_roll("staves.json", mod=mod)
+def staves():
+    base_staff = load_and_roll("staves.json")
     no_charge = ["Staff-Mace", "Staff-Spear", "Staff of the Serpent"]
     has_charges = True
     charges = roll(1, 6, 19)
@@ -172,8 +165,8 @@ def staves(mod=0):
     return base_staff
 
 
-def wands(mod=0):
-    base_wand = load_and_roll("wands.json", mod=mod)
+def wands():
+    base_wand = load_and_roll("wands.json")
     charges = roll(1, 20, 80)
     trapped = False
     if roll(1, 100, 0) == 1:
@@ -189,8 +182,8 @@ def wands(mod=0):
     return base_wand
 
 
-def books(mod=0):
-    base_book = load_and_roll("books.json", mod=mod)
+def books():
+    base_book = load_and_roll("books.json")
     if base_book == "Book of Infinite Spells":
         pages = (1, 8, 22)
         base_book = f"{base_book} ({pages} pages)"
@@ -200,13 +193,8 @@ def books(mod=0):
     return base_book
 
 
-def jewelry(mod=0):
-    result = roll(1, 6, 0)
-    base_jewelry = None
-    if result < 4:
-        base_jewelry = load_and_roll("jewelry_a.json", mod=mod)
-    else:
-        base_jewelry = load_and_roll("jewelry_b.json", mod=mod)
+def jewelry():
+    base_jewelry = load_and_roll("jewelry.json")
 
     if base_jewelry == "Amulet Versus Undead":
         amulet_versus_undead = load_and_roll("amulet_versus_undead.json")
@@ -250,8 +238,8 @@ def jewelry(mod=0):
     return base_jewelry
 
 
-def cloaks_robes(mod=0):
-    base_item = load_and_roll("cloaks_robes.json", mod=mod)
+def cloaks_robes():
+    base_item = load_and_roll("cloaks_robes.json")
     if base_item == "Cloak of Displacement":
         size = "normal sized"
         if roll(1, 100, 0) > 75:
@@ -284,8 +272,8 @@ def cloaks_robes(mod=0):
     return base_item
 
 
-def boots_bracers_gloves(mod=0):
-    base_item = load_and_roll("boots_bracers_gloves.json", mod=mod)
+def boots_bracers_gloves():
+    base_item = load_and_roll("boots_bracers_gloves.json")
 
     if base_item == "Boots of Levitation":
         weight = 280 + (14 * roll(1, 20, 0))
@@ -315,16 +303,16 @@ def boots_bracers_gloves(mod=0):
     return base_item
 
 
-def girdles_hats_helms(mod=0):
-    base_item = load_and_roll("girdles_hats_helms.json", mod=mod)
+def girdles_hats_helms():
+    base_item = load_and_roll("girdles_hats_helms.json")
     if base_item == "Girdle of Giant Strength":
         girdle_giant_strength = load_and_roll("girdle_giant_strength.json")
         base_item = f"{base_item} ({girdle_giant_strength})"
     return base_item
 
 
-def containers(mod=0):
-    base_container = load_and_roll("containers.json", mod=mod)
+def containers():
+    base_container = load_and_roll("containers.json")
     if base_container == "Bag of Beans":
         beans = roll(3, 4, 0)
         base_container = f"{base_container} ({beans} beans)"
@@ -349,8 +337,8 @@ def containers(mod=0):
     return base_container
 
 
-def candles_dust_stones(mod=0):
-    base_item = load_and_roll("candles_dust_stones.json", mod=mod)
+def candles_dust_stones():
+    base_item = load_and_roll("candles_dust_stones.json")
     if base_item == "Dust of Dryness":
         pinches = roll(1, 6, 4)
         base_item = f"{base_item} ({pinches} pinches)"
@@ -386,30 +374,24 @@ def candles_dust_stones(mod=0):
     return base_item
 
 
-def household_tools(mod=0):
-    base_item = load_and_roll("household_tools.json", mod=mod)
+def household_tools():
+    base_item = load_and_roll("household_tools.json")
     if base_item == "Carpet of Flying":
         carpet_of_flying = load_and_roll("carpet_of_flying.json")
         base_item = f"{base_item} ({carpet_of_flying})"
     return base_item
 
 
-def musical_instruments(mod=0):
-    base_item = load_and_roll("musical_instruments.json", mod=mod)
+def musical_instruments():
+    base_item = load_and_roll("musical_instruments.json")
     if base_item == "Horn of Valhalla":
         horn_of_valhalla = load_and_roll("horn_of_valhalla.json")
         base_item = f"{base_item} ({horn_of_valhalla})"
     return base_item
 
 
-def weird(mod=0):
-    result = roll(1, 6, 0)
-    base_weird = None
-    if result < 4:
-        base_weird = load_and_roll("weird_a.json", mod=mod)
-    else:
-        base_weird = load_and_roll("weird_b.json", mod=mod)
-
+def weird():
+    base_weird = load_and_roll("weird.json")
     if base_weird == "Crystal Ball":
         crystal_ball = load_and_roll("crystal_ball.json")
         base_weird = f"{base_weird} {crystal_ball}"
@@ -428,8 +410,8 @@ def weird(mod=0):
     return base_weird
 
 
-def armor(mod=0):
-    base_armor = load_and_roll("armor_type.json", mod=mod)
+def armor():
+    base_armor = load_and_roll("armor_type.json")
     adjustment = load_and_roll("armor_adjustment.json")
     if base_armor == "Special":
         base_armor = load_and_roll("special_armor.json")
@@ -453,16 +435,11 @@ def shields():
     return f"{base_armor} {adjustment}"
 
 
-def weapon(mod=0):
-    result = roll(1, 6, 0)
-    base_weapon = None
+def weapon():
+    base_weapon = load_and_roll("weapon_types.json")
     adjustment = None
     intelligent = False
     is_sword = False
-    if result < 3:
-        base_weapon = load_and_roll("weapon_type_a.json", mod=mod)
-    else:
-        base_weapon = load_and_roll("weapon_type_b.json", mod=mod)
     if base_weapon == "Special":
         result = roll(1, 10, 0)
         if result < 4:
