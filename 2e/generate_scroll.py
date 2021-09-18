@@ -118,6 +118,13 @@ def random_spell(spell_level, caster_class):
         spells = Spells(f"{base_dir}/spells/priest-spells.json")
     return spells.random_spell(str(spell_level))
 
+def random_random_spell():
+    caster_class = random.choice(["Wizard", "Priest"])
+    if caster_class == "Wizard":
+        return random_spell(random.randint(1, 9), caster_class)
+    else:
+        return random_spell(random.randint(1, 7), caster_class)
+
 
 def generate_scroll():
     base_dir = os.path.dirname(os.path.realpath(__file__))

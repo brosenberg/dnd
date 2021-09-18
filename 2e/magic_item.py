@@ -8,6 +8,7 @@ import random
 from dice import roll
 from generate_scroll import generate_scroll
 from generate_scroll import random_spell
+from generate_scroll import random_random_spell
 
 
 def roll_table(table, mod=0):
@@ -220,6 +221,20 @@ def jewelry(mod=0):
         for _ in range(0, roll(1, 4, 2)):
             beads.append(load_and_roll("prayer_beads.json"))
         base_jewelry = f"{base_jewelry} (Beads: {', '.join(sorted(beads))}"
+    elif base_jewelry == "Pearl of Power":
+        pearl_of_power = load_and_roll("pearl_of_power.json")
+        if pearl_of_power == "two spells":
+            levels = [roll(1, 6, 0), roll(1, 6, 0)]
+            pearl_of_power = f"{pearl_of_power} ({', '.join(levels)})"
+        base_jewelry = f"{base_jewelry} ({pearl_of_power})"
+        if roll(1, 20, 0) == 20:
+            base_jewelry = f"{base_jewelry} (cursed)"
+    elif base_jewelry == "Periapt of Proof Against Poison":
+        proof_against_poison = load_and_roll("proof_against_poison.json")
+        base_jewelry = f"{base_jewelry} ({proof_against_poison})"
+    elif base_jewelry == "Phylactery of Long Years":
+        if roll(1, 20, 0) == 20:
+            base_jewelry = f"{base_jewelry} (cursed)"
 
     return base_jewelry
 
@@ -239,6 +254,22 @@ def cloaks_robes(mod=0):
     elif base_item == "Cloak of Protection":
         cloak_of_protection = load_and_roll("cloak_of_protection.json")
         base_item = f"{base_item} {cloak_of_protection}"
+    elif base_item == "Robe of the Archmagi":
+        robe_archmagi = load_and_roll("robe_archmagi.json")
+        base_item = f"{base_item} ({robe_archmagi})"
+    elif base_item == "Robe of Useful Items":
+        item_count = roll(4, 4, 0)
+        items = []
+        while item_count > 0:
+            item = load_and_roll("useful_items.json")
+            if item == "Scroll":
+                item = f"{item} - {random_random_spell()}"
+            if item == "Roll twice":
+                item_count += 2
+            else:
+                items.append(item)
+            item_count -= 1
+        base_item = f"{base_item} (Items: {', '.join(sorted(items))})"
     return base_item
 
 
@@ -368,6 +399,9 @@ def weird(mod=0):
             else:
                 figurine_of_power = f"{figurine_of_power} - Normal Elephant"
         base_weird = f"{base_weird} ({figurine_of_power})"
+    elif base_weird == "Quaal's Feather Token":
+        feather_token = load_and_roll("feather_token.json")
+        base_weird = f"{base_weird} ({feather_token})"
         
     return base_weird
 
