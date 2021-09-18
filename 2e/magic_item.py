@@ -466,9 +466,6 @@ def weapon():
         elif base_weapon == "Axe of Hurling":
             axe_hurling = load_and_roll("axe_hurling.json")
             base_weapon = f"{base_weapon} {axe_hurling}"
-        elif "Crossbow" in base_weapon:
-            if roll(1, 100, 0) <= 10:
-                base_weapon = "Heavy {base_weapon}"
         elif base_weapon == "Dagger of Throwing":
             dagger_throwing = load_and_roll("dagger_throwing.json")
             base_weapon = f"{base_weapon} {dagger_throwing}"
@@ -509,36 +506,27 @@ def weapon():
             charges = roll(1, 6, 18)
             base_weapon = f"{base_weapon} ({charges} charges)"
 
-        if base_weapon.startswith("Sword"):
-            if EXPANDED:
-                sword = load_and_roll("sword_types_expanded.json")
-            else:
-                sword = load_and_roll("sword_types.json")
-            base_weapon = base_weapon.replace("Sword", sword)
-        if EXPANDED and base_weapon.startswith("Dagger"):
-            dagger = load_and_roll("dagger_types_expanded.json")
-            base_weapon = base_weapon.replace("Dagger", dagger)
+        base_base_weapon = base_weapon.split(" ")[0]
+        base_weapon = base_weapon.replace(
+            base_base_weapon, diversify_weapon(base_base_weapon)
+        )
+        if base_weapon == "Vorpal Sword":
+            base_weapon = base_weapon.replace("Sword", diversify_weapon("Sword"))
 
         return base_weapon
     elif base_weapon == "Sword" or base_weapon == "Scimitar":
         is_sword = True
-        if base_weapon == "Sword":
-            if EXPANDED:
-                base_weapon = load_and_roll("sword_types_expanded.json")
-            else:
-                base_weapon = load_and_roll("sword_types.json")
+        base_weapon = diversify_weapon(base_weapon)
         adjustment = load_and_roll("sword_adjustment.json")
     else:
-        if base_weapon == "Pole Arm":
-            base_weapon = load_and_roll("polearms.json")
-        if EXPANDED and (base_weapon == "Dagger" or base_weapon == "Knife"):
-            base_weapon = load_and_roll("dagger_types_expanded.json")
         adjustment = load_and_roll("weapon_adjustment.json")
         ammo_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_weapon)
         if ammo_match:
             ammo = roll(int(ammo_match.group(1)), int(ammo_match.group(2)), 0)
             base_weapon = re.sub(r"\s*\(\d+d\d+\)$", "", base_weapon)
+            base_weapon = diversify_weapon(base_weapon)
             return f"{base_weapon} {adjustment} ({ammo} {base_weapon.lower()}s)"
+        base_weapon = diversify_weapon(base_weapon)
     if is_sword:
         if roll(1, 100, 0) <= 25:
             return str(IntelligentWeapon(base_weapon, adjustment))
@@ -547,6 +535,44 @@ def weapon():
             return str(IntelligentWeapon(base_weapon, adjustment))
 
     return f"{base_weapon} {adjustment}"
+
+
+def diversify_weapon(base_weapon):
+    if base_weapon == "Arrow":
+        return random.choice(["Flight arrow", "Sheaf arrow"])
+    elif base_weapon == "Axe":
+        axes = ["Battle axe", "Hand axe", "Throwing axe"]
+        if EXPANDED:
+            axes += ["Hatchet", "Two-handed axe", "Stone axe"]
+        return random.choice(axes)
+    elif base_weapon == "Bow":
+        return load_and_roll("bow_types.json")
+    elif base_weapon == "Crossbow":
+        if EXPANDED:
+            return load_and_roll("crossbows_expanded.json")
+        else:
+            return load_and_roll("crossbows.json")
+    elif EXPANDED and (base_weapon == "Dagger" or base_weapon == "Knife"):
+        return load_and_roll("dagger_types_expanded.json")
+    elif base_weapon in ["Flail", "Mace", "Pick"]:
+        soldier = random.choice(["Footman's", "Horseman's"])
+        return f"{soldier} {base_weapon}"
+    elif base_weapon == "Lance":
+        lance = random.choice(["Light", "Medium", "Heavy", "Jousting"])
+        return f"{lance} {base_weapon}"
+    elif base_weapon == "Pole Arm":
+        if EXPANDED:
+            return load_and_roll("polearms_expanded.json")
+        else:
+            return load_and_roll("polearms.json")
+    elif EXPANDED and base_weapon == "Spear":
+        return random.choice(["Long spear", "Spear", "Stone spear"])
+    elif base_weapon == "Sword":
+        if EXPANDED:
+            return load_and_roll("sword_types_expanded.json")
+        else:
+            return load_and_roll("sword_types.json")
+    return base_weapon
 
 
 def sword():
@@ -563,12 +589,12 @@ def sword():
 
 
 def non_sword():
-    base_weapon = load_and_roll("non_sword_weapons.json")
+    base_weapon = diversify_weapon(load_and_roll("non_sword_weapons.json"))
     adjustment = load_and_roll("weapon_adjustment.json")
-    if roll(1, 100, 0) > 5 and can_be_intelligent(base_weapon):
-        return f"{base_weapon} {adjustment}"
-    else:
+    if roll(1, 100, 0) <= 5 and can_be_intelligent(base_weapon):
         return str(IntelligentWeapon(base_weapon, adjustment))
+    else:
+        return f"{base_weapon} {adjustment}"
 
 
 def armor_or_weapon():
@@ -818,6 +844,9 @@ def main():
         print(roll_nonweapon())
     if args.print:
         print_all_categories()
+
+    for _ in range(0, 10):
+        print(weapon())
 
 
 if __name__ == "__main__":
