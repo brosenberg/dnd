@@ -255,44 +255,56 @@ def generate_jewelry(treasure):
         jewelry.generate_jewelry(treasure["art/jewelry"])
 
 
-def generate_magic_items(treasure):
+def generate_magic_items(treasure, expanded):
     magic_items = []
+    mig = magic_item.MagicItemGen(expanded)
     for i in range(0, treasure["magic items"]):
-        magic_items.append(magic_item.random_magic_item())
+        magic_items.append(mig.random_magic_item())
     for i in range(0, treasure["potions"]):
-        magic_items.append(magic_item.roll_category("Potions and Oils"))
+        magic_items.append(mig.roll_category("Potions and Oils"))
     for i in range(0, treasure["scrolls"]):
-        magic_items.append(str(magic_item.roll_category("Scrolls")))
+        magic_items.append(str(mig.roll_category("Scrolls")))
     try:
         for i in range(0, treasure["complex"]["non-weapon magic items"]):
-            magic_items.append(magic_item.roll_nonweapon())
+            magic_items.append(mig.roll_nonweapon())
     except KeyError:
         pass
     try:
         for i in range(0, treasure["complex"]["magic armor or magic weapon"]):
-            magic_items.append(magic_item.armor_or_weapon())
+            magic_items.append(mig.armor_or_weapon())
     except KeyError:
         pass
     return sorted(magic_items)
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate treasure')
-    parser.add_argument('treasure_types', metavar='N', nargs='+')
-    parser.add_argument('-x', '--extra', default=False, action='store_true')
+    parser = argparse.ArgumentParser(description="Generate treasure")
+    parser.add_argument("treasure_types", metavar="N", nargs="+")
+    parser.add_argument(
+        "-n",
+        "--nogen",
+        default=False,
+        action="store_true",
+        help="don't generate items",
+    )
+    parser.add_argument(
+        "-x",
+        "--expanded",
+        default=False,
+        action="store_true",
+        help="use expanded generation tables",
+    )
     args = parser.parse_args()
 
     treasure = roll_treasure(list("".join(args.treasure_types).upper()))
-    if args.extra:
-        global EXPANDED
-        EXPANDED = True
     print_treasure(treasure)
-    generate_gems(treasure)
-    generate_jewelry(treasure)
-    magic_items = generate_magic_items(treasure)
-    if magic_items:
-        print("\nMagic Items, Potions, and Scrolls:")
-        print("\n".join(magic_items))
+    if not args.nogen:
+        generate_gems(treasure)
+        generate_jewelry(treasure)
+        magic_items = generate_magic_items(treasure, args.expanded)
+        if magic_items:
+            print("\nMagic Items, Potions, and Scrolls:")
+            print("\n".join(magic_items))
 
 
 if __name__ == "__main__":
