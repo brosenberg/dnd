@@ -457,6 +457,7 @@ def weapon(mod=0):
     base_weapon = None
     adjustment = None
     intelligent = False
+    is_sword = False
     if result < 3:
         base_weapon = load_and_roll("weapon_type_a.json", mod=mod)
     else:
@@ -472,6 +473,7 @@ def weapon(mod=0):
         else:
             return load_and_roll("special_weapons_c.json")
     elif base_weapon == "Sword" or base_weapon == "Scimitar":
+        is_sword = True
         if base_weapon == "Sword":
             base_weapon = load_and_roll("sword_types.json")
         adjustment = load_and_roll("sword_adjustment.json")
@@ -479,19 +481,33 @@ def weapon(mod=0):
         if base_weapon == "Pole Arm":
             base_weapon = load_and_roll("polearms.json")
         adjustment = load_and_roll("weapon_adjustment.json")
+
+    if is_sword:
+        if roll(1, 100, 0) <= 25:
+            return intelligent_weapon(base_weapon, adjustment)
+    elif can_be_intelligent(base_weapon):
+        if roll(1, 100, 0) <= 5:
+            return intelligent_weapon(base_weapon, adjustment)
+
     return f"{base_weapon} {adjustment}"
 
 
 def sword():
     base_weapon = load_and_roll("sword_types.json")
     adjustment = load_and_roll("sword_adjustment.json")
-    return f"{base_weapon} {adjustment}"
+    if roll(1, 100, 0) > 25:
+        return f"{base_weapon} {adjustment}"
+    else:
+        return intelligent_weapon(base_weapon, adjustment)
 
 
 def non_sword():
     base_weapon = load_and_roll("non_sword_weapons.json")
     adjustment = load_and_roll("weapon_adjustment.json")
-    return f"{base_weapon} {adjustment}"
+    if roll(1, 100, 0) > 5 and can_be_intelligent(base_weapon):
+        return f"{base_weapon} {adjustment}"
+    else:
+        return intelligent_weapon(base_weapon, adjustment)
 
 
 def armor_or_weapon():
@@ -580,6 +596,19 @@ def roll_all_categories():
     return results
 
 
+def can_be_intelligent(base_weapon):
+    if (
+        "Arrow" in base_weapon
+        or "Bolt" in base_weapon
+        or "Bullet" in base_weapon
+        or "Dart" in base_weapon
+        or "Javelin" in base_weapon
+    ):
+        return False
+    else:
+        return True
+
+
 def intelligent_weapon(base_weapon, adjustment):
     intelligence = load_and_roll("weapon_intelligence.json")
     alignment = load_and_roll("weapon_alignment.json")
@@ -658,7 +687,7 @@ def intelligent_weapon(base_weapon, adjustment):
 
     ego += primary_abilities + extraordinary_abilities * 2
 
-    return f"{base_weapon} {adjustment} (Intelligent) - Int:{intelligence}  Ego:{ego}  Alignment:{alignment}  Communication:{communication}  Special Purpose:{special_purpose}  Abilities:{', '.join(sorted(abilities))}"
+    return f"{base_weapon} {adjustment} (Intelligent) - Int:{intelligence}  Ego:{ego}  Alignment:{alignment}  Communication:{communication} Languages:{languages_spoken}  Special Purpose:{special_purpose}  Abilities:{', '.join(sorted(abilities))}"
 
 
 def print_all_categories():

@@ -1,4 +1,6 @@
-    "": "Silver",
-    "": "Brass",
-    "": "Bronze",
-    "": "Iron",
+{
+    "8": "Silver",
+    "15": "Brass",
+    "18": "Bronze",
+    "20": "Iron"
+}
