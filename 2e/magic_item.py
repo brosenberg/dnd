@@ -637,45 +637,51 @@ def intelligent_weapon(base_weapon, adjustment):
         abilities.append("read magical languages/maps/writings")
         ego += 4
 
-    def roll_twice(table, rolls=2):
-        ability = "Roll Twice"
-        while ability == "Roll Twice" and ability in abilities:
-            ability = load_and_roll(table)
-        if ability == "Extraordinary Powers":
-            primary_abilities -= 1
-            extraordinary_abilities += 1
-        elif ability == "Special Purpose":
-            has_special_purpose = True
-            rolls += 1
-        else:
-            abilities.append(ability)
-        if rolls > 1:
-            roll_twice(table, rolls=rolls - 1)
-
     for _ in range(0, primary_abilities):
         ability = load_and_roll("weapon_primary_abilities.json")
         while ability in abilities:
             ability = load_and_roll("weapon_primary_abilities.json")
         if ability == "Roll Twice":
-            roll_twice("weapon_primary_abilities.json")
+            def roll_twice_primary():
+                ability = load_and_roll("weapon_primary_abilities_nrt.json")
+                while ability in abilities:
+                    ability = load_and_roll("weapon_primary_abilities_nrt.json")
+                if ability == "Extraordinary Powers":
+                    primary_abilities -= 1
+                    extraordinary_abilities += 1
+                else:
+                    abilities.append(ability)
+            roll_twice_primary()
+            roll_twice_primary()
         elif ability == "Extraordinary Powers":
             primary_abilities -= 1
             extraordinary_abilities += 1
         else:
             abilities.append(ability)
 
+    def special_purpose_roll():
+        has_special_purpose = True
+        ability = load_and_roll("weapon_extraordinary_abilities_nsp.json")
+        while ability in abilities:
+            ability = load_and_roll("weapon_extraordinary_abilities_nsp.json")
+        return ability
+
     for _ in range(0, extraordinary_abilities):
         ability = load_and_roll("weapon_extraordinary_abilities.json")
         while ability in abilities:
             ability = load_and_roll("weapon_extraordinary_abilities.json")
         if ability == "Roll Twice":
-            roll_twice("weapon_extraordinary_abilities.json")
+            def roll_twice_extra():
+                ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
+                while ability in abilities:
+                    ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
+                if ability == "Special Purpose":
+                    ability = special_purpose_roll()
+                abilties.append(ability)
+            roll_twice_extra()
+            roll_twice_extra()
         elif ability == "Special Purpose":
-            has_special_purpose = True
-            while ability in abilities:
-                ability = load_and_roll("weapon_extraordinary_abilities.json")
-            if ability == "Roll Twice":
-                roll_twice("weapon_extraordinary_abilities.json")
+            abilities.append(special_purpose_roll())
         else:
             abilities.append(ability)
 
