@@ -465,13 +465,68 @@ def weapon(mod=0):
     if base_weapon == "Special":
         result = roll(1, 10, 0)
         if result < 4:
-            return load_and_roll("special_weapons_a.json")
+            base_weapon = load_and_roll("special_weapons_a.json")
         elif result < 7:
-            return load_and_roll("special_weapons_b.json")
+            base_weapon = load_and_roll("special_weapons_b.json")
         elif result < 10:
-            return load_and_roll("special_weapons_c.json")
+            base_weapon = load_and_roll("special_weapons_c.json")
         else:
-            return load_and_roll("special_weapons_c.json")
+            base_weapon = load_and_roll("special_weapons_c.json")
+
+        if base_weapon == "Arrow of Slaying":
+            arrow_slaying = load_and_roll("arrow_slaying.json")
+            base_weapon = f"{base_weapon} ({arrow_slaying})"
+        elif base_weapon == "Axe of Hurling":
+            axe_hurling = load_and_roll("axe_hurling.json")
+            base_weapon = f"{base_weapon} {axe_hurling}"
+        elif "Crossbow" in base_weapon:
+            if roll(1, 100, 0) <= 10:
+                base_weapon = "Heavy {base_weapon}"
+        elif base_weapon == "Dagger of Throwing":
+            dagger_throwing = load_and_roll("dagger_throwing.json")
+            base_weapon = f"{base_weapon} {dagger_throwing}"
+        elif base_weapon == "Hornblade":
+            blade = random.choice(["Knife", "Dagger", "Scimitar"])
+            if blade == "Scimitar":
+                modifier = random.choice(["+2", "+3"])
+            else:
+                modifier = random.choice(["+1", "+2"])
+            base_weapon = f"{base_weapon} ({blade} {modifier})"
+        elif base_weapon == "Javelin of Lightning":
+            count = roll(1, 4, 1)
+            base_weapon = f"{base_weapon} ({count} javelins)"
+        elif base_weapon == "Javelin of Piercing":
+            count = roll(2, 4, 0)
+            base_weapon = f"{base_weapon} ({count} javelins)"
+        elif base_weapon == "Buckle Knife":
+            knife_buckle = load_and_roll("knife_buckle.json")
+            base_weapon = f"{base_weapon} {knife_buckle}"
+        elif base_weapon == "Quartersaff, Magical":
+            quarterstaff_magical = load_and_roll("quarterstaff_magical.json")
+            base_weapon = f"{base_weapon} {quarterstaff_magical}"
+        elif base_weapon == "Scimitar of Speed":
+            scimitar_speed = "+2"
+            if roll(1, 100, 0) <= 25:
+                scimitar_speed = load_and_roll("scimitar_speed.json")
+            base_weapon = f"{base_weapon} {scimitar_speed}"
+        elif base_weapon == "Sword +1, Luck Blade":
+            wishes = roll(1, 4, 1)
+            base_weapon = f"{base_weapon} ({wishes} wishes)"
+        elif base_weapon == "Sword +2, Dragon Slayer":
+            dragon_slayer = load_and_roll("dragon_slayer.json")
+            base_weapon = f"{base_weapon} {dragon_slayer}"
+        elif base_weapon == "Trident of Fish Command":
+            charges = roll(1, 4, 16)
+            base_weapon = f"{base_weapon} ({charges} charges)"
+        elif base_weapon == "Trident of Warning":
+            charges = roll(1, 6, 18)
+            base_weapon = f"{base_weapon} ({charges} charges)"
+
+        if base_weapon.startswith("Sword"):
+            sword = load_and_roll("sword_types.json")
+            base_weapon = base_weapon.replace("Sword", sword)
+
+        return base_weapon
     elif base_weapon == "Sword" or base_weapon == "Scimitar":
         is_sword = True
         if base_weapon == "Sword":
@@ -642,6 +697,7 @@ def intelligent_weapon(base_weapon, adjustment):
         while ability in abilities:
             ability = load_and_roll("weapon_primary_abilities.json")
         if ability == "Roll Twice":
+
             def roll_twice_primary():
                 ability = load_and_roll("weapon_primary_abilities_nrt.json")
                 while ability in abilities:
@@ -651,6 +707,7 @@ def intelligent_weapon(base_weapon, adjustment):
                     extraordinary_abilities += 1
                 else:
                     abilities.append(ability)
+
             roll_twice_primary()
             roll_twice_primary()
         elif ability == "Extraordinary Powers":
@@ -671,6 +728,7 @@ def intelligent_weapon(base_weapon, adjustment):
         while ability in abilities:
             ability = load_and_roll("weapon_extraordinary_abilities.json")
         if ability == "Roll Twice":
+
             def roll_twice_extra():
                 ability = load_and_roll("weapon_extraordinary_abilities_nrt.json")
                 while ability in abilities:
@@ -678,6 +736,7 @@ def intelligent_weapon(base_weapon, adjustment):
                 if ability == "Special Purpose":
                     ability = special_purpose_roll()
                 abilties.append(ability)
+
             roll_twice_extra()
             roll_twice_extra()
         elif ability == "Special Purpose":
