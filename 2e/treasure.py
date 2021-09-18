@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
+import argparse
 import random
-import sys
 
 import jewelry
 import gems
@@ -277,11 +277,19 @@ def generate_magic_items(treasure):
 
 
 def main():
-    t = roll_treasure(list("".join(sys.argv[1:]).upper()))
-    print_treasure(t)
-    generate_gems(t)
-    generate_jewelry(t)
-    magic_items = generate_magic_items(t)
+    parser = argparse.ArgumentParser(description='Generate treasure')
+    parser.add_argument('treasure_types', metavar='N', nargs='+')
+    parser.add_argument('-x', '--extra', default=False, action='store_true')
+    args = parser.parse_args()
+
+    treasure = roll_treasure(list("".join(args.treasure_types).upper()))
+    if args.extra:
+        global EXPANDED
+        EXPANDED = True
+    print_treasure(treasure)
+    generate_gems(treasure)
+    generate_jewelry(treasure)
+    magic_items = generate_magic_items(treasure)
     if magic_items:
         print("\nMagic Items, Potions, and Scrolls:")
         print("\n".join(magic_items))
