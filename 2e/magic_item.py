@@ -192,7 +192,7 @@ def books(mod=0):
     base_book = load_and_roll("books.json", mod=mod)
     if base_book == "Book of Infinite Spells":
         pages = (1, 8, 22)
-        base_book = f'{base_book} ({pages} pages)'
+        base_book = f"{base_book} ({pages} pages)"
     elif base_book == "Manual of Golems":
         manual_of_golems = load_and_roll("manual_of_golems.json")
         base_book = f"{base_book} ({manual_of_golems})"
@@ -209,7 +209,7 @@ def jewelry(mod=0):
 
     if base_jewelry == "Amulet Versus Undead":
         amulet_versus_undead = load_and_roll("amulet_versus_undead.json")
-        base_jewelry = f'{base_jewelry} ({amulet_versus_undead} level)'
+        base_jewelry = f"{base_jewelry} ({amulet_versus_undead} level)"
     elif base_jewelry == "Medallion of ESP":
         medallion_of_esp = load_and_roll("medallion_of_esp.json")
         base_jewelry = f"{base_jewelry} ({medallion_of_esp})"
@@ -235,6 +235,16 @@ def jewelry(mod=0):
     elif base_jewelry == "Phylactery of Long Years":
         if roll(1, 20, 0) == 20:
             base_jewelry = f"{base_jewelry} (cursed)"
+    elif base_jewelry == "Scarab of Enraging Enemies":
+        base_jewelry = f"{base_jewelry} ({roll(1, 6, 18)} charges)"
+    elif base_jewelry == "Scarab of Insanity":
+        base_jewelry = f"{base_jewelry} ({roll(1, 8, 8)} charges)"
+    elif base_jewelry == "Scarab of Protection":
+        if roll(1, 20, 0) == 20:
+            base_jewelry = f"{base_jewelry} (cursed)"
+    elif base_jewelry == "Scarab Versus Golems":
+        scarab_versus_golems = load_and_roll("scarab_versus_golems.json")
+        base_jewelry = f"{base_jewelry} ({scarab_versus_golems})"
 
     return base_jewelry
 
@@ -277,15 +287,17 @@ def boots_bracers_gloves(mod=0):
     base_item = load_and_roll("boots_bracers_gloves.json", mod=mod)
 
     if base_item == "Boots of Levitation":
-        weight = 280+(14*roll(1, 20, 0))
-        base_item = f'{base_item} ({weight} lbs.)'
+        weight = 280 + (14 * roll(1, 20, 0))
+        base_item = f"{base_item} ({weight} lbs.)"
     elif base_item == "Boots of Varied Tracks":
+
         def get_track_type():
             table_roll = roll(1, 6, 0)
             if table_roll < 4:
                 return load_and_roll("varied_tracks_a.json")
             else:
                 return load_and_roll("varied_tracks_b.json")
+
         track_types = []
         while len(track_types) < 4:
             new_track_type = get_track_type()
@@ -325,7 +337,7 @@ def containers(mod=0):
         potions = []
         for _ in range(0, roll(1, 4, 1)):
             doses = roll(1, 4, 1)
-            potions.append(f'{potions_and_oils()} ({doses} doses)')
+            potions.append(f"{potions_and_oils()} ({doses} doses)")
         base_container = f"{base_container} (Potions: {', '.join(potions)})"
     elif base_container == "Bucknard's Everfull Purse":
         everfull_purse = load_and_roll("everfull_purse.json")
@@ -356,13 +368,22 @@ def candles_dust_stones(mod=0):
     elif base_item == "Ioun Stone":
         ioun_stones = load_and_roll("ioun_stones.json")
         if ioun_stones == "dull gray":
-            shape = random.choice(["rhomboid", "sphere", "prism", "spindle", "ellipsoid"])
+            shape = random.choice(
+                ["rhomboid", "sphere", "prism", "spindle", "ellipsoid"]
+            )
             ioun_stones = f"{ioun_stone} {shape}"
         base_item = f"{base_item} ({ioun_stones})"
     elif base_item == "Keoghtom's Ointment":
         jars = roll(1, 3, 0)
         base_item = f"{base_item} ({jars} jars)"
+    elif base_item == "Smoke Powder":
+        charges = roll(3, 6, 0)
+        base_item = f"{base_item} ({charges} charges)"
+    elif base_item == "Sovereign Glue":
+        ounces = roll(1, 10, 0)
+        base_item = f"{base_item} ({ounces} ounces)"
     return base_item
+
 
 def household_tools(mod=0):
     base_item = load_and_roll("household_tools.json", mod=mod)
@@ -402,7 +423,7 @@ def weird(mod=0):
     elif base_weird == "Quaal's Feather Token":
         feather_token = load_and_roll("feather_token.json")
         base_weird = f"{base_weird} ({feather_token})"
-        
+
     return base_weird
 
 
@@ -410,7 +431,11 @@ def armor(mod=0):
     base_armor = load_and_roll("armor_type.json", mod=mod)
     adjustment = load_and_roll("armor_adjustment.json")
     if base_armor == "Special":
-        return load_and_roll("special_armor.json")
+        base_armor = load_and_roll("special_armor.json")
+        if base_armor == "Elven Chain Mail":
+            elven_chain_size = load_and_roll("elven_chain_size.json")
+            base_armor = f"{base_armor} (Size: {elven_chain_size})"
+        return base_armor
     else:
         return f"{base_armor} {adjustment}"
 
@@ -431,6 +456,7 @@ def weapon(mod=0):
     result = roll(1, 6, 0)
     base_weapon = None
     adjustment = None
+    intelligent = False
     if result < 3:
         base_weapon = load_and_roll("weapon_type_a.json", mod=mod)
     else:
@@ -552,6 +578,87 @@ def roll_all_categories():
     for category in categories:
         results.append(roll_category(category))
     return results
+
+
+def intelligent_weapon(base_weapon, adjustment):
+    intelligence = load_and_roll("weapon_intelligence.json")
+    alignment = load_and_roll("weapon_alignment.json")
+    communication = "speech"
+    primary_abilities = 3
+    extraordinary_abilities = 0
+    has_special_purpose = False
+    special_purpose = "None"
+    abilities = []
+    languages_spoken = load_and_roll("weapon_languages.json")
+    ego = int(adjustment) + int(languages_spoken)
+    if intelligence == 12:
+        communication = "semi-empathy"
+        primary_abilities = 1
+    elif intelligence == 13:
+        communication = "empathy"
+        primary_abilities = 2
+    elif intelligence == 14:
+        primary_abilities = 2
+    elif intelligence == 16:
+        abilities.append("read nonmagical languages/maps")
+        ego += 1
+    elif intelligence == 17:
+        communication = "speech and telepathy"
+        extraordinary_abilities = 1
+        abilities.append("read magical languages/maps/writings")
+        ego += 4
+
+    def roll_twice(table, rolls=2):
+        ability = "Roll Twice"
+        while ability == "Roll Twice" and ability in abilities:
+            ability = load_and_roll(table)
+        if ability == "Extraordinary Powers":
+            primary_abilities -= 1
+            extraordinary_abilities += 1
+        elif ability == "Special Purpose":
+            has_special_purpose = True
+            rolls += 1
+        else:
+            abilities.append(ability)
+        if rolls > 1:
+            roll_twice(table, rolls=rolls - 1)
+
+    for _ in range(0, primary_abilities):
+        ability = load_and_roll("weapon_primary_abilities.json")
+        while ability in abilities:
+            ability = load_and_roll("weapon_primary_abilities.json")
+        if ability == "Roll Twice":
+            roll_twice("weapon_primary_abilities.json")
+        elif ability == "Extraordinary Powers":
+            primary_abilities -= 1
+            extraordinary_abilities += 1
+        else:
+            abilities.append(ability)
+
+    for _ in range(0, extraordinary_abilities):
+        ability = load_and_roll("weapon_extraordinary_abilities.json")
+        while ability in abilities:
+            ability = load_and_roll("weapon_extraordinary_abilities.json")
+        if ability == "Roll Twice":
+            roll_twice("weapon_extraordinary_abilities.json")
+        elif ability == "Special Purpose":
+            has_special_purpose = True
+            while ability in abilities:
+                ability = load_and_roll("weapon_extraordinary_abilities.json")
+            if ability == "Roll Twice":
+                roll_twice("weapon_extraordinary_abilities.json")
+        else:
+            abilities.append(ability)
+
+    if has_special_purpose:
+        special_purpose = load_and_roll("weapon_special_purpose.json")
+        special_power = load_and_roll("weapon_special_power.json")
+        abilities.append(f"Special Purpose: {special_power}")
+        ego += 5
+
+    ego += primary_abilities + extraordinary_abilities * 2
+
+    return f"{base_weapon} {adjustment} (Intelligent) - Int:{intelligence}  Ego:{ego}  Alignment:{alignment}  Communication:{communication}  Special Purpose:{special_purpose}  Abilities:{', '.join(sorted(abilities))}"
 
 
 def print_all_categories():
