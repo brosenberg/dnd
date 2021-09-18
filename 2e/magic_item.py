@@ -12,6 +12,9 @@ from generate_scroll import random_spell
 from generate_scroll import random_random_spell
 
 
+EXPANDED = False
+
+
 def roll_table(table, mod=0):
     max_roll = sorted([int(x) for x in table.keys()])[-1]
     result = roll(1, max_roll, mod)
@@ -411,7 +414,12 @@ def weird():
 
 
 def armor():
-    base_armor = load_and_roll("armor_type.json")
+    base_armor = None
+    if EXPANDED:
+        base_armor = load_and_roll("armor_type_expanded.json")
+    else:
+        base_armor = load_and_roll("armor_type.json")
+
     adjustment = load_and_roll("armor_adjustment.json")
     if base_armor == "Special":
         base_armor = load_and_roll("special_armor.json")
@@ -440,6 +448,7 @@ def weapon():
     adjustment = None
     intelligent = False
     is_sword = False
+    is_dagger = False
     if base_weapon == "Special":
         result = roll(1, 10, 0)
         if result < 4:
@@ -501,18 +510,29 @@ def weapon():
             base_weapon = f"{base_weapon} ({charges} charges)"
 
         if base_weapon.startswith("Sword"):
-            sword = load_and_roll("sword_types.json")
+            if EXPANDED:
+                sword = load_and_roll("sword_types_expanded.json")
+            else:
+                sword = load_and_roll("sword_types.json")
             base_weapon = base_weapon.replace("Sword", sword)
+        if EXPANDED and base_weapon.startswith("Dagger"):
+            dagger = load_and_roll("dagger_types_expanded.json")
+            base_weapon = base_weapon.replace("Dagger", dagger)
 
         return base_weapon
     elif base_weapon == "Sword" or base_weapon == "Scimitar":
         is_sword = True
         if base_weapon == "Sword":
-            base_weapon = load_and_roll("sword_types.json")
+            if EXPANDED:
+                base_weapon = load_and_roll("sword_types_expanded.json")
+            else:
+                base_weapon = load_and_roll("sword_types.json")
         adjustment = load_and_roll("sword_adjustment.json")
     else:
         if base_weapon == "Pole Arm":
             base_weapon = load_and_roll("polearms.json")
+        if EXPANDED and (base_weapon == "Dagger" or base_weapon == "Knife"):
+            base_weapon = load_and_roll("dagger_types_expanded.json")
         adjustment = load_and_roll("weapon_adjustment.json")
         ammo_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_weapon)
         if ammo_match:
@@ -530,7 +550,11 @@ def weapon():
 
 
 def sword():
-    base_weapon = load_and_roll("sword_types.json")
+    base_weapon = None
+    if EXPANDED:
+        base_weapon = load_and_roll("sword_types_expanded.json")
+    else:
+        base_weapon = load_and_roll("sword_types.json")
     adjustment = load_and_roll("sword_adjustment.json")
     if roll(1, 100, 0) > 25:
         return f"{base_weapon} {adjustment}"
@@ -771,8 +795,17 @@ def main():
     parser.add_argument(
         "-p", "--print", action="store_true", help="print all valid categories"
     )
+    parser.add_argument(
+        "-x",
+        "--expanded",
+        action="store_true",
+        default="False",
+        help="use expanded armor and weapon tables",
+    )
 
     args = parser.parse_args()
+    global EXPANDED
+    EXPANDED = args.expanded
     if args.all:
         print("\n".join(roll_all_categories()))
     if args.category:
