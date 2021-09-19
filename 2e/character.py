@@ -9,28 +9,20 @@ from dice import roll
 from spells import Spells
 from roll_abilities import get_abilities
 
-ABILITIES = [
-    "Strength",
-    "Dexterity",
-    "Constitution",
-    "Intelligence",
-    "Wisdom",
-    "Charisma",
-]
-
 
 def load_table(fname):
     base_dir = os.path.dirname(os.path.realpath(__file__))
     return json.load(open(f"{base_dir}/tables/{fname}"))
 
+
+ABILITIES = load_table("abilities.json")
 RACES = load_table("races.json")
 CLASSES = load_table("classes.json")
 CLASS_GROUPS = load_table("class_groups.json")
 CLASS_SPELLS = load_table("class_spells.json")
 SPELL_PROGRESSION = load_table("spell_progression.json")
+WISDOM_CASTERS = load_table("wisdom_casters.json")
 
-# Casters who get bonus spells for high wisdom
-WISDOM_CASTERS = ["Priest"]
 
 def combine_minimums(minimums):
     minimum = {x: 0 for x in ABILITIES}
