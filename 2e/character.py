@@ -62,6 +62,34 @@ def constitution_hp_modifier(con, class_group):
         return 7
 
 
+def dexterity_ac_mod(dexterity):
+    dexterity = int(dexterity)
+    if dexterity < 3:
+        return 5
+    elif dexterity < 4:
+        return 4
+    elif dexterity < 5:
+        return 3
+    elif dexterity < 6:
+        return 2
+    elif dexterity < 7:
+        return 1
+    elif dexterity < 15:
+        return 0
+    elif dexterity < 16:
+        return -1
+    elif dexterity < 17:
+        return -2
+    elif dexterity < 18:
+        return -3
+    elif dexterity < 21:
+        return -4
+    elif dexterity < 24:
+        return -5
+    else:
+        return -6
+
+
 def get_ability_priority(class_name):
     return CLASSES[class_name]["Primary"] + random.sample(
         CLASSES[class_name]["Secondary"], len(CLASSES[class_name]["Secondary"])
@@ -89,39 +117,48 @@ def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
 
 
-def get_dexterity_ac_mod(dexterity):
-    dexterity = int(dexterity)
-    if dexterity < 3:
-        return 5
-    elif dexterity < 4:
-        return 4
-    elif dexterity < 5:
-        return 3
-    elif dexterity < 6:
-        return 2
-    elif dexterity < 7:
-        return 1
-    elif dexterity < 15:
-        return 0
-    elif dexterity < 16:
-        return -1
-    elif dexterity < 17:
-        return -2
-    elif dexterity < 18:
-        return -3
-    elif dexterity < 21:
-        return -4
-    elif dexterity < 24:
-        return -5
-    else:
-        return -6
-
 def get_random_class():
     return random.choice(list(CLASSES.keys()))
 
 
 def get_random_race_by_class(class_name):
     return random.choice(CLASSES[class_name]["Races"])
+
+
+def get_strength_to_hit(strength):
+    strength = int(strength.split("/")[0])
+    try:
+        extrao_str = int(str.split("/")[1])
+    except IndexError:
+        extrao_str = -1
+    if strength < 2:
+        return -5
+    elif strength < 4:
+        return -3
+    elif strength < 6:
+        return -2
+    elif strength < 8:
+        return -1
+    elif strength < 17:
+        return 0
+    elif strength == 17:
+        return 1
+    elif strength == 18:
+        if extrao_str > 50 and extrao_str != 100:
+            return 2
+        elif extrao_str == 100:
+            return 3
+        return 1
+    elif strength < 21:
+        return 3
+    elif strength < 23:
+        return 4
+    elif strength < 24:
+        return 5
+    elif strength < 25:
+        return 6
+    else:
+        return 7
 
 
 def get_spell_levels(class_name, level, wisdom):
@@ -254,18 +291,24 @@ class Character(object):
                 self.char_class, self.level, self.abilities["Wisdom"]
             )
             self.populate_spells()
-        self.thac0 = THAC0[self.class_group][self.level-1]
+        self.thac0 = THAC0[self.class_group][self.level - 1]
         self.equipment = []
-        self.ac = 10 + get_dexterity_ac_mod(self.abilities["Dexterity"])
+        self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
 
     def __str__(self):
         self.update_ac()
+        str_hit_mod = get_strength_to_hit(self.abilities["Strength"])
         s = f"{'-'*10}\n"
         s += f"{self.race} {self.char_class} {self.level}\n"
-        s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0}\n"
+        s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} ({self.thac0-str_hit_mod})\n"
         for ability in self.abilities:
-            if ability == "Dexterity":
-                ac_mod = get_dexterity_ac_mod(self.abilities["Dexterity"])
+            if ability == "Strength":
+                hit_mod = str_hit_mod
+                if hit_mod >= 0:
+                    hit_mod = f"+{hit_mod}"
+                s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit)\n"
+            elif ability == "Dexterity":
+                ac_mod = dexterity_ac_mod(self.abilities["Dexterity"])
                 if ac_mod > 0:
                     ac_mod = f"+{ac_mod}"
                 s += f"{ability}: {self.abilities[ability]} ({ac_mod} AC)\n"
@@ -348,7 +391,7 @@ class Character(object):
                     )
 
     def update_ac(self):
-        mods = [get_dexterity_ac_mod(self.abilities["Dexterity"])]
+        mods = [dexterity_ac_mod(self.abilities["Dexterity"])]
         base_ac = 10
         for item in self.equipment:
             ac, ac_bonus = get_ac(item)
@@ -359,10 +402,11 @@ class Character(object):
                 mods.append(-ac_bonus)
         self.ac = base_ac + sum(mods)
 
+
 def main():
     parser = argparse.ArgumentParser(description="Create a character")
     for class_name in get_all_classes():
-       print(Character(char_class=class_name, level=15))
+        print(Character(char_class=class_name, level=15))
 
 
 if __name__ == "__main__":
