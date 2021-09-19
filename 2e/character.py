@@ -38,23 +38,23 @@ def constitution_hp_modifier(con, class_group):
     con = int(con)
     if con <= 1:
         return -3
-    elif con == 2 or con == 3:
+    elif con < 4:
         return -2
-    elif con == 4 or con == 5 or con == 6:
-        return -3
-    elif con == 15:
-        return 1
+    elif con < 7:
+        return -1
     elif con < 15:
         return 0
+    elif con == 15:
+        return 1
     if class_group != "Warrior" or con == 16:
         return 2
     elif con == 17:
         return 3
     elif con == 18:
         return 4
-    elif con == 19 or con == 20:
+    elif con < 21:
         return 5
-    elif con == 21 or con == 22 or con == 23:
+    elif con < 24:
         return 6
     else:
         return 7
@@ -300,20 +300,8 @@ class Character(object):
 
 def main():
     parser = argparse.ArgumentParser(description="Create a character")
-    # print(Character(get_random_class(), level=20))
-    # for class_name in get_all_classes():
-    #    print(Character(char_class=class_name, level=10))
-    # print(get_spell_levels("Cleric", 8, 5))
-    for char_class in [
-        "Mage",
-        "Abjurer",
-        "Ranger",
-        "Paladin",
-        "Bard",
-        "Cleric",
-        "Diviner",
-    ]:
-        print(Character(char_class=char_class, level=15))
+    for class_name in get_all_classes():
+       print(Character(char_class=class_name, level=15))
 
 
 if __name__ == "__main__":
