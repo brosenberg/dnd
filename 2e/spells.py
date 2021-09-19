@@ -18,31 +18,32 @@ class Spells(object):
         spell_level = str(spell_level)
         return random.choice(self.spells[caster_class][spell_level])
 
-    def random_school_sphere_spell(self, spell_level, caster_class, school_sphere):
+    def random_school_sphere_spell(self, spell_level, school_sphere, spell_list):
         spell_level = str(spell_level)
-        if caster_class == "Wizard":
-            return random.choice(self.spells["School"][school_sphere][spell_level])
-        else:
-            try:
-                return random.choice(self.spells["Sphere"][school_sphere][spell_level])
-            except KeyError:
-                return None
+        try:
+            return random.choice(self.spells[spell_list][school_sphere][spell_level])
+        except KeyError:
+            return None
 
-    def random_exclude_school_sphere_spell(self, spell_level, caster_class, excludes):
+    def random_include_school_sphere_spell(self, spell_level, spell_list, includes):
         spell_level = str(spell_level)
         possible = []
-        if caster_class == "Wizard":
-            for school in list(set(self.spells["School"].keys() - set(excludes))):
-                possible += self.spells["School"][school][spell_level]
-            print("  ".join(sorted(possible)))
-            return random.choice(list(set(possible)))
-        else:
-            for sphere in list(set(self.spells["Sphere"].keys() - set(excludes))):
-                try:
-                    possible += self.spells["Sphere"][sphere][spell_level]
-                except KeyError:
-                    return None
-            return random.choice(list(set(possible)))
+        for school_sphere in includes:
+            try:
+                possible += self.spells[spell_list][school_sphere][spell_level]
+            except KeyError:
+                pass
+        return random.choice(list(set(possible)))
+
+    def random_exclude_school_sphere_spell(self, spell_level, spell_list, excludes):
+        spell_level = str(spell_level)
+        possible = []
+        for school_sphere in list(set(self.spells[spell_list].keys() - set(excludes))):
+            try:
+                possible += self.spells[spell_list][school_sphere][spell_level]
+            except KeyError:
+                pass
+        return random.choice(list(set(possible)))
 
     def random_random_spell(self):
         caster_class = random.choice(["Wizard", "Priest"])
@@ -66,6 +67,12 @@ def main():
             "3", "Wizard", ["Necromancy", "Evocation", "Conjuration"]
         )
     )
+    print(
+        spells.random_include_school_sphere_spell(
+            "3", "Wizard", ["Necromancy", "Evocation", "Conjuration"]
+        )
+    )
+    print(spells.random_include_school_sphere_spell("3", "Priest", ["Animal"]))
 
 
 if __name__ == "__main__":
