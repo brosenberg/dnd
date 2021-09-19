@@ -18,7 +18,7 @@ LEVEL_RANGE = {
 
 MAGIC_ITEMS = {
     "Fighter": ["Armor No Shields", "Shields", "Sword", "Nonsword", "Potions and Oils"],
-    "Wizard": ["Scrolls", "Rings", "Rod/Staff/Wand", "Misc Magic"],
+    "Mage": ["Scrolls", "Rings", "Rod/Staff/Wand", "Misc Magic"],
     "Cleric": [
         "Armor No Shields",
         "Shields",
@@ -43,7 +43,7 @@ def random_adventurer(level_range, expanded):
     class_roll = roll(1, 10, 0)
     char_class = "Fighter"
     if class_roll > 8:
-        char_class = "Wizard"
+        char_class = "Mage"
     elif class_roll > 6:
         char_class = "Thief"
     elif class_roll > 4:

@@ -21,7 +21,9 @@ def roll_array(tries, rolls):
     )[:6]
 
 
-def get_abilities(priority, minimums, tries=7, rolls=4, extrao_str=False):
+def get_abilities(
+    priority, minimums, maximums, modifiers, tries=7, rolls=4, extrao_str=False
+):
     array = roll_array(tries, rolls)
     abilities = {x: 0 for x in ABILITIES}
     for ability in priority:
@@ -30,20 +32,26 @@ def get_abilities(priority, minimums, tries=7, rolls=4, extrao_str=False):
     random.shuffle(remaining)
     for ability in remaining:
         abilities[ability] = array.pop(0)
+    for ability in modifiers:
+        abilities[ability] += modifiers[ability]
     for ability in minimums:
         if abilities[ability] < minimums[ability]:
             abilities[ability] = minimums[ability]
+    for ability in maximums:
+        if abilities[ability] > maximums[ability]:
+            abilities[ability] = maximums[ability]
     for ability in abilities:
         abilities[ability] = str(abilities[ability])
     if extrao_str and abilities["Strength"] == "18":
         abilities["Strength"] = f"18/{roll(1, 100, 0)}"
     return abilities
-    
+
 
 def main():
     priority = ["Strength", "Constitution", "Dexterity"]
     minimums = {"Charisma": 16}
     print(get_abilities(priority, minimums, extrao_str=True))
+
 
 if __name__ == "__main__":
     main()
