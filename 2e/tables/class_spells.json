@@ -1,0 +1,98 @@
+{
+  "Paladin": {
+    "List": "Sphere",
+    "Include": [
+      "Combat",
+      "Divination",
+      "Healing",
+      "Protection"
+    ]
+  },
+  "Ranger": {
+    "List": "Sphere",
+    "Include": [
+      "Animal",
+      "Plant"
+    ]
+  },
+  "Bard": {
+    "List": "School",
+    "Exclude": []
+  },
+  "Druid": {
+    "List": "Sphere",
+    "Include": [
+      "All",
+      "Animal",
+      "Divination",
+      "Elemental",
+      "Healing",
+      "Plant",
+      "Weather"
+    ]
+  },
+  "Abjurer": {
+    "List": "School",
+    "Exclude": [
+      "Alteration",
+      "Illusion"
+    ],
+    "Specialization": "Abjuration"
+  },
+  "Conjurer": {
+    "List": "School",
+    "Exclude": [
+      "Divination",
+      "Evocation"
+    ],
+    "Specialization": "Conjuration"
+  },
+  "Diviner": {
+    "List": "School",
+    "Exclude": [
+      "Conjuration"
+    ],
+    "Specialization": "Divination"
+  },
+  "Enchanter": {
+    "List": "School",
+    "Exclude": [
+      "Necromancy",
+      "Evocation"
+    ],
+    "Specialization": "Enchantment"
+  },
+  "Illusionist": {
+    "List": "School",
+    "Exclude": [
+      "Necromancy",
+      "Evocation",
+      "Abjuration"
+    ],
+    "Specialization": "Illusion"
+  },
+  "Invoker": {
+    "List": "School",
+    "Exclude": [
+      "Enchantment",
+      "Conjuration"
+    ],
+    "Specialization": "Evocation"
+  },
+  "Necromancer": {
+    "List": "School",
+    "Exclude": [
+      "Enchantment",
+      "Illusion"
+    ],
+    "Specialization": "Necromancy"
+  },
+  "Transmuter": {
+    "List": "School",
+    "Exclude": [
+      "Abjuration",
+      "Necromancy"
+    ],
+    "Specialization": "Alteration"
+  }
+}

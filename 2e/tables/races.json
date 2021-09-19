@@ -1,0 +1,128 @@
+{
+  "Dwarf": {
+    "Ability Modifiers": {
+      "Constitution": 1,
+      "Charisma": -1
+    },
+    "Maximums": {
+      "Strength": 18,
+      "Dexterity": 17,
+      "Constitution": 18,
+      "Intelligence": 18,
+      "Wisdom": 18,
+      "Charisma": 17
+    },
+    "Minimums": {
+      "Strength": 8,
+      "Dexterity": 3,
+      "Constitution": 11,
+      "Intelligence": 3,
+      "Wisdom": 3,
+      "Charisma": 3
+    }
+  },
+  "Elf": {
+    "Ability Modifiers": {
+      "Constitution": -1,
+      "Dexterity": 1
+    },
+    "Maximums": {
+      "Strength": 18,
+      "Dexterity": 18,
+      "Constitution": 18,
+      "Intelligence": 18,
+      "Wisdom": 18,
+      "Charisma": 18
+    },
+    "Minimums": {
+      "Strength": 3,
+      "Dexterity": 6,
+      "Constitution": 7,
+      "Intelligence": 8,
+      "Wisdom": 3,
+      "Charisma": 8
+    }
+  },
+  "Gnome": {
+    "Ability Modifiers": {
+      "Wisdom": -1,
+      "Intelligence": 1
+    },
+    "Maximums": {
+      "Strength": 18,
+      "Dexterity": 18,
+      "Constitution": 18,
+      "Intelligence": 18,
+      "Wisdom": 18,
+      "Charisma": 18
+    },
+    "Minimums": {
+      "Strength": 6,
+      "Dexterity": 3,
+      "Constitution": 8,
+      "Intelligence": 6,
+      "Wisdom": 3,
+      "Charisma": 3
+    }
+  },
+  "Half-Elf": {
+    "Ability Modifiers": {},
+    "Maximums": {
+      "Strength": 18,
+      "Dexterity": 18,
+      "Constitution": 18,
+      "Intelligence": 18,
+      "Wisdom": 18,
+      "Charisma": 18
+    },
+    "Minimums": {
+      "Strength": 3,
+      "Dexterity": 6,
+      "Constitution": 6,
+      "Intelligence": 4,
+      "Wisdom": 3,
+      "Charisma": 3
+    }
+  },
+  "Halfling": {
+    "Ability Modifiers": {
+      "Strength": -1,
+      "Dexterity": 1
+    },
+    "Maximums": {
+      "Strength": 18,
+      "Dexterity": 18,
+      "Constitution": 18,
+      "Intelligence": 18,
+      "Wisdom": 17,
+      "Charisma": 18
+    },
+    "Minimums": {
+      "Strength": 7,
+      "Dexterity": 7,
+      "Constitution": 10,
+      "Intelligence": 6,
+      "Wisdom": 3,
+      "Charisma": 3
+    }
+  },
+  "Human": {
+    "Ability Modifiers": {},
+    "Maximums": {
+      "Strength": 18,
+      "Dexterity": 18,
+      "Constitution": 18,
+      "Intelligence": 18,
+      "Wisdom": 18,
+      "Charisma": 18
+    },
+    "Minimums": {
+      "Strength": 3,
+      "Dexterity": 3,
+      "Constitution": 3,
+      "Intelligence": 3,
+      "Wisdom": 3,
+      "Charisma": 3
+    }
+  }
+}

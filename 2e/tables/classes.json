@@ -1,0 +1,98 @@
+{
+    "Fighter": {
+        "Primary": ["Strength"],
+        "Secondary": ["Constitution", "Dexterity"],
+        "Minimums": {"Strength": 9},
+        "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"]
+    },
+    "Paladin": {
+        "Primary": ["Charisma", "Wisdom", "Strength", "Constitution"],
+        "Secondary": ["Dexterity"],
+        "Minimums": {"Strength": 12, "Constitution": 9, "Wisdom": 13, "Charisma": 17},
+        "Races": ["Human"]
+    },
+    "Ranger": {
+        "Primary": ["Constitution", "Wisdom"],
+        "Secondary": ["Strength", "Dexterity"],
+        "Minimums": {"Strength": 13, "Dexterity": 13, "Constitution": 14, "Wisdom": 14},
+        "Races": ["Human", "Elf", "Half-Elf"]
+    },
+    "Mage": {
+        "Primary": ["Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Intelligence": 9},
+        "Races": ["Human", "Elf", "Half-Elf"]
+    },
+    "Abjurer": {
+        "Primary": ["Wisdom", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Intelligence": 9, "Wisdom": 15},
+        "Races": ["Human"]
+    },
+    "Conjurer": {
+        "Primary": ["Constitution", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Constitution": 15, "Intelligence": 9},
+        "Races": ["Human", "Half-Elf"]
+    },
+    "Diviner": {
+        "Primary": ["Wisdom", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Wisdom": 16, "Intelligence": 9},
+        "Races": ["Human", "Elf", "Half-Elf"]
+    },
+    "Enchanter": {
+        "Primary": ["Charisma", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Charisma": 16, "Intelligence": 9},
+        "Races": ["Human", "Elf", "Half-Elf"]
+    },
+    "Illusionist": {
+        "Primary": ["Dexterity", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Dexterity": 16, "Intelligence": 9},
+        "Races": ["Human", "Gnome"]
+    },
+    "Invoker": {
+        "Primary": ["Constitution", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Constitution": 16, "Intelligence": 9},
+        "Races": ["Human"]
+    },
+    "Necromancer": {
+        "Primary": ["Wisdom", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Wisdom": 16, "Intelligence": 9},
+        "Races": ["Human"]
+    },
+    "Transmuter": {
+        "Primary": ["Dexterity", "Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Dexterity": 15, "Intelligence": 9},
+        "Races": ["Human", "Half-Elf"]
+    },
+    "Cleric": {
+        "Primary": ["Wisdom"],
+        "Secondary": ["Charisma", "Strength", "Constitution", "Dexterity"],
+        "Minimums": {"Wisdom": 9},
+        "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"]
+    },
+    "Druid": {
+        "Primary": ["Charisma", "Wisdom"],
+        "Secondary": ["Strength", "Constitution", "Dexterity"],
+        "Minimums": {"Wisdom": 12, "Charisma": 15},
+        "Races": ["Human", "Half-Elf"]
+    },
+    "Thief": {
+        "Primary": ["Dexterity"],
+        "Secondary": ["Strength", "Constitution"],
+        "Minimums": {"Dexterity": 9},
+        "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"]
+    },
+    "Bard": {
+        "Primary": ["Charisma", "Intelligence", "Dexterity"],
+        "Secondary": [],
+        "Minimums": {"Dexterity": 12, "Intelligence": 13, "Charisma": 15},
+        "Races": ["Human", "Half-Elf"]
+    }
+}
