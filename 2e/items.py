@@ -13,6 +13,7 @@ def load_table(fname):
 ARMOR_STATS = load_table("armor_stats.json")
 SHIELDS = load_table("shields.json")
 
+
 def get_ac(item):
     ac = get_armor_ac(item)
     if ac:
@@ -22,6 +23,7 @@ def get_ac(item):
         return (None, ac)
     return (None, get_other_ac_bonus(item))
 
+
 def get_adjustment(item):
     magic = re.match(r"^(.+?) ([+-][0-9]+)(, .+?)?$", item)
     adjustment = 0
@@ -29,11 +31,12 @@ def get_adjustment(item):
         return (magic.group(1), int(magic.group(2)))
     return (item, 0)
 
+
 def get_armor_ac(armor):
     remove_list = [" of Blending", " of Missile Attraction"]
     for remove in remove_list:
         armor = armor.replace(remove, "")
-    bracers_of_defense = re.match(r'^Bracers of Defense \(AC ([0-9]+)\)$', armor)
+    bracers_of_defense = re.match(r"^Bracers of Defense \(AC ([0-9]+)\)$", armor)
     if bracers_of_defense:
         return int(bracers_of_defense.group(1))
     armor, adjustment = get_adjustment(armor)
@@ -43,19 +46,22 @@ def get_armor_ac(armor):
     except KeyError:
         pass
 
+
 def get_shield_ac_bonus(shield):
     if is_shield(shield):
         _, adjustment = get_adjustment(shield)
         return 1 + adjustment
     return None
 
+
 def get_other_ac_bonus(item):
-    protection_items = ['Ring of Protection', 'Cloak of Protection']
+    protection_items = ["Ring of Protection", "Cloak of Protection"]
     for protection_item in protection_items:
         if protection_item in item:
             _, adjustment = get_adjustment(item)
             return adjustment
     return None
+
 
 def is_shield(item):
     for shield in SHIELDS:

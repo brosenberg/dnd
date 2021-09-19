@@ -424,6 +424,7 @@ class MagicItemGen(object):
 
         adjustment = load_and_roll("armor_adjustment.json")
         if base_armor == "Special":
+
             def get_random_armor():
                 armor = "Shield"
                 while armor.startswith("Shield") or armor == "Special":
@@ -432,6 +433,7 @@ class MagicItemGen(object):
                     else:
                         armor = load_and_roll("armor_type.json")
                 return armor
+
             base_armor = load_and_roll("special_armor.json")
             if base_armor == "Armor of Blending":
                 armor = get_random_armor()

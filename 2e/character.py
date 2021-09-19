@@ -17,6 +17,11 @@ def load_table(fname):
 
 
 ABILITIES = load_table("abilities.json")
+ABILITY_MODS = {
+    "Dexterity": load_table("dexterity.json"),
+    "Strength": load_table("strength.json"),
+    "Extrao Strength": load_table("extrao_strength.json"),
+}
 ABILITY_ROLLS = load_table("ability_rolls.json")
 RACES = load_table("races.json")
 CLASSES = load_table("classes.json")
@@ -62,32 +67,16 @@ def constitution_hp_modifier(con, class_group):
         return 7
 
 
+def dexterity_mods(dexterity):
+    return ABILITY_MODS["Dexterity"][dexterity]
+
+
 def dexterity_ac_mod(dexterity):
-    dexterity = int(dexterity)
-    if dexterity < 3:
-        return 5
-    elif dexterity < 4:
-        return 4
-    elif dexterity < 5:
-        return 3
-    elif dexterity < 6:
-        return 2
-    elif dexterity < 7:
-        return 1
-    elif dexterity < 15:
-        return 0
-    elif dexterity < 16:
-        return -1
-    elif dexterity < 17:
-        return -2
-    elif dexterity < 18:
-        return -3
-    elif dexterity < 21:
-        return -4
-    elif dexterity < 24:
-        return -5
-    else:
-        return -6
+    return dexterity_mods(dexterity)[2]
+
+
+def dexterity_to_hit(dexterity):
+    return dexterity_mods(dexterity)[1]
 
 
 def get_ability_priority(class_name):
@@ -123,42 +112,6 @@ def get_random_class():
 
 def get_random_race_by_class(class_name):
     return random.choice(CLASSES[class_name]["Races"])
-
-
-def get_strength_to_hit(strength):
-    strength = int(strength.split("/")[0])
-    try:
-        extrao_str = int(str.split("/")[1])
-    except IndexError:
-        extrao_str = -1
-    if strength < 2:
-        return -5
-    elif strength < 4:
-        return -3
-    elif strength < 6:
-        return -2
-    elif strength < 8:
-        return -1
-    elif strength < 17:
-        return 0
-    elif strength == 17:
-        return 1
-    elif strength == 18:
-        if extrao_str > 50 and extrao_str != 100:
-            return 2
-        elif extrao_str == 100:
-            return 3
-        return 1
-    elif strength < 21:
-        return 3
-    elif strength < 23:
-        return 4
-    elif strength < 24:
-        return 5
-    elif strength < 25:
-        return 6
-    else:
-        return 7
 
 
 def get_spell_levels(class_name, level, wisdom):
@@ -216,6 +169,36 @@ def get_spell_specialization(class_name):
         return CLASS_SPELLS[class_name]["Specialization"]
     except KeyError:
         return None
+
+
+def strength_mods(strength):
+    strength = strength.split("/")[0]
+    try:
+        extrao_str = int(str.split("/")[1])
+        if extrao_str < 51:
+            extrao_str = "50"
+        elif extrao_str < 76:
+            extrao_str = "75"
+        elif extrao_str < 91:
+            extrao_str = "90"
+        elif extrao_str < 100:
+            extrao_str = "99"
+        else:
+            extrao_str = "100"
+    except IndexError:
+        extrao_str = None
+    if extrao_str:
+        return ABILITY_MODS["Extrao Strength"][extrao_str]
+    else:
+        return ABILITY_MODS["Strength"][strength]
+
+
+def strength_damage(strength):
+    return strength_mods(strength)[1]
+
+
+def strength_to_hit(strength):
+    return strength_mods(strength)[0]
 
 
 def wisdom_bonus_spells(wisdom):
@@ -297,21 +280,28 @@ class Character(object):
 
     def __str__(self):
         self.update_ac()
-        str_hit_mod = get_strength_to_hit(self.abilities["Strength"])
+        dex_hit_mod = dexterity_to_hit(self.abilities["Dexterity"])
+        str_hit_mod = strength_to_hit(self.abilities["Strength"])
         s = f"{'-'*10}\n"
         s += f"{self.race} {self.char_class} {self.level}\n"
-        s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} ({self.thac0-str_hit_mod})\n"
+        s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
         for ability in self.abilities:
             if ability == "Strength":
                 hit_mod = str_hit_mod
+                dmg_mod = strength_damage(self.abilities["Strength"])
                 if hit_mod >= 0:
                     hit_mod = f"+{hit_mod}"
-                s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit)\n"
+                if dmg_mod >= 0:
+                    dmg_mod = f"+{dmg_mod}"
+                s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit/{dmg_mod} damage)\n"
             elif ability == "Dexterity":
+                hit_mod = dex_hit_mod
                 ac_mod = dexterity_ac_mod(self.abilities["Dexterity"])
+                if hit_mod >= 0:
+                    hit_mod = f"+{hit_mod}"
                 if ac_mod > 0:
                     ac_mod = f"+{ac_mod}"
-                s += f"{ability}: {self.abilities[ability]} ({ac_mod} AC)\n"
+                s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit/{ac_mod} AC)\n"
             else:
                 s += f"{ability}: {self.abilities[ability]}\n"
         if self.spell_levels:
