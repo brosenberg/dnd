@@ -439,7 +439,7 @@ class MagicItemGen(object):
                     adjustment = load_and_roll("armor_adjustment.json")
                 base_armor = f"{armor} of Blending {adjustment}"
             elif base_armor == "Armor of Missile Attraction":
-                armor = get_random_armor():
+                armor = get_random_armor()
                 base_armor = f"{armor} of Missile Attraction {adjustment}"
             elif base_armor == "Elven Chain Mail":
                 elven_chain_size = load_and_roll("elven_chain_size.json")
