@@ -1,0 +1,392 @@
+{
+  "All": {
+    "1": [
+      "Bless",
+      "Combine",
+      "Detect Evil",
+      "Purify Food & Drink"
+    ],
+    "5": [
+      "Atonement"
+    ]
+  },
+  "Animal": {
+    "1": [
+      "Animal Friendship",
+      "Invisibility to Animals",
+      "Locate Animals or Plants"
+    ],
+    "2": [
+      "Charm Person or Mammal",
+      "Messenger",
+      "Snake Charm",
+      "Speak With Animals"
+    ],
+    "3": [
+      "Hold Animal",
+      "Summon Insects"
+    ],
+    "4": [
+      "Animal Summoning I",
+      "Call Woodland Beings",
+      "Giant Insect",
+      "Repel Insects"
+    ],
+    "5": [
+      "Animal Growth",
+      "Animal Summoning II"
+    ],
+    "6": [
+      "Animal Summoning III",
+      "Anti-Animal Shell"
+    ],
+    "7": [
+      "Creeping Doom"
+    ]
+  },
+  "Astral": {
+    "5": [
+      "Plane Shift"
+    ],
+    "7": [
+      "Astral Spell"
+    ]
+  },
+  "Charm": {
+    "1": [
+      "Command",
+      "Remove Fear"
+    ],
+    "2": [
+      "Enthrall",
+      "Hold Person"
+    ],
+    "4": [
+      "Cloak of Bravery",
+      "Free Action",
+      "Imbue With Spell Ability"
+    ],
+    "5": [
+      "Quest"
+    ],
+    "7": [
+      "Confusion",
+      "Exaction"
+    ]
+  },
+  "Combat": {
+    "1": [
+      "Magical Stone",
+      "Shillelagh"
+    ],
+    "2": [
+      "Chant",
+      "Spiritual Hammer"
+    ],
+    "3": [
+      "Prayer"
+    ],
+    "5": [
+      "Flame Strike",
+      "Insect Plague"
+    ],
+    "7": [
+      "Holy Word"
+    ]
+  },
+  "Creation": {
+    "3": [
+      "Create Food & Water"
+    ],
+    "6": [
+      "Animate Object",
+      "Blade Barrier",
+      "Heroes' Feast",
+      "Wall of Thorns"
+    ],
+    "7": [
+      "Changestaff",
+      "Chariot of Sustarre"
+    ]
+  },
+  "Divination": {
+    "1": [
+      "Detect Magic",
+      "Detect Poison",
+      "Detect Snares & Pits",
+      "Locate Animals or Plants"
+    ],
+    "2": [
+      "Augury",
+      "Detect Charm",
+      "Find Traps",
+      "Know Alignment",
+      "Speak With Animals"
+    ],
+    "3": [
+      "Locate Object",
+      "Speak With Dead"
+    ],
+    "4": [
+      "Detect Lie",
+      "Divination",
+      "Reflecting Pool",
+      "Tongues"
+    ],
+    "5": [
+      "Commune",
+      "Commune With Nature",
+      "Magic Font",
+      "True Seeing"
+    ],
+    "6": [
+      "Find the Path",
+      "Speak With Monsters"
+    ]
+  },
+  "Elemental": {
+    "1": [
+      "Create Water"
+    ],
+    "2": [
+      "Dust Devil",
+      "Fire Trap",
+      "Flame Blade",
+      "Heat Metal",
+      "Produce Flame"
+    ],
+    "3": [
+      "Flame Walk",
+      "Meld Into Stone",
+      "Protection From Fire",
+      "Pyrotechnics",
+      "Stone Shape",
+      "Water Breathing",
+      "Water Walk"
+    ],
+    "4": [
+      "Lower Water",
+      "Produce Fire"
+    ],
+    "5": [
+      "Air Walk",
+      "Commune With Nature",
+      "Spike Stones",
+      "Transmute Rock to Mud",
+      "Wall of Fire"
+    ],
+    "6": [
+      "Conjure Fire Elemental",
+      "Fire Seeds",
+      "Part Water",
+      "Stone Tell",
+      "Transmute Water to Dust"
+    ],
+    "7": [
+      "Animate Rock",
+      "Chariot of Sustarre",
+      "Conjure Earth Elemental",
+      "Earthquake",
+      "Fire Storm",
+      "Transmute Metal to Wood",
+      "Wind Walk"
+    ]
+  },
+  "Guardian": {
+    "2": [
+      "Silence, 15' Radius",
+      "Wyvern Watch"
+    ],
+    "3": [
+      "Glyph of Warding"
+    ],
+    "6": [
+      "Blade Barrier"
+    ],
+    "7": [
+      "Symbol"
+    ]
+  },
+  "Healing": {
+    "1": [
+      "Cure Light Wounds"
+    ],
+    "2": [
+      "Slow Poison"
+    ],
+    "4": [
+      "Cure Serious Wounds",
+      "Neutralize Poison"
+    ],
+    "5": [
+      "Cure Critical Wounds"
+    ],
+    "6": [
+      "Heal"
+    ]
+  },
+  "Necromantic": {
+    "1": [
+      "Invisibility to Undead"
+    ],
+    "2": [
+      "Aid"
+    ],
+    "3": [
+      "Animate Dead",
+      "Cure Blindness or Deafness",
+      "Cure Disease",
+      "Feign Death",
+      "Negative Plane Protection"
+    ],
+    "5": [
+      "Raise Dead"
+    ],
+    "7": [
+      "Regenerate",
+      "Reincarnate",
+      "Restoration",
+      "Resurrection"
+    ]
+  },
+  "Plant": {
+    "1": [
+      "Entangle",
+      "Pass Without Trace",
+      "Shillelagh"
+    ],
+    "2": [
+      "Barkskin",
+      "Goodberry",
+      "Trip",
+      "Warp Wood"
+    ],
+    "3": [
+      "Plant Growth",
+      "Snare",
+      "Spike Growth",
+      "Tree"
+    ],
+    "4": [
+      "Hallucinatory Forest",
+      "Hold Plant",
+      "Plant Door",
+      "Speak With Plants",
+      "Sticks to Snakes"
+    ],
+    "5": [
+      "Anti-Plant Shell",
+      "Pass Plant"
+    ],
+    "6": [
+      "Liveoak",
+      "Transport Via Plants",
+      "Turn Wood",
+      "Wall of Thorns"
+    ],
+    "7": [
+      "Changestaff"
+    ]
+  },
+  "Protection": {
+    "1": [
+      "Endure Cold/Endure Heat",
+      "Protection From Evil",
+      "Sanctuary"
+    ],
+    "2": [
+      "Barkskin",
+      "Resist Fire/Resist Cold",
+      "Withdraw"
+    ],
+    "3": [
+      "Dispel Magic",
+      "Magical Vestment",
+      "Negative Plane Protection",
+      "Protection From Fire",
+      "Remove Curse",
+      "Remove Paralysis"
+    ],
+    "4": [
+      "Protection From Evil, 10' Radius",
+      "Protection From Lightning",
+      "Repel Insects",
+      "Spell Immunity"
+    ],
+    "5": [
+      "Anti-Plant Shell",
+      "Dispel Evil"
+    ],
+    "6": [
+      "Anti-Animal Shell"
+    ]
+  },
+  "Summoning": {
+    "4": [
+      "Abjure",
+      "Animal Summoning I",
+      "Call Woodland Beings"
+    ],
+    "5": [
+      "Animal Summoning II",
+      "Dispel Evil"
+    ],
+    "6": [
+      "Aerial Servant",
+      "Animal Summoning III",
+      "Animate Object",
+      "Conjure Animals",
+      "Wall of Thorns",
+      "Weather Summoning",
+      "Word of Recall"
+    ],
+    "7": [
+      "Conjure Earth Elemental",
+      "Creeping Doom",
+      "Exaction",
+      "Gate",
+      "Succor"
+    ]
+  },
+  "Sun": {
+    "1": [
+      "Light"
+    ],
+    "3": [
+      "Continual Light",
+      "Starshine"
+    ],
+    "5": [
+      "Moonbeam",
+      "Rainbow"
+    ],
+    "7": [
+      "Sunray"
+    ]
+  },
+  "Weather": {
+    "1": [
+      "Faerie Fire"
+    ],
+    "2": [
+      "Obscurement"
+    ],
+    "3": [
+      "Call Lightning"
+    ],
+    "4": [
+      "Control Temperature, 10' Radius",
+      "Protection From Lightning"
+    ],
+    "5": [
+      "Control Winds",
+      "Rainbow"
+    ],
+    "6": [
+      "Weather Summoning"
+    ],
+    "7": [
+      "Control Weather"
+    ]
+  }
+}
