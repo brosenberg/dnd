@@ -69,10 +69,10 @@ def random_adventurer(level_range, expanded):
             adventurer.add_equipment(item)
     if level > 7 and (char_class == "Cleric" or char_class == "Fighter"):
         if not has_armor:
-            adventurer.add_equipment("plate mail")
+            adventurer.add_equipment("Plate mail")
         if not has_shield:
-            adventurer.add_equipment("medium shield")
-        adventurer.add_equipment("unbarded medium warhorse")
+            adventurer.add_equipment("Medium shield")
+        adventurer.add_equipment("Medium warhorse")
     return adventurer
 
 

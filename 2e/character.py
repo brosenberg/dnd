@@ -6,6 +6,7 @@ import os
 import random
 
 from dice import roll
+from items import get_ac
 from spells import Spells
 from roll_abilities import get_abilities
 
@@ -86,6 +87,33 @@ def get_caster_group(class_name):
 def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
 
+
+def get_dexterity_ac_mod(dexterity):
+    dexterity = int(dexterity)
+    if dexterity < 3:
+        return 5
+    elif dexterity < 4:
+        return 4
+    elif dexterity < 5:
+        return 3
+    elif dexterity < 6:
+        return 2
+    elif dexterity < 7:
+        return 1
+    elif dexterity < 15:
+        return 0
+    elif dexterity < 16:
+        return -1
+    elif dexterity < 17:
+        return -2
+    elif dexterity < 18:
+        return -3
+    elif dexterity < 21:
+        return -4
+    elif dexterity < 24:
+        return -5
+    else:
+        return -6
 
 def get_random_class():
     return random.choice(list(CLASSES.keys()))
@@ -226,13 +254,21 @@ class Character(object):
             )
             self.populate_spells()
         self.equipment = []
+        self.ac = 10 + get_dexterity_ac_mod(self.abilities["Dexterity"])
 
     def __str__(self):
+        self.update_ac()
         s = f"{'-'*10}\n"
         s += f"{self.race} {self.char_class} {self.level}\n"
-        s += f"HP: {self.hitpoints}\n"
+        s += f"HP: {self.hitpoints}  AC: {self.ac}\n"
         for ability in self.abilities:
-            s += f"{ability}: {self.abilities[ability]}\n"
+            if ability == "Dexterity":
+                ac_mod = get_dexterity_ac_mod(self.abilities["Dexterity"])
+                if ac_mod > 0:
+                    ac_mod = f"+{ac_mod}"
+                s += f"{ability}: {self.abilities[ability]} ({ac_mod} AC)\n"
+            else:
+                s += f"{ability}: {self.abilities[ability]}\n"
         if self.spell_levels:
             s += "\n"
             s += f"Spells ({'/'.join([str(x) for x in self.spell_levels])}):\n"
@@ -245,8 +281,20 @@ class Character(object):
                         count = f" ({self.spells[spell_level].count(spell)})"
                     cur_spells.append(f"{spell}{count}")
                 s += f"{'; '.join(cur_spells)}\n"
-        s += "\n"
-        s += "Equipment:\n" + "\n".join(self.equipment)
+        if self.equipment:
+            items = []
+            for item in self.equipment:
+                ac, ac_bonus = get_ac(item)
+                if ac is not None:
+                    item = f"{item} (AC: {ac})"
+                elif ac_bonus is not None:
+                    if ac_bonus >= 0:
+                        item = f"{item} (AC +{ac_bonus})"
+                    else:
+                        item = f"{item} (AC {ac_bonus})"
+                items.append(item)
+            s += "\n"
+            s += "Equipment:\n" + "\n".join(items)
         s += f"\n{'-'*10}"
         return s
 
@@ -297,6 +345,17 @@ class Character(object):
                         spell_level, spell_gen.random_spell(spell_level, caster_class)
                     )
 
+    def update_ac(self):
+        mods = [get_dexterity_ac_mod(self.abilities["Dexterity"])]
+        base_ac = 10
+        for item in self.equipment:
+            ac, ac_bonus = get_ac(item)
+            if ac is not None:
+                if ac < base_ac:
+                    base_ac = ac
+            elif ac_bonus is not None:
+                mods.append(-ac_bonus)
+        self.ac = base_ac + sum(mods)
 
 def main():
     parser = argparse.ArgumentParser(description="Create a character")

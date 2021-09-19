@@ -336,7 +336,7 @@ class MagicItemGen(object):
             potions = []
             for _ in range(0, roll(1, 4, 1)):
                 doses = roll(1, 4, 1)
-                potions.append(f"{potions_and_oils()} ({doses} doses)")
+                potions.append(f"{self.potions_and_oils()} ({doses} doses)")
             base_container = f"{base_container} (Potions: {', '.join(potions)})"
         elif base_container == "Bucknard's Everfull Purse":
             everfull_purse = load_and_roll("everfull_purse.json")
