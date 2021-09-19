@@ -23,6 +23,7 @@ CLASSES = load_table("classes.json")
 CLASS_GROUPS = load_table("class_groups.json")
 CLASS_SPELLS = load_table("class_spells.json")
 SPELL_PROGRESSION = load_table("spell_progression.json")
+THAC0 = load_table("thac0.json")
 WISDOM_CASTERS = load_table("wisdom_casters.json")
 
 
@@ -253,6 +254,7 @@ class Character(object):
                 self.char_class, self.level, self.abilities["Wisdom"]
             )
             self.populate_spells()
+        self.thac0 = THAC0[self.class_group][self.level-1]
         self.equipment = []
         self.ac = 10 + get_dexterity_ac_mod(self.abilities["Dexterity"])
 
@@ -260,7 +262,7 @@ class Character(object):
         self.update_ac()
         s = f"{'-'*10}\n"
         s += f"{self.race} {self.char_class} {self.level}\n"
-        s += f"HP: {self.hitpoints}  AC: {self.ac}\n"
+        s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0}\n"
         for ability in self.abilities:
             if ability == "Dexterity":
                 ac_mod = get_dexterity_ac_mod(self.abilities["Dexterity"])
