@@ -784,9 +784,7 @@ def main():
         action="store",
         help="generate a magic item from a specific category",
     )
-    parser.add_argument(
-        "-d", "--debug", action="store_true"
-    )
+    parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument(
         "-i", "--item", action="store_true", help="generate a random magic item"
     )
@@ -827,7 +825,7 @@ def main():
 
     if args.debug:
         for _ in range(0, 10):
-           print(mig.weapon())
+            print(mig.weapon())
 
 
 if __name__ == "__main__":

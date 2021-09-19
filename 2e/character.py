@@ -350,14 +350,18 @@ CLASS_GROUPS = {
 }
 
 CLASS_SPELLS = {
-    "Paladin": {
-        "Include": ["Combat", "Divination", "Healing", "Protection"]
-    },
-    "Ranger": {
-        "Include": ["Animal", "Plant"]
-    },
+    "Paladin": {"Include": ["Combat", "Divination", "Healing", "Protection"]},
+    "Ranger": {"Include": ["Animal", "Plant"]},
     "Druid": {
-        "Include": ["All", "Animal", "Divination", "Elemental", "Healing",  "Plant", "Weather"]
+        "Include": [
+            "All",
+            "Animal",
+            "Divination",
+            "Elemental",
+            "Healing",
+            "Plant",
+            "Weather",
+        ]
     },
     "Abjurer": {
         "Exclude": ["Alteration", "Illusion"],
@@ -586,7 +590,7 @@ def get_spell_levels(class_name, level, wisdom):
     spells = SPELL_PROGRESSION[caster_group][level]
     # Specialists get a bonus spell per level
     if get_spell_specialization(class_name):
-        spells = [x+1 for x in spells]
+        spells = [x + 1 for x in spells]
     if caster_group in WISDOM_CASTERS:
         wisdom_spells = wisdom_bonus_spells(wisdom)
         try:
@@ -608,11 +612,13 @@ def get_spell_includes(class_name):
     except KeyError:
         return None
 
+
 def get_spell_excludes(class_name):
     try:
         return CLASS_SPELLS[class_name]["Exclude"]
     except KeyError:
         return None
+
 
 def get_spell_list(class_name):
     caster = get_class_group(class_name)
@@ -626,6 +632,7 @@ def get_spell_list(class_name):
         return "Sphere"
     else:
         return "School"
+
 
 def get_spell_specialization(class_name):
     try:
@@ -748,25 +755,36 @@ class Character(object):
                 self.spells[spell_level] = []
             spell_count = self.spell_levels[spell_level - 1]
             if specialization:
-                add_spell(spell_level, spell_gen.random_school_sphere_spell(spell_level, specialization, spell_list))
+                add_spell(
+                    spell_level,
+                    spell_gen.random_school_sphere_spell(
+                        spell_level, specialization, spell_list
+                    ),
+                )
                 excludes = get_spell_excludes(self.char_class)
                 spell_count -= 1
                 for _ in range(0, spell_count):
-                    add_spell(spell_level,
-                        spell_gen.random_exclude_school_sphere_spell(spell_level, spell_list, excludes)
+                    add_spell(
+                        spell_level,
+                        spell_gen.random_exclude_school_sphere_spell(
+                            spell_level, spell_list, excludes
+                        ),
                     )
             elif includes:
                 for _ in range(0, spell_count):
-                    add_spell(spell_level,
-                        spell_gen.random_include_school_sphere_spell(spell_level, spell_list, includes)
+                    add_spell(
+                        spell_level,
+                        spell_gen.random_include_school_sphere_spell(
+                            spell_level, spell_list, includes
+                        ),
                     )
             else:
                 caster_class = self.caster_group
                 if caster_class == "Bard":
                     caster_class = "Wizard"
                 for _ in range(0, spell_count):
-                    add_spell(spell_level,
-                        spell_gen.random_spell(spell_level, caster_class)
+                    add_spell(
+                        spell_level, spell_gen.random_spell(spell_level, caster_class)
                     )
 
 
@@ -776,7 +794,15 @@ def main():
     # for class_name in get_all_classes():
     #    print(Character(char_class=class_name, level=10))
     # print(get_spell_levels("Cleric", 8, 5))
-    for char_class in ["Mage", "Abjurer", "Ranger", "Paladin", "Bard", "Cleric", "Diviner"]:
+    for char_class in [
+        "Mage",
+        "Abjurer",
+        "Ranger",
+        "Paladin",
+        "Bard",
+        "Cleric",
+        "Diviner",
+    ]:
         print(Character(char_class=char_class, level=15))
 
 

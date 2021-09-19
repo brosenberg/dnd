@@ -118,6 +118,7 @@ def random_spell(spell_level, caster_class):
         spells = Spells(f"{base_dir}/spells/priest-spells.json")
     return spells.random_spell(str(spell_level))
 
+
 def random_random_spell():
     caster_class = random.choice(["Wizard", "Priest"])
     if caster_class == "Wizard":
