@@ -395,15 +395,15 @@ SPELL_PROGRESSION = {
         20: [3, 3, 3],
     },
     "Wizard": {
-        1:  [1],
-        2:  [2],
-        3:  [2, 1],
-        4:  [3, 2],
-        5:  [4, 2, 1],
-        6:  [4, 2, 2],
-        7:  [4, 3, 2, 1],
-        8:  [4, 3, 3, 2],
-        9:  [4, 3, 3, 2, 1],
+        1: [1],
+        2: [2],
+        3: [2, 1],
+        4: [3, 2],
+        5: [4, 2, 1],
+        6: [4, 2, 2],
+        7: [4, 3, 2, 1],
+        8: [4, 3, 3, 2],
+        9: [4, 3, 3, 2, 1],
         10: [4, 4, 3, 2, 2],
         11: [4, 4, 4, 3, 3],
         12: [4, 4, 4, 4, 4, 1],
@@ -417,15 +417,15 @@ SPELL_PROGRESSION = {
         20: [5, 5, 5, 5, 5, 4, 3, 3, 2],
     },
     "Priest": {
-        1:  [1],
-        2:  [2],
-        3:  [2, 1],
-        4:  [3, 2],
-        5:  [3, 3, 1],
-        6:  [3, 3, 2],
-        7:  [3, 3, 2, 1],
-        8:  [3, 3, 3, 2],
-        9:  [4, 4, 3, 2, 1],
+        1: [1],
+        2: [2],
+        3: [2, 1],
+        4: [3, 2],
+        5: [3, 3, 1],
+        6: [3, 3, 2],
+        7: [3, 3, 2, 1],
+        8: [3, 3, 3, 2],
+        9: [4, 4, 3, 2, 1],
         10: [4, 4, 3, 3, 2],
         11: [5, 4, 4, 3, 2, 1],
         12: [6, 5, 5, 3, 2, 2],
@@ -439,15 +439,15 @@ SPELL_PROGRESSION = {
         20: [9, 9, 9, 8, 7, 5, 2],
     },
     "Bard": {
-        1:  [],
-        2:  [1],
-        3:  [2],
-        4:  [2, 1],
-        5:  [3, 1],
-        6:  [3, 2],
-        7:  [3, 2, 1],
-        8:  [3, 3, 1],
-        9:  [3, 3, 2],
+        1: [],
+        2: [1],
+        3: [2],
+        4: [2, 1],
+        5: [3, 1],
+        6: [3, 2],
+        7: [3, 2, 1],
+        8: [3, 3, 1],
+        9: [3, 3, 2],
         10: [3, 3, 2, 1],
         11: [5, 3, 3, 1],
         12: [3, 3, 3, 2],
@@ -459,7 +459,6 @@ SPELL_PROGRESSION = {
         18: [4, 4, 4, 3, 3, 2],
         19: [4, 4, 4, 4, 3, 2],
         20: [4, 4, 4, 4, 4, 3],
-
     },
 }
 
@@ -510,6 +509,7 @@ def get_ability_priority(class_name):
 def get_all_classes():
     return list(CLASSES.keys())
 
+
 def get_caster_group(class_name):
     if class_name == "Paladin":
         caster = "Paladin"
@@ -519,6 +519,7 @@ def get_caster_group(class_name):
         caster = get_class_group(class_name)
     if caster in SPELL_PROGRESSION.keys():
         return caster
+
 
 def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
@@ -548,6 +549,7 @@ def get_spell_levels(caster_group, level, wisdom):
         if wisdom < 18:
             spells = spells[:6]
     return spells
+
 
 def wisdom_bonus_spells(wisdom):
     wisdom = int(wisdom)
@@ -579,6 +581,7 @@ def wisdom_bonus_spells(wisdom):
         return [3, 3, 2, 4, 4, 2]
     elif wisdom == 25:
         return [3, 3, 2, 4, 4, 3, 1]
+
 
 class Character(object):
     def __init__(self, char_class=None, abilities=None, race=None, level=1):
@@ -617,7 +620,9 @@ class Character(object):
         self.spells = {}
         self.caster_group = get_caster_group(self.char_class)
         if self.caster_group:
-            self.spell_levels = get_spell_levels(self.caster_group, self.level, self.abilities["Wisdom"])
+            self.spell_levels = get_spell_levels(
+                self.caster_group, self.level, self.abilities["Wisdom"]
+            )
             self.populate_spells()
         self.equipment = []
 
@@ -630,7 +635,7 @@ class Character(object):
         if self.spell_levels:
             s += "\n"
             s += f"Spells ({'/'.join([str(x) for x in self.spell_levels])}):\n"
-            for spell_level in range(1, len(self.spell_levels)+1):
+            for spell_level in range(1, len(self.spell_levels) + 1):
                 s += f"{spell_level}: "
                 cur_spells = []
                 for spell in sorted(set(self.spells[spell_level])):
@@ -648,20 +653,24 @@ class Character(object):
         self.equipment.append(item)
 
     def populate_spells(self):
-        for spell_level in range(1, len(self.spell_levels)+1):
+        for spell_level in range(1, len(self.spell_levels) + 1):
             if spell_level not in self.spells:
                 self.spells[spell_level] = []
-            for _ in range(0, self.spell_levels[spell_level-1]):
-                self.spells[spell_level].append(random_spell(spell_level, self.caster_group))
-            #print(f"{spell_level}: {self.spell_levels[spell_level-1]}")
+            for _ in range(0, self.spell_levels[spell_level - 1]):
+                self.spells[spell_level].append(
+                    random_spell(spell_level, self.caster_group)
+                )
+            # print(f"{spell_level}: {self.spell_levels[spell_level-1]}")
+
 
 def main():
     parser = argparse.ArgumentParser(description="Create a character")
     # print(Character(get_random_class(), level=20))
-    #for class_name in get_all_classes():
+    # for class_name in get_all_classes():
     #    print(Character(char_class=class_name, level=10))
-    #print(get_spell_levels("Cleric", 8, 5))
+    # print(get_spell_levels("Cleric", 8, 5))
     print(Character(char_class="Mage", level=15))
+
 
 if __name__ == "__main__":
     main()
