@@ -350,9 +350,14 @@ CLASS_GROUPS = {
 }
 
 CLASS_SPELLS = {
-    "Paladin": {"Include": ["Combat", "Divination", "Healing", "Protection"]},
-    "Ranger": {"Include": ["Animal", "Plant"]},
+    "Paladin": {
+        "List": "Sphere",
+        "Include": ["Combat", "Divination", "Healing", "Protection"],
+    },
+    "Ranger": {"List": "Sphere", "Include": ["Animal", "Plant"]},
+    "Bard": {"List": "School", "Exclude": []},
     "Druid": {
+        "List": "Sphere",
         "Include": [
             "All",
             "Animal",
@@ -361,37 +366,45 @@ CLASS_SPELLS = {
             "Healing",
             "Plant",
             "Weather",
-        ]
+        ],
     },
     "Abjurer": {
+        "List": "School",
         "Exclude": ["Alteration", "Illusion"],
         "Specialization": "Abjuration",
     },
     "Conjurer": {
+        "List": "School",
         "Exclude": ["Divination", "Evocation"],
         "Specialization": "Conjuration",
     },
     "Diviner": {
+        "List": "School",
         "Exclude": ["Conjuration"],
         "Specialization": "Divination",
     },
     "Enchanter": {
+        "List": "School",
         "Exclude": ["Necromancy", "Evocation"],
         "Specialization": "Enchantment",
     },
     "Illusionist": {
+        "List": "School",
         "Exclude": ["Necromancy", "Evocation", "Abjuration"],
         "Specialization": "Illusion",
     },
     "Invoker": {
+        "List": "School",
         "Exclude": ["Enchantment", "Conjuration"],
         "Specialization": "Evocation",
     },
     "Necromancer": {
+        "List": "School",
         "Exclude": ["Enchantment", "Illusion"],
         "Specialization": "Necromancy",
     },
     "Transmuter": {
+        "List": "School",
         "Exclude": ["Abjuration", "Necromancy"],
         "Specialization": "Alteration",
     },
@@ -621,17 +634,16 @@ def get_spell_excludes(class_name):
 
 
 def get_spell_list(class_name):
+    try:
+        return CLASS_SPELLS[class_name]["List"]
+    except KeyError:
+        pass
     caster = get_class_group(class_name)
-    if class_name == "Paladin":
+    if caster == "Priest":
         return "Sphere"
-    elif class_name == "Ranger":
-        return "Sphere"
-    elif class_name == "Bard":
+    elif caster == "Wizard":
         return "School"
-    elif caster == "Priest":
-        return "Sphere"
-    else:
-        return "School"
+    return None
 
 
 def get_spell_specialization(class_name):
@@ -749,6 +761,7 @@ class Character(object):
         spell_gen = Spells()
         specialization = get_spell_specialization(self.char_class)
         includes = get_spell_includes(self.char_class)
+        excludes = get_spell_excludes(self.char_class)
         spell_list = get_spell_list(self.char_class)
         for spell_level in range(1, len(self.spell_levels) + 1):
             if spell_level not in self.spells:
@@ -761,8 +774,8 @@ class Character(object):
                         spell_level, specialization, spell_list
                     ),
                 )
-                excludes = get_spell_excludes(self.char_class)
                 spell_count -= 1
+            if excludes is not None:
                 for _ in range(0, spell_count):
                     add_spell(
                         spell_level,
@@ -770,7 +783,7 @@ class Character(object):
                             spell_level, spell_list, excludes
                         ),
                     )
-            elif includes:
+            elif includes is not None:
                 for _ in range(0, spell_count):
                     add_spell(
                         spell_level,
@@ -780,8 +793,6 @@ class Character(object):
                     )
             else:
                 caster_class = self.caster_group
-                if caster_class == "Bard":
-                    caster_class = "Wizard"
                 for _ in range(0, spell_count):
                     add_spell(
                         spell_level, spell_gen.random_spell(spell_level, caster_class)
