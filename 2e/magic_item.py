@@ -424,10 +424,29 @@ class MagicItemGen(object):
 
         adjustment = load_and_roll("armor_adjustment.json")
         if base_armor == "Special":
+            def get_random_armor():
+                armor = "Shield"
+                while armor.startswith("Shield") or armor == "Special":
+                    if self.expanded:
+                        armor = load_and_roll("armor_type_expanded.json")
+                    else:
+                        armor = load_and_roll("armor_type.json")
+                return armor
             base_armor = load_and_roll("special_armor.json")
-            if base_armor == "Elven Chain Mail":
+            if base_armor == "Armor of Blending":
+                armor = get_random_armor()
+                while adjustment == "-1":
+                    adjustment = load_and_roll("armor_adjustment.json")
+                base_armor = f"{armor} of Blending {adjustment}"
+            elif base_armor == "Armor of Missile Attraction":
+                armor = get_random_armor():
+                base_armor = f"{armor} of Missile Attraction {adjustment}"
+            elif base_armor == "Elven Chain Mail":
                 elven_chain_size = load_and_roll("elven_chain_size.json")
                 base_armor = f"{base_armor} (Size: {elven_chain_size})"
+            elif base_armor == "Plate Mail of Vulnerability":
+                adjustment = random.choice(["-2", "-3", "-4"])
+                base_armor = f"{base_armor} {adjustment}"
             return base_armor
         else:
             return f"{base_armor} {adjustment}"

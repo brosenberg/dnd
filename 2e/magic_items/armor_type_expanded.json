@@ -6,8 +6,9 @@
     "15": "Coin mail",
     "16": "Drow chain",
     "17": "Dwarven plate",
-    "18": "Elven plate",
-    "23": "Field Plate",
+    "18": "Elven chain mail",
+    "19": "Elven plate",
+    "23": "Field plate",
     "28": "Full Plate",
     "29": "Gnomish leather",
     "35": "Hide armor",
@@ -19,9 +20,10 @@
     "58": "Plate mail",
     "64": "Ring Mail",
     "70": "Scale mail",
-    "75": "Spiked leather",
-    "80": "Splint mail",
-    "85": "Studded leather",
-    "90": "Shield",
-    "95": "Special"
+    "71": "Sea elf scale mail",
+    "76": "Spiked leather",
+    "81": "Splint mail",
+    "86": "Studded leather",
+    "91": "Shield",
+    "96": "Special"
 }
