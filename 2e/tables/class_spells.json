@@ -1,6 +1,6 @@
 {
   "Paladin": {
-    "List": "Sphere",
+    "Subtype": "Sphere",
     "Include": [
       "Combat",
       "Divination",
@@ -9,18 +9,18 @@
     ]
   },
   "Ranger": {
-    "List": "Sphere",
+    "Subtype": "Sphere",
     "Include": [
       "Animal",
       "Plant"
     ]
   },
   "Bard": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": []
   },
   "Druid": {
-    "List": "Sphere",
+    "Subtype": "Sphere",
     "Include": [
       "All",
       "Animal",
@@ -32,7 +32,7 @@
     ]
   },
   "Abjurer": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Alteration",
       "Illusion"
@@ -40,7 +40,7 @@
     "Specialization": "Abjuration"
   },
   "Conjurer": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Divination",
       "Evocation"
@@ -48,14 +48,14 @@
     "Specialization": "Conjuration"
   },
   "Diviner": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Conjuration"
     ],
     "Specialization": "Divination"
   },
   "Enchanter": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Necromancy",
       "Evocation"
@@ -63,7 +63,7 @@
     "Specialization": "Enchantment"
   },
   "Illusionist": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Necromancy",
       "Evocation",
@@ -72,7 +72,7 @@
     "Specialization": "Illusion"
   },
   "Invoker": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Enchantment",
       "Conjuration"
@@ -80,7 +80,7 @@
     "Specialization": "Evocation"
   },
   "Necromancer": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Enchantment",
       "Illusion"
@@ -88,7 +88,7 @@
     "Specialization": "Necromancy"
   },
   "Transmuter": {
-    "List": "School",
+    "Subtype": "School",
     "Exclude": [
       "Abjuration",
       "Necromancy"

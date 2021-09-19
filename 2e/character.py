@@ -132,9 +132,9 @@ def get_spell_excludes(class_name):
         return None
 
 
-def get_spell_list(class_name):
+def get_spell_subtype(class_name):
     try:
-        return CLASS_SPELLS[class_name]["List"]
+        return CLASS_SPELLS[class_name]["Subtype"]
     except KeyError:
         pass
     caster = get_class_group(class_name)
@@ -261,7 +261,7 @@ class Character(object):
         specialization = get_spell_specialization(self.char_class)
         includes = get_spell_includes(self.char_class)
         excludes = get_spell_excludes(self.char_class)
-        spell_list = get_spell_list(self.char_class)
+        spell_subtype = get_spell_subtype(self.char_class)
         for spell_level in range(1, len(self.spell_levels) + 1):
             if spell_level not in self.spells:
                 self.spells[spell_level] = []
@@ -270,7 +270,7 @@ class Character(object):
                 add_spell(
                     spell_level,
                     spell_gen.random_school_sphere_spell(
-                        spell_level, specialization, spell_list
+                        spell_level, specialization, spell_subtype
                     ),
                 )
                 spell_count -= 1
@@ -279,7 +279,7 @@ class Character(object):
                     add_spell(
                         spell_level,
                         spell_gen.random_exclude_school_sphere_spell(
-                            spell_level, spell_list, excludes
+                            spell_level, spell_subtype, excludes
                         ),
                     )
             elif includes is not None:
@@ -287,7 +287,7 @@ class Character(object):
                     add_spell(
                         spell_level,
                         spell_gen.random_include_school_sphere_spell(
-                            spell_level, spell_list, includes
+                            spell_level, spell_subtype, includes
                         ),
                     )
             else:
