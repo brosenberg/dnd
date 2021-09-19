@@ -6,6 +6,7 @@ import random
 import magic_item
 
 from dice import roll
+from roll_abilities import get_abilities
 
 LEVEL_RANGE = {
     "Low": (1, 3, 0),
@@ -35,6 +36,35 @@ MAGIC_ITEMS = {
     ],
 }
 
+ABILITIES = {
+    "Fighter": {
+        "Primary": ["Strength"],
+        "Secondary": ["Constitution", "Dexterity"],
+        "Minimums": {"Strength": 9},
+    },
+    "Wizard": {
+        "Primary": ["Intelligence"],
+        "Secondary": [],
+        "Minimums": {"Intelligence": 9},
+    },
+    "Cleric": {
+        "Primary": ["Wisdom"],
+        "Secondary": ["Charisma", "Strength", "Constitution", "Dexterity"],
+        "Minimums": {"Wisdom": 9},
+    },
+    "Thief": {
+        "Primary": ["Dexterity"],
+        "Secondary": ["Strength", "Constitution"],
+        "Minimums": {"Dexterity": 9},
+    },
+}
+
+
+def get_ability_priority(class_name):
+    return ABILITIES[class_name]["Primary"] + random.sample(
+        ABILITIES[class_name]["Secondary"], len(ABILITIES[class_name]["Secondary"])
+    )
+
 
 class Adventurer(object):
     def __init__(self, level_range, expanded):
@@ -51,6 +81,13 @@ class Adventurer(object):
             LEVEL_RANGE[level_range][0],
             LEVEL_RANGE[level_range][1],
             LEVEL_RANGE[level_range][2],
+        )
+        self.abilities = get_abilities(
+            get_ability_priority(self.char_class),
+            ABILITIES[self.char_class]["Minimums"],
+            tries=6+int(self.level/7),
+            rolls=3+int(self.level/5),
+            extrao_str=self.char_class=="Fighter"
         )
         self.equipment = []
         has_armor = False
@@ -72,8 +109,13 @@ class Adventurer(object):
             self.equipment.append("unbarded medium warhorse")
 
     def __str__(self):
-        s = f"{self.char_class} {self.level}\n"
+        s = f"{'-'*10}\n"
+        s += f"{self.char_class} {self.level}\n"
+        for ability in self.abilities:
+            s += f"{ability}: {self.abilities[ability]}\n"
+        s += "\n"
         s += "Equipment:\n" + "\n".join(self.equipment)
+        s += f"\n{'-'*10}"
         return s
 
 

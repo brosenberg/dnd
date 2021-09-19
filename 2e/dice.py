@@ -3,8 +3,8 @@
 import random
 
 
-def roll(dice, sides, mod):
-    total = mod
+def roll(dice, sides, mod, drop=0):
+    rolls = []
     for die in range(0, dice):
-        total += random.randint(1, sides)
-    return total
+        rolls.append(random.randint(1, sides))
+    return mod + sum(sorted(rolls)[drop:])
