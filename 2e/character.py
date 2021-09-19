@@ -16,6 +16,7 @@ def load_table(fname):
 
 
 ABILITIES = load_table("abilities.json")
+ABILITY_ROLLS = load_table("ability_rolls.json")
 RACES = load_table("races.json")
 CLASSES = load_table("classes.json")
 CLASS_GROUPS = load_table("class_groups.json")
@@ -198,13 +199,13 @@ class Character(object):
             minimums = combine_minimums(
                 [CLASSES[self.char_class]["Minimums"], RACES[self.race]["Minimums"]]
             )
+            ability_rolls = ABILITY_ROLLS[str(self.level)]
             self.abilities = get_abilities(
                 get_ability_priority(self.char_class),
                 minimums,
                 RACES[self.race]["Maximums"],
                 RACES[self.race]["Ability Modifiers"],
-                tries=6 + int(self.level / 10),
-                rolls=3 + int(self.level / 7),
+                order=ability_rolls,
                 extrao_str=self.class_group == "Warrior" and self.race != "Halfling",
             )
         self.hitpoints = roll(

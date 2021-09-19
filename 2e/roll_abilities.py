@@ -21,10 +21,14 @@ def roll_array(tries, rolls):
     )[:6]
 
 
+def roll_array_order(order):
+    return sorted([roll(x, 6, 0, drop=x - 3) for x in order], reverse=True)[:6]
+
+
 def get_abilities(
-    priority, minimums, maximums, modifiers, tries=7, rolls=4, extrao_str=False
+    priority, minimums, maximums, modifiers, order=[4, 4, 4, 4, 4, 4], extrao_str=False
 ):
-    array = roll_array(tries, rolls)
+    array = roll_array_order(order)
     abilities = {x: 0 for x in ABILITIES}
     for ability in priority:
         abilities[ability] = array.pop(0)

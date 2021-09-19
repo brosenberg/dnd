@@ -62,7 +62,11 @@ def random_adventurer(level_range, expanded):
                 has_armor = True
             elif category == "Shields":
                 has_shield = True
-            adventurer.add_equipment((mig.roll_category(category)))
+            item = mig.roll_category(category)
+            # One reroll on cursed items
+            if item.endswith('-1') or 'ursed' in item:
+                item = mig.roll_category(category)
+            adventurer.add_equipment(item)
     if level > 7 and (char_class == "Cleric" or char_class == "Fighter"):
         if not has_armor:
             adventurer.add_equipment("plate mail")
