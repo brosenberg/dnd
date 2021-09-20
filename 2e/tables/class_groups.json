@@ -23,7 +23,8 @@
             [9, 27],
             [9, 30],
             [9, 33]
-        ]
+        ],
+        "Proficiencies": {"Weapon": [3, 4], "Nonweapon": [3, 3]}
     },
     "Wizard": {
         "Classes": [
@@ -59,7 +60,8 @@
             [10, 8],
             [10, 9],
             [10, 10]
-        ]
+        ],
+        "Proficiencies": {"Weapon": [1, 6], "Nonweapon": [4, 3]}
     },
     "Priest": {
         "Classes": ["Cleric", "Druid"],
@@ -85,7 +87,8 @@
             [9, 18],
             [9, 20],
             [9, 22]
-        ]
+        ],
+        "Proficiencies": {"Weapon": [2, 4], "Nonweapon": [4, 3]}
     },
     "Rogue": {
         "Classes": ["Thief", "Bard"],
@@ -111,6 +114,7 @@
             [10, 16],
             [10, 18],
             [10, 20]
-        ]
+        ],
+        "Proficiencies": {"Weapon": [2, 4], "Nonweapon": [3, 4]}
     }
 }

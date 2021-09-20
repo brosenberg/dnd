@@ -14,9 +14,13 @@ from utils import load_table
 
 ABILITIES = load_table("abilities.json")
 ABILITY_MODS = {
-    "Dexterity": load_table("dexterity.json"),
     "Strength": load_table("strength.json"),
     "Extrao Strength": load_table("extrao_strength.json"),
+    "Dexterity": load_table("dexterity.json"),
+    "Constitution": load_table("constitution.json"),
+    "Intelligence": load_table("intelligence.json"),
+    "Wisdom": load_table("wisdom.json"),
+    "Charisma": load_table("charisma.json"),
 }
 ABILITY_ROLLS = load_table("ability_rolls.json")
 ALIGNMENTS = load_table("alignments.json")
@@ -177,6 +181,14 @@ def get_spell_specialization(class_name):
         return None
 
 
+def intelligence_mods(intelligence):
+    return ABILITY_MODS["Intelligence"][intelligence]
+
+
+def intelligence_bonus_proficiencies(intelligence):
+    return intelligence_mods(intelligence)[0]
+
+
 def strength_mods(strength):
     strength = strength.split("/")[0]
     try:
@@ -296,6 +308,13 @@ class Character(object):
         self.thac0 = THAC0[self.class_group][self.level - 1]
         self.equipment = []
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
+        self.nwps = (
+            CLASS_GROUPS[self.class_group]["Proficiencies"]["Nonweapon"][0]
+            + int(
+                level / CLASS_GROUPS[self.class_group]["Proficiencies"]["Nonweapon"][1]
+            )
+            + intelligence_bonus_proficiencies(self.abilities["Intelligence"])
+        )
 
     def __str__(self):
         self.update_ac()
@@ -321,8 +340,16 @@ class Character(object):
                 if ac_mod > 0:
                     ac_mod = f"+{ac_mod}"
                 s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit/{ac_mod} AC)\n"
+            elif ability == "Intelligence":
+                bonus_nwps = intelligence_bonus_proficiencies(
+                    self.abilities["Intelligence"]
+                )
+                s += f"{ability}: {self.abilities[ability]} ({bonus_nwps} bonus NWPs)\n"
             else:
                 s += f"{ability}: {self.abilities[ability]}\n"
+        s += "\n"
+        s += f"Proficiencies ({self.nwps}): "
+        s += "\n"
         if self.spell_levels:
             s += "\n"
             s += f"Spells ({'/'.join([str(x) for x in self.spell_levels])}):\n"

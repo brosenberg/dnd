@@ -243,18 +243,22 @@ def main():
     no_appearing = roll(1, 8, 0)
     level_range = random.choice(list(LEVEL_RANGE.keys()))
     print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
-    print()
     alignments = None
     if args.alignments:
         alignments = random.choice(load_table("alignment_groups.json"))
+        print(f"Alignments: {', '.join(alignments)}")
+    print()
     for adventurer in range(0, no_appearing):
+        alignment = None
+        if args.alignments:
+            alignment = random.choice(alignments)
         print(
             random_adventurer(
                 level_range,
                 args.expanded,
                 args.equipment,
                 args.classes,
-                alignment=random.choice(alignments),
+                alignment=alignment,
             )
         )
         print()
