@@ -87,14 +87,27 @@ def get_other_ac_bonus(item):
     return None
 
 
+def is_crossbow_ammo(item):
+    return (
+        "Bolt" in item
+        or "Heavy bolt" in item
+        or "Light bolt" in item
+        or "quarrel" in item.lower()
+    )
+
+
 def is_ranged_weapon(item):
     return (
         appropriate_ammo_type(item)
         or item in THROWN_WEAPONS
         or "arrow" in item.lower()
-        or "bolt" in item.lower()
-        or "quarrel" in item.lower()
+        or is_crossbow_ammo(item)
+        or is_sling_ammo(item)
     )
+
+
+def is_sling_ammo(item):
+    return "sling bullet" in item.lower() or "sling stone" in item.lower()
 
 
 def is_shield(item):
@@ -123,6 +136,23 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
+def random_item_count(item):
+    if item in THROWN_WEAPONS:
+        if item in ["Dart", "Shuriken"]:
+            return (3, 4, 0)
+        else:
+            return (1, 2, 0)
+    elif "arrow" in item.lower():
+        return (random.randint(2, 4), 6, 0)
+    elif is_crossbow_ammo(item):
+        return (2, random.choice([6, 10]), 0)
+    elif is_sling_ammo(item):
+        return (3, 4, 0)
+    elif item.startswith("Barbed dart") or item.startswith("Needle"):
+        return (3, 4, 0)
+    return (1, 1, 0)
+
+
 def random_weapon(expanded=False, specific=None):
     mig = MagicItemGen(expanded)
     weapon = None
@@ -134,6 +164,8 @@ def random_weapon(expanded=False, specific=None):
         weapons = load_table("weapons_druid.json")
     elif specific == "Rogue":
         weapons = load_table("weapons_rogue.json")
+    elif specific == "Warrior":
+        weapons = load_table("weapons_warrior.json")
     elif specific == "Wizard":
         weapons = load_table("weapons_wizard.json")
     weapon = random.choice(weapons)

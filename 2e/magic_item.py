@@ -463,8 +463,10 @@ class MagicItemGen(object):
         adjustment = load_and_roll("armor_adjustment.json")
         return f"{base_armor} {adjustment}"
 
-    def weapon(self, force_table=None):
-        if force_table:
+    def weapon(self, force_table=None, force_weapon=None):
+        if force_weapon:
+            base_weapon = force_weapon
+        elif force_table:
             base_weapon = load_and_roll(force_table)
         elif self.expanded and roll(1, 100, 0) <= 5:
             base_weapon = load_and_roll("expanded_weapons.json")

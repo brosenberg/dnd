@@ -148,13 +148,17 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
                 weapon_type = "Druid"
             elif char_class == "Rogue":
                 weapon_type = "Rogue"
+            elif adventurer.class_group == "Warrior" and level > 1:
+                weapon_type = "Warrior"
             elif adventurer.class_group == "Wizard":
                 weapon_type = "Wizard"
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
             thrown_weapons = items.load_table("weapons_thrown.json")
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
-                ammo = f"{ammo} x{roll(6, 6, 0)}"
+                ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
+                ammo_dice *= 2
+                ammo = f"{ammo} x{roll(ammo_dice, ammo_die, ammo_mod)}"
                 adventurer.add_equipment(weapon)
                 adventurer.add_equipment(ammo)
                 while items.is_ranged_weapon(weapon):
@@ -162,10 +166,10 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
                         expanded=expanded, specific=weapon_type
                     )
             elif weapon in thrown_weapons:
-                count = roll(2, 4, 0)
-                if weapon in ["Dart", "Shuriken"]:
-                    count = roll(4, 6, 6)
-                adventurer.add_equipment(f"{weapon} x{count}")
+                ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
+                ammo_die *= 2
+                ammo_dice += 1
+                adventurer.add_equipment(f"{weapon} x{roll(ammo_dice, ammo_die, ammo_mod)}")
                 while items.is_ranged_weapon(weapon):
                     weapon = items.random_weapon(
                         expanded=expanded, specific=weapon_type
@@ -175,7 +179,7 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
 
         # Rangers love to dual-wield
         if char_class == "Ranger" and level > 1:
-            weapon = items.random_weapon(expanded=expanded)
+            weapon = items.random_weapon(expanded=expanded, specific="Warrior")
             while items.is_ranged_weapon(weapon):
                 weapon = items.random_weapon(expanded=expanded)
             adventurer.add_equipment(weapon)
