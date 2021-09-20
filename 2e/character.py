@@ -175,27 +175,6 @@ def get_spell_specialization(class_name):
         return None
 
 
-def random_alignment(class_name):
-    if class_name == "Bard":
-        return random.choice(
-            [
-                "Neutral Good",
-                "Lawful Neutral",
-                "True Neutral",
-                "Chaotic Neutral",
-                "Neutral Evil",
-            ]
-        )
-    elif class_name == "Druid":
-        return "True Neutral"
-    elif class_name == "Paladin":
-        return "Lawful Good"
-    elif class_name == "Ranger":
-        return random.choice(["Lawful Good", "Neutral Good", "Chaotic Good"])
-    else:
-        return random.choice(ALIGNMENTS)
-
-
 def strength_mods(strength):
     strength = strength.split("/")[0]
     try:
@@ -269,7 +248,7 @@ class Character(object):
         self.race = race
         if not self.race:
             self.race = get_random_race_by_class(self.char_class)
-        self.alignment = random_alignment(self.char_class)
+        self.alignment = random.choice(CLASSES[self.char_class]["Alignments"])
         self.level = level
         self.abilities = abilities
         if not self.abilities:

@@ -39,7 +39,7 @@ MAGIC_ITEMS = {
 }
 
 
-def random_adventurer(level_range, expanded, more_equipment, more_classes):
+def random_adventurer(level_range, expanded, more_equipment, more_classes, similar_alignments):
     mig = magic_item.MagicItemGen(expanded)
     level = roll(
         LEVEL_RANGE[level_range][0],
