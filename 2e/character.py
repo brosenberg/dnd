@@ -23,6 +23,7 @@ ABILITY_MODS = {
     "Extrao Strength": load_table("extrao_strength.json"),
 }
 ABILITY_ROLLS = load_table("ability_rolls.json")
+ALIGNMENTS = load_table("alignments.json")
 RACES = load_table("races.json")
 CLASSES = load_table("classes.json")
 CLASS_GROUPS = load_table("class_groups.json")
@@ -171,6 +172,27 @@ def get_spell_specialization(class_name):
         return None
 
 
+def random_alignment(class_name):
+    if class_name == "Bard":
+        return random.choice(
+            [
+                "Neutral Good",
+                "Lawful Neutral",
+                "True Neutral",
+                "Chaotic Neutral",
+                "Neutral Evil",
+            ]
+        )
+    elif class_name == "Druid":
+        return "True Neutral"
+    elif class_name == "Paladin":
+        return "Lawful Good"
+    elif class_name == "Ranger":
+        return random.choice(["Lawful Good", "Neutral Good", "Chaotic Good"])
+    else:
+        return random.choice(ALIGNMENTS)
+
+
 def strength_mods(strength):
     strength = strength.split("/")[0]
     try:
@@ -242,6 +264,7 @@ class Character(object):
         self.race = race
         if not self.race:
             self.race = get_random_race_by_class(self.char_class)
+        self.alignment = random_alignment(self.char_class)
         self.level = level
         self.abilities = abilities
         if not self.abilities:
@@ -283,7 +306,7 @@ class Character(object):
         dex_hit_mod = dexterity_to_hit(self.abilities["Dexterity"])
         str_hit_mod = strength_to_hit(self.abilities["Strength"])
         s = f"{'-'*10}\n"
-        s += f"{self.race} {self.char_class} {self.level}\n"
+        s += f"{self.race} {self.char_class} {self.level}  {self.alignment}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
         for ability in self.abilities:
             if ability == "Strength":

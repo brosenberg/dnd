@@ -138,6 +138,12 @@ def random_adventurer(level_range, expanded, more_equipment):
                     )
 
             adventurer.add_equipment(weapon)
+    # Rangers love to dual-wield
+    if char_class == "Ranger" and level > 1:
+        weapon = items.random_weapon(expanded=expanded)
+        while items.is_ranged_weapon(weapon):
+            weapon = items.random_weapon(expanded=expanded)
+        adventurer.add_equipment(weapon)
 
     return adventurer
 
