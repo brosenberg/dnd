@@ -47,8 +47,11 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
         LEVEL_RANGE[level_range][2],
     )
     adventurer = None
+    char_class = None
+    has_weapon = False
+    has_armor = False
+    has_shield = False
     if more_classes:
-        # If char_class is None, a class is randomly chosen
         class_group = random.choice(["Warrior", "Wizard", "Priest", "Rogue"])
         adventurer = Character(class_group=class_group, level=level)
         char_class = adventurer.char_class
@@ -62,22 +65,19 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
         elif class_roll > 4:
             char_class = "Cleric"
         adventurer = Character(char_class=char_class, level=level)
-    has_weapon = False
-    has_armor = False
-    has_shield = False
     for category in MAGIC_ITEMS[adventurer.class_group]:
         if roll(1, 100, 0) <= level * 5:
 
             def gen_item():
                 item = None
                 if more_equipment:
-                    if category == "Armor No Shields":
+                    if category == "Armor No Shields" and char_class not in ["Fighter", "Paladin"]:
                         armor_type = items.appropriate_armor(char_class, level=level)
                         armor = items.random_armor(
                             expanded=expanded, specific=armor_type
                         )
                         item = mig.armor(force_armor=armor)
-                    elif category == "Nonsword":
+                    elif category == "Nonsword" and char_class != "Bard" and adventurer.class_group != "Warrior":
                         weapon_type = items.appropriate_weapon(
                             char_class, adventurer.class_group, level=level
                         )
