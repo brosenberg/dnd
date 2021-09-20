@@ -574,11 +574,14 @@ class MagicItemGen(object):
             if self.expanded:
                 axes += ["Hatchet", "Two-handed axe", "Stone axe"]
             return random.choice(axes)
+        elif base_weapon == "Bolt":
+            bolts = ["Hand quarrel", "Light bolt", "Heavy bolt"]
+            return random.choice(bolts)
         elif base_weapon == "Bow":
             if self.expanded:
-                return load_and_roll("bow_types_expanded.json")
+                return load_and_roll("bows_types_expanded.json")
             else:
-                return load_and_roll("bow_types.json")
+                return load_and_roll("bows_types.json")
         elif base_weapon == "Crossbow":
             if self.expanded:
                 return load_and_roll("crossbows_expanded.json")

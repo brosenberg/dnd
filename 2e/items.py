@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
 import json
+import random
 import re
 import os
+
+from magic_item import MagicItemGen
 
 
 def load_table(fname):
@@ -12,6 +15,27 @@ def load_table(fname):
 
 ARMOR_STATS = load_table("armor_stats.json")
 SHIELDS = load_table("shields.json")
+THROWN_WEAPONS = load_table("thrown_weapons.json")
+
+
+def appropriate_ammo_type(weapon):
+    if weapon.startswith("Blowgun"):
+        return random.choice(["Barbed dart", "Needle"])
+    elif "crossbow" in weapon or weapon.startswith("Cho-ku-no"):
+        if "Hand " in weapon:
+            return "Hand quarrel"
+        elif "Heavy " in weapon:
+            return "Heavy bolt"
+        return "Light bolt"
+    elif " bow" in weapon:
+        if "long" in weapon.lower():
+            return "Sheaf arrow"
+        else:
+            return "Flight arrow"
+    elif weapon.startswith("Daikyu"):
+        return "Daikyu arrow"
+    elif "sling" in weapon.lower():
+        return "Sling bullet"
 
 
 def get_ac(item):
@@ -63,6 +87,10 @@ def get_other_ac_bonus(item):
     return None
 
 
+def is_ranged_weapon(item):
+    return appropriate_ammo_type(item) or item in THROWN_WEAPONS
+
+
 def is_shield(item):
     for shield in SHIELDS:
         if item.startswith(shield):
@@ -70,11 +98,45 @@ def is_shield(item):
     return False
 
 
+def random_armor(expanded=False, specific=None):
+    armor = None
+    if not specific:
+        armors = load_table("low_armors.json")
+    elif specific == "High":
+        armors = load_table("high_armors.json")
+    elif specific == "Druid":
+        armors = load_table("druid_armors.json")
+    elif specific == "Rogue":
+        armors = load_table("rogue_armors.json")
+    elif specific == "Bard":
+        armors = load_table("bard_armors.json")
+    return random.choice(armors)
+
+
+def random_weapon(expanded=False, specific=None):
+    mig = MagicItemGen(expanded)
+    weapon = None
+    if not specific:
+        weapons = load_table("generic_weapons.json")
+    elif specific == "Cleric":
+        weapons = load_table("cleric_weapons.json")
+    elif specific == "Druid":
+        weapons = load_table("druid_weapons.json")
+    elif specific == "Rogue":
+        weapons = load_table("rogue_weapons.json")
+    elif specific == "Wizard":
+        weapons = load_table("wizard_weapons.json")
+    weapon = random.choice(weapons)
+    return mig.diversify_weapon(weapon)
+
+
 def main():
-    print(get_armor_ac("Hide armor +3"))
-    print(get_armor_ac("Leather of Blending +1"))
-    print(get_armor_ac("Plate mail -4"))
-    print(get_armor_ac("Plate Mail of Etherealness"))
+    # print(get_armor_ac("Hide armor +3"))
+    # print(get_armor_ac("Leather of Blending +1"))
+    # print(get_armor_ac("Plate mail -4"))
+    # print(get_armor_ac("Plate Mail of Etherealness"))
+    for _ in range(0, 10):
+        print(random_weapon())
 
 
 if __name__ == "__main__":

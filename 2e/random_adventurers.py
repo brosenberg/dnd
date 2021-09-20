@@ -3,6 +3,7 @@
 import argparse
 import random
 
+import items
 import magic_item
 
 from character import Character
@@ -38,7 +39,7 @@ MAGIC_ITEMS = {
 }
 
 
-def random_adventurer(level_range, expanded):
+def random_adventurer(level_range, expanded, more_equipment):
     mig = magic_item.MagicItemGen(expanded)
     class_roll = roll(1, 10, 0)
     char_class = "Fighter"
@@ -54,14 +55,19 @@ def random_adventurer(level_range, expanded):
         LEVEL_RANGE[level_range][2],
     )
     adventurer = Character(char_class, level=level)
+    has_weapon = False
     has_armor = False
     has_shield = False
     for category in MAGIC_ITEMS[char_class]:
         if roll(1, 100, 0) <= level * 5:
             if category == "Armor No Shields":
                 has_armor = True
+            elif category == "Nonsword":
+                has_weapon = True
             elif category == "Shields":
                 has_shield = True
+            elif category == "Sword":
+                has_weapon = True
             item = mig.roll_category(category)
             # One reroll on cursed items
             if item.endswith("-1") or "ursed" in item:
@@ -70,14 +76,72 @@ def random_adventurer(level_range, expanded):
     if level > 7 and (char_class == "Cleric" or char_class == "Fighter"):
         if not has_armor:
             adventurer.add_equipment("Plate mail")
+            has_armor = True
         if not has_shield:
             adventurer.add_equipment("Medium shield")
+            has_shield = True
         adventurer.add_equipment("Medium warhorse")
+    if more_equipment:
+        if not has_armor and char_class != "Mage":
+            armor_type = None
+            if char_class == "Druid":
+                armor_type = "Druid"
+            elif char_class in ["Thief", "Ranger"]:
+                armor_type = "Rogue"
+            elif char_class == "Bard":
+                if level > 2:
+                    armor_type = "Bard"
+                else:
+                    armor_type = "Rogue"
+            elif char_class in ["Fighter", "Cleric", "Paladin"]:
+                if level > 3:
+                    armor_type = "High"
+            adventurer.add_equipment(
+                items.random_armor(expanded=expanded, specific=armor_type)
+            )
+
+        if not has_weapon:
+            weapon_type = None
+            if char_class == "Cleric":
+                weapon_type = "Cleric"
+            elif char_class == "Druid":
+                weapon_type = "Druid"
+            elif char_class == "Rogue":
+                weapon_type = "Rogue"
+            elif char_class == "Mage":
+                weapon_type = "Wizard"
+            weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
+            thrown_weapons = items.load_table("thrown_weapons.json")
+            ammo = items.appropriate_ammo_type(weapon)
+            if ammo:
+                ammo = f"{ammo} x{roll(6, 6, 0)}"
+                adventurer.add_equipment(weapon)
+                adventurer.add_equipment(ammo)
+                while items.is_ranged_weapon(weapon):
+                    weapon = items.random_weapon(
+                        expanded=expanded, specific=weapon_type
+                    )
+            elif weapon in thrown_weapons:
+                adventurer.add_equipment(f"{weapon} x{roll(2, 4, 0)}")
+                while items.is_ranged_weapon(weapon):
+                    weapon = items.random_weapon(
+                        expanded=expanded, specific=weapon_type
+                    )
+
+            adventurer.add_equipment(weapon)
+
     return adventurer
 
 
 def main():
     parser = argparse.ArgumentParser(description="Generate adventurers")
+    parser.add_argument(
+        "-e",
+        "--equipment",
+        default=False,
+        action="store_true",
+        help="supply adventurer with more equipment",
+    )
     parser.add_argument(
         "-x",
         "--expanded",
@@ -91,7 +155,7 @@ def main():
     print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
     print()
     for adventurer in range(0, no_appearing):
-        print(random_adventurer(level_range, args.expanded))
+        print(random_adventurer(level_range, args.expanded, args.equipment))
         print()
 
 
