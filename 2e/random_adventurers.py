@@ -151,7 +151,7 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
             elif adventurer.class_group == "Wizard":
                 weapon_type = "Wizard"
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
-            thrown_weapons = items.load_table("thrown_weapons.json")
+            thrown_weapons = items.load_table("weapons_thrown.json")
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
                 ammo = f"{ammo} x{roll(6, 6, 0)}"
