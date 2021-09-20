@@ -103,11 +103,17 @@ def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
 
 
-def get_random_class(class_group=None):
+def get_random_class(class_group=None, alignment=None):
+    classes = set(CLASSES.keys())
+    if alignment:
+        alignment_classes = set()
+        for class_name in CLASSES:
+            if alignment in CLASSES[class_name]["Alignments"]:
+                alignment_classes.add(class_name)
+        classes = classes.intersection(alignment_classes)
     if class_group:
-        return random.choice(CLASS_GROUPS[class_group]["Classes"])
-    else:
-        return random.choice(list(CLASSES.keys()))
+        classes = classes.intersection(set(CLASS_GROUPS[class_group]["Classes"]))
+    return random.choice(list(classes))
 
 
 def get_random_race_by_class(class_name):
@@ -235,16 +241,26 @@ def wisdom_bonus_spells(wisdom):
 
 class Character(object):
     def __init__(
-        self, char_class=None, class_group=None, abilities=None, race=None, level=1
+        self,
+        char_class=None,
+        class_group=None,
+        abilities=None,
+        race=None,
+        level=1,
+        alignment=None,
     ):
         self.char_class = char_class
         if not self.char_class:
-            self.char_class = get_random_class(class_group=class_group)
+            self.char_class = get_random_class(
+                class_group=class_group, alignment=alignment
+            )
         self.class_group = get_class_group(self.char_class)
         self.race = race
         if not self.race:
             self.race = get_random_race_by_class(self.char_class)
-        self.alignment = random.choice(CLASSES[self.char_class]["Alignments"])
+        self.alignment = alignment
+        if not self.alignment:
+            self.alignment = random.choice(CLASSES[self.char_class]["Alignments"])
         self.level = level
         self.abilities = abilities
         if not self.abilities:

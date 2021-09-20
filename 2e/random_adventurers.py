@@ -40,7 +40,9 @@ MAGIC_ITEMS = {
 }
 
 
-def random_adventurer(level_range, expanded, more_equipment, more_classes, similar_alignments):
+def random_adventurer(
+    level_range, expanded, more_equipment, more_classes, alignment=None
+):
     mig = magic_item.MagicItemGen(expanded)
     level = roll(
         LEVEL_RANGE[level_range][0],
@@ -54,7 +56,9 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes, simil
     has_shield = False
     if more_classes:
         class_group = random.choice(["Warrior", "Wizard", "Priest", "Rogue"])
-        adventurer = Character(class_group=class_group, level=level)
+        adventurer = Character(
+            class_group=class_group, level=level, alignment=alignment
+        )
         char_class = adventurer.char_class
     else:
         class_roll = roll(1, 10, 0)
@@ -65,20 +69,27 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes, simil
             char_class = "Thief"
         elif class_roll > 4:
             char_class = "Cleric"
-        adventurer = Character(char_class=char_class, level=level)
+        adventurer = Character(char_class=char_class, level=level, alignment=alignment)
     for category in MAGIC_ITEMS[adventurer.class_group]:
         if roll(1, 100, 0) <= level * 5:
 
             def gen_item():
                 item = None
                 if more_equipment:
-                    if category == "Armor No Shields" and char_class not in ["Fighter", "Paladin"]:
+                    if category == "Armor No Shields" and char_class not in [
+                        "Fighter",
+                        "Paladin",
+                    ]:
                         armor_type = items.appropriate_armor(char_class, level=level)
                         armor = items.random_armor(
                             expanded=expanded, specific=armor_type
                         )
                         item = mig.armor(force_armor=armor)
-                    elif category == "Nonsword" and char_class != "Bard" and adventurer.class_group != "Warrior":
+                    elif (
+                        category == "Nonsword"
+                        and char_class != "Bard"
+                        and adventurer.class_group != "Warrior"
+                    ):
                         weapon_type = items.appropriate_weapon(
                             char_class, adventurer.class_group, level=level
                         )
@@ -233,9 +244,18 @@ def main():
     level_range = random.choice(list(LEVEL_RANGE.keys()))
     print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
     print()
+    alignments = None
+    if args.alignments:
+        alignments = random.choice(load_table("alignment_groups.json"))
     for adventurer in range(0, no_appearing):
         print(
-            random_adventurer(level_range, args.expanded, args.equipment, args.classes, args.alignments)
+            random_adventurer(
+                level_range,
+                args.expanded,
+                args.equipment,
+                args.classes,
+                alignment=random.choice(alignments),
+            )
         )
         print()
 
