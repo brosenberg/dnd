@@ -9,6 +9,7 @@ import magic_item
 from character import Character
 from dice import roll
 from roll_abilities import get_abilities
+from utils import load_table
 
 LEVEL_RANGE = {
     "Low": (1, 3, 0),
@@ -161,7 +162,7 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes, simil
                 char_class, adventurer.class_group, level=level
             )
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
-            thrown_weapons = items.load_table("weapons_thrown.json")
+            thrown_weapons = load_table("weapons_thrown.json")
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
                 ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
@@ -200,6 +201,13 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes, simil
 def main():
     parser = argparse.ArgumentParser(description="Generate adventurers")
     parser.add_argument(
+        "-a",
+        "--alignments",
+        default=False,
+        action="store_true",
+        help="generate adventurers with similar alignments",
+    )
+    parser.add_argument(
         "-c",
         "--classes",
         default=False,
@@ -227,7 +235,7 @@ def main():
     print()
     for adventurer in range(0, no_appearing):
         print(
-            random_adventurer(level_range, args.expanded, args.equipment, args.classes)
+            random_adventurer(level_range, args.expanded, args.equipment, args.classes, args.alignments)
         )
         print()
 

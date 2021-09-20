@@ -6,11 +6,7 @@ import re
 import os
 
 from magic_item import MagicItemGen
-
-
-def load_table(fname):
-    base_dir = os.path.dirname(os.path.realpath(__file__))
-    return json.load(open(f"{base_dir}/tables/{fname}"))
+from utils import load_table
 
 
 ARMOR_STATS = load_table("armor_stats.json")

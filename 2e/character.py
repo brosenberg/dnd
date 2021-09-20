@@ -9,11 +9,7 @@ from dice import roll
 from items import get_ac
 from spells import Spells
 from roll_abilities import get_abilities
-
-
-def load_table(fname):
-    base_dir = os.path.dirname(os.path.realpath(__file__))
-    return json.load(open(f"{base_dir}/tables/{fname}"))
+from utils import load_table
 
 
 ABILITIES = load_table("abilities.json")
