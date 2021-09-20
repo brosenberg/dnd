@@ -69,6 +69,8 @@ def random_adventurer(level_range, expanded, more_equipment):
             elif category == "Sword":
                 has_weapon = True
             item = mig.roll_category(category)
+            if items.is_ranged_weapon(item):
+                has_weapon = False
             # One reroll on cursed items
             if item.endswith("-1") or "ursed" in item:
                 item = mig.roll_category(category)
@@ -77,7 +79,7 @@ def random_adventurer(level_range, expanded, more_equipment):
         if not has_armor:
             adventurer.add_equipment("Plate mail")
             has_armor = True
-        if not has_shield:
+        if not has_shield and not more_equipment:
             adventurer.add_equipment("Medium shield")
             has_shield = True
         adventurer.add_equipment("Medium warhorse")
@@ -99,6 +101,13 @@ def random_adventurer(level_range, expanded, more_equipment):
             adventurer.add_equipment(
                 items.random_armor(expanded=expanded, specific=armor_type)
             )
+
+        if (
+            level > 1
+            and not has_shield
+            and char_class in ["Cleric", "Fighter", "Paladin"]
+        ):
+            adventurer.add_equipment(items.random_shield())
 
         if not has_weapon:
             weapon_type = None

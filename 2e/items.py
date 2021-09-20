@@ -88,7 +88,13 @@ def get_other_ac_bonus(item):
 
 
 def is_ranged_weapon(item):
-    return appropriate_ammo_type(item) or item in THROWN_WEAPONS
+    return (
+        appropriate_ammo_type(item)
+        or item in THROWN_WEAPONS
+        or "arrow" in item.lower()
+        or "bolt" in item.lower()
+        or "quarrel" in item.lower()
+    )
 
 
 def is_shield(item):
@@ -111,6 +117,10 @@ def random_armor(expanded=False, specific=None):
     elif specific == "Bard":
         armors = load_table("bard_armors.json")
     return random.choice(armors)
+
+
+def random_shield():
+    return random.choice(SHIELDS)
 
 
 def random_weapon(expanded=False, specific=None):
