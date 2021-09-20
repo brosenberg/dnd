@@ -41,11 +41,19 @@ MAGIC_ITEMS = {
 
 def random_adventurer(level_range, expanded, more_equipment, more_classes):
     mig = magic_item.MagicItemGen(expanded)
-    class_roll = roll(1, 10, 0)
+    level = roll(
+        LEVEL_RANGE[level_range][0],
+        LEVEL_RANGE[level_range][1],
+        LEVEL_RANGE[level_range][2],
+    )
+    adventurer = None
     if more_classes:
         # If char_class is None, a class is randomly chosen
-        char_class = None
+        class_group = random.choice(["Warrior", "Wizard", "Priest", "Rogue"])
+        adventurer = Character(class_group=class_group, level=level)
+        char_class = adventurer.char_class
     else:
+        class_roll = roll(1, 10, 0)
         char_class = "Fighter"
         if class_roll > 8:
             char_class = "Mage"
@@ -53,14 +61,7 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
             char_class = "Thief"
         elif class_roll > 4:
             char_class = "Cleric"
-    level = roll(
-        LEVEL_RANGE[level_range][0],
-        LEVEL_RANGE[level_range][1],
-        LEVEL_RANGE[level_range][2],
-    )
-    adventurer = Character(char_class, level=level)
-    if more_classes:
-        char_class = adventurer.char_class
+        adventurer = Character(char_class=char_class, level=level)
     has_weapon = False
     has_armor = False
     has_shield = False
@@ -68,17 +69,15 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
         if roll(1, 100, 0) <= level * 5:
             if category == "Armor No Shields":
                 has_armor = True
-            elif category == "Nonsword":
+            elif category in ["Nonsword", "Sword", "Rod/Staff/Wand"]:
                 has_weapon = True
             elif category == "Shields":
                 has_shield = True
-            elif category == "Sword":
-                has_weapon = True
             item = mig.roll_category(category)
             if items.is_ranged_weapon(item):
                 has_weapon = False
             # One reroll on cursed items
-            if item.endswith("-1") or "ursed" in item:
+            if item.endswith("-1") or "ursed" in item or "Clumsiness" in item or "Contrariness" in item:
                 item = mig.roll_category(category)
             adventurer.add_equipment(item)
 
@@ -113,6 +112,7 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
                     adventurer.add_equipment(f"{barding} barding")
             else:
                 adventurer.add_equipment("Riding horse")
+
         # Everyone should have armor. Besides wizards.
         if not has_armor and adventurer.class_group != "Wizard":
             armor_type = None

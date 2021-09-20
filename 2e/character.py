@@ -107,8 +107,11 @@ def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
 
 
-def get_random_class():
-    return random.choice(list(CLASSES.keys()))
+def get_random_class(class_group=None):
+    if class_group:
+        return random.choice(CLASS_GROUPS[class_group]["Classes"])
+    else:
+        return random.choice(list(CLASSES.keys()))
 
 
 def get_random_race_by_class(class_name):
@@ -256,10 +259,10 @@ def wisdom_bonus_spells(wisdom):
 
 
 class Character(object):
-    def __init__(self, char_class=None, abilities=None, race=None, level=1):
+    def __init__(self, char_class=None, class_group=None, abilities=None, race=None, level=1):
         self.char_class = char_class
         if not self.char_class:
-            self.char_class = get_random_class()
+            self.char_class = get_random_class(class_group=class_group)
         self.class_group = get_class_group(self.char_class)
         self.race = race
         if not self.race:
