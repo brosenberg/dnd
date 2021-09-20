@@ -24,10 +24,12 @@ ABILITY_MODS = {
 }
 ABILITY_ROLLS = load_table("ability_rolls.json")
 ALIGNMENTS = load_table("alignments.json")
-RACES = load_table("races.json")
 CLASSES = load_table("classes.json")
 CLASS_GROUPS = load_table("class_groups.json")
 CLASS_SPELLS = load_table("class_spells.json")
+NWPS = load_table("nwps.json")
+NWP_GROUPS = load_table("nwp_groups.json")
+RACES = load_table("races.json")
 SPELL_PROGRESSION = load_table("spell_progression.json")
 THAC0 = load_table("thac0.json")
 WISDOM_CASTERS = load_table("wisdom_casters.json")
@@ -308,13 +310,15 @@ class Character(object):
         self.thac0 = THAC0[self.class_group][self.level - 1]
         self.equipment = []
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
-        self.nwps = (
+        self.nwp_slots = (
             CLASS_GROUPS[self.class_group]["Proficiencies"]["Nonweapon"][0]
             + int(
                 level / CLASS_GROUPS[self.class_group]["Proficiencies"]["Nonweapon"][1]
             )
             + intelligence_bonus_proficiencies(self.abilities["Intelligence"])
         )
+        self.nwps = []
+        self.assign_nwps()
 
     def __str__(self):
         self.update_ac()
@@ -324,6 +328,7 @@ class Character(object):
         s += f"{self.race} {self.char_class} {self.level}  {self.alignment}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
         for ability in self.abilities:
+            details = ""
             if ability == "Strength":
                 hit_mod = str_hit_mod
                 dmg_mod = strength_damage(self.abilities["Strength"])
@@ -331,7 +336,7 @@ class Character(object):
                     hit_mod = f"+{hit_mod}"
                 if dmg_mod >= 0:
                     dmg_mod = f"+{dmg_mod}"
-                s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit/{dmg_mod} damage)\n"
+                details = f"{hit_mod} to hit/{dmg_mod} damage"
             elif ability == "Dexterity":
                 hit_mod = dex_hit_mod
                 ac_mod = dexterity_ac_mod(self.abilities["Dexterity"])
@@ -339,22 +344,29 @@ class Character(object):
                     hit_mod = f"+{hit_mod}"
                 if ac_mod > 0:
                     ac_mod = f"+{ac_mod}"
-                s += f"{ability}: {self.abilities[ability]} ({hit_mod} to hit/{ac_mod} AC)\n"
+                details = f"{hit_mod} to hit/{ac_mod} AC"
             elif ability == "Intelligence":
                 bonus_nwps = intelligence_bonus_proficiencies(
                     self.abilities["Intelligence"]
                 )
-                s += f"{ability}: {self.abilities[ability]} ({bonus_nwps} bonus NWPs)\n"
-            else:
-                s += f"{ability}: {self.abilities[ability]}\n"
+                details = f"{bonus_nwps} bonus NWPs"
+            if details:
+                details = f" ({details})"
+            s += f"{ability+':':13} {self.abilities[ability]:>5} {details}\n"
         s += "\n"
-        s += f"Proficiencies ({self.nwps}): "
-        s += "\n"
+        s += f"Proficiencies ({self.nwp_slots}):\n"
+        for nwp in self.nwps:
+            modifier = "N/A"
+            ability = NWPS[nwp][1]
+            if ability != "N/A":
+                ability_value = int(self.abilities[ability].split("/")[0])
+                modifier = int(self.abilities[ability]) + NWPS[nwp][2]
+            s += f"\t{nwp:20} {ability:12}  Mod: {modifier:2}  Slots: {NWPS[nwp][0]}\n"
         if self.spell_levels:
             s += "\n"
             s += f"Spells ({'/'.join([str(x) for x in self.spell_levels])}):\n"
             for spell_level in range(1, len(self.spell_levels) + 1):
-                s += f"{spell_level}: "
+                s += f"\t{spell_level}: "
                 cur_spells = []
                 for spell in sorted(set(self.spells[spell_level])):
                     count = ""
@@ -375,12 +387,26 @@ class Character(object):
                         item = f"{item} (AC {ac_bonus})"
                 items.append(item)
             s += "\n"
-            s += "Equipment:\n" + "\n".join(items)
+            s += "Equipment:\n\t" + "\n\t".join(items)
         s += f"\n{'-'*10}"
         return s
 
     def add_equipment(self, item):
         self.equipment.append(item)
+
+    def assign_nwps(self):
+        slots = self.nwp_slots
+        possible_nwps = []
+        for group in CLASSES[self.char_class]["Proficiency Groups"]:
+            possible_nwps += NWP_GROUPS[group]
+        possible_nwps = list(set(possible_nwps))
+        while slots:
+            new_nwp = random.choice(possible_nwps)
+            while NWPS[new_nwp][0] > slots:
+                new_nwp = random.choice(possible_nwps)
+            self.nwps.append(new_nwp)
+            slots -= NWPS[new_nwp][0]
+            possible_nwps.remove(new_nwp)
 
     def populate_spells(self):
         def add_spell(spell_level, spell):
