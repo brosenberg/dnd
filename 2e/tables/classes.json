@@ -2,6 +2,7 @@
     "Fighter": {
         "Primary": ["Strength"],
         "Secondary": ["Constitution", "Dexterity"],
+        "Requisite": ["Strength"],
         "Minimums": {"Strength": 9},
         "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -10,6 +11,7 @@
     "Paladin": {
         "Primary": ["Charisma", "Wisdom", "Strength", "Constitution"],
         "Secondary": ["Dexterity"],
+        "Requisite": ["Strength", "Charisma"],
         "Minimums": {"Strength": 12, "Constitution": 9, "Wisdom": 13, "Charisma": 17},
         "Races": ["Human"],
         "Alignments": ["Lawful Good"],
@@ -18,6 +20,7 @@
     "Ranger": {
         "Primary": ["Constitution", "Wisdom"],
         "Secondary": ["Strength", "Dexterity"],
+        "Requisite": ["Strength", "Dexterity", "Wisdom"],
         "Minimums": {"Strength": 13, "Dexterity": 13, "Constitution": 14, "Wisdom": 14},
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good"],
@@ -26,6 +29,7 @@
     "Mage": {
         "Primary": ["Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Intelligence": 9},
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -34,6 +38,7 @@
     "Abjurer": {
         "Primary": ["Wisdom", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Intelligence": 9, "Wisdom": 15},
         "Races": ["Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -42,6 +47,7 @@
     "Conjurer": {
         "Primary": ["Constitution", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Constitution": 15, "Intelligence": 9},
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -50,6 +56,7 @@
     "Diviner": {
         "Primary": ["Wisdom", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Wisdom": 16, "Intelligence": 9},
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -58,6 +65,7 @@
     "Enchanter": {
         "Primary": ["Charisma", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Charisma": 16, "Intelligence": 9},
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -66,6 +74,7 @@
     "Illusionist": {
         "Primary": ["Dexterity", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Dexterity": 16, "Intelligence": 9},
         "Races": ["Human", "Gnome"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -74,6 +83,7 @@
     "Invoker": {
         "Primary": ["Constitution", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Constitution": 16, "Intelligence": 9},
         "Races": ["Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -82,6 +92,7 @@
     "Necromancer": {
         "Primary": ["Wisdom", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Wisdom": 16, "Intelligence": 9},
         "Races": ["Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -90,6 +101,7 @@
     "Transmuter": {
         "Primary": ["Dexterity", "Intelligence"],
         "Secondary": [],
+        "Requisite": ["Intelligence"],
         "Minimums": {"Dexterity": 15, "Intelligence": 9},
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -98,6 +110,7 @@
     "Cleric": {
         "Primary": ["Wisdom"],
         "Secondary": ["Charisma", "Strength", "Constitution", "Dexterity"],
+        "Requisite": ["Wisdom"],
         "Minimums": {"Wisdom": 9},
         "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -106,6 +119,7 @@
     "Druid": {
         "Primary": ["Charisma", "Wisdom"],
         "Secondary": ["Strength", "Constitution", "Dexterity"],
+        "Requisite": ["Wisdom", "Charisma"],
         "Minimums": {"Wisdom": 12, "Charisma": 15},
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["True Neutral"],
@@ -114,6 +128,7 @@
     "Thief": {
         "Primary": ["Dexterity"],
         "Secondary": ["Strength", "Constitution"],
+        "Requisite": ["Dexterity"],
         "Minimums": {"Dexterity": 9},
         "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
@@ -122,6 +137,7 @@
     "Bard": {
         "Primary": ["Charisma", "Intelligence", "Dexterity"],
         "Secondary": [],
+        "Requisite": ["Dexterity", "Charisma"],
         "Minimums": {"Dexterity": 12, "Intelligence": 13, "Charisma": 15},
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["Neutral Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Neutral Evil"],

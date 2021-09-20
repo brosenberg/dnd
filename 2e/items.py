@@ -129,6 +129,7 @@ def is_cursed(item):
         or "Clumsiness" in item
         or "Contrariness" in item
         or "Delusion" in item
+        or "Defenelessness" in item
     )
 
 

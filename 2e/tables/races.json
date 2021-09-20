@@ -4,6 +4,11 @@
       "Constitution": 1,
       "Charisma": -1
     },
+    "Limits": {
+        "Cleric": 10,
+        "Fighter": 15,
+        "Thief": 12
+    },
     "Maximums": {
       "Strength": 18,
       "Dexterity": 17,
@@ -25,6 +30,16 @@
     "Ability Modifiers": {
       "Constitution": -1,
       "Dexterity": 1
+    },
+    "Limits": {
+        "Cleric": 12,
+        "Fighter": 12,
+        "Mage": 15,
+        "Conjurer": 15,
+        "Diviner": 15,
+        "Enchanter": 15,
+        "Ranger": 15,
+        "Thief": 12
     },
     "Maximums": {
       "Strength": 18,
@@ -48,6 +63,12 @@
       "Wisdom": -1,
       "Intelligence": 1
     },
+    "Limits": {
+        "Cleric": 9,
+        "Fighter": 11,
+        "Illusionist": 15,
+        "Thief": 13
+    },
     "Maximums": {
       "Strength": 18,
       "Dexterity": 18,
@@ -67,6 +88,19 @@
   },
   "Half-Elf": {
     "Ability Modifiers": {},
+    "Limits": {
+        "Bard": 99,
+        "Cleric": 14,
+        "Druid": 9,
+        "Fighter": 14,
+        "Mage": 12,
+        "Conjurer": 12,
+        "Diviner": 12,
+        "Enchanter": 12,
+        "Transmuter": 12,
+        "Ranger": 16,
+        "Thief": 12
+    },
     "Maximums": {
       "Strength": 18,
       "Dexterity": 18,
@@ -89,6 +123,11 @@
       "Strength": -1,
       "Dexterity": 1
     },
+    "Limits": {
+        "Cleric": 14,
+        "Fighter": 14,
+        "Thief": 15
+    },
     "Maximums": {
       "Strength": 18,
       "Dexterity": 18,
@@ -108,6 +147,24 @@
   },
   "Human": {
     "Ability Modifiers": {},
+    "Limits": {
+        "Bard": 99,
+        "Cleric": 99,
+        "Druid": 99,
+        "Fighter": 99,
+        "Mage": 99,
+        "Abjurer": 99,
+        "Conjurer": 99,
+        "Diviner": 99,
+        "Enchanter": 99,
+        "Illusionist": 99,
+        "Invoker": 99,
+        "Necromancer": 99,
+        "Transmuter": 99,
+        "Paladin": 99,
+        "Ranger": 99,
+        "Thief": 99
+    },
     "Maximums": {
       "Strength": 18,
       "Dexterity": 18,

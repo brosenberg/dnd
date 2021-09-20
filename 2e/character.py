@@ -191,6 +191,24 @@ def intelligence_bonus_proficiencies(intelligence):
     return intelligence_mods(intelligence)[0]
 
 
+def level_limit_bonus(class_name, abilities):
+    prime_reqs = CLASSES[class_name]["Requisite"]
+    lowest = 99
+    for prime_req in prime_reqs:
+        prime_req_score = int(abilities[prime_req].split("/")[0])
+        if prime_req_score < lowest:
+            lowest = prime_req_score
+    if lowest > 18:
+        return 4
+    elif lowest > 17:
+        return 3
+    elif lowest > 15:
+        return 2
+    elif lowest > 13:
+        return 1
+    return 0
+
+
 def strength_mods(strength):
     strength = strength.split("/")[0]
     try:
@@ -290,6 +308,11 @@ class Character(object):
                 order=ability_rolls,
                 extrao_str=self.class_group == "Warrior" and self.race != "Halfling",
             )
+        self.level_limit = RACES[self.race]["Limits"][
+            self.char_class
+        ] + level_limit_bonus(self.char_class, self.abilities)
+        if self.level > self.level_limit:
+            self.level = self.level_limit
         self.hitpoints = roll(
             CLASS_GROUPS[self.class_group]["Hit Dice"][self.level - 1][0],
             CLASS_GROUPS[self.class_group]["Hit Die"],
@@ -325,7 +348,11 @@ class Character(object):
         dex_hit_mod = dexterity_to_hit(self.abilities["Dexterity"])
         str_hit_mod = strength_to_hit(self.abilities["Strength"])
         s = f"{'-'*10}\n"
-        s += f"{self.race} {self.char_class} {self.level}  {self.alignment}\n"
+        s += f"{self.race} {self.char_class} {self.level}   {self.alignment}\n"
+        if self.level_limit > 98:
+            s += "Unlimited level limit\n"
+        else:
+            s += f"Level limit: {self.level_limit}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
         for ability in self.abilities:
             details = ""
