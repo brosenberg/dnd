@@ -83,6 +83,8 @@ def get_adjustment(item):
 
 
 def get_armor_ac(armor):
+    if armor == "Bracers of Defenselessness":
+        return 10
     remove_list = [" of Blending", " of Missile Attraction"]
     for remove in remove_list:
         armor = armor.replace(remove, "")
@@ -129,7 +131,7 @@ def is_cursed(item):
         or "Clumsiness" in item
         or "Contrariness" in item
         or "Delusion" in item
-        or "Defenelessness" in item
+        or "Defenselessness" in item
     )
 
 

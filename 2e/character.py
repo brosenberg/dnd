@@ -480,6 +480,9 @@ class Character(object):
                     )
 
     def update_ac(self):
+        if "Bracers of Defenselessness" in self.equipment:
+            self.ac = 10
+            return
         mods = [dexterity_ac_mod(self.abilities["Dexterity"])]
         base_ac = 10
         for item in self.equipment:
