@@ -67,18 +67,46 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
     has_shield = False
     for category in MAGIC_ITEMS[adventurer.class_group]:
         if roll(1, 100, 0) <= level * 5:
+
+            def gen_item():
+                item = None
+                if more_equipment:
+                    if category == "Armor No Shields":
+                        armor_type = items.appropriate_armor(char_class, level=level)
+                        armor = items.random_armor(
+                            expanded=expanded, specific=armor_type
+                        )
+                        item = mig.armor(force_armor=armor)
+                    elif category == "Nonsword":
+                        weapon_type = items.appropriate_weapon(
+                            char_class, adventurer.class_group, level=level
+                        )
+                        weapon = items.random_weapon(
+                            expanded=expanded, specific=weapon_type
+                        )
+                        if items.random_item_count(weapon):
+                            dice, die, mod = items.random_item_count(weapon)
+                            weapon = f"{weapon} ({dice}d{die})"
+                        item = mig.weapon(force_weapon=weapon)
+                    else:
+                        item = mig.roll_category(category)
+                else:
+                    item = mig.roll_category(category)
+                return item
+
+            item = gen_item()
+            # One reroll on cursed items
+            if items.is_cursed(item):
+                item = gen_item()
+
             if category == "Armor No Shields":
                 has_armor = True
             elif category in ["Nonsword", "Sword", "Rod/Staff/Wand"]:
                 has_weapon = True
             elif category == "Shields":
                 has_shield = True
-            item = mig.roll_category(category)
             if items.is_ranged_weapon(item):
                 has_weapon = False
-            # One reroll on cursed items
-            if item.endswith("-1") or "ursed" in item or "Clumsiness" in item or "Contrariness" in item:
-                item = mig.roll_category(category)
             adventurer.add_equipment(item)
 
     if not more_equipment:
@@ -115,19 +143,7 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
 
         # Everyone should have armor. Besides wizards.
         if not has_armor and adventurer.class_group != "Wizard":
-            armor_type = None
-            if char_class == "Druid":
-                armor_type = "Druid"
-            elif char_class in ["Thief", "Ranger"]:
-                armor_type = "Rogue"
-            elif char_class == "Bard":
-                if level > 2:
-                    armor_type = "Bard"
-                else:
-                    armor_type = "Rogue"
-            elif char_class in ["Fighter", "Cleric", "Paladin"]:
-                if level > 3:
-                    armor_type = "High"
+            armor_type = items.appropriate_armor(char_class, level=level)
             adventurer.add_equipment(
                 items.random_armor(expanded=expanded, specific=armor_type)
             )
@@ -141,17 +157,9 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
 
         # Everyone should have at least one weapon.
         if not has_weapon:
-            weapon_type = None
-            if char_class == "Cleric":
-                weapon_type = "Cleric"
-            elif char_class == "Druid":
-                weapon_type = "Druid"
-            elif char_class == "Rogue":
-                weapon_type = "Rogue"
-            elif adventurer.class_group == "Warrior" and level > 1:
-                weapon_type = "Warrior"
-            elif adventurer.class_group == "Wizard":
-                weapon_type = "Wizard"
+            weapon_type = items.appropriate_weapon(
+                char_class, adventurer.class_group, level=level
+            )
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
             thrown_weapons = items.load_table("weapons_thrown.json")
             ammo = items.appropriate_ammo_type(weapon)
@@ -169,7 +177,9 @@ def random_adventurer(level_range, expanded, more_equipment, more_classes):
                 ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
                 ammo_die *= 2
                 ammo_dice += 1
-                adventurer.add_equipment(f"{weapon} x{roll(ammo_dice, ammo_die, ammo_mod)}")
+                adventurer.add_equipment(
+                    f"{weapon} x{roll(ammo_dice, ammo_die, ammo_mod)}"
+                )
                 while items.is_ranged_weapon(weapon):
                     weapon = items.random_weapon(
                         expanded=expanded, specific=weapon_type

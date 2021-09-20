@@ -38,6 +38,36 @@ def appropriate_ammo_type(weapon):
         return "Sling bullet"
 
 
+def appropriate_armor(char_class, level=1):
+    if char_class == "Druid":
+        return "Druid"
+    elif char_class in ["Thief", "Ranger"]:
+        return "Rogue"
+    elif char_class == "Bard":
+        if level > 2:
+            return "Bard"
+        else:
+            return "Rogue"
+    elif char_class in ["Fighter", "Cleric", "Paladin"]:
+        if level > 3:
+            return "High"
+    return None
+
+
+def appropriate_weapon(char_class, class_group, level=1):
+    if char_class == "Cleric":
+        return "Cleric"
+    elif char_class == "Druid":
+        return "Druid"
+    elif char_class == "Rogue":
+        return "Rogue"
+    elif class_group == "Warrior" and level > 1:
+        return "Warrior"
+    elif class_group == "Wizard":
+        return "Wizard"
+    return None
+
+
 def get_ac(item):
     ac = get_armor_ac(item)
     if ac:
@@ -96,6 +126,16 @@ def is_crossbow_ammo(item):
     )
 
 
+def is_cursed(item):
+    return (
+        re.search(r"-[0-9]+", item)
+        or "ursed" in item
+        or "Clumsiness" in item
+        or "Contrariness" in item
+        or "Delusion" in item
+    )
+
+
 def is_ranged_weapon(item):
     return (
         appropriate_ammo_type(item)
@@ -150,7 +190,7 @@ def random_item_count(item):
         return (3, 4, 0)
     elif item.startswith("Barbed dart") or item.startswith("Needle"):
         return (3, 4, 0)
-    return (1, 1, 0)
+    return None
 
 
 def random_weapon(expanded=False, specific=None):

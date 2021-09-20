@@ -259,7 +259,9 @@ def wisdom_bonus_spells(wisdom):
 
 
 class Character(object):
-    def __init__(self, char_class=None, class_group=None, abilities=None, race=None, level=1):
+    def __init__(
+        self, char_class=None, class_group=None, abilities=None, race=None, level=1
+    ):
         self.char_class = char_class
         if not self.char_class:
             self.char_class = get_random_class(class_group=class_group)

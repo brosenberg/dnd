@@ -415,9 +415,11 @@ class MagicItemGen(object):
 
         return base_weird
 
-    def armor(self):
+    def armor(self, force_armor=None):
         base_armor = None
-        if self.expanded:
+        if force_armor:
+            base_armor = force_armor
+        elif self.expanded:
             base_armor = load_and_roll("armor_type_expanded.json")
         else:
             base_armor = load_and_roll("armor_type.json")
