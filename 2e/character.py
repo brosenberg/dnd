@@ -45,7 +45,6 @@ def combine_minimums(minimums):
 
 
 def constitution_hp_modifier(con, class_group):
-    con = int(con)
     if con <= 1:
         return -3
     elif con < 4:
@@ -77,7 +76,7 @@ def convert_height(height):
 
 
 def dexterity_mods(dexterity):
-    return ABILITY_MODS["Dexterity"][dexterity]
+    return ABILITY_MODS["Dexterity"][str(dexterity)]
 
 
 def dexterity_ac_mod(dexterity):
@@ -135,7 +134,6 @@ def get_random_race_by_class(class_name):
 def get_spell_levels(class_name, level, wisdom):
     caster_group = get_caster_group(class_name)
     level = str(level)
-    wisdom = int(wisdom)
     spells = SPELL_PROGRESSION[caster_group][level]
     # Specialists get a bonus spell per level
     if get_spell_specialization(class_name):
@@ -215,7 +213,7 @@ def generate_characteristics(race, level):
 
 
 def intelligence_mods(intelligence):
-    return ABILITY_MODS["Intelligence"][intelligence]
+    return ABILITY_MODS["Intelligence"][str(intelligence)]
 
 
 def intelligence_bonus_proficiencies(intelligence):
@@ -226,7 +224,7 @@ def level_limit_bonus(class_name, abilities):
     prime_reqs = CLASSES[class_name]["Requisite"]
     lowest = 99
     for prime_req in prime_reqs:
-        prime_req_score = int(abilities[prime_req].split("/")[0])
+        prime_req_score = abilities[prime_req]
         if prime_req_score < lowest:
             lowest = prime_req_score
     if lowest > 18:
@@ -240,10 +238,8 @@ def level_limit_bonus(class_name, abilities):
     return 0
 
 
-def strength_mods(strength):
-    strength = strength.split("/")[0]
-    try:
-        extrao_str = int(str.split("/")[1])
+def strength_mods(strength, extrao_str):
+    if extrao_str:
         if extrao_str < 51:
             extrao_str = "50"
         elif extrao_str < 76:
@@ -254,24 +250,20 @@ def strength_mods(strength):
             extrao_str = "99"
         else:
             extrao_str = "100"
-    except IndexError:
-        extrao_str = None
-    if extrao_str:
         return ABILITY_MODS["Extrao Strength"][extrao_str]
     else:
-        return ABILITY_MODS["Strength"][strength]
+        return ABILITY_MODS["Strength"][str(strength)]
 
 
-def strength_damage(strength):
-    return strength_mods(strength)[1]
+def strength_damage(strength, extrao_str=None):
+    return strength_mods(strength, extrao_str)[1]
 
 
-def strength_to_hit(strength):
-    return strength_mods(strength)[0]
+def strength_to_hit(strength, extrao_str=None):
+    return strength_mods(strength, extrao_str)[0]
 
 
 def wisdom_bonus_spells(wisdom):
-    wisdom = int(wisdom)
     if wisdom < 13:
         return []
     elif wisdom == 13:
@@ -383,7 +375,9 @@ class Character(object):
     def __str__(self):
         self.update_ac()
         dex_hit_mod = dexterity_to_hit(self.abilities["Dexterity"])
-        str_hit_mod = strength_to_hit(self.abilities["Strength"])
+        str_hit_mod = strength_to_hit(
+            self.abilities["Strength"], self.abilities["Extrao Strength"]
+        )
         s = f"{'-'*10}\n"
         ### Race, Class, Alignment, HP, AC, THAC0
         s += f"{self.race} {self.char_class} {self.level} - {self.alignment}\n"
@@ -394,11 +388,16 @@ class Character(object):
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
 
         ### Abilities
-        for ability in self.abilities:
+        for ability in ABILITIES:
             details = ""
+            ability_val = str(self.abilities[ability])
             if ability == "Strength":
                 hit_mod = str_hit_mod
-                dmg_mod = strength_damage(self.abilities["Strength"])
+                dmg_mod = strength_damage(
+                    self.abilities["Strength"], self.abilities["Extrao Strength"]
+                )
+                if self.abilities["Extrao Strength"]:
+                    ability_val += f'/{self.abilities["Extrao Strength"]}'
                 if hit_mod >= 0:
                     hit_mod = f"+{hit_mod}"
                 if dmg_mod >= 0:
@@ -419,7 +418,7 @@ class Character(object):
                 details = f"{bonus_nwps} bonus NWPs"
             if details:
                 details = f" ({details})"
-            s += f"{ability+':':13} {self.abilities[ability]:>5} {details}\n"
+            s += f"{ability+':':13} {ability_val:>5} {details}\n"
         s += "\n"
 
         ### Characteristics
@@ -432,8 +431,8 @@ class Character(object):
             modifier = "N/A"
             ability = NWPS[nwp][1]
             if ability != "N/A":
-                ability_value = int(self.abilities[ability].split("/")[0])
-                modifier = int(self.abilities[ability].split("/")[0]) + NWPS[nwp][2]
+                ability_value = self.abilities[ability]
+                modifier = self.abilities[ability] + NWPS[nwp][2]
                 if self.char_class == "Ranger" and nwp == "Tracking":
                     modifier += int(self.level / 3)
             s += f"\t{nwp:20} {ability:12}  Mod: {modifier:2}  Slots: {NWPS[nwp][0]}\n"
@@ -497,7 +496,7 @@ class Character(object):
                 self.profs["Languages"].append(RACES[self.race]["Languages"][0])
                 slots -= 1
             # 20% - 2*(Number of Languages) chance for each slot to learn a language
-            elif roll(1, 100, 0) < 20 - 2*len(self.profs["Languages"]):
+            elif roll(1, 100, 0) < 20 - 2 * len(self.profs["Languages"]):
                 languages = []
                 if self.race != "Human":
                     if self.race != "Half-Elf":

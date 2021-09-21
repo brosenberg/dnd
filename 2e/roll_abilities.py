@@ -44,10 +44,10 @@ def get_abilities(
     for ability in maximums:
         if abilities[ability] > maximums[ability]:
             abilities[ability] = maximums[ability]
-    for ability in abilities:
-        abilities[ability] = str(abilities[ability])
-    if extrao_str and abilities["Strength"] == "18":
-        abilities["Strength"] = f"18/{roll(1, 100, 0)}"
+    if extrao_str and abilities["Strength"] == 18:
+        abilities["Extrao Strength"] = roll(1, 100, 0)
+    else:
+        abilities["Extrao Strength"] = None
     return abilities
 
 
