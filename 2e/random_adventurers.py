@@ -96,7 +96,9 @@ def random_adventurer(
                         "Fighter",
                         "Paladin",
                     ]:
-                        armor_type = items.appropriate_armor_group(char_class, level=level)
+                        armor_type = items.appropriate_armor_group(
+                            char_class, level=level
+                        )
                         armor = items.random_armor(
                             expanded=expanded, specific=armor_type
                         )

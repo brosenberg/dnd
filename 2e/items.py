@@ -202,13 +202,13 @@ def random_appropriate_ammo(weapon):
         return None
 
 
-
 def random_item_count(item):
     try:
         return WEAPONS[base_weapon(item)]["Quantity"]
     except:
         pass
     return None
+
 
 def random_shield():
     return random.choice(SHIELDS)

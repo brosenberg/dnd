@@ -45,7 +45,7 @@ class Scroll(object):
             new_spell = self.spells.random_spell(spell_level)
             # If the spell is already on the scroll, increase its count, rather
             # than duplicating it in the list.
-            if [x for x in self.scroll[spell_level] if x.split('(')[0] == new_spell]:
+            if [x for x in self.scroll[spell_level] if x.split("(")[0] == new_spell]:
                 spell_index = self.scroll[spell_level].index(new_spell)
                 cur_spell = self.scroll[spell_level][spell_index]
                 # Assume that no spells contain "(" in their name
