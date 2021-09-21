@@ -1,0 +1,12 @@
+{
+        "Blowgun": ["Barbed dart", "Needle"],
+        "Hand crossbow": ["Hand quarrel"],
+        "Light crossbow": ["Light bolt"],
+        "Heavy crossbow": ["Heavy bolt"],
+        "Cho-ku-no": ["Light bolt"],
+        "Short bow": ["Flight arrow", "Stone arrow"],
+        "Long bow": ["Flight arrow", "Pile Arrow", "Sheaf arrow", "Stone arrow"],
+        "Daikyu": ["Daikyu arrow"],
+        "Sling": ["Sling bullet", "Sling stone"],
+        "Sling staff": ["Sling bullet", "Sling stone"]
+}

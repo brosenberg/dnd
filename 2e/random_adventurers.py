@@ -59,6 +59,7 @@ def random_adventurer(
     adventurer = None
     char_class = None
     has_weapon = False
+    has_ranged_weapon = False
     has_armor = False
     has_shield = False
     if more_classes:
@@ -101,7 +102,7 @@ def random_adventurer(
                         )
                         item = mig.armor(force_armor=armor)
                     elif (
-                        category == "Nonsword"
+                        (category == "Sword" or category == "Nonsword")
                         and char_class != "Bard"
                         and adventurer.class_group != "Warrior"
                     ):
@@ -129,13 +130,15 @@ def random_adventurer(
             if category == "Armor No Shields":
                 has_armor = True
             elif category in ["Nonsword", "Sword", "Rod/Staff/Wand"]:
-                has_weapon = True
+                if items.is_ranged_weapon(item):
+                    has_ranged_weapon = True
+                else:
+                    has_weapon = True
             elif category == "Shields":
                 has_shield = True
-            if items.is_ranged_weapon(item):
-                has_weapon = False
             adventurer.add_equipment(item)
 
+    # Roll standard items
     if not more_equipment:
         if level > 7 and char_class in ["Cleric", "Fighter", "Paladin"]:
             if not has_armor:
@@ -145,7 +148,18 @@ def random_adventurer(
                 adventurer.add_equipment("Medium shield")
                 has_shield = True
             adventurer.add_equipment("Medium warhorse")
+    # Roll more variety of items
     else:
+        # Check to see if the adventurer has random ammo and give them a weapon for it
+        appropriate_items = []
+        for item in adventurer.equipment:
+            weapons = items.appropriate_weapons_by_ammo(item)
+            if weapons:
+                appropriate_items.append(random.choice(weapons))
+                continue
+        for item in appropriate_items:
+            adventurer.add_equipment(item)
+
         # Maybe give the adventurer a mount
         if roll(1, 100, 0) < 20 * level:
             if level > 2 and (
@@ -188,6 +202,11 @@ def random_adventurer(
                 char_class, adventurer.class_group, level=level
             )
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
+            if has_ranged_weapon:
+                while items.is_ranged_weapon(weapon):
+                    weapon = items.random_weapon(
+                        expanded=expanded, specific=weapon_type
+                    )
             thrown_weapons = load_table("weapons_thrown.json")
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
@@ -252,7 +271,7 @@ def main():
         "--equipment",
         default=False,
         action="store_true",
-        help="supply adventurer with more equipment",
+        help="supply adventurers with more extensive and more reasonable equipment",
     )
     parser.add_argument(
         "-x",

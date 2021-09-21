@@ -369,7 +369,7 @@ class MagicItemGen(object):
                 shape = random.choice(
                     ["rhomboid", "sphere", "prism", "spindle", "ellipsoid"]
                 )
-                ioun_stones = f"{ioun_stone} {shape}"
+                ioun_stones = f"{base_item} ({ioun_stones} {shape})"
             base_item = f"{base_item} ({ioun_stones})"
         elif base_item == "Keoghtom's Ointment":
             jars = roll(1, 3, 0)

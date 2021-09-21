@@ -9,29 +9,16 @@ from magic_item import MagicItemGen
 from utils import load_table
 
 
+AMMOS = load_table("weapons_ammos.json")
 ARMOR_STATS = load_table("armor_stats.json")
 SHIELDS = load_table("shields.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
 
 
 def appropriate_ammo_type(weapon):
-    if weapon.startswith("Blowgun"):
-        return random.choice(["Barbed dart", "Needle"])
-    elif "crossbow" in weapon or weapon.startswith("Cho-ku-no"):
-        if "Hand " in weapon:
-            return "Hand quarrel"
-        elif "Heavy " in weapon:
-            return "Heavy bolt"
-        return "Light bolt"
-    elif " bow" in weapon:
-        if "long" in weapon.lower():
-            return "Sheaf arrow"
-        else:
-            return "Flight arrow"
-    elif weapon.startswith("Daikyu"):
-        return "Daikyu arrow"
-    elif "sling" in weapon.lower():
-        return "Sling bullet"
+    for weapon_type in AMMOS:
+        if weapon.startswith(weapon_type):
+            return random.choice(AMMOS[weapon_type])
 
 
 def appropriate_armor(char_class, level=1):
@@ -62,6 +49,20 @@ def appropriate_weapon(char_class, class_group, level=1):
     elif class_group == "Wizard":
         return "Wizard"
     return None
+
+
+def appropriate_weapons_by_ammo(ammo):
+    def in_ammo(item, ammo_list):
+        for ammo_type in ammo_list:
+            if ammo_type in item:
+                return True
+        return False
+
+    weapons = []
+    for weapon in AMMOS:
+        if in_ammo(ammo, AMMOS[weapon]):
+            weapons.append(weapon)
+    return weapons
 
 
 def get_ac(item):
