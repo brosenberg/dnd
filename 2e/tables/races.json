@@ -102,7 +102,7 @@
         "Weight": [72, 68, 5, 4],
         "Age": [60, 3, 12, 2, 100]
     },
-    "Languages": ["Dwarf", "Gnome", "Halfling", "Goblin", "Kobold", "Burrowing Animals"]
+    "Languages": ["Gnome", "Dwarf", "Halfling", "Goblin", "Kobold", "Burrowing Animals"]
   },
   "Half-Elf": {
     "Ability Modifiers": {},

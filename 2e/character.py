@@ -55,7 +55,7 @@ def constitution_hp_modifier(con, class_group):
         return 0
     elif con == 15:
         return 1
-    if class_group != "Warrior" or con == 16:
+    elif class_group != "Warrior" or con == 16:
         return 2
     elif con == 17:
         return 3
@@ -108,6 +108,7 @@ def get_caster_group(class_name):
         caster = get_class_group(class_name)
     if caster in SPELL_PROGRESSION.keys():
         return caster
+    return None
 
 
 def get_class_group(class_name):
@@ -208,7 +209,7 @@ def generate_characteristics(race, level):
     )
     characteristics["Age"] += roll(level, race_chars["Age"][3], -level)
     if characteristics["Age"] >= race_chars["Age"][4]:
-        characteristics["Age"] -= roll(2, race_chars["Age"][3])
+        characteristics["Age"] -= roll(2, race_chars["Age"][3], 0)
     return characteristics
 
 
@@ -431,7 +432,6 @@ class Character(object):
             modifier = "N/A"
             ability = NWPS[nwp][1]
             if ability != "N/A":
-                ability_value = self.abilities[ability]
                 modifier = self.abilities[ability] + NWPS[nwp][2]
                 if self.char_class == "Ranger" and nwp == "Tracking":
                     modifier += int(self.level / 3)
