@@ -1,0 +1,582 @@
+{
+    "Adze": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Ankus": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Awl pike": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Barbed dart": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 4, 0]
+    },
+    "Bardiche": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Baselard": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Bastard sword": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Battle axe": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Bec de corbin": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Bill": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Bill-guisarme": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Blow gun": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Barbed dart", "Needle"]
+    },
+    "Bo stick": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Bolas": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [1, 1, 0]
+    },
+    "Bone dagger": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Bone knife": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Boomerang": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [1, 1, 0]
+    },
+    "Broad sword": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Cestus": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Chakram": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [1, 1, 0]
+    },
+    "Chijikiri": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Cho-ku-no": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Light bolt"]
+    },
+    "Cinquedea": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Claymore": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Club": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Composite long bow": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Flight arrow", "Pile Arrow", "Sheaf arrow", "Stone arrow"]
+    },
+    "Composite short bow": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Flight arrow", "Stone arrow"]
+    },
+    "Cutlass": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Dagger": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Daikyu": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Daikyu arrow"]
+    },
+    "Daikyu arrow": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 6, 0]
+    },
+    "Dart": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [3, 4, 0]
+    },
+    "Dirk": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Drusus": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Estoc": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Falchion": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Fauchard": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Fauchard-fork": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Flight arrow": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 6, 0]
+    },
+    "Footman's Flail": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Footman's Mace": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Footman's Pick": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Gladius": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Glaive": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Glaive-guisarme": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Great club": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Great scimitar": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Guisarme": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Guisarme-voulge": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Halberd": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Hand axe": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Hand crossbow": {
+        "Hands": 1,
+        "Category": "Ranged",
+        "Ammo": ["Hand quarrel"]
+    },
+    "Hand quarrel": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [2, 8, 0]
+    },
+    "Harpoon": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Heavy Lance": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Heavy bolt": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [2, 8, 0]
+    },
+    "Heavy crossbow": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Heavy bolt"]
+    },
+    "Hook fauchard": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Horseman's Flail": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Horseman's Mace": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Horseman's Pick": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Jambiya": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Javelin": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [1, 2, 0]
+    },
+    "Jitte": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Jousting Lance": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Kama": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Katana": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Katar": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Kau sin ke": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Kawanaga": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Khanjar": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Khopseh": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Knife": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Kusari-gama": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Lajatang": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Light Lance": {
+        "Hands": 3,
+        "Category": "Melee"
+    },
+    "Light bolt": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [2, 8, 0]
+    },
+    "Light crossbow": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Light bolt"]
+    },
+    "Long bow": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Flight arrow", "Pile Arrow", "Sheaf arrow", "Stone arrow"]
+    },
+    "Long sword": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Lucern hammer": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Mace-axe": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Machete": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Main-gauche": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Maul": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Medium Lance": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Military fork": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Morning star": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Nagimaki": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Naginata": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Needle": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 4, 0]
+    },
+    "Ninja-to": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "No-dachi": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Nunchaku": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Partisan": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Pike": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Pile arrow": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 6, 0]
+    },
+    "Ranseur": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Rapier": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Sabre": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Sai": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Sang kauw": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Sapara": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Scimitar": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Scourge": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Scythe": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Sheaf arrow": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 6, 0]
+    },
+    "Short bow": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Flight arrow", "Stone arrow"]
+    },
+    "Short sword": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Shuriken": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [3, 4, 0]
+    },
+    "Sickle": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Sling": {
+        "Hands": 1,
+        "Category": "Ranged",
+        "Ammo": ["Sling bullet", "Sling stone"]
+    },
+    "Sling bullet": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 4, 0]
+    },
+    "Sling stone": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 4, 0]
+    },
+    "Spatha": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Spear": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Spetum": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Staff sling": {
+        "Hands": 2,
+        "Category": "Ranged",
+        "Ammo": ["Sling bullet", "Sling stone"]
+    },
+    "Stiletto": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Stone arrow": {
+        "Hands": 1,
+        "Category": "Ammo",
+        "Quantity": [3, 6, 0]
+    },
+    "Stone dagger": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Stone knife": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Sword-axe": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Tanto": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Tetsubo": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Three-piece rod": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Throwing axe": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [1, 3, 0]
+    },
+    "Throwing knife": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [1, 3, 0]
+    },
+    "Trident": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Tulwar": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Two-handed axe": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Two-handed sword": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Voulge": {
+        "Hands": 2,
+        "Category": "Melee"
+    },
+    "Wakizashi": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "War club": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Warhammer": {
+        "Hands": 1,
+        "Category": "Melee"
+    },
+    "Whip": {
+        "Hands": 1,
+        "Category": "Melee"
+    }
+}

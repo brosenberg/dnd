@@ -5,6 +5,7 @@ import random
 import re
 import os
 
+from dice import roll
 from magic_item import MagicItemGen
 from utils import load_table
 
@@ -13,15 +14,18 @@ AMMOS = load_table("weapons_ammos.json")
 ARMOR_STATS = load_table("armor_stats.json")
 SHIELDS = load_table("shields.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
+WEAPONS = load_table("weapons_master_list.json")
 
 
 def appropriate_ammo_type(weapon):
-    for weapon_type in AMMOS:
-        if weapon.startswith(weapon_type):
-            return random.choice(AMMOS[weapon_type])
+    try:
+        return random.choice(WEAPONS[base_weapon(weapon)]["Ammo"])
+    except KeyError:
+        pass
+    return None
 
 
-def appropriate_armor(char_class, level=1):
+def appropriate_armor_group(char_class, level=1):
     if char_class == "Druid":
         return "Druid"
     elif char_class in ["Thief", "Ranger"]:
@@ -37,7 +41,7 @@ def appropriate_armor(char_class, level=1):
     return None
 
 
-def appropriate_weapon(char_class, class_group, level=1):
+def appropriate_weapon_category(char_class, class_group, level=1):
     if char_class == "Cleric":
         return "Cleric"
     elif char_class == "Druid":
@@ -59,10 +63,23 @@ def appropriate_weapons_by_ammo(ammo):
         return False
 
     weapons = []
-    for weapon in AMMOS:
-        if in_ammo(ammo, AMMOS[weapon]):
-            weapons.append(weapon)
+    for weapon in WEAPONS:
+        try:
+            if in_ammo(ammo, WEAPONS[weapon]["Ammo"]):
+                weapons.append(weapon)
+        except KeyError:
+            pass
     return weapons
+
+
+def base_weapon(item):
+    candidates = []
+    for weapon in WEAPONS:
+        if item.startswith(weapon):
+            candidates.append(weapon)
+    if candidates:
+        return sorted(candidates, key=len)[-1]
+    return None
 
 
 def get_ac(item):
@@ -116,15 +133,6 @@ def get_other_ac_bonus(item):
     return None
 
 
-def is_crossbow_ammo(item):
-    return (
-        "Bolt" in item
-        or "Heavy bolt" in item
-        or "Light bolt" in item
-        or "quarrel" in item.lower()
-    )
-
-
 def is_cursed(item):
     return (
         re.search(r"-[0-9]+", item)
@@ -133,21 +141,17 @@ def is_cursed(item):
         or "Contrariness" in item
         or "Delusion" in item
         or "Defenselessness" in item
+        or "Stammering" in item
+        or "Jewel of Attacks" in item
     )
 
 
-def is_ranged_weapon(item):
-    return (
-        appropriate_ammo_type(item)
-        or item in THROWN_WEAPONS
-        or "arrow" in item.lower()
-        or is_crossbow_ammo(item)
-        or is_sling_ammo(item)
-    )
+def is_missile_weapon(item):
+    return is_weapon_in_categories(item, ["Ammo", "Ranged", "Thrown"])
 
 
-def is_sling_ammo(item):
-    return "sling bullet" in item.lower() or "sling stone" in item.lower()
+def is_thrown_weapon(item):
+    return is_weapon_in_categories(item, ["Thrown"])
 
 
 def is_shield(item):
@@ -155,6 +159,22 @@ def is_shield(item):
         if item.startswith(shield):
             return True
     return False
+
+
+def is_weapon_in_categories(item, categories):
+    category_weapons = []
+    for weapon in WEAPONS:
+        if WEAPONS[weapon]["Category"] in [categories]:
+            category_weapons.append(weapon)
+    for weapon in category_weapons:
+        if item.startswith(weapon):
+            return True
+    return False
+
+
+def is_two_handed_melee(weapon):
+    base = base_weapon(weapon)
+    return WEAPONS[base]["Hands"] == 2 and WEAPONS[base]["Category"] == "Melee"
 
 
 def random_armor(expanded=False, specific=None):
@@ -172,25 +192,26 @@ def random_armor(expanded=False, specific=None):
     return random.choice(armors)
 
 
-def random_shield():
-    return random.choice(SHIELDS)
+def random_appropriate_ammo(weapon):
+    try:
+        ammo = appropriate_ammo_type(weapon)
+        dice, die, mod = random_item_count(ammo)
+        count = roll(dice, die, mod)
+        return (ammo, count)
+    except TypeError:
+        return None
+
 
 
 def random_item_count(item):
-    if item in THROWN_WEAPONS:
-        if item in ["Dart", "Shuriken"]:
-            return (3, 4, 0)
-        else:
-            return (1, 2, 0)
-    elif "arrow" in item.lower():
-        return (random.randint(2, 4), 6, 0)
-    elif is_crossbow_ammo(item):
-        return (2, random.choice([6, 10]), 0)
-    elif is_sling_ammo(item):
-        return (3, 4, 0)
-    elif item.startswith("Barbed dart") or item.startswith("Needle"):
-        return (3, 4, 0)
+    try:
+        return WEAPONS[base_weapon(item)]["Quantity"]
+    except:
+        pass
     return None
+
+def random_shield():
+    return random.choice(SHIELDS)
 
 
 def random_weapon(expanded=False, specific=None):
@@ -217,8 +238,12 @@ def main():
     # print(get_armor_ac("Leather of Blending +1"))
     # print(get_armor_ac("Plate mail -4"))
     # print(get_armor_ac("Plate Mail of Etherealness"))
-    for _ in range(0, 10):
-        print(random_weapon())
+    # for _ in range(0, 10):
+    #    print(random_weapon())
+    print(appropriate_ammo_type("Light crossbow"))
+    print(appropriate_weapons_by_ammo("Flight arrow"))
+    print(base_weapon("Bastard sword +5"))
+    print(random_item_count("Dart"))
 
 
 if __name__ == "__main__":

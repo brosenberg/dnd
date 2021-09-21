@@ -96,7 +96,7 @@ def random_adventurer(
                         "Fighter",
                         "Paladin",
                     ]:
-                        armor_type = items.appropriate_armor(char_class, level=level)
+                        armor_type = items.appropriate_armor_group(char_class, level=level)
                         armor = items.random_armor(
                             expanded=expanded, specific=armor_type
                         )
@@ -106,7 +106,7 @@ def random_adventurer(
                         and char_class != "Bard"
                         and adventurer.class_group != "Warrior"
                     ):
-                        weapon_type = items.appropriate_weapon(
+                        weapon_type = items.appropriate_weapon_category(
                             char_class, adventurer.class_group, level=level
                         )
                         weapon = items.random_weapon(
@@ -130,7 +130,7 @@ def random_adventurer(
             if category == "Armor No Shields":
                 has_armor = True
             elif category in ["Nonsword", "Sword", "Rod/Staff/Wand"]:
-                if items.is_ranged_weapon(item):
+                if items.is_missile_weapon(item):
                     has_ranged_weapon = True
                 else:
                     has_weapon = True
@@ -153,10 +153,22 @@ def random_adventurer(
         # Check to see if the adventurer has random ammo and give them a weapon for it
         appropriate_items = []
         for item in adventurer.equipment:
-            weapons = items.appropriate_weapons_by_ammo(item)
-            if weapons:
-                appropriate_items.append(random.choice(weapons))
+            # Give a weapon for orphan ammo
+            try:
+                appropriate_items.append(
+                    random.choice(items.appropriate_weapons_by_ammo(item))
+                )
+                has_ranged_weapon = True
                 continue
+            except IndexError:
+                pass
+            # Give ammo for weapons needing it
+            try:
+                ammo, count = items.random_appropriate_ammo(item)
+                count *= 2
+                appropriate_items.append(f"{ammo} x{count}")
+            except TypeError:
+                pass
         for item in appropriate_items:
             adventurer.add_equipment(item)
 
@@ -184,7 +196,7 @@ def random_adventurer(
 
         # Everyone should have armor. Besides wizards.
         if not has_armor and adventurer.class_group != "Wizard":
-            armor_type = items.appropriate_armor(char_class, level=level)
+            armor_type = items.appropriate_armor_group(char_class, level=level)
             adventurer.add_equipment(
                 items.random_armor(expanded=expanded, specific=armor_type)
             )
@@ -198,35 +210,39 @@ def random_adventurer(
 
         # Everyone should have at least one weapon.
         if not has_weapon:
-            weapon_type = items.appropriate_weapon(
+            weapon_type = items.appropriate_weapon_category(
                 char_class, adventurer.class_group, level=level
             )
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
             if has_ranged_weapon:
-                while items.is_ranged_weapon(weapon):
+                while items.is_missile_weapon(weapon):
                     weapon = items.random_weapon(
                         expanded=expanded, specific=weapon_type
                     )
-            thrown_weapons = load_table("weapons_thrown.json")
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
-                ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
+                try:
+                    ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
+                except:
+                    breakpoint()
                 ammo_dice *= 2
                 ammo = f"{ammo} x{roll(ammo_dice, ammo_die, ammo_mod)}"
                 adventurer.add_equipment(weapon)
                 adventurer.add_equipment(ammo)
-                while items.is_ranged_weapon(weapon):
+                while items.is_missile_weapon(weapon):
                     weapon = items.random_weapon(
                         expanded=expanded, specific=weapon_type
                     )
-            elif weapon in thrown_weapons:
-                ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
+            elif items.is_thrown_weapon(weapon):
+                try:
+                    ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
+                except:
+                    breakpoint()
                 ammo_die *= 2
                 ammo_dice += 1
-                adventurer.add_equipment(
-                    f"{weapon} x{roll(ammo_dice, ammo_die, ammo_mod)}"
-                )
-                while items.is_ranged_weapon(weapon):
+                count = roll(ammo_dice, ammo_die, ammo_mod)
+                adventurer.add_equipment(f"{weapon} x{count}")
+                while items.is_missile_weapon(weapon):
                     weapon = items.random_weapon(
                         expanded=expanded, specific=weapon_type
                     )
@@ -236,7 +252,7 @@ def random_adventurer(
         # Rangers love to dual-wield
         if char_class == "Ranger" and level > 1:
             weapon = items.random_weapon(expanded=expanded, specific="Warrior")
-            while items.is_ranged_weapon(weapon):
+            while items.is_missile_weapon(weapon):
                 weapon = items.random_weapon(expanded=expanded)
             adventurer.add_equipment(weapon)
 
