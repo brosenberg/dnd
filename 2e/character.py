@@ -115,6 +115,13 @@ def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
 
 
+def get_level_by_experience(class_name, experience):
+    for index in range(0, len(CLASSES[class_name]["Levels"])):
+        if experience < CLASSES[class_name]["Levels"][index]:
+            return index
+    return 20
+
+
 def get_random_class(class_group=None, alignment=None):
     classes = set(CLASSES.keys())
     if alignment:
@@ -126,6 +133,17 @@ def get_random_class(class_group=None, alignment=None):
     if class_group:
         classes = classes.intersection(set(CLASS_GROUPS[class_group]["Classes"]))
     return random.choice(list(classes))
+
+
+def get_random_experience_by_level(class_name, level):
+    if level < 20:
+        return random.randint(
+            CLASSES[class_name]["Levels"][level - 1],
+            CLASSES[class_name]["Levels"][level],
+        )
+    else:
+        xp = CLASSES[class_name]["Levels"][19]
+        return xp + random.randint(0, xp / 10)
 
 
 def get_random_race_by_class(class_name):
@@ -304,6 +322,7 @@ class Character(object):
         race=None,
         level=1,
         alignment=None,
+        experience=None,
     ):
         self.char_class = char_class
         if not self.char_class:
@@ -317,7 +336,14 @@ class Character(object):
         self.alignment = alignment
         if not self.alignment:
             self.alignment = random.choice(CLASSES[self.char_class]["Alignments"])
-        self.level = level
+        if experience is not None:
+            self.experience = experience
+            self.level = get_level_by_experience(self.char_class, experience)
+        else:
+            self.level = level
+            self.experience = get_random_experience_by_level(
+                self.char_class, self.level
+            )
         self.abilities = abilities
         if not self.abilities:
             minimums = combine_minimums(
@@ -382,6 +408,7 @@ class Character(object):
         s = f"{'-'*10}\n"
         ### Race, Class, Alignment, HP, AC, THAC0
         s += f"{self.race} {self.char_class} {self.level} - {self.alignment}\n"
+        s += f"XP: {self.experience:,} - "
         if self.level_limit > 98:
             s += "Unlimited level limit\n"
         else:
