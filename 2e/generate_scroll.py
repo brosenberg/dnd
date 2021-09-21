@@ -5,16 +5,11 @@ import os
 import random
 
 
-class Spells(object):
-    def __init__(self, spell_file):
-        self.spell_list = json.load(open(spell_file))
-
-    def random_spell(self, spell_level):
-        return random.choice(self.spell_list[spell_level])
+from spells import Spells
 
 
 class Scroll(object):
-    def __init__(self, spells, spell_count, min_level, max_level, scroll_type=None):
+    def __init__(self, spells, spell_count, min_level, max_level, scroll_type="Wizard"):
         self.spells = spells
         self.spell_count = spell_count
         self.min_level = min_level
@@ -42,7 +37,7 @@ class Scroll(object):
             spell_level = str(spell_level)
             if spell_level not in self.scroll.keys():
                 self.scroll[spell_level] = []
-            new_spell = self.spells.random_spell(spell_level)
+            new_spell = self.spells.random_spell(spell_level, self.scroll_type)
             # If the spell is already on the scroll, increase its count, rather
             # than duplicating it in the list.
             if [x for x in self.scroll[spell_level] if x.split("(")[0] == new_spell]:
@@ -60,17 +55,15 @@ class Scroll(object):
                 self.scroll[spell_level].append(new_spell)
 
 
-def random_spell_scroll(wizard_spells, priest_spells):
+def random_spell_scroll(spells):
     scroll_roll = random.randint(1, 19)
     type_roll = random.randint(1, 100)
     scroll_type = "Wizard"
-    spell_list = wizard_spells
     spell_count = 1
     min_level = 1
     max_level = 4
     if type_roll > 70:
         scroll_type = "Priest"
-        spell_list = priest_spells
 
     if scroll_roll == 7 or scroll_roll == 8:
         spell_count = 2
@@ -103,7 +96,7 @@ def random_spell_scroll(wizard_spells, priest_spells):
         max_level = 7
 
     scroll = Scroll(
-        spell_list, spell_count, min_level, max_level, scroll_type=scroll_type
+        spells, spell_count, min_level, max_level, scroll_type=scroll_type
     )
     scroll.generate()
     return scroll
@@ -111,12 +104,8 @@ def random_spell_scroll(wizard_spells, priest_spells):
 
 def random_spell(spell_level, caster_class):
     base_dir = os.path.dirname(os.path.realpath(__file__))
-    spells = None
-    if caster_class == "Wizard":
-        spells = Spells(f"{base_dir}/spells/wizard-spells.json")
-    else:
-        spells = Spells(f"{base_dir}/spells/priest-spells.json")
-    return spells.random_spell(str(spell_level))
+    spells = Spells()
+    return spells.random_spell(str(spell_level), caster_class)
 
 
 def random_random_spell():
@@ -128,10 +117,7 @@ def random_random_spell():
 
 
 def generate_scroll():
-    base_dir = os.path.dirname(os.path.realpath(__file__))
-    wizard_spells = Spells(f"{base_dir}/spells/wizard-spells.json")
-    priest_spells = Spells(f"{base_dir}/spells/priest-spells.json")
-    return random_spell_scroll(wizard_spells, priest_spells)
+    return random_spell_scroll(Spells())
 
 
 def main():

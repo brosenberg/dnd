@@ -4,15 +4,32 @@ import json
 import os
 import random
 
+def diff_lists(list_a, list_b):
+    for level in list_a:
+        for spell in list_a[level]:
+            if spell not in list_b[level]:
+                print(f"{spell} missing from level {level}!")
+
+def flatten_schools(spell_list):
+    spells = {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []}
+    for school in spell_list:
+        for level in spell_list[school]:
+            spells[level] += spell_list[school][level]
+    for level in spells:
+        spells[level] = sorted(list(set(spells[level])))
+    return spells
 
 class Spells(object):
-    def __init__(self):
-        self.spells = {
-            "Wizard": load_spells("wizard-spells.json"),
-            "School": load_spells("wizard-spells-school.json"),
-            "Priest": load_spells("priest-spells.json"),
-            "Sphere": load_spells("priest-spells-sphere.json"),
-        }
+    def __init__(self, expanded=False):
+        if expanded:
+            pass
+        else:
+            self.spells = {
+                "School": load_spells("wizard-spells.json"),
+                "Sphere": load_spells("priest-spells.json"),
+            }
+            self.spells["Wizard"] = flatten_schools(self.spells["School"])
+            self.spells["Priest"] = flatten_schools(self.spells["Sphere"])
 
     def random_spell(self, spell_level, caster_class):
         spell_level = str(spell_level)
@@ -60,19 +77,10 @@ def load_spells(fname):
 
 def main():
     spells = Spells()
-    print(spells.random_school_sphere_spell("4", "Wizard", "Necromancy"))
-    print(spells.random_school_sphere_spell("4", "Priest", "Sun"))
-    print(
-        spells.random_exclude_school_sphere_spell(
-            "3", "Wizard", ["Necromancy", "Evocation", "Conjuration"]
-        )
-    )
-    print(
-        spells.random_include_school_sphere_spell(
-            "3", "Wizard", ["Necromancy", "Evocation", "Conjuration"]
-        )
-    )
-    print(spells.random_include_school_sphere_spell("3", "Priest", ["Animal"]))
+    spell_list = flatten_schools(spells.spells["Sphere"])
+    #diff_lists(spells.spells["Wizard"], spell_list)
+    diff_lists(spell_list, spells.spells["Priest"])
+    breakpoint()
 
 
 if __name__ == "__main__":
