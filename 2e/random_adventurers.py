@@ -216,11 +216,13 @@ def random_adventurer(
                 char_class, adventurer.class_group, level=level
             )
             weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
+            # Don't give multiple ranged weapons
             if has_ranged_weapon:
                 while items.is_missile_weapon(weapon):
                     weapon = items.random_weapon(
                         expanded=expanded, specific=weapon_type
                     )
+            # If the weapon requires ammo, give some ammo for it
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
                 try:
@@ -231,25 +233,32 @@ def random_adventurer(
                 ammo = f"{ammo} x{roll(ammo_dice, ammo_die, ammo_mod)}"
                 adventurer.add_equipment(weapon)
                 adventurer.add_equipment(ammo)
-                while items.is_missile_weapon(weapon):
-                    weapon = items.random_weapon(
-                        expanded=expanded, specific=weapon_type
-                    )
+                has_ranged_weapon = True
+                weapon = items.random_weapon(
+                    expanded=expanded,
+                    specific=weapon_type,
+                    weapon_filter=items.is_melee_weapon,
+                )
+            # If the weapon is thrown, give a few of them
             elif items.is_thrown_weapon(weapon):
                 try:
                     ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
                 except:
                     breakpoint()
-                ammo_die *= 2
-                ammo_dice += 1
                 count = roll(ammo_dice, ammo_die, ammo_mod)
-                adventurer.add_equipment(f"{weapon} x{count}")
-                while items.is_missile_weapon(weapon):
-                    weapon = items.random_weapon(
-                        expanded=expanded, specific=weapon_type
-                    )
+                if count > 1:
+                    adventurer.add_equipment(f"{weapon} x{count}")
+                else:
+                    adventurer.add_equipment(weapon)
+                has_ranged_weapon = True
+                weapon = items.random_weapon(
+                    expanded=expanded,
+                    specific=weapon_type,
+                    weapon_filter=items.is_melee_weapon,
+                )
 
             adventurer.add_equipment(weapon)
+            has_weapon = True
 
         # Rangers love to dual-wield
         if char_class == "Ranger" and level > 1:

@@ -146,6 +146,10 @@ def is_cursed(item):
     )
 
 
+def is_melee_weapon(item):
+    return is_weapon_in_categories(item, ["Melee"])
+
+
 def is_missile_weapon(item):
     return is_weapon_in_categories(item, ["Ammo", "Ranged", "Thrown"])
 
@@ -162,12 +166,9 @@ def is_shield(item):
 
 
 def is_weapon_in_categories(item, categories):
-    category_weapons = []
+    base = base_weapon(item)
     for weapon in WEAPONS:
-        if WEAPONS[weapon]["Category"] in [categories]:
-            category_weapons.append(weapon)
-    for weapon in category_weapons:
-        if item.startswith(weapon):
+        if WEAPONS[weapon]["Category"] in categories and base == weapon:
             return True
     return False
 
@@ -214,7 +215,7 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
-def random_weapon(expanded=False, specific=None):
+def random_weapon(expanded=False, specific=None, weapon_filter=None):
     mig = MagicItemGen(expanded)
     weapon = None
     if not specific:
@@ -229,8 +230,9 @@ def random_weapon(expanded=False, specific=None):
         weapons = load_table("weapons_warrior.json")
     elif specific == "Wizard":
         weapons = load_table("weapons_wizard.json")
-    weapon = random.choice(weapons)
-    return mig.diversify_weapon(weapon)
+    if weapon_filter:
+        weapons = [x for x in weapons if weapon_filter(x)]
+    return mig.diversify_weapon(random.choice(weapons))
 
 
 def main():

@@ -108,7 +108,7 @@
     "Composite long bow": {
         "Hands": 2,
         "Category": "Ranged",
-        "Ammo": ["Flight arrow", "Pile Arrow", "Sheaf arrow", "Stone arrow"]
+        "Ammo": ["Flight arrow", "Pile arrow", "Sheaf arrow", "Stone arrow"]
     },
     "Composite short bow": {
         "Hands": 2,
@@ -333,7 +333,7 @@
     "Long bow": {
         "Hands": 2,
         "Category": "Ranged",
-        "Ammo": ["Flight arrow", "Pile Arrow", "Sheaf arrow", "Stone arrow"]
+        "Ammo": ["Flight arrow", "Pile arrow", "Sheaf arrow", "Stone arrow"]
     },
     "Long sword": {
         "Hands": 1,

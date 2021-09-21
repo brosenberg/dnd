@@ -507,10 +507,10 @@ class MagicItemGen(object):
                 base_weapon = f"{base_weapon} ({blade} {modifier})"
             elif base_weapon == "Javelin of Lightning":
                 count = roll(1, 4, 1)
-                base_weapon = f"{base_weapon} ({count} javelins)"
+                base_weapon = f"{base_weapon} x{count}"
             elif base_weapon == "Javelin of Piercing":
                 count = roll(2, 4, 0)
-                base_weapon = f"{base_weapon} ({count} javelins)"
+                base_weapon = f"{base_weapon} x{count}"
             elif base_weapon == "Buckle Knife":
                 knife_buckle = load_and_roll("knife_buckle.json")
                 base_weapon = f"{base_weapon} {knife_buckle}"
@@ -556,7 +556,7 @@ class MagicItemGen(object):
                 ammo = roll(int(ammo_match.group(1)), int(ammo_match.group(2)), 0)
                 base_weapon = re.sub(r"\s*\(\d+d\d+\)$", "", base_weapon)
                 base_weapon = self.diversify_weapon(base_weapon)
-                return f"{base_weapon} {adjustment} ({ammo} {base_weapon.lower()}s)"
+                return f"{base_weapon} {adjustment} x{ammo}"
             base_weapon = self.diversify_weapon(base_weapon)
         if is_sword:
             if roll(1, 100, 0) <= 25:
@@ -571,7 +571,7 @@ class MagicItemGen(object):
         if base_weapon == "Arrow":
             arrows = ["Flight arrow", "Sheaf arrow"]
             if self.expanded:
-                arrows += ["Daikyu arrow", "Pile Arrow", "Stone arrow"]
+                arrows += ["Daikyu arrow", "Pile arrow", "Stone arrow"]
             return random.choice(arrows)
         elif base_weapon == "Axe":
             axes = ["Battle axe", "Hand axe", "Throwing axe"]
