@@ -492,12 +492,12 @@ class Character(object):
             if (
                 self.race not in ["Human", "Half-Elf"]
                 and roll(1, 100, 0) > 50
-                and len(self.profs["Languages"]) < 1
+                and RACES[self.race]["Languages"][0] not in self.profs["Languages"]
             ):
                 self.profs["Languages"].append(RACES[self.race]["Languages"][0])
                 slots -= 1
-            # 10% - (Number of Languages) chance for each slot to learn a language
-            elif roll(1, 100, 0) < 11 - len(self.profs["Languages"]):
+            # 20% - 2*(Number of Languages) chance for each slot to learn a language
+            elif roll(1, 100, 0) < 20 - 2*len(self.profs["Languages"]):
                 languages = []
                 if self.race != "Human":
                     if self.race != "Half-Elf":
@@ -518,7 +518,7 @@ class Character(object):
                     and self.druid_lang_known / self.level > 1
                 ):
                     languages += load_table("druid_languages.json")
-                languagess = list(set(languages) - set(self.profs["Languages"]))
+                languages = list(set(languages) - (set(self.profs["Languages"])))
                 # Make sure this character hasn't learned all of their possible languages
                 if languages:
                     self.profs["Languages"].append(random.choice(languages))
