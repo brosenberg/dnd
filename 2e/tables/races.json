@@ -24,7 +24,13 @@
       "Intelligence": 3,
       "Wisdom": 3,
       "Charisma": 3
-    }
+    },
+    "Characteristics": {
+        "Height": [43, 41, 1, 10],
+        "Weight": [130, 105, 4, 10],
+        "Age": [40, 5, 6, 3, 125]
+    },
+    "Languages": ["Dwarf", "Gnome", "Goblin", "Kobold", "Orc"]
   },
   "Elf": {
     "Ability Modifiers": {
@@ -56,7 +62,13 @@
       "Intelligence": 8,
       "Wisdom": 3,
       "Charisma": 8
-    }
+    },
+    "Characteristics": {
+        "Height": [55, 50, 1, 10],
+        "Weight": [90, 70, 3, 10],
+        "Age": [100, 5, 6, 3, 175]
+    },
+    "Languages": ["Elf", "Gnome", "Halfling", "Goblin", "Hobgoblin", "Orc", "Gnoll"]
   },
   "Gnome": {
     "Ability Modifiers": {
@@ -84,7 +96,13 @@
       "Intelligence": 6,
       "Wisdom": 3,
       "Charisma": 3
-    }
+    },
+    "Characteristics": {
+        "Height": [38, 36, 1, 6],
+        "Weight": [72, 68, 5, 4],
+        "Age": [60, 3, 12, 2, 100]
+    },
+    "Languages": ["Dwarf", "Gnome", "Halfling", "Goblin", "Kobold", "Burrowing Animals"]
   },
   "Half-Elf": {
     "Ability Modifiers": {},
@@ -116,7 +134,13 @@
       "Intelligence": 4,
       "Wisdom": 3,
       "Charisma": 3
-    }
+    },
+    "Characteristics": {
+        "Height": [60, 58, 2, 6],
+        "Weight": [110, 85, 3, 12],
+        "Age": [15, 1, 6, 2, 62]
+    },
+    "Languages": ["Elf", "Gnome", "Halfling", "Goblin", "Hobgoblin", "Orc", "Gnoll"]
   },
   "Halfling": {
     "Ability Modifiers": {
@@ -143,7 +167,13 @@
       "Intelligence": 6,
       "Wisdom": 3,
       "Charisma": 3
-    }
+    },
+    "Characteristics": {
+        "Height": [32, 30, 2, 8],
+        "Weight": [52, 48, 5, 4],
+        "Age": [20, 3, 4, 2, 50]
+    },
+    "Languages": ["Halfling", "Dwarf", "Elf", "Gnome", "Goblin", "Orc"]
   },
   "Human": {
     "Ability Modifiers": {},
@@ -180,6 +210,12 @@
       "Intelligence": 3,
       "Wisdom": 3,
       "Charisma": 3
-    }
+    },
+    "Characteristics": {
+        "Height": [60, 59, 2, 10],
+        "Weight": [140, 100, 6, 10],
+        "Age": [15, 1, 4, 2, 45]
+    },
+    "Languages": []
   }
 }

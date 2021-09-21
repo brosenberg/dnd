@@ -70,6 +70,12 @@ def constitution_hp_modifier(con, class_group):
         return 7
 
 
+def convert_height(height):
+    feet = int(height / 12)
+    inches = height - (12 * feet)
+    return f"{feet}'{inches}\""
+
+
 def dexterity_mods(dexterity):
     return ABILITY_MODS["Dexterity"][dexterity]
 
@@ -181,6 +187,31 @@ def get_spell_specialization(class_name):
         return CLASS_SPELLS[class_name]["Specialization"]
     except KeyError:
         return None
+
+
+def generate_characteristics(race, level):
+    race_chars = RACES[race]["Characteristics"]
+    characteristics = {"Gender": random.choice(["Female", "Male"])}
+    gender_index = 0
+    if characteristics["Gender"] == "Female":
+        gender_index = 1
+    characteristics["Height"] = roll(
+        race_chars["Height"][2],
+        race_chars["Height"][3],
+        race_chars["Height"][gender_index],
+    )
+    characteristics["Weight"] = roll(
+        race_chars["Weight"][2],
+        race_chars["Weight"][3],
+        race_chars["Weight"][gender_index],
+    )
+    characteristics["Age"] = roll(
+        race_chars["Age"][1], race_chars["Age"][2], race_chars["Age"][0]
+    )
+    characteristics["Age"] += roll(level, race_chars["Age"][3], -level)
+    if characteristics["Age"] >= race_chars["Age"][4]:
+        characteristics["Age"] -= roll(2, race_chars["Age"][3])
+    return characteristics
 
 
 def intelligence_mods(intelligence):
@@ -340,20 +371,29 @@ class Character(object):
             )
             + intelligence_bonus_proficiencies(self.abilities["Intelligence"])
         )
-        self.nwps = []
+        self.profs = {"NWP": [], "Weapon": [], "Languages": ["Common"]}
+        if self.char_class == "Thief":
+            self.profs["Languages"].append("Thieves' Cant")
+        elif self.char_class == "Druid":
+            self.druid_lang_known = 0
+
         self.assign_nwps()
+        self.characteristics = generate_characteristics(self.race, self.level)
 
     def __str__(self):
         self.update_ac()
         dex_hit_mod = dexterity_to_hit(self.abilities["Dexterity"])
         str_hit_mod = strength_to_hit(self.abilities["Strength"])
         s = f"{'-'*10}\n"
-        s += f"{self.race} {self.char_class} {self.level}   {self.alignment}\n"
+        ### Race, Class, Alignment, HP, AC, THAC0
+        s += f"{self.race} {self.char_class} {self.level} - {self.alignment}\n"
         if self.level_limit > 98:
             s += "Unlimited level limit\n"
         else:
             s += f"Level limit: {self.level_limit}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
+
+        ### Abilities
         for ability in self.abilities:
             details = ""
             if ability == "Strength":
@@ -381,14 +421,27 @@ class Character(object):
                 details = f" ({details})"
             s += f"{ability+':':13} {self.abilities[ability]:>5} {details}\n"
         s += "\n"
+
+        ### Characteristics
+        s += f"{self.characteristics['Gender']}  {convert_height(self.characteristics['Height'])}  {self.characteristics['Weight']} lbs.  {self.characteristics['Age']} years old\n"
+        s += "\n"
+
+        ### Proficiencies
         s += f"Proficiencies ({self.nwp_slots}):\n"
-        for nwp in self.nwps:
+        for nwp in self.profs["NWP"]:
             modifier = "N/A"
             ability = NWPS[nwp][1]
             if ability != "N/A":
                 ability_value = int(self.abilities[ability].split("/")[0])
-                modifier = int(self.abilities[ability]) + NWPS[nwp][2]
+                modifier = int(self.abilities[ability].split("/")[0]) + NWPS[nwp][2]
+                if self.char_class == "Ranger" and nwp == "Tracking":
+                    modifier += int(self.level / 3)
             s += f"\t{nwp:20} {ability:12}  Mod: {modifier:2}  Slots: {NWPS[nwp][0]}\n"
+
+        ### Languages
+        s += f"Languages known: {', '.join(self.profs['Languages'])}\n"
+
+        ### Spells
         if self.spell_levels:
             s += "\n"
             s += f"Spells ({'/'.join([str(x) for x in self.spell_levels])}):\n"
@@ -401,6 +454,8 @@ class Character(object):
                         count = f" ({self.spells[spell_level].count(spell)})"
                     cur_spells.append(f"{spell}{count}")
                 s += f"{'; '.join(cur_spells)}\n"
+
+        ### Equipment
         if self.equipment:
             items = []
             for item in self.equipment:
@@ -424,16 +479,57 @@ class Character(object):
     def assign_nwps(self):
         slots = self.nwp_slots
         possible_nwps = []
+        if self.char_class == "Bard":
+            self.profs["NWP"].append("Local History")
+            self.profs["NWP"].append("Reading/Writing")
+        elif self.char_class == "Ranger":
+            self.profs["NWP"].append("Tracking")
         for group in CLASSES[self.char_class]["Proficiency Groups"]:
             possible_nwps += NWP_GROUPS[group]
         possible_nwps = list(set(possible_nwps))
         while slots:
-            new_nwp = random.choice(possible_nwps)
-            while NWPS[new_nwp][0] > slots:
+            # 50% chance for each slot to give demi-humans their racial language
+            if (
+                self.race not in ["Human", "Half-Elf"]
+                and roll(1, 100, 0) > 50
+                and len(self.profs["Languages"]) < 1
+            ):
+                self.profs["Languages"].append(RACES[self.race]["Languages"][0])
+                slots -= 1
+            # 10% - (Number of Languages) chance for each slot to learn a language
+            elif roll(1, 100, 0) < 11 - len(self.profs["Languages"]):
+                languages = []
+                if self.race != "Human":
+                    if self.race != "Half-Elf":
+                        if (
+                            RACES[self.race]["Languages"][0]
+                            not in self.profs["Languages"]
+                        ):
+                            self.profs["Languages"].append(
+                                RACES[self.race]["Languages"][0]
+                            )
+                            slots -= 1
+                            continue
+                    languages = RACES[self.race]["Languages"]
+                else:
+                    languages = load_table("languages.json")
+                if (
+                    self.char_class == "Druid"
+                    and self.druid_lang_known / self.level > 1
+                ):
+                    languages += load_table("druid_languages.json")
+                languagess = list(set(languages) - set(self.profs["Languages"]))
+                # Make sure this character hasn't learned all of their possible languages
+                if languages:
+                    self.profs["Languages"].append(random.choice(languages))
+                    slots -= 1
+            else:
                 new_nwp = random.choice(possible_nwps)
-            self.nwps.append(new_nwp)
-            slots -= NWPS[new_nwp][0]
-            possible_nwps.remove(new_nwp)
+                while NWPS[new_nwp][0] > slots:
+                    new_nwp = random.choice(possible_nwps)
+                self.profs["NWP"].append(new_nwp)
+                slots -= NWPS[new_nwp][0]
+                possible_nwps.remove(new_nwp)
 
     def populate_spells(self):
         def add_spell(spell_level, spell):
