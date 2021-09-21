@@ -100,22 +100,8 @@ def random_spell_scroll(spells):
     return scroll
 
 
-def random_spell(spell_level, caster_class):
-    base_dir = os.path.dirname(os.path.realpath(__file__))
-    spells = Spells()
-    return spells.random_spell(str(spell_level), caster_class)
-
-
-def random_random_spell():
-    caster_class = random.choice(["Wizard", "Priest"])
-    if caster_class == "Wizard":
-        return random_spell(random.randint(1, 9), caster_class)
-    else:
-        return random_spell(random.randint(1, 7), caster_class)
-
-
-def generate_scroll():
-    return random_spell_scroll(Spells())
+def generate_scroll(expanded=False):
+    return random_spell_scroll(Spells(expanded=expanded))
 
 
 def main():

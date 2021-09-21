@@ -69,6 +69,7 @@ def random_adventurer(
             level=level,
             alignment=alignment,
             experience=experience,
+            expanded=expanded,
         )
         char_class = adventurer.char_class
     else:
@@ -85,6 +86,7 @@ def random_adventurer(
             level=level,
             alignment=alignment,
             experience=experience,
+            expanded=expanded,
         )
     for category in MAGIC_ITEMS[adventurer.class_group]:
         if roll(1, 100, 0) <= level * 5:
@@ -305,7 +307,7 @@ def main():
         "--expanded",
         default=False,
         action="store_true",
-        help="use expanded item generation tables",
+        help="use expanded generation tables",
     )
 
     args = parser.parse_args()

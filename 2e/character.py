@@ -323,7 +323,9 @@ class Character(object):
         level=1,
         alignment=None,
         experience=None,
+        expanded=False,
     ):
+        self.expanded = expanded
         self.char_class = char_class
         if not self.char_class:
             self.char_class = get_random_class(
@@ -559,9 +561,11 @@ class Character(object):
 
     def populate_spells(self):
         def add_spell(spell_level, spell):
+            if spell is None:
+                raise TypeError("Can't assign None as spell")
             self.spells[spell_level].append(spell)
 
-        spell_gen = Spells()
+        spell_gen = Spells(expanded=self.expanded)
         specialization = get_spell_specialization(self.char_class)
         includes = get_spell_includes(self.char_class)
         excludes = get_spell_excludes(self.char_class)
@@ -582,8 +586,8 @@ class Character(object):
                 for _ in range(0, spell_count):
                     add_spell(
                         spell_level,
-                        spell_gen.random_exclude_school_sphere_spell(
-                            spell_level, spell_subtype, excludes
+                        spell_gen.random_standard_school_sphere_spell(
+                            spell_level, spell_subtype, excludes=excludes
                         ),
                     )
             elif includes is not None:
@@ -619,8 +623,16 @@ class Character(object):
 
 def main():
     parser = argparse.ArgumentParser(description="Create a character")
+    parser.add_argument(
+        "-x",
+        "--expanded",
+        default=False,
+        action="store_true",
+        help="use expanded generation tables",
+    )
+    args = parser.parse_args()
     for class_name in get_all_classes():
-        print(Character(char_class=class_name, level=15))
+        print(Character(char_class=class_name, level=15, expanded=args.expanded))
 
 
 if __name__ == "__main__":

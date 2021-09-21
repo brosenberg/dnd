@@ -8,8 +8,8 @@ import re
 
 from dice import roll
 from generate_scroll import generate_scroll
-from generate_scroll import random_spell
-from generate_scroll import random_random_spell
+from spells import random_spell
+from spells import random_random_spell
 
 
 def roll_table(table, mod=0):
@@ -134,7 +134,7 @@ class MagicItemGen(object):
             spells = []
             for spell_level in spell_levels:
                 spells.append(
-                    f"{spell_level}:{random_spell(spell_level, caster_class)}"
+                    f"{spell_level}:{random_spell(spell_level, caster_class, expanded=self.expanded)}"
                 )
             base_ring = f"{base_ring} ({caster_class}): {', '.join(spells)}"
         elif base_ring == "Ring of Telekinesis":
@@ -275,7 +275,7 @@ class MagicItemGen(object):
             while item_count > 0:
                 item = load_and_roll("useful_items.json")
                 if item == "Scroll":
-                    item = f"{item} - {random_random_spell()}"
+                    item = f"{item} - {random_random_spell(expanded=self.expanded)}"
                 if item == "Roll twice":
                     item_count += 2
                 else:
