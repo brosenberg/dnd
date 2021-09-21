@@ -18,6 +18,13 @@ LEVEL_RANGE = {
     "Very high": (1, 12, 8),
 }
 
+EXPERIENCE_RANGE = {
+    "Low": [0, 4000],
+    "Medium": [10000, 58900],
+    "High": [75000, 652600],
+    "Very high": [300000, 6000000],
+}
+
 MAGIC_ITEMS = {
     "Warrior": ["Armor No Shields", "Shields", "Sword", "Nonsword", "Potions and Oils"],
     "Wizard": ["Scrolls", "Rings", "Rod/Staff/Wand", "Misc Magic"],
@@ -41,7 +48,7 @@ MAGIC_ITEMS = {
 
 
 def random_adventurer(
-    level_range, expanded, more_equipment, more_classes, alignment=None
+    level_range, expanded, more_equipment, more_classes, alignment=None, experience=None
 ):
     mig = magic_item.MagicItemGen(expanded)
     level = roll(
@@ -57,7 +64,10 @@ def random_adventurer(
     if more_classes:
         class_group = random.choice(["Warrior", "Wizard", "Priest", "Rogue"])
         adventurer = Character(
-            class_group=class_group, level=level, alignment=alignment
+            class_group=class_group,
+            level=level,
+            alignment=alignment,
+            experience=experience,
         )
         char_class = adventurer.char_class
     else:
@@ -69,7 +79,12 @@ def random_adventurer(
             char_class = "Thief"
         elif class_roll > 4:
             char_class = "Cleric"
-        adventurer = Character(char_class=char_class, level=level, alignment=alignment)
+        adventurer = Character(
+            char_class=char_class,
+            level=level,
+            alignment=alignment,
+            experience=experience,
+        )
     for category in MAGIC_ITEMS[adventurer.class_group]:
         if roll(1, 100, 0) <= level * 5:
 
@@ -227,6 +242,13 @@ def main():
     )
     parser.add_argument(
         "-e",
+        "--experience",
+        default=False,
+        action="store_true",
+        help="generate consistent experience scores across characters",
+    )
+    parser.add_argument(
+        "-q",
         "--equipment",
         default=False,
         action="store_true",
@@ -239,11 +261,19 @@ def main():
         action="store_true",
         help="use expanded item generation tables",
     )
+
     args = parser.parse_args()
     no_appearing = roll(1, 8, 0)
     level_range = random.choice(list(LEVEL_RANGE.keys()))
-    print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
+    experience = None
     alignments = None
+
+    print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
+    if args.experience:
+        experience = random.randint(
+            EXPERIENCE_RANGE[level_range][0], EXPERIENCE_RANGE[level_range][1]
+        )
+        print(f"Base experience: {experience:,}")
     if args.alignments:
         alignments = random.choice(load_table("alignment_groups.json"))
         print(f"Alignments: {', '.join(alignments)}")
@@ -252,6 +282,9 @@ def main():
         alignment = None
         if args.alignments:
             alignment = random.choice(alignments)
+        this_xp = experience
+        if this_xp:
+            this_xp += random.randint(0, (EXPERIENCE_RANGE[level_range][0] / 10) + 100)
         print(
             random_adventurer(
                 level_range,
@@ -259,6 +292,7 @@ def main():
                 args.equipment,
                 args.classes,
                 alignment=alignment,
+                experience=this_xp,
             )
         )
         print()
