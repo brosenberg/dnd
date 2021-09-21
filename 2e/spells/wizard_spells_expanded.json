@@ -1,0 +1,831 @@
+{
+  "Abjuration": {
+    "1": [
+      "Alarm",
+      "Cantrip",
+      "Protection From Evil"
+    ],
+    "2": [
+      "Chaos Shield",
+      "Nahal's Nonsensical Nullifier",
+      "Protection From Cantrips",
+      "Protection From Paralysis"
+    ],
+    "3": [
+      "Dispel Magic",
+      "Non-Detection",
+      "Protection From Evil, 10-foot Radius",
+      "Protection From Normal Missiles"
+    ],
+    "4": [
+      "Fire Trap",
+      "Minor Globe of Invulnerability",
+      "Minor Spell Turning",
+      "Remove Curse"
+    ],
+    "5": [
+      "Avoidance",
+      "Dismissal",
+      "Lower Resistance",
+      "Safeguarding",
+      "Von Gasik's Refusal"
+    ],
+    "6": [
+      "Anti-Magic Shell",
+      "Globe of Invulnerability",
+      "Repulsion"
+    ],
+    "7": [
+      "Banishment",
+      "Sequester",
+      "Spell Turning"
+    ],
+    "8": [
+      "Hornung's Random Dispatcher",
+      "Mind Blank",
+      "Serten's Spell Immunity"
+    ],
+    "9": [
+      "Elemental Aura",
+      "Imprisonment",
+      "Prismatic Sphere",
+      "Stabilize"
+    ]
+  },
+  "Alteration": {
+    "1": [
+      "Affect Normal Fires",
+      "Burning Hands",
+      "Cantrip",
+      "Color Spray",
+      "Comprehend Languages",
+      "Dancing Lights",
+      "Enlarge",
+      "Erase",
+      "Feather Fall",
+      "Fire Burst",
+      "Fist of Stone",
+      "Gaze Reflection",
+      "Hold Portal",
+      "Jump",
+      "Lasting Breath",
+      "Light",
+      "Mending",
+      "Message",
+      "Metamorphose Liquids",
+      "Murdock's Feathery Flyer",
+      "Shocking Grasp",
+      "Spider Climb",
+      "Wizard Mark"
+    ],
+    "2": [
+      "Alter Self",
+      "Continual Light",
+      "Darkness, 15' Radius",
+      "Deeppockets",
+      "Fog Cloud",
+      "Fools' Gold",
+      "Irritation",
+      "Knock",
+      "Levitate",
+      "Magic Mouth",
+      "Maximilian's Earthen Grasp",
+      "Pyrotechnics",
+      "Ride the Wind",
+      "Rope Trick",
+      "Sense Shifting",
+      "Shatter",
+      "Strength",
+      "Whispering Wind",
+      "Wizard Lock"
+    ],
+    "3": [
+      "Alacrity",
+      "Alternate Reality",
+      "Blink",
+      "Delude",
+      "Explosive Runes",
+      "Far Reaching I",
+      "Fireflow",
+      "Fool's Speech",
+      "Fly",
+      "Gust of Wind",
+      "Haste",
+      "Infravision",
+      "Item",
+      "Leomund's Tiny Hut",
+      "Maximilian's Stony Grasp",
+      "Melf's Minute Meteors",
+      "Secret Page",
+      "Slow",
+      "Squaring the Circle",
+      "Tongues",
+      "Water Breathing",
+      "Wind Wall",
+      "Wraithform"
+    ],
+    "4": [
+      "Dilation I",
+      "Dimension Door",
+      "Extension I",
+      "Far Reaching II",
+      "Fire Shield",
+      "Leomund's Secure Shelter",
+      "Massmorph",
+      "Mordenkainen's Celerity",
+      "Otiluke's Resilient Sphere",
+      "Plant Growth",
+      "Polymorph Other",
+      "Polymorph Self",
+      "Rainbow Pattern",
+      "Rary's Mnemonic Enhancer",
+      "Solid Fog",
+      "Stoneskin",
+      "Vacancy",
+      "Wizard Eye"
+    ],
+    "5": [
+      "Airy Water",
+      "Animal Growth",
+      "Avoidance",
+      "Distance Distortion",
+      "Extension II",
+      "Fabricate",
+      "Far Reaching III",
+      "Leomund's Secret Chest",
+      "Lower Resistance",
+      "Passwall",
+      "Stone Shape",
+      "Telekinesis",
+      "Teleport",
+      "Transmute Rock to Mud",
+      "Waveform"
+    ],
+    "6": [
+      "Claws of the Umber Hulk",
+      "Control Weather",
+      "Death Fog",
+      "Dilation II",
+      "Disintegrate",
+      "Extension III",
+      "Glassee",
+      "Guards and Wards",
+      "Lower Water",
+      "Mirage Arcana",
+      "Mordenkainen's Lucubration",
+      "Move Earth",
+      "Otiluke's Freezing Sphere",
+      "Part Water",
+      "Project Image",
+      "Stone to Flesh",
+      "Tenser's Transformation",
+      "Transmute Water to Dust",
+      "Wildshield"
+    ],
+    "7": [
+      "Duo-Dimension",
+      "Hatch the Stone from the Egg",
+      "Hornung's Surge Selector",
+      "Mordenkainen's Magnificent Mansion",
+      "Phase Door",
+      "Reverse Gravity",
+      "Spell Shape",
+      "Statue",
+      "Suffocate",
+      "Teleport Without Error",
+      "Vanish"
+    ],
+    "8": [
+      "Abi-Dalzim's Horrid Wilting",
+      "Airboat",
+      "Glassteel",
+      "Incendiary Cloud",
+      "Otiluke's Telekinetic Sphere",
+      "Permanency",
+      "Polymorph Any Object",
+      "Sink"
+    ],
+    "9": [
+      "Crystalbrittle",
+      "Estate Transference",
+      "Glorious Transmutation",
+      "Mordenkainen's Disjunction",
+      "Shape Change",
+      "Succor",
+      "Temporal Stasis",
+      "Time Stop"
+    ]
+  },
+  "Conjuration": {
+    "1": [
+      "Armor",
+      "Cantrip",
+      "Conjure Spell Component",
+      "Find Familiar",
+      "Grease",
+      "Mount",
+      "Unseen Servant"
+    ],
+    "2": [
+      "Glitterdust",
+      "Melf's Acid Arrow",
+      "Summon Swarm"
+    ],
+    "3": [
+      "Flame Arrow",
+      "Monster Summoning I",
+      "Phantom Steed",
+      "Sepia Snake Sigil",
+      "Watery Double"
+    ],
+    "4": [
+      "Evard's Black Tentacles",
+      "Monster Summoning II",
+      "Summon Lycanthrope"
+    ],
+    "5": [
+      "Conjure Elemental",
+      "Khazid's Procurement",
+      "Leomund's Secret Chest",
+      "Monster Summoning III",
+      "Mordenkainen's Faithful Hound",
+      "Summon Shadow"
+    ],
+    "6": [
+      "Conjure Animals",
+      "Ensnarement",
+      "Forest's Fiery Constrictor",
+      "Invisible Stalker",
+      "Monster Summoning IV",
+      "Wildstrike"
+    ],
+    "7": [
+      "Drawmij's Instant Summons",
+      "Intensify Summoning",
+      "Drawmij's Instant Summons",
+      "Limited Wish",
+      "Monster Summoning V",
+      "Mordenkainen's Magnificent Mansion",
+      "Power Word, Stun",
+      "Prismatic Spray"
+    ],
+    "8": [
+      "Maze",
+      "Monster Summoning VI",
+      "Power Word, Blind",
+      "Prismatic Wall",
+      "Symbol",
+      "Trap the Soul",
+      "Wildzone"
+    ],
+    "9": [
+      "Gate",
+      "Monster Summoning VII",
+      "Power Word, Kill",
+      "Prismatic Sphere",
+      "Wildwind",
+      "Wish"
+    ]
+  },
+  "Enchantment": {
+    "1": [
+      "Cantrip",
+      "Charm Person",
+      "Friends",
+      "Hypnotism",
+      "Sleep",
+      "Taunt"
+    ],
+    "2": [
+      "Bind",
+      "Deeppockets",
+      "Forget",
+      "Insatiable Thirst",
+      "Ray of Enfeeblement",
+      "Scare",
+      "Tasha's Uncontrollable Hideous Laughter"
+    ],
+    "3": [
+      "Hold Person",
+      "Minor Malison",
+      "Suggestion",
+      "Watery Double"
+    ],
+    "4": [
+      "Charm Monster",
+      "Confusion",
+      "Emotion",
+      "Enchanted Weapon",
+      "Fire Charm",
+      "Fumble",
+      "Greater Malison",
+      "Leomund's Secure Shelter",
+      "Magic Mirror"
+    ],
+    "5": [
+      "Chaos",
+      "Domination",
+      "Fabricate",
+      "Feeblemind",
+      "Hold Monster",
+      "Leomund's Lamentable Belaborment",
+      "Magic Staff",
+      "Mind Fog"
+    ],
+    "6": [
+      "Enchant an Item",
+      "Eyebite",
+      "Geas",
+      "Guards and Wards",
+      "Mass Suggestion"
+    ],
+    "7": [
+      "Charm Plants",
+      "Hatch the Stone from the Egg",
+      "Shadow Walk",
+      "Steal Enchantment"
+    ],
+    "8": [
+      "Antipathy-Sympathy",
+      "Airboat",
+      "Binding",
+      "Demand",
+      "Mass Charm",
+      "Otto's Irresistible Dance",
+      "Sink"
+    ],
+    "9": [
+      "Mordenkainen's Disjunction",
+      "Succor"
+    ]
+  },
+  "Illusion": {
+    "1": [
+      "Audible Glamer",
+      "Cantrip",
+      "Change Self",
+      "Nystul's Magical Aura",
+      "Phantasmal Force",
+      "Spook",
+      "Ventriloquism"
+    ],
+    "2": [
+      "Blindness",
+      "Blur",
+      "Deafness",
+      "Fools' Gold",
+      "Hypnotic Pattern",
+      "Improved Phantasmal Force",
+      "Invisibility",
+      "Leomund's Trap",
+      "Mirror Image",
+      "Misdirection",
+      "Whispering Wind"
+    ],
+    "3": [
+      "Illusionary Script",
+      "Invisibility, 10' Radius",
+      "Lorloveim's Creeping Shadow",
+      "Phantom Steed",
+      "Spectral Force",
+      "Wraithform"
+    ],
+    "4": [
+      "Fear",
+      "Hallucinatory Terrain",
+      "Illusionary Wall",
+      "Improved Invisibility",
+      "Minor Creation",
+      "Phantasmal Killer",
+      "Rainbow Pattern",
+      "Shadow Monsters",
+      "Vacancy"
+    ],
+    "5": [
+      "Advanced Illusion",
+      "Demi-Shadow Monsters",
+      "Dream",
+      "Major Creation",
+      "Seeming",
+      "Shadow Door",
+      "Shadow Magic"
+    ],
+    "6": [
+      "Demi-Shadow Magic",
+      "Eyebite",
+      "Lorloveim's Shadowy Transformation",
+      "Mirage Arcana",
+      "Mislead",
+      "Permanent Illusion",
+      "Programmed Illusion",
+      "Project Image",
+      "Shades",
+      "Veil"
+    ],
+    "7": [
+      "Mass Invisibility",
+      "Sequester",
+      "Shadowcat",
+      "Shadow Walk",
+      "Simulacrum"
+    ],
+    "8": [
+      "Screen"
+    ],
+    "9": [
+      "Weird"
+    ]
+  },
+  "Invocation": {
+    "1": [
+      "Alarm",
+      "Cantrip",
+      "Fire Burst",
+      "Magic Missile",
+      "Nahal's Reckless Dweomer",
+      "Shield",
+      "Tenser's Floating Disc",
+      "Wall of Fog"
+    ],
+    "2": [
+      "Flaming Sphere",
+      "Hornung's Baneful Deflector",
+      "Stinking Cloud",
+      "Web"
+    ],
+    "3": [
+      "Augmentation I",
+      "Fireball",
+      "Lightning Bolt",
+      "Melf's Minute Meteors"
+    ],
+    "4": [
+      "Dig",
+      "Divination Enhancement",
+      "Fire Shield",
+      "Fire Trap",
+      "Ice Storm",
+      "Mordenkainen's Celerity",
+      "Otiluke's Resilient Sphere",
+      "Shout",
+      "There/Not There",
+      "Thunder Staff",
+      "Unluck",
+      "Wall of Fire",
+      "Wall of Ice"
+    ],
+    "5": [
+      "Bigby's Interposing Hand",
+      "Cloudkill",
+      "Cone of Cold",
+      "Dream",
+      "Leomund's Lamentable Belaborment",
+      "Sending",
+      "Vortex",
+      "Wall of Force",
+      "Wall of Iron",
+      "Wall of Stone"
+    ],
+    "6": [
+      "Augmentation II",
+      "Bigby's Forceful Hand",
+      "Chain Lightning",
+      "Contingency",
+      "Death Fog",
+      "Enchant an Item",
+      "Guards and Wards",
+      "Otiluke's Freezing Sphere",
+      "Tenser's Transformation"
+    ],
+    "7": [
+      "Acid Storm",
+      "Bigby's Grasping Hand",
+      "Delayed Blast Fireball",
+      "Forcecage",
+      "Hatch the Stone from the Egg",
+      "Limited Wish",
+      "Malec-Keth's Flame Fist",
+      "Mordenkainen's Sword"
+    ],
+    "8": [
+      "Bigby's Clenched Fist",
+      "Binding",
+      "Demand",
+      "Gunther's Kaleidoscopic Strike",
+      "Homunculus Shield",
+      "Incendiary Cloud",
+      "Otiluke's Telekinetic Sphere"
+    ],
+    "9": [
+      "Astral Spell",
+      "Bigby's Crushing Hand",
+      "Chain Contingency",
+      "Elemental Aura",
+      "Energy Drain",
+      "Meteor Swarm",
+      "Wildfire"
+    ]
+  },
+  "Divination": {
+    "1": [
+      "Cantrip",
+      "Detect Magic",
+      "Detect Undead",
+      "Hornung's Guess",
+      "Identify",
+      "Patternweave",
+      "Read Magic"
+    ],
+    "2": [
+      "Detect Evil",
+      "Detect Invisibility",
+      "ESP",
+      "Know Alignment",
+      "Locate Object",
+      "Past Life"
+    ],
+    "3": [
+      "Alamir's Fundamental Breakdown",
+      "Clairaudience",
+      "Clairvoyance",
+      "Wizard Sight"
+    ],
+    "4": [
+      "Detect Scrying",
+      "Locate Creature",
+      "Magic Mirror"
+    ],
+    "5": [
+      "Contact Other Plane",
+      "False Vision",
+      "Khazid's Procurement"
+    ],
+    "6": [
+      "Legend Lore",
+      "True Seeing"
+    ],
+    "7": [
+      "Vision"
+    ],
+    "8": [
+      "Screen"
+    ],
+    "9": [
+      "Foresight"
+    ]
+  },
+  "Necromancy": {
+    "1": [
+      "Cantrip",
+      "Chill Touch",
+      "Detect Undead"
+    ],
+    "2": [
+      "Spectral Hand"
+    ],
+    "3": [
+      "Feign Death",
+      "Hold Undead",
+      "Spirit Armor",
+      "Vampiric Touch"
+    ],
+    "4": [
+      "Contagion",
+      "Enervation",
+      "Mask of Death"
+    ],
+    "5": [
+      "Animate Dead",
+      "Magic Jar",
+      "Summon Shadow"
+    ],
+    "6": [
+      "Bloodstone's Spectral Steed",
+      "Death Spell",
+      "Reincarnation"
+    ],
+    "7": [
+      "Bloodstone's Frightful Joining",
+      "Control Undead",
+      "Finger of Death",
+      "Intensify Summoning",
+      "Suffocate"
+    ],
+    "8": [
+      "Abi-Dalzim's Horrid Wilting",
+      "Clone",
+      "Homunculus Shield"
+    ],
+    "9": [
+      "Energy Drain",
+      "Wail of the Banshee"
+    ]
+  },
+  "Wild Magic": {
+    "1": [
+      "Hornung's Guess",
+      "Nahal's Reckless Dweomer",
+      "Patternweave"
+    ],
+    "2": [
+      "Chaos Shield",
+      "Hornung's Baneful Deflector",
+      "Nahal's Nonsensical Nullifier"
+    ],
+    "3": [
+      "Alternate Reality",
+      "Fireflow",
+      "Fool's Speech"
+    ],
+    "4": [
+      "There/Not There",
+      "Unluck"
+    ],
+    "5": [
+      "Vortex",
+      "Waveform"
+    ],
+    "6": [
+      "Wildshield",
+      "Wildstrike"
+    ],
+    "7": [
+      "Hornung's Surge Selector",
+      "Spell Shape"
+    ],
+    "8": [
+      "Hornung's Random Dispatcher",
+      "Wildzone"
+    ],
+    "9": [
+      "Stabilize",
+      "Wildfire",
+      "Wildwind"
+    ]
+  },
+  "Elemental Air": {
+    "1": [
+      "Feather Fall",
+      "Lasting Breath",
+      "Wall of Fog"
+    ],
+    "2": [
+      "Fog Cloud",
+      "Ride the Wind",
+      "Stinking Cloud",
+      "Whispering Wind"
+    ],
+    "3": [
+      "Alamir's Fundamental Breakdown",
+      "Gust of Wind",
+      "Water Breathing",
+      "Wind Wall"
+    ],
+    "4": [
+      "Solid Fog"
+    ],
+    "5": [
+      "Airy Water",
+      "Cloudkill",
+      "Conjure Elemental"
+    ],
+    "6": [
+      "Control Weather",
+      "Death Fog"
+    ],
+    "7": [
+      "Suffocate"
+    ],
+    "8": [
+      "Airboat",
+      "Incendiary Cloud"
+    ],
+    "9": [
+      "Elemental Aura"
+    ]
+  },
+  "Elemental Earth": {
+    "1": [
+      "Fist of Stone"
+    ],
+    "2": [
+      "Fools' Gold",
+      "Maximilian's Earthen Grasp"
+    ],
+    "3": [
+      "Alamir's Fundamental Breakdown",
+      "Maximilian's Stony Grasp"
+    ],
+    "4": [
+      "Dig",
+      "Stoneskin",
+      "Turn Pebble to Boulder"
+    ],
+    "5": [
+      "Conjure Elemental",
+      "Distance Distortion",
+      "Passwall",
+      "Stone Shape",
+      "Transmute Rock to Mud",
+      "Wall of Iron",
+      "Wall of Stone"
+    ],
+    "6": [
+      "Glassee",
+      "Move Earth",
+      "Stone to Flesh",
+      "Transmute Water to Dust"
+    ],
+    "7": [
+      "Hatch the Stone from the Egg",
+      "Statue"
+    ],
+    "8": [
+      "Glassteel",
+      "Sink"
+    ],
+    "9": [
+      "Crystalbrittle",
+      "Elemental Aura"
+    ]
+  },
+  "Elemental Fire": {
+    "1": [
+      "Affect Normal Fires",
+      "Burning Hands",
+      "Dancing Lights",
+      "Fire Burst"
+    ],
+    "2": [
+      "Flaming Sphere",
+      "Pyrotechnics"
+    ],
+    "3": [
+      "Alamir's Fundamental Breakdown",
+      "Fireball",
+      "Flame Arrow",
+      "Melf's Minute Meteors"
+    ],
+    "4": [
+      "Fire Charm",
+      "Fire Shield",
+      "Fire Trap",
+      "Wall of Fire"
+    ],
+    "5": [
+      "Conjure Elemental"
+    ],
+    "6": [
+      "Forest's Fiery Constrictor"
+    ],
+    "7": [
+      "Delayed Blast Fireball",
+      "Malec-Keth's Flame Fist"
+    ],
+    "8": [
+      "Incendiary Cloud"
+    ],
+    "9": [
+      "Meteor Swarm",
+      "Elemental Aura"
+    ]
+  },
+  "Elemental Water": {
+    "1": [
+      "Metamorphose Liquids"
+    ],
+    "2": [
+      "Insatiable Thirst"
+    ],
+    "3": [
+      "Alamir's Fundamental Breakdown",
+      "Water Breathing",
+      "Watery Double"
+    ],
+    "4": [
+      "Ice Storm",
+      "Wall of Ice"
+    ],
+    "5": [
+      "Airy Water",
+      "Cone of Cold",
+      "Conjure Elemental",
+      "Transmute Rock to Mud"
+    ],
+    "6": [
+      "Lower Water",
+      "Otiluke's Freezing Sphere",
+      "Part Water",
+      "Transmute Water to Dust"
+    ],
+    "7": [
+      "Acid Storm"
+    ],
+    "8": [
+      "Abi-Dalzim's Horrid Wilting"
+    ],
+    "9": [
+      "Elemental Aura"
+    ]
+  }
+}

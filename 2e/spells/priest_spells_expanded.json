@@ -1,0 +1,868 @@
+{
+  "All": {
+    "1": [
+      "Curse",
+      "Bless",
+      "Combine",
+      "Detect Good",
+      "Detect Evil",
+      "Putrefy Food & Drink",
+      "Purify Food & Drink"
+    ],
+    "2": [
+      "Defile",
+      "Sanctify"
+    ],
+    "4": [
+      "Focus",
+      "Uplift"
+    ],
+    "5": [
+      "Atonement"
+    ]
+  },
+  "Animal": {
+    "1": [
+      "Animal Friendship",
+      "Invisibility to Animals",
+      "Locate Animals or Plants"
+    ],
+    "2": [
+      "Charm Person or Mammal",
+      "Messenger",
+      "Snake Charm",
+      "Speak With Animals"
+    ],
+    "3": [
+      "Hold Animal",
+      "Summon Insects"
+    ],
+    "4": [
+      "Animal Summoning I",
+      "Call Woodland Beings",
+      "Shrink Insect",
+      "Giant Insect",
+      "Repel Insects"
+    ],
+    "5": [
+      "Animal Growth",
+      "Animal Reduction",
+      "Animal Summoning II"
+    ],
+    "6": [
+      "Animal Summoning III",
+      "Anti-Animal Shell"
+    ],
+    "7": [
+      "Creeping Doom"
+    ]
+  },
+  "Astral": {
+    "1": [
+      "Speak With Astral Traveler"
+    ],
+    "3": [
+      "Astral Window"
+    ],
+    "4": [
+      "Join With Astral Traveler"
+    ],
+    "5": [
+      "Plane Shift"
+    ],
+    "7": [
+      "Astral Spell"
+    ]
+  },
+  "Chaos": {
+    "1": [
+      "Mistaken Missive"
+    ],
+    "2": [
+      "Dissension's Feast"
+    ],
+    "3": [
+      "Miscast Magic",
+      "Random Causality"
+    ],
+    "4": [
+      "Chaotic Combat",
+      "Chaotic Sleep",
+      "Inverted Ethics"
+    ],
+    "5": [
+      "Chaotic Commands"
+    ],
+    "7": [
+      "Uncontrolled Weather"
+    ]
+  },
+  "Charm": {
+    "1": [
+      "Command",
+      "Cause Fear",
+      "Remove Fear"
+    ],
+    "2": [
+      "Enthrall",
+      "Hold Person",
+      "Music of the Spheres",
+      "Mystic Transfer"
+    ],
+    "3": [
+      "Emotion Control"
+    ],
+    "4": [
+      "Cloak of Fear",
+      "Cloak of Bravery",
+      "Free Action",
+      "Imbue With Spell Ability"
+    ],
+    "5": [
+      "Meld",
+      "Quest"
+    ],
+    "7": [
+      "Confusion",
+      "Exaction"
+    ]
+  },
+  "Combat": {
+    "1": [
+      "Magical Stone",
+      "Shillelagh"
+    ],
+    "2": [
+      "Chant",
+      "Spiritual Hammer"
+    ],
+    "3": [
+      "Prayer",
+      "Unearthly Choir"
+    ],
+    "5": [
+      "Flame Strike",
+      "Insect Plague"
+    ],
+    "6": [
+      "Spiritual Wrath"
+    ],
+    "7": [
+      "Unholy Word",
+      "Holy Word"
+    ]
+  },
+  "Creation": {
+    "2": [
+      "Create Holy Symbol"
+    ],
+    "3": [
+      "Create Food & Water"
+    ],
+    "4": [
+      "Addition"
+    ],
+    "5": [
+      "Blessed Abundance"
+    ],
+    "6": [
+      "Animate Object",
+      "Blade Barrier",
+      "Heroes' Feast",
+      "Wall of Thorns"
+    ],
+    "7": [
+      "Changestaff",
+      "Chariot of Sustarre"
+    ]
+  },
+  "Divination": {
+    "1": [
+      "Analyze Balance",
+      "Detect Magic",
+      "Detect Poison",
+      "Detect Snares & Pits",
+      "Locate Animals or Plants"
+    ],
+    "2": [
+      "Augury",
+      "Undetectable Charm",
+      "Detect Charm",
+      "Find Traps",
+      "Undetectable Alignment",
+      "Know Alignment",
+      "Speak With Animals"
+    ],
+    "3": [
+      "Extradimensional Detection",
+      "Obscure Object",
+      "Locate Object",
+      "Speak With Dead"
+    ],
+    "4": [
+      "Undetectable Lie",
+      "Detect Lie",
+      "Divination",
+      "Reflecting Pool",
+      "Babble",
+      "Tongues"
+    ],
+    "5": [
+      "Commune",
+      "Commune With Nature",
+      "Consequence",
+      "Magic Font",
+      "Thoughtwave",
+      "False Seeing",
+      "True Seeing"
+    ],
+    "6": [
+      "Lose the Path",
+      "Find the Path",
+      "Speak With Monsters",
+      "Stone Tell"
+    ],
+    "7": [
+      "Divine Inspiration",
+      "Mind Tracker"
+    ]
+  },
+  "Elemental": {
+    "1": [
+      "Destroy Water",
+      "Create Water",
+      "Log of Everburning"
+    ],
+    "2": [
+      "Dust Devil",
+      "Fire Trap",
+      "Flame Blade",
+      "Chill Metal",
+      "Heat Metal",
+      "Produce Flame"
+    ],
+    "3": [
+      "Flame Walk",
+      "Meld Into Stone",
+      "Protection From Fire",
+      "Pyrotechnics",
+      "Stone Shape",
+      "Air Breathing",
+      "Water Breathing",
+      "Water Walk"
+    ],
+    "4": [
+      "Raise Water",
+      "Lower Water",
+      "Quench Fire",
+      "Produce Fire"
+    ],
+    "5": [
+      "Air Walk",
+      "Cloud of Purification",
+      "Elemental Forbiddance",
+      "Spike Stones",
+      "Transmute Mud to Rock",
+      "Transmute Rock to Mud",
+      "Wall of Fire"
+    ],
+    "6": [
+      "Dismiss Fire Elemental",
+      "Conjure Fire Elemental",
+      "Fire Seeds",
+      "Part Water",
+      "Stone Tell",
+      "Improved Create Water",
+      "Transmute Water to Dust"
+    ],
+    "7": [
+      "Animate Rock",
+      "Chariot of Sustarre",
+      "Dismiss Earth Elemental",
+      "Conjure Earth Elemental",
+      "Earthquake",
+      "Fire Quench",
+      "Fire Storm",
+      "Transmute Metal to Wood",
+      "Wind Walk"
+    ]
+  },
+  "Elemental Air": {
+    "2": [
+      "Dust Devil"
+    ],
+    "3": [
+      "Air Breathing",
+      "Water Breathing"
+    ],
+    "5": [
+      "Air Walk",
+      "Cloud of Purification"
+    ],
+    "7": [
+      "Wind Walk"
+    ]
+  },
+  "Elemental Earth": {
+    "3": [
+      "Meld Into Stone",
+      "Stone Shape"
+    ],
+    "5": [
+      "Spike Stones",
+      "Transmute Mud to Rock",
+      "Transmute Rock to Mud"
+    ],
+    "6": [
+      "Stone Tell",
+      "Improved Create Water",
+      "Transmute Water to Dust"
+    ],
+    "7": [
+      "Animate Rock",
+      "Dismiss Earth Elemental",
+      "Conjure Earth Elemental",
+      "Earthquake",
+      "Transmute Metal to Wood"
+    ]
+  },
+  "Elemental Fire": {
+    "1": [
+      "Log of Everburning"
+    ],
+    "2": [
+      "Fire Trap",
+      "Flame Blade",
+      "Chill Metal",
+      "Heat Metal",
+      "Produce Flame"
+    ],
+    "3": [
+      "Flame Walk",
+      "Protection From Fire",
+      "Pyrotechnics"
+    ],
+    "4": [
+      "Quench Fire",
+      "Produce Fire"
+    ],
+    "5": [
+      "Wall of Fire"
+    ],
+    "6": [
+      "Dismiss Fire Elemental",
+      "Conjure Fire Elemental",
+      "Fire Seeds"
+    ],
+    "7": [
+      "Chariot of Sustarre",
+      "Fire Quench",
+      "Fire Storm"
+    ]
+  },
+  "Elemental Water": {
+    "1": [
+      "Destroy Water",
+      "Create Water"
+    ],
+    "3": [
+      "Air Breathing",
+      "Water Breathing",
+      "Water Walk"
+    ],
+    "4": [
+      "Raise Water",
+      "Lower Water"
+    ],
+    "5": [
+      "Transmute Mud to Rock",
+      "Transmute Rock to Mud"
+    ],
+    "6": [
+      "Part Water",
+      "Improved Create Water",
+      "Transmute Water to Dust"
+    ]
+  },
+  "Guardian": {
+    "1": [
+      "Sacred Guardian"
+    ],
+    "2": [
+      "Silence, 15' Radius",
+      "Wyvern Watch"
+    ],
+    "3": [
+      "Glyph of Warding"
+    ],
+    "5": [
+      "Unceasing Vigilance of the Holy Sentinel"
+    ],
+    "6": [
+      "Blade Barrier"
+    ],
+    "7": [
+      "Symbol"
+    ]
+  },
+  "Healing": {
+    "1": [
+      "Cause Light Wounds",
+      "Cure Light Wounds"
+    ],
+    "2": [
+      "Slow Poison"
+    ],
+    "4": [
+      "Cause Seri\u00adous Wounds",
+      "Cure Serious Wounds",
+      "Fortify",
+      "Poison",
+      "Neutralize Poison"
+    ],
+    "5": [
+      "Cause Critical Wounds",
+      "Cure Critical Wounds"
+    ],
+    "6": [
+      "Harm",
+      "Heal"
+    ]
+  },
+  "Law": {
+    "1": [
+      "Command"
+    ],
+    "2": [
+      "Calm Chaos",
+      "Enthrall",
+      "Hold Person"
+    ],
+    "3": [
+      "Rigid Thinking",
+      "Strength of One"
+    ],
+    "4": [
+      "Compulsive Order",
+      "Defensive Harmony"
+    ],
+    "5": [
+      "Champion's Strength",
+      "Impeding Permission"
+    ],
+    "6": [
+      "Legal Thoughts"
+    ],
+    "7": [
+      "Control Weather"
+    ]
+  },
+  "Necromantic": {
+    "1": [
+      "Invisibility to Undead"
+    ],
+    "2": [
+      "Aid"
+    ],
+    "3": [
+      "Animate Dead",
+      "Cause Blindness or Deafness",
+      "Cure Blindness or Deafness",
+      "Cause Disease",
+      "Cure Disease",
+      "Feign Death",
+      "Negative Plane Protection"
+    ],
+    "5": [
+      "Slay Living",
+      "Raise Dead"
+    ],
+    "7": [
+      "Breath of Death",
+      "Breath of Life",
+      "Mindkiller",
+      "Wither",
+      "Regenerate",
+      "Reincarnate",
+      "Energy Drain",
+      "Restoration",
+      "Destruction",
+      "Resurrection"
+    ]
+  },
+  "Numbers": {
+    "1": [
+      "Analyze Balance",
+      "Personal Reading"
+    ],
+    "2": [
+      "Moment",
+      "Music of the Spheres"
+    ],
+    "3": [
+      "Extradimensional Detection",
+      "Moment Reading",
+      "Telethaumaturgy"
+    ],
+    "4": [
+      "Addition",
+      "Dimensional Folding",
+      "Probability Control"
+    ],
+    "5": [
+      "Consequence",
+      "Extradimensional Manipulation",
+      "Extradimensional Pocket"
+    ],
+    "6": [
+      "Physical Mirror",
+      "Seclusion"
+    ],
+    "7": [
+      "Spacewarp",
+      "Timelessness"
+    ]
+  },
+  "Plant": {
+    "1": [
+      "Entangle",
+      "Locate Animals or Plants",
+      "Log of Everburning",
+      "Pass Without Trace",
+      "Shillelagh"
+    ],
+    "2": [
+      "Barkskin",
+      "Badberry",
+      "Goodberry",
+      "Trip",
+      "Straighten Wood",
+      "Warp Wood"
+    ],
+    "3": [
+      "Plant Growth",
+      "Slow Rot",
+      "Snare",
+      "Spike Growth",
+      "Tree"
+    ],
+    "4": [
+      "Revealed Wood",
+      "Hallucinatory Forest",
+      "Hold Plant",
+      "Plant Door",
+      "Speak With Plants",
+      "Snakes to Sticks",
+      "Sticks to Snakes"
+    ],
+    "5": [
+      "Anti-Plant Shell",
+      "Pass Plant"
+    ],
+    "6": [
+      "Liveoak",
+      "Transport Via Plants",
+      "Turn Wood",
+      "Wall of Thorns"
+    ],
+    "7": [
+      "Changestaff"
+    ]
+  },
+  "Protection": {
+    "1": [
+      "Endure Cold/Endure Heat",
+      "Protection From Good",
+      "Protection From Evil",
+      "Ring of Woe",
+      "Ring of Hands",
+      "Sanctuary"
+    ],
+    "2": [
+      "Barkskin",
+      "Resist Fire/Resist Cold",
+      "Withdraw"
+    ],
+    "3": [
+      "Dispel Magic",
+      "Line of Destruc\u00adtion",
+      "Line of Protection",
+      "Magical Vestment",
+      "Negative Plane Protection",
+      "Protection From Fire",
+      "Bestow Curse",
+      "Remove Curse",
+      "Remove Paralysis"
+    ],
+    "4": [
+      "Protection From Good, 10' Radius",
+      "Protection From Evil, 10' Radius",
+      "Protection From Lightning",
+      "Repel Insects",
+      "Spell Immunity"
+    ],
+    "5": [
+      "Anti-Plant Shell",
+      "Dispel Good",
+      "Dispel Evil"
+    ],
+    "6": [
+      "Anti-Animal Shell",
+      "Forbiddance"
+    ]
+  },
+  "Summoning": {
+    "1": [
+      "Call Upon Faith"
+    ],
+    "2": [
+      "Draw Upon Holy Might"
+    ],
+    "4": [
+      "Abjure",
+      "Animal Summoning I",
+      "Call Woodland Beings"
+    ],
+    "5": [
+      "Animal Summoning II",
+      "Dispel Good",
+      "Dispel Evil"
+    ],
+    "6": [
+      "Aerial Servant",
+      "Animal Summoning III",
+      "Animate Object",
+      "Conjure Animals",
+      "Wall of Thorns",
+      "Weather Summoning",
+      "Word of Recall"
+    ],
+    "7": [
+      "Dismiss Earth Elemental",
+      "Conjure Earth Elemental",
+      "Creeping Doom",
+      "Exaction",
+      "Gate",
+      "Spirit of Power",
+      "Call",
+      "Succor"
+    ]
+  },
+  "Sun": {
+    "1": [
+      "Darkness",
+      "Light"
+    ],
+    "3": [
+      "Continual Dark\u00adness",
+      "Continual Light",
+      "Starshine"
+    ],
+    "4": [
+      "Blessed Warmth"
+    ],
+    "5": [
+      "Moonbeam",
+      "Rainbow"
+    ],
+    "6": [
+      "The Black Circle",
+      "The Great Circle",
+      "Sol's Searing Orb"
+    ],
+    "7": [
+      "Sunray"
+    ]
+  },
+  "Thought": {
+    "1": [
+      "Emotion Read",
+      "Thought Capture"
+    ],
+    "2": [
+      "Idea",
+      "Mind Read"
+    ],
+    "3": [
+      "Emotion Control",
+      "Memory Read",
+      "Telepathy"
+    ],
+    "4": [
+      "Genius",
+      "Mental Domination",
+      "Rapport",
+      "Solipsism",
+      "Thought Broadcast"
+    ],
+    "5": [
+      "Memory Wrack",
+      "Mindshatter"
+    ],
+    "6": [
+      "Disbelief",
+      "Group Mind"
+    ],
+    "7": [
+      "Divine Inspiration",
+      "Mindkiller"
+    ]
+  },
+  "Time": {
+    "1": [
+      "Know Age",
+      "Know Time"
+    ],
+    "2": [
+      "Hesitation",
+      "Nap"
+    ],
+    "3": [
+      "Accelerate Healing",
+      "Choose Future"
+    ],
+    "4": [
+      "Age Plant",
+      "Body Clock",
+      "Modify Memory"
+    ],
+    "5": [
+      "Youthful Object",
+      "Age Object",
+      "Repeat Action",
+      "Time Pool"
+    ],
+    "6": [
+      "Restore Youth",
+      "Age Creature",
+      "Reverse Time",
+      "Skip Day"
+    ],
+    "7": [
+      "Age Dragon"
+    ]
+  },
+  "Travelers": {
+    "1": [
+      "Know Direction"
+    ],
+    "2": [
+      "Aura of Comfort",
+      "Lighten Load"
+    ],
+    "3": [
+      "Break Camp",
+      "Create Campsite",
+      "Helping Hand",
+      "Know Customs"
+    ],
+    "4": [
+      "Circle of Privacy",
+      "Tree Steed"
+    ],
+    "5": [
+      "Clutter Path",
+      "Clear Path",
+      "Easy March"
+    ],
+    "6": [
+      "Monster Mount"
+    ],
+    "7": [
+      "Hovering Road"
+    ]
+  },
+  "War": {
+    "1": [
+      "Courage",
+      "Morale"
+    ],
+    "2": [
+      "Emotion Perception",
+      "Rally"
+    ],
+    "3": [
+      "Adaptation",
+      "Caltrops"
+    ],
+    "4": [
+      "Doubt",
+      "Leadership",
+      "Selective Passage",
+      "Tanglefoot"
+    ],
+    "5": [
+      "Disguise",
+      "Illusory Artillery"
+    ],
+    "6": [
+      "Gravity Variation"
+    ],
+    "7": [
+      "Illusory Fortification",
+      "Shadow Engines"
+    ]
+  },
+  "Wards": {
+    "1": [
+      "Anti-Vermin Barrier",
+      "Weighty Chest"
+    ],
+    "2": [
+      "Frisky Chest",
+      "Zone of Truth"
+    ],
+    "3": [
+      "Efficacious Monster Ward",
+      "Invisibility Purge",
+      "Squeaking Floors",
+      "Thief's Lament",
+      "Zone of Sweet Air"
+    ],
+    "4": [
+      "Fire Purge",
+      "Weather Stasis"
+    ],
+    "5": [
+      "Barrier of Retention",
+      "Elemental Forbiddance",
+      "Grounding",
+      "Shrieking Walls",
+      "Undead Ward"
+    ],
+    "6": [
+      "Crushing Walls",
+      "Dragonbane",
+      "Land of Stability"
+    ],
+    "7": [
+      "Tentacle Walls"
+    ]
+  },
+  "Weather": {
+    "1": [
+      "Faerie Fire"
+    ],
+    "2": [
+      "Obscurement"
+    ],
+    "3": [
+      "Call Lightning"
+    ],
+    "4": [
+      "Control Temperature, 10' Radius",
+      "Protection From Lightning",
+      "Weather Stasis"
+    ],
+    "5": [
+      "Control Winds",
+      "Rainbow"
+    ],
+    "6": [
+      "Weather Summoning"
+    ],
+    "7": [
+      "Control Weather"
+    ]
+  }
+}

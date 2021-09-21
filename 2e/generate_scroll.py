@@ -95,9 +95,7 @@ def random_spell_scroll(spells):
     if scroll_type == "Priest" and max_level > 7:
         max_level = 7
 
-    scroll = Scroll(
-        spells, spell_count, min_level, max_level, scroll_type=scroll_type
-    )
+    scroll = Scroll(spells, spell_count, min_level, max_level, scroll_type=scroll_type)
     scroll.generate()
     return scroll
 
