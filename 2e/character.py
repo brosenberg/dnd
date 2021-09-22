@@ -27,6 +27,7 @@ ALIGNMENTS = load_table("alignments.json")
 CLASSES = load_table("classes.json")
 CLASS_GROUPS = load_table("class_groups.json")
 CLASS_SPELLS = load_table("class_spells.json")
+MULTICLASSES = load_table("classes_multi.json")
 NWPS = load_table("nwps.json")
 NWP_GROUPS = load_table("nwp_groups.json")
 RACES = load_table("races.json")
@@ -208,7 +209,9 @@ def get_nwp_slots(class_groups, level, intelligence):
 
 
 # TODO: Make this return multiclasses sometimes
-def get_random_classes(class_group=None, alignment=None):
+def get_random_classes(
+    class_group=None, alignment=None, can_multiclass=True, multiclass_chance=20
+):
     classes = set(CLASSES.keys())
     if alignment:
         alignment_classes = set()
@@ -216,9 +219,20 @@ def get_random_classes(class_group=None, alignment=None):
             if alignment in CLASSES[class_name]["Alignments"]:
                 alignment_classes.add(class_name)
         classes = classes.intersection(alignment_classes)
-    if class_group:
-        classes = classes.intersection(set(CLASS_GROUPS[class_group]["Classes"]))
-    return [random.choice(list(classes))]
+    if can_multiclass and roll(1, 100, 0) <= multiclass_chance:
+        classes = classes.intersection(set([y for x in MULTICLASSES for y in x]))
+        base_class = []
+        if class_group:
+            base_class = random.choice(
+                list(classes.intersection(set(CLASS_GROUPS[class_group]["Classes"])))
+            )
+        else:
+            base_class = random.choice(list(classes))
+        return random.choice([x for x in MULTICLASSES if base_class in x])
+    else:
+        if class_group:
+            classes = classes.intersection(set(CLASS_GROUPS[class_group]["Classes"]))
+        return [random.choice(list(classes))]
 
 
 def get_random_experience_by_level(class_name, level):

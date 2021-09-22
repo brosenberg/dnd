@@ -179,13 +179,14 @@ def random_armor(expanded=False, table=None, classes=[], level=1):
                     armors = load_table("armor_rogue.json")
             else:
                 table = f"armor_{appropriate_armor_group(armor_group)}.json"
-                armors = set(load_table(table))
+                armors = load_table(table)
         else:
             table = f"armor_{appropriate_armor_group(classes[0])}.json"
             armors = set(load_table(table))
             for class_name in classes[1:]:
                 table = f"armor_{appropriate_armor_group(class_name)}.json"
                 armors = armors.intersection(set(load_table(table)))
+            armors = list(armors)
     try:
         return random.choice(armors)
     except IndexError:
