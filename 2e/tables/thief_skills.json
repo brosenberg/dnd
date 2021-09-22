@@ -1,0 +1,117 @@
+{
+    "Pick Pockets": {
+        "Base": 15,
+        "Races": {
+            "Elf": 5,
+            "Half-Elf": 10,
+            "Halfling": 5
+        },
+        "Dexterity": {
+            "9": -15,
+            "10": -10,
+            "11": -5,
+            "12": 0,
+            "17": 5,
+            "18": 10,
+            "19": 15
+        },
+        "Armor": [5, -20, -30]
+    },
+    "Open Locks": {
+        "Base": 10,
+        "Races": {
+            "Dwarf": 10,
+            "Elf": -5,
+            "Gnome": 5,
+            "Halfling": 5
+        },
+        "Dexterity": {
+            "9": -10,
+            "10": -5,
+            "16": 5,
+            "17": 10,
+            "18": 15,
+            "19": 20
+        },
+        "Armor": [0, -5, -10]
+    },
+    "Find/Remove Traps": {
+        "Base": 5,
+        "Races": {
+            "Dwarf": 15,
+            "Gnome": 10,
+            "Halfling": 5
+        },
+        "Dexterity": {
+            "9": -10,
+            "11": -5,
+            "12": 0,
+            "18": 5,
+            "19": 10
+        },
+        "Armor": [0, -5, -10]
+    },
+    "Move Silently": {
+        "Base": 10,
+        "Races": {
+            "Elf": 5,
+            "Gnome": 5,
+            "Halfling": 10
+        },
+        "Dexterity": {
+            "9": -20,
+            "10": -15,
+            "11": -10,
+            "12": -5,
+            "13": 0,
+            "17": 5,
+            "18": 10,
+            "19": 15
+        },
+        "Armor": [10, -10, -20]
+    },
+    "Hide In Shadows": {
+        "Base": 5,
+        "Races": {
+            "Elf": 10,
+            "Gnome": 5,
+            "Half-Elf": 5,
+            "Halfling": 15
+        },
+        "Dexterity": {
+            "9": -10,
+            "10": -5,
+            "11": 0,
+            "17": 5,
+            "18": 10,
+            "19": 15
+        },
+        "Armor": [5, -10, -20]
+    },
+    "Detect Noise": {
+        "Base": 15,
+        "Races": {
+            "Elf": 5,
+            "Gnome": 10,
+            "Halfling": 5
+        },
+        "Armor": [0, -5, -10]
+    },
+    "Climb Walls": {
+        "Base": 60,
+        "Races": {
+            "Dwarf": -10,
+            "Gnome": -15,
+            "Halfling": -15
+        },
+        "Armor": [10, -20, -30]
+    },
+    "Read Languages": {
+        "Base": 15,
+        "Races": {
+            "Dwarf": -5,
+            "Halfling": -5
+        },
+        "Armor": [0, 0, 0]
+    }
+}

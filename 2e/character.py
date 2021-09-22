@@ -276,9 +276,9 @@ def get_saving_throws(class_groups, levels, race, constitution):
         saving_throws = [
             min(x) for x in zip(saving_throws, get_saving_throw(class_group, level))
         ]
-    # Dwarves and gnomes get a bonus to their saves against Rod, Staves, Wands,
-    # and Spells based on their Constitution score.
-    if race in ["Dwarf", "Gnome"]:
+    # Dwarves, gnomes, and halflings get a bonus to their saves against
+    # Rod, Staves, Wands, and Spells based on their Constitution score.
+    if race in ["Dwarf", "Gnome", "Halfling"]:
         saving_throws[1] -= int(constitution / 3.5)
         saving_throws[4] -= int(constitution / 3.5)
     return saving_throws
@@ -648,7 +648,7 @@ class Character(object):
         s += "\n"
 
         ### Proficiencies
-        s += f"Proficiencies ({self.nwp_slots}):\n"
+        s += f"Non-Weapon Proficiencies ({self.nwp_slots}):\n"
         for nwp in self.profs["NWP"]:
             modifier = "N/A"
             ability = NWPS[nwp][1]
