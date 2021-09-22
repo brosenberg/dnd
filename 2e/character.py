@@ -124,8 +124,8 @@ def get_all_classes():
 def get_best_thac0(classes, levels):
     thac0 = 20
     for index in range(0, len(classes)):
-        if THAC0[get_class_group(classes[index])][levels[index]-1] < thac0:
-            thac0 = THAC0[get_class_group(classes[index])][levels[index]-1]
+        if THAC0[get_class_group(classes[index])][levels[index] - 1] < thac0:
+            thac0 = THAC0[get_class_group(classes[index])][levels[index] - 1]
     return thac0
 
 
@@ -149,6 +149,24 @@ def get_class_group(class_name):
 
 def get_class_groups(classes):
     return list(set([get_class_group(x) for x in classes]))
+
+
+def get_hitpoints(classes, levels, constitution):
+    con_mod = constitution_hp_modifier(constitution, get_class_groups(classes))
+    hitpoints = 0
+    class_groups = get_class_groups(classes)
+    for index in range(0, len(classes)):
+        class_group = class_groups[index]
+        level = levels[index]
+        hit_dice, additional_hp = CLASS_GROUPS[class_group]["Hit Dice"][level - 1]
+        class_hp = 0
+        for die in range(0, hit_dice):
+            result = roll(1, CLASS_GROUPS[class_group]["Hit Die"], con_mod)
+            if result < 1:
+                result = 1
+            class_hp += result
+        hitpoints += int((class_hp + additional_hp) / len(classes))
+    return hitpoints
 
 
 def get_level_by_experience(class_name, experience):
@@ -398,6 +416,7 @@ class Character(object):
     def __init__(
         self,
         classes=[],
+        class_name=None,
         class_group=None,
         abilities=None,
         race=None,
@@ -407,7 +426,10 @@ class Character(object):
         expanded=False,
     ):
         self.expanded = expanded
-        self.classes = classes
+        if not classes and class_name:
+            self.classes = class_name.split("/")
+        else:
+            self.classes = classes
 
         # Determine a class
         if not self.classes:
@@ -461,26 +483,15 @@ class Character(object):
         # Calculate hitpoints
         # FIXME: The Con mod is being applied per level, not per HD
         hps = []
-        for index in range(0, len(self.levels)):
-            class_group = self.class_groups[index]
-            level = self.levels[index]
-            hps.append(
-                roll(
-                    CLASS_GROUPS[class_group]["Hit Dice"][level - 1][0],
-                    CLASS_GROUPS[class_group]["Hit Die"],
-                    CLASS_GROUPS[class_group]["Hit Dice"][level - 1][1]
-                    + level
-                    * constitution_hp_modifier(
-                        self.abilities["Constitution"], self.class_groups
-                    ),
-                )
-            )
-        self.hitpoints = int(sum(hps) / len(self.levels))
+        self.hitpoints = get_hitpoints(
+            self.classes, self.levels, self.abilities["Constitution"]
+        )
+        # self.hitpoints = int(sum(hps) / len(self.levels))
 
         # Determine if this character can cast spells, and assign them if so
         self.spell_levels = {}
         self.spells = {}
-        #self.caster_groups = get_caster_groups(self.classes)
+        # self.caster_groups = get_caster_groups(self.classes)
         for index in range(0, len(self.classes)):
             caster_group = get_caster_group(self.classes[index])
             if caster_group:
@@ -521,8 +532,10 @@ class Character(object):
         levels_str = "/".join([str(x) for x in self.levels])
         s += f"{self.alignment} {self.race} {classes_str} {levels_str}\n"
         s += f"XP: {self.experience:,} - "
-        level_limits_str = "/".join(['U' if x > 98 else str(x) for x in self.level_limits])
-        if level_limits_str == 'U':
+        level_limits_str = "/".join(
+            ["U" if x > 98 else str(x) for x in self.level_limits]
+        )
+        if level_limits_str == "U":
             s += "Unlimited level limit\n"
         else:
             s += f"Level limit: {level_limits_str}\n"
@@ -552,6 +565,13 @@ class Character(object):
                 if ac_mod > 0:
                     ac_mod = f"+{ac_mod}"
                 details = f"{hit_mod} to hit/{ac_mod} AC"
+            elif ability == "Constitution":
+                con_mod = constitution_hp_modifier(
+                    self.abilities["Constitution"], self.class_groups
+                )
+                if con_mod > 1:
+                    con_mod = f"+{con_mod}"
+                details = f"{con_mod} HP adj"
             elif ability == "Intelligence":
                 bonus_nwps = intelligence_bonus_proficiencies(
                     self.abilities["Intelligence"]
@@ -654,7 +674,11 @@ class Character(object):
                     languages = RACES[self.race]["Languages"]
                 else:
                     languages = load_table("languages.json")
-                if "Druid" in self.classes and self.druid_lang_known / self.levels[self.classes.index("Druid")]  > 1:
+                if (
+                    "Druid" in self.classes
+                    and self.druid_lang_known / self.levels[self.classes.index("Druid")]
+                    > 1
+                ):
                     languages += load_table("druid_languages.json")
                 languages = list(set(languages) - (set(self.profs["Languages"])))
                 # Make sure this character hasn't learned all of their possible languages
@@ -745,8 +769,8 @@ def main():
     )
     args = parser.parse_args()
     for class_name in get_all_classes():
-       print(Character(classes=[class_name], level=15, expanded=args.expanded))
-    print(Character(classes=["Fighter", "Mage"], level=12, expanded=args.expanded))
+        print(Character(class_name=class_name, level=15, expanded=args.expanded))
+    print(Character(class_name="Fighter/Mage", level=12, expanded=args.expanded))
 
 
 if __name__ == "__main__":
