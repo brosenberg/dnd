@@ -25,34 +25,16 @@ def appropriate_ammo_type(weapon):
     return None
 
 
-def appropriate_armor_group(char_class, level=1):
+def appropriate_armor_group(char_class):
     if char_class == "Druid":
-        return "Druid"
-    elif char_class in ["Thief", "Ranger"]:
-        return "Rogue"
-    elif char_class == "Bard":
-        if level > 2:
-            return "Bard"
-        else:
-            return "Rogue"
-    elif char_class in ["Fighter", "Cleric", "Paladin"]:
-        if level > 3:
-            return "High"
-    return None
-
-
-def appropriate_weapon_category(char_class, class_group, level=1):
-    if char_class == "Cleric":
-        return "Cleric"
-    elif char_class == "Druid":
-        return "Druid"
-    elif char_class == "Rogue":
-        return "Rogue"
-    elif class_group == "Warrior" and level > 1:
-        return "Warrior"
-    elif class_group == "Wizard":
-        return "Wizard"
-    return None
+        return "druid"
+    if char_class in ["Thief", "Ranger"]:
+        return "rogue"
+    if char_class == "Bard":
+        return "bard"
+    if char_class in ["Fighter", "Cleric", "Paladin"]:
+        return "warrior"
+    return "none"
 
 
 def appropriate_weapons_by_ammo(ammo):
@@ -94,7 +76,6 @@ def get_ac(item):
 
 def get_adjustment(item):
     magic = re.match(r"^(.+?) ([+-][0-9]+)(, .+?)?$", item)
-    adjustment = 0
     if magic:
         return (magic.group(1), int(magic.group(2)))
     return (item, 0)
@@ -178,19 +159,37 @@ def is_two_handed_melee(weapon):
     return WEAPONS[base]["Hands"] == 2 and WEAPONS[base]["Category"] == "Melee"
 
 
-def random_armor(expanded=False, specific=None):
-    armor = None
-    if not specific:
-        armors = load_table("armor_low.json")
-    elif specific == "High":
-        armors = load_table("armor_high.json")
-    elif specific == "Druid":
-        armors = load_table("armor_druid.json")
-    elif specific == "Rogue":
-        armors = load_table("armor_rogue.json")
-    elif specific == "Bard":
-        armors = load_table("armor_bard.json")
-    return random.choice(armors)
+def random_armor(expanded=False, table=None, classes=[], level=1):
+    armors = []
+    if table:
+        armors = load_table(table)
+    else:
+        armor_groups = list(set([appropriate_armor_group(x) for x in classes]))
+        if len(armor_groups) == 1:
+            armor_group = armor_groups[0]
+            if armor_group == "warrior":
+                if level > 3:
+                    armors = load_table("armor_high.json")
+                else:
+                    armors = load_table("armor_low.json")
+            elif armor_group == "bard":
+                if level > 2:
+                    armors = load_table("armor_bard.json")
+                else:
+                    armors = load_table("armor_rogue.json")
+            else:
+                table = f"armor_{appropriate_armor_group(armor_group)}.json"
+                armors = set(load_table(table))
+        else:
+            table = f"armor_{appropriate_armor_group(classes[0])}.json"
+            armors = set(load_table(table))
+            for class_name in classes[1:]:
+                table = f"armor_{appropriate_armor_group(class_name)}.json"
+                armors = armors.intersection(set(load_table(table)))
+    try:
+        return random.choice(armors)
+    except IndexError:
+        return None
 
 
 def random_appropriate_ammo(weapon):
@@ -206,6 +205,7 @@ def random_appropriate_ammo(weapon):
 def random_item_count(item):
     try:
         return WEAPONS[base_weapon(item)]["Quantity"]
+    # FIXME
     except:
         pass
     return None
@@ -215,21 +215,27 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
-def random_weapon(expanded=False, specific=None, weapon_filter=None):
+def random_weapon(
+    expanded=False, classes=[], class_groups=[], table=None, weapon_filter=None, level=1
+):
     mig = MagicItemGen(expanded)
     weapon = None
-    if not specific:
-        weapons = load_table("weapons_generic.json")
-    elif specific == "Cleric":
-        weapons = load_table("weapons_cleric.json")
-    elif specific == "Druid":
-        weapons = load_table("weapons_druid.json")
-    elif specific == "Rogue":
-        weapons = load_table("weapons_rogue.json")
-    elif specific == "Warrior":
-        weapons = load_table("weapons_warrior.json")
-    elif specific == "Wizard":
-        weapons = load_table("weapons_wizard.json")
+    if table:
+        weapons = load_table(table)
+    else:
+        if "Cleric" in classes:
+            weapons = load_table("weapons_cleric.json")
+        elif "Druid" in classes:
+            weapons = load_table("weapons_druid.json")
+        elif "Warrior" in class_groups or "Bard" in classes:
+            if level > 1:
+                weapons = load_table("weapons_warrior.json")
+            else:
+                weapons = load_table("weapons_generic.json")
+        elif "Rogue" in classes:
+            weapons = load_table("weapons_rogue.json")
+        else:
+            weapons = load_table("weapons_wizard.json")
     if weapon_filter:
         weapons = [x for x in weapons if weapon_filter(x)]
     return mig.diversify_weapon(random.choice(weapons))

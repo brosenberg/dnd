@@ -9,6 +9,7 @@ import magic_item
 from character import Character
 from dice import roll
 from roll_abilities import get_abilities
+from utils import intersect
 from utils import load_table
 
 LEVEL_RANGE = {
@@ -47,6 +48,13 @@ MAGIC_ITEMS = {
 }
 
 
+def get_magic_item_categories(class_groups):
+    categories = []
+    for class_group in class_groups:
+        categories += MAGIC_ITEMS[class_group]
+    return list(set(categories))
+
+
 def random_adventurer(
     level_range, expanded, more_equipment, more_classes, alignment=None, experience=None
 ):
@@ -57,7 +65,7 @@ def random_adventurer(
         LEVEL_RANGE[level_range][2],
     )
     adventurer = None
-    char_class = None
+    classes = []
     has_weapon = False
     has_ranged_weapon = False
     has_armor = False
@@ -71,50 +79,51 @@ def random_adventurer(
             experience=experience,
             expanded=expanded,
         )
-        char_class = adventurer.char_class
+        classes = adventurer.classes
     else:
         class_roll = roll(1, 10, 0)
-        char_class = "Fighter"
+        classes = ["Fighter"]
         if class_roll > 8:
-            char_class = "Mage"
+            classes = ["Mage"]
         elif class_roll > 6:
-            char_class = "Thief"
+            classes = ["Thief"]
         elif class_roll > 4:
-            char_class = "Cleric"
+            classes = ["Cleric"]
         adventurer = Character(
-            char_class=char_class,
+            classes=classes,
             level=level,
             alignment=alignment,
             experience=experience,
             expanded=expanded,
         )
-    for category in MAGIC_ITEMS[adventurer.class_group]:
+    class_groups = adventurer.class_groups
+    for category in get_magic_item_categories(adventurer.class_groups):
         if roll(1, 100, 0) <= level * 5:
 
             def gen_item():
                 item = None
                 if more_equipment:
-                    if category == "Armor No Shields" and char_class not in [
-                        "Fighter",
-                        "Paladin",
-                    ]:
-                        armor_type = items.appropriate_armor_group(
-                            char_class, level=level
-                        )
+                    if category == "Armor No Shields" and not intersect(
+                        classes,
+                        [
+                            "Fighter",
+                            "Paladin",
+                        ],
+                    ):
                         armor = items.random_armor(
-                            expanded=expanded, specific=armor_type
+                            expanded=expanded, classes=classes, level=level
                         )
                         item = mig.armor(force_armor=armor)
                     elif (
                         (category == "Sword" or category == "Nonsword")
-                        and char_class != "Bard"
-                        and adventurer.class_group != "Warrior"
+                        and "Bard" not in classes
+                        and "Warrior" not in adventurer.class_groups
                     ):
-                        weapon_type = items.appropriate_weapon_category(
-                            char_class, adventurer.class_group, level=level
-                        )
                         weapon = items.random_weapon(
-                            expanded=expanded, specific=weapon_type
+                            expanded=expanded,
+                            classes=classes,
+                            class_groups=class_groups,
+                            level=level,
                         )
                         if items.random_item_count(weapon):
                             dice, die, mod = items.random_item_count(weapon)
@@ -144,7 +153,7 @@ def random_adventurer(
 
     # Roll standard items
     if not more_equipment:
-        if level > 7 and char_class in ["Cleric", "Fighter", "Paladin"]:
+        if level > 7 and intersect(classes, ["Cleric", "Fighter", "Paladin"]):
             if not has_armor:
                 adventurer.add_equipment("Plate mail")
                 has_armor = True
@@ -178,9 +187,7 @@ def random_adventurer(
 
         # Maybe give the adventurer a mount
         if roll(1, 100, 0) < 20 * level:
-            if level > 2 and (
-                adventurer.class_group == "Warrior" or char_class == "Cleric"
-            ):
+            if level > 2 and ("Warrior" in class_groups or "Cleric" in classes):
                 horse_roll = roll(1, 100, 0)
                 if horse_roll < roll(1, 12, 0) * level:
                     adventurer.add_equipment("Heavy warhorse")
@@ -191,39 +198,42 @@ def random_adventurer(
                 if roll(1, 100, 0) < 10 * level:
                     barding = None
                     if roll(1, 100, 0) < 51:
-                        barding = items.random_armor(expanded=expanded)
+                        barding = items.random_armor(
+                            expanded=expanded, table="armor_low.json"
+                        )
                     else:
-                        barding = items.random_armor(expanded=expanded, specific="High")
+                        barding = items.random_armor(
+                            expanded=expanded, table="armor_low.json"
+                        )
                     adventurer.add_equipment(f"{barding} barding")
             else:
                 adventurer.add_equipment("Riding horse")
 
         # Everyone should have armor. Besides wizards.
-        if not has_armor and adventurer.class_group != "Wizard":
-            armor_type = items.appropriate_armor_group(char_class, level=level)
+        if not has_armor:
             adventurer.add_equipment(
-                items.random_armor(expanded=expanded, specific=armor_type)
+                items.random_armor(expanded=expanded, classes=classes, level=level)
             )
 
         if (
             level > 1
             and not has_shield
-            and char_class in ["Cleric", "Fighter", "Paladin"]
+            and intersect(classes, ["Cleric", "Fighter", "Paladin"])
         ):
             adventurer.add_equipment(items.random_shield())
 
         # Everyone should have at least one weapon.
         if not has_weapon:
-            weapon_type = items.appropriate_weapon_category(
-                char_class, adventurer.class_group, level=level
-            )
-            weapon = items.random_weapon(expanded=expanded, specific=weapon_type)
-            # Don't give multiple ranged weapons
+            weapon_filter = None
             if has_ranged_weapon:
-                while items.is_missile_weapon(weapon):
-                    weapon = items.random_weapon(
-                        expanded=expanded, specific=weapon_type
-                    )
+                weapon_filter = items.is_melee_weapon
+            weapon = items.random_weapon(
+                expanded=expanded,
+                classes=classes,
+                class_groups=class_groups,
+                weapon_filter=weapon_filter,
+            )
+
             # If the weapon requires ammo, give some ammo for it
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
@@ -238,7 +248,8 @@ def random_adventurer(
                 has_ranged_weapon = True
                 weapon = items.random_weapon(
                     expanded=expanded,
-                    specific=weapon_type,
+                    classes=classes,
+                    class_groups=class_groups,
                     weapon_filter=items.is_melee_weapon,
                 )
             # If the weapon is thrown, give a few of them
@@ -255,7 +266,8 @@ def random_adventurer(
                 has_ranged_weapon = True
                 weapon = items.random_weapon(
                     expanded=expanded,
-                    specific=weapon_type,
+                    classes=classes,
+                    class_groups=class_groups,
                     weapon_filter=items.is_melee_weapon,
                 )
 
@@ -263,11 +275,14 @@ def random_adventurer(
             has_weapon = True
 
         # Rangers love to dual-wield
-        if char_class == "Ranger" and level > 1:
-            weapon = items.random_weapon(expanded=expanded, specific="Warrior")
-            while items.is_missile_weapon(weapon):
-                weapon = items.random_weapon(expanded=expanded)
-            adventurer.add_equipment(weapon)
+        if "Ranger" in classes and level > 1:
+            adventurer.add_equipment(
+                items.random_weapon(
+                    expanded=expanded,
+                    table="weapons_warrior.json",
+                    weapon_filter=items.is_melee_weapon,
+                )
+            )
 
     return adventurer
 

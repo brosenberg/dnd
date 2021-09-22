@@ -652,7 +652,8 @@ class Character(object):
         return s
 
     def add_equipment(self, item):
-        self.equipment.append(item)
+        if item is not None:
+            self.equipment.append(item)
 
     def assign_nwps(self):
         slots = self.nwp_slots
