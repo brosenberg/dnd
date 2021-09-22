@@ -1,0 +1,21 @@
+update:
+
+update fxns:
+    #get_random_class > get_random_classes
+    #get_class_group > get_class_groups
+    #get_random_race_by_class > get_random_race_by_classes
+    #get_level_by_experience > get_levels_by_experience
+    #get_random_experience_by_level > get_random_experience_by_levels
+    #get_ability_priority(class) > get_ability_priority(classes)
+    #get_caster_group(class) > get_caster_groups(classes)
+
+    self.populate_spells() -> Make it do
+
+update vars:
+    self.level > self.levels
+    self.spells = {} > self.spells = {Classes}
+
+
+Make it so the level passed to Character will set the lowest experience required multiclass class to that level, determine experience for that level, then give the same experience to the other classes.
+
+HP calculated from Con is wrong. Fix it.
