@@ -1,0 +1,41 @@
+{
+    "Cleric/Illusionist": {
+        "Races": ["Gnome"]
+    },
+    "Cleric/Mage": {
+        "Races": ["Half-Elf"]
+    },
+    "Cleric/Ranger": {
+        "Races": ["Half-Elf"]
+    },
+    "Cleric/Thief": {
+        "Races": ["Gnome"]
+    },
+    "Fighter/Cleric": {
+        "Races": ["Dwarf", "Gnome", "Half-Elf"]
+    },
+    "Fighter/Druid": {
+        "Races": ["Half-Elf"]
+    },
+    "Fighter/Illusionist": {
+        "Races": ["Gnome"]
+    },
+    "Fighter/Mage/Cleric": {
+        "Races": ["Half-Elf"]
+    },
+    "Fighter/Mage/Thief": {
+        "Races": ["Elf", "Half-Elf"]
+    },
+    "Fighter/Mage": {
+        "Races": ["Elf", "Half-Elf"]
+    },
+    "Fighter/Thief": {
+        "Races": ["Dwarf", "Elf", "Gnome", "Halfling", "Half-Elf"]
+    },
+    "Illusionist/Thief": {
+        "Races": ["Gnome"]
+    },
+    "Mage/Thief": {
+        "Races": ["Elf", "Half-Elf"]
+    }
+}

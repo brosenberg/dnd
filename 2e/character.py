@@ -220,15 +220,17 @@ def get_random_classes(
                 alignment_classes.add(class_name)
         classes = classes.intersection(alignment_classes)
     if can_multiclass and roll(1, 100, 0) <= multiclass_chance:
-        classes = classes.intersection(set([y for x in MULTICLASSES for y in x]))
-        base_class = []
+        classes = classes.intersection(
+            set([y for x in MULTICLASSES for y in x.split("/")])
+        )
+        base_class = None
         if class_group:
             base_class = random.choice(
                 list(classes.intersection(set(CLASS_GROUPS[class_group]["Classes"])))
             )
         else:
             base_class = random.choice(list(classes))
-        return random.choice([x for x in MULTICLASSES if base_class in x])
+        return random.choice([x for x in MULTICLASSES if base_class in x]).split("/")
     else:
         if class_group:
             classes = classes.intersection(set(CLASS_GROUPS[class_group]["Classes"]))
@@ -258,11 +260,12 @@ def get_random_experiences_by_level(classes, level):
 
 
 def get_random_race_by_classes(classes):
-    races = set()
-    races = set(CLASSES[classes[0]]["Races"])
-    for class_name in classes[1:]:
-        races = races.intersection(set(CLASSES[class_name]["Races"]))
-    return random.choice(list(races))
+    table = CLASSES
+    class_name = classes[0]
+    if len(classes) > 1:
+        table = MULTICLASSES
+        class_name = "/".join(classes)
+    return random.choice(list(table[class_name]["Races"]))
 
 
 def get_spell_levels(class_name, level, wisdom):
