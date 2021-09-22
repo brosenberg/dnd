@@ -87,21 +87,46 @@ def dexterity_to_hit(dexterity):
     return dexterity_mods(dexterity)[1]
 
 
-def get_ability_priority(class_name):
-    return CLASSES[class_name]["Primary"] + random.sample(
-        CLASSES[class_name]["Secondary"], len(CLASSES[class_name]["Secondary"])
-    )
+def get_ability_priority(classes):
+    def get_minimum(attribute):
+        try:
+            return minimums[attribute]
+        except KeyError:
+            return 3
+
+    primary = []
+    secondary = []
+    minimums = combine_minimums([CLASSES[x]["Minimums"] for x in classes])
+    for class_name in classes:
+        primary += CLASSES[class_name]["Primary"]
+        secondary += CLASSES[class_name]["Secondary"]
+    # Sort the primary list based on the combined minimums of the classes
+    primary = sorted(list(set(primary)), key=get_minimum, reverse=True)
+    secondary = list(set(secondary))
+    random.shuffle(secondary)
+    for ability in primary:
+        if ability in secondary:
+            secondary.remove(ability)
+    return primary + secondary
 
 
 def get_alignment_by_classes(classes):
     alignments = set(CLASSES[classes[0]]["Alignments"])
     for class_name in classes[1:]:
         alignments = alignments.intersection(set(CLASSES[class_name]["Alignments"]))
-    return random.choice(alignments)
+    return random.choice(list(alignments))
 
 
 def get_all_classes():
     return list(CLASSES.keys())
+
+
+def get_best_thac0(classes, levels):
+    thac0 = 20
+    for index in range(0, len(classes)):
+        if THAC0[get_class_group(classes[index])][levels[index]-1] < thac0:
+            thac0 = THAC0[get_class_group(classes[index])][levels[index]-1]
+    return thac0
 
 
 def get_caster_group(class_name):
@@ -118,19 +143,12 @@ def get_caster_group(class_name):
     return None
 
 
-def get_caster_groups(classes):
-    return [get_caster_group(x) for x in classes]
-
-
 def get_class_group(class_name):
     return [x for x in CLASS_GROUPS if class_name in CLASS_GROUPS[x]["Classes"]][0]
 
 
 def get_class_groups(classes):
-    try:
-        return list(set([get_class_group(x) for x in classes]))
-    except:
-        breakpoint()
+    return list(set([get_class_group(x) for x in classes]))
 
 
 def get_level_by_experience(class_name, experience):
@@ -198,10 +216,10 @@ def get_random_experience_by_level(class_name, level):
 
 
 # TODO: Have this return an array instead
-def get_random_experience_by_levels(classes, level):
+def get_random_experience_by_levels(classes, levels):
     experience = 0
-    for class_name in classes:
-        experience += get_random_experience_by_level(class_name, level)
+    for index in range(0, len(classes)):
+        experience += get_random_experience_by_level(classes[index], levels[index])
     return experience
 
 
@@ -389,7 +407,7 @@ class Character(object):
         expanded=False,
     ):
         self.expanded = expanded
-        self.classes = [classes]
+        self.classes = classes
 
         # Determine a class
         if not self.classes:
@@ -423,7 +441,8 @@ class Character(object):
                 [CLASSES[x]["Minimums"] for x in classes]
                 + [RACES[self.race]["Minimums"]]
             )
-            ability_rolls = ABILITY_ROLLS[str(self.level)]
+            # TODO: Calculate the level here a little better for multiclass
+            ability_rolls = ABILITY_ROLLS[str(max(self.levels))]
             self.abilities = get_abilities(
                 get_ability_priority(self.classes),
                 minimums,
@@ -436,8 +455,8 @@ class Character(object):
         # Apply level limits
         self.level_limits = get_level_limits(self.race, self.classes, self.abilities)
         for index in range(0, len(self.levels)):
-            if self.levels[index] > self.level_limit[index]:
-                self.levels[index] = self.level_limit[index]
+            if self.levels[index] > self.level_limits[index]:
+                self.levels[index] = self.level_limits[index]
 
         # Calculate hitpoints
         # FIXME: The Con mod is being applied per level, not per HD
@@ -456,22 +475,25 @@ class Character(object):
                     ),
                 )
             )
-        self.hp = int(sum(hps) / len(self.levels))
+        self.hitpoints = int(sum(hps) / len(self.levels))
 
         # Determine if this character can cast spells, and assign them if so
         self.spell_levels = {}
         self.spells = {}
-        self.caster_groups = get_caster_groups(self.classes)
-        if self.caster_groups:
-            for index in range(0, len(self.classes)):
-                self.spell_levels[class_name] = get_spell_levels(
+        #self.caster_groups = get_caster_groups(self.classes)
+        for index in range(0, len(self.classes)):
+            caster_group = get_caster_group(self.classes[index])
+            if caster_group:
+                self.spell_levels[self.classes[index]] = get_spell_levels(
                     self.classes[index], self.levels[index], self.abilities["Wisdom"]
                 )
+                self.spells[self.classes[index]] = {}
+        if self.spell_levels:
             self.populate_spells()
 
         # Assign proficiencies
         self.nwp_slots = get_nwp_slots(
-            self.class_groups, self.level, self.abilities["Intelligence"]
+            self.class_groups, max(self.levels), self.abilities["Intelligence"]
         )
         self.profs = {"NWP": [], "Weapon": [], "Languages": ["Common"]}
         if "Thief" in self.classes:
@@ -481,7 +503,7 @@ class Character(object):
         self.assign_nwps()
 
         # Determine misc. stats
-        self.thac0 = THAC0[self.class_group][self.level - 1]
+        self.thac0 = get_best_thac0(self.classes, self.levels)
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
         self.equipment = []
         self.characteristics = generate_characteristics(self.race, max(self.levels))
@@ -496,13 +518,13 @@ class Character(object):
 
         ### Race, Class, Alignment, HP, AC, THAC0
         classes_str = "/".join(self.classes)
-        levels_str = "/".join(self.levels)
-        s += f"{self.alignment} {self.race} {classes_str} {levels_str}"
+        levels_str = "/".join([str(x) for x in self.levels])
+        s += f"{self.alignment} {self.race} {classes_str} {levels_str}\n"
         s += f"XP: {self.experience:,} - "
-        if self.level_limit > 98:
+        level_limits_str = "/".join(['U' if x > 98 else str(x) for x in self.level_limits])
+        if level_limits_str == 'U':
             s += "Unlimited level limit\n"
         else:
-            level_limits_str = "/".join(self.level_limits)
             s += f"Level limit: {level_limits_str}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
 
@@ -552,7 +574,7 @@ class Character(object):
             if ability != "N/A":
                 modifier = self.abilities[ability] + NWPS[nwp][2]
                 if "Ranger" in self.classes and nwp == "Tracking":
-                    modifier += int(self.level / 3)
+                    modifier += int(self.levels[self.classes.index("Ranger")] / 3)
             s += f"\t{nwp:20} {ability:12}  Mod: {modifier:2}  Slots: {NWPS[nwp][0]}\n"
 
         ### Languages
@@ -632,7 +654,7 @@ class Character(object):
                     languages = RACES[self.race]["Languages"]
                 else:
                     languages = load_table("languages.json")
-                if "Druid" in self.classes and self.druid_lang_known / self.level > 1:
+                if "Druid" in self.classes and self.druid_lang_known / self.levels[self.classes.index("Druid")]  > 1:
                     languages += load_table("druid_languages.json")
                 languages = list(set(languages) - (set(self.profs["Languages"])))
                 # Make sure this character hasn't learned all of their possible languages
@@ -723,7 +745,8 @@ def main():
     )
     args = parser.parse_args()
     for class_name in get_all_classes():
-        print(Character(classes=[class_name], level=15, expanded=args.expanded))
+       print(Character(classes=[class_name], level=15, expanded=args.expanded))
+    print(Character(classes=["Fighter", "Mage"], level=12, expanded=args.expanded))
 
 
 if __name__ == "__main__":
