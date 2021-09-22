@@ -124,9 +124,9 @@ def get_all_classes():
 
 def get_best_thac0(classes, levels):
     thac0 = 20
-    for index in range(0, len(classes)):
-        if THAC0[get_class_group(classes[index])][levels[index] - 1] < thac0:
-            thac0 = THAC0[get_class_group(classes[index])][levels[index] - 1]
+    for class_name, level in zip(classes, levels):
+        if THAC0[get_class_group(class_name)][level - 1] < thac0:
+            thac0 = THAC0[get_class_group(class_name)][level - 1]
     return thac0
 
 
@@ -152,13 +152,10 @@ def get_class_groups(classes):
     return list(set([get_class_group(x) for x in classes]))
 
 
-def get_hitpoints(classes, levels, constitution):
-    con_mod = constitution_hp_modifier(constitution, get_class_groups(classes))
+def get_hitpoints(class_groups, levels, constitution):
+    con_mod = constitution_hp_modifier(constitution, class_groups)
     hitpoints = 0
-    class_groups = get_class_groups(classes)
-    for index in range(0, len(classes)):
-        class_group = class_groups[index]
-        level = levels[index]
+    for class_group, level in zip(class_groups, levels):
         hit_dice, additional_hp = CLASS_GROUPS[class_group]["Hit Dice"][level - 1]
         class_hp = 0
         for die in range(0, hit_dice):
@@ -166,21 +163,21 @@ def get_hitpoints(classes, levels, constitution):
             if result < 1:
                 result = 1
             class_hp += result
-        hitpoints += int((class_hp + additional_hp) / len(classes))
+        hitpoints += int((class_hp + additional_hp) / len(levels))
     return hitpoints
 
 
 def get_level_by_experience(class_name, experience):
-    for index in range(0, len(CLASSES[class_name]["Levels"])):
-        if experience < CLASSES[class_name]["Levels"][index]:
-            return index
+    for level, requirement in enumerate(CLASSES[class_name]["Levels"]):
+        if experience <= requirement:
+            return level
     return 20
 
 
 def get_levels_by_experience(classes, experience):
     levels = []
-    for index in range(0, len(classes)):
-        levels.append(get_level_by_experience(classes[index], experience[index]))
+    for class_name, xp in zip(classes, experience):
+        levels.append(get_level_by_experience(class_name, xp))
     return levels
 
 
@@ -502,11 +499,9 @@ class Character(object):
         elif levels:
             self.levels = levels
             self.experience = []
-            for index in range(0, len(self.classes)):
+            for class_name, level in zip(self.classes, self.levels):
                 self.experience.append(
-                    get_random_experience_by_level(
-                        self.classes[index], self.levels[index]
-                    )
+                    get_random_experience_by_level(class_name, level)
                 )
         else:
             self.experience = get_random_experiences_by_level(self.classes, level)
@@ -532,13 +527,13 @@ class Character(object):
 
         # Apply level limits
         self.level_limits = get_level_limits(self.race, self.classes, self.abilities)
-        for index in range(0, len(self.levels)):
-            if self.levels[index] > self.level_limits[index]:
-                self.levels[index] = self.level_limits[index]
+        for index, (level, limit) in enumerate(zip(self.levels, self.level_limits)):
+            if level > limit:
+                self.levels[index] = limit
 
         # Calculate hitpoints
         self.hitpoints = get_hitpoints(
-            self.classes, self.levels, self.abilities["Constitution"]
+            self.class_groups, self.levels, self.abilities["Constitution"]
         )
 
         # Calculate saving throws
@@ -549,14 +544,13 @@ class Character(object):
         # Determine if this character can cast spells, and assign them if so
         self.spell_levels = {}
         self.spells = {}
-        # self.caster_groups = get_caster_groups(self.classes)
-        for index in range(0, len(self.classes)):
-            caster_group = get_caster_group(self.classes[index])
+        for class_name, level in zip(self.classes, self.levels):
+            caster_group = get_caster_group(class_name)
             if caster_group:
-                self.spell_levels[self.classes[index]] = get_spell_levels(
-                    self.classes[index], self.levels[index], self.abilities["Wisdom"]
+                self.spell_levels[class_name] = get_spell_levels(
+                    class_name, level, self.abilities["Wisdom"]
                 )
-                self.spells[self.classes[index]] = {}
+                self.spells[class_name] = {}
         if self.spell_levels:
             self.populate_spells()
 
