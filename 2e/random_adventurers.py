@@ -23,7 +23,7 @@ EXPERIENCE_RANGE = {
     "Low": [0, 4000],
     "Medium": [10000, 58900],
     "High": [75000, 652600],
-    "Very high": [300000, 6000000],
+    "Very high": [300000, 4000000],
 }
 
 MAGIC_ITEMS = {

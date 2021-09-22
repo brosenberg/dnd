@@ -268,6 +268,25 @@ def get_random_race_by_classes(classes):
     return random.choice(list(table[class_name]["Races"]))
 
 
+def get_saving_throw(class_group, level):
+    key = [x for x in CLASS_GROUPS[class_group]["Saves"] if int(x) <= level][-1]
+    return CLASS_GROUPS[class_group]["Saves"][key]
+
+
+def get_saving_throws(class_groups, levels, race, constitution):
+    saving_throws = [20, 20, 20, 20, 20]
+    for class_group, level in zip(class_groups, levels):
+        saving_throws = [
+            min(x) for x in zip(saving_throws, get_saving_throw(class_group, level))
+        ]
+    # Dwarves and gnomes get a bonus to their saves against Rod, Staves, Wands,
+    # and Spells based on their Constitution score.
+    if race in ["Dwarf", "Gnome"]:
+        saving_throws[1] -= int(constitution / 3.5)
+        saving_throws[4] -= int(constitution / 3.5)
+    return saving_throws
+
+
 def get_spell_levels(class_name, level, wisdom):
     caster_group = get_caster_group(class_name)
     level = str(level)
@@ -522,6 +541,11 @@ class Character(object):
             self.classes, self.levels, self.abilities["Constitution"]
         )
 
+        # Calculate saving throws
+        self.saving_throws = get_saving_throws(
+            self.class_groups, self.levels, self.race, self.abilities["Constitution"]
+        )
+
         # Determine if this character can cast spells, and assign them if so
         self.spell_levels = {}
         self.spells = {}
@@ -575,6 +599,14 @@ class Character(object):
         else:
             s += f"Level limit: {level_limits_str}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
+
+        ### Saving Throws
+        save_names = ["PPD", "RSW", "PP", "BW", "S"]
+        s += "Saving Throws: " + "  ".join(
+            [f"{x[0]}: {x[1]}" for x in zip(save_names, self.saving_throws)]
+        )
+        s += "\n"
+        s += "\n"
 
         ### Abilities
         for ability in ABILITIES:
