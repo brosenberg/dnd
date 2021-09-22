@@ -178,9 +178,8 @@ def get_level_by_experience(class_name, experience):
 
 def get_levels_by_experience(classes, experience):
     levels = []
-    exp_per_class = int(experience / len(classes))
-    for class_name in classes:
-        levels.append(get_level_by_experience(class_name, exp_per_class))
+    for index in range(0, len(classes)):
+        levels.append(get_level_by_experience(classes[index], experience[index]))
     return levels
 
 
@@ -233,12 +232,15 @@ def get_random_experience_by_level(class_name, level):
         return xp + random.randint(0, xp / 10)
 
 
-# TODO: Have this return an array instead
-def get_random_experience_by_levels(classes, levels):
-    experience = 0
-    for index in range(0, len(classes)):
-        experience += get_random_experience_by_level(classes[index], levels[index])
-    return experience
+def get_random_experiences_by_level(classes, level):
+    base_experience = CLASSES[classes[0]]["Levels"][level - 1]
+    base_class = classes[0]
+    for class_name in classes[1:]:
+        if base_experience > CLASSES[class_name]["Levels"][level - 1]:
+            base_experience = CLASSES[class_name]["Levels"][level - 1]
+            base_class = class_name
+    experience = get_random_experience_by_level(base_class, level)
+    return [experience for x in classes]
 
 
 def get_random_race_by_classes(classes):
@@ -421,6 +423,7 @@ class Character(object):
         abilities=None,
         race=None,
         level=1,
+        levels=[],
         alignment=None,
         experience=None,
         expanded=False,
@@ -450,11 +453,28 @@ class Character(object):
 
         # Calculate experience
         if experience is not None:
-            self.experience = experience
-            self.levels = get_levels_by_experience(self.classes, experience)
+            if type(experience) is int:
+                self.experience = [
+                    int(experience / len(self.classes)) for x in self.classes
+                ]
+            else:
+                self.experience = experience
+            try:
+                self.levels = get_levels_by_experience(self.classes, self.experience)
+            except:
+                breakpoint()
+        elif levels:
+            self.levels = levels
+            self.experience = []
+            for index in range(0, len(self.classes)):
+                self.experience.append(
+                    get_random_experience_by_level(
+                        self.classes[index], self.levels[index]
+                    )
+                )
         else:
-            self.levels = [level for x in self.classes]
-            self.experience = get_random_experience_by_levels(self.classes, self.levels)
+            self.experience = get_random_experiences_by_level(self.classes, level)
+            self.levels = get_levels_by_experience(self.classes, self.experience)
 
         # Roll abilities if necessary
         self.abilities = abilities
@@ -481,12 +501,9 @@ class Character(object):
                 self.levels[index] = self.level_limits[index]
 
         # Calculate hitpoints
-        # FIXME: The Con mod is being applied per level, not per HD
-        hps = []
         self.hitpoints = get_hitpoints(
             self.classes, self.levels, self.abilities["Constitution"]
         )
-        # self.hitpoints = int(sum(hps) / len(self.levels))
 
         # Determine if this character can cast spells, and assign them if so
         self.spell_levels = {}
@@ -530,8 +547,9 @@ class Character(object):
         ### Race, Class, Alignment, HP, AC, THAC0
         classes_str = "/".join(self.classes)
         levels_str = "/".join([str(x) for x in self.levels])
+        xp_str = "/".join([f"{x:,}" for x in self.experience])
         s += f"{self.alignment} {self.race} {classes_str} {levels_str}\n"
-        s += f"XP: {self.experience:,} - "
+        s += f"XP: {xp_str} - "
         level_limits_str = "/".join(
             ["U" if x > 98 else str(x) for x in self.level_limits]
         )
@@ -771,6 +789,12 @@ def main():
     for class_name in get_all_classes():
         print(Character(class_name=class_name, level=15, expanded=args.expanded))
     print(Character(class_name="Fighter/Mage", level=12, expanded=args.expanded))
+    print(Character(class_name="Fighter/Mage/Thief", level=12, expanded=args.expanded))
+    print(
+        Character(
+            class_name="Fighter/Mage/Thief", experience=1000000, expanded=args.expanded
+        )
+    )
 
 
 if __name__ == "__main__":
