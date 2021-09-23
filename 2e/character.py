@@ -656,12 +656,26 @@ class Character(object):
         s += f"{self.characteristics['Gender']}  {convert_height(self.characteristics['Height'])}  {self.characteristics['Weight']} lbs.  {self.characteristics['Age']} years old\n"
         s += "\n"
 
+        ### Attacks per round
+        if "Warrior" in self.class_groups:
+            level = self.get_level(None, class_group="Warrior")
+            spr = "3/2"
+            apr = 1
+            if level > 12:
+                apr = 2
+                spr = "5/2"
+            elif level > 6:
+                apr = "3/2"
+                spr = 2
+            s += f"Melee Attacks Per Round: {apr}\n"
+            s += f"Specialist Attacks Per Round: {spr}\n\n"
+
         ### Backstab
         if "Thief" in self.classes:
             backstab = int((self.get_level("Thief") - 1) / 4) + 2
             if backstab > 5:
                 backstab = 5
-            s += f"Backstab Multiplier: x{backstab}\n\n"
+            s += f"Backstab Multiplier: x{backstab}\n"
 
         ### Thief skills
         if self.thief_skills:
@@ -873,8 +887,11 @@ class Character(object):
         if item is not None:
             self.equipment.append(item)
 
-    def get_level(self, class_name):
-        return self.levels[self.classes.index(class_name)]
+    def get_level(self, class_name, class_group=None):
+        if class_group:
+            return self.levels[self.class_groups.index(class_group)]
+        else:
+            return self.levels[self.classes.index(class_name)]
 
     def update_ac(self):
         if "Bracers of Defenselessness" in self.equipment:
