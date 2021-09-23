@@ -35,6 +35,8 @@ RACES = load_table("races.json")
 SPELL_PROGRESSION = load_table("spell_progression.json")
 THAC0 = load_table("thac0.json")
 THIEF_SKILLS = load_table("thief_skills.json")
+THIEF_SKILLS_STANDARD = load_table("thief_skills_standard.json")
+THIEF_SKILLS_HLA = load_table("thief_skills_hla.json")
 WISDOM_CASTERS = load_table("wisdom_casters.json")
 
 
@@ -791,6 +793,15 @@ class Character(object):
                 possible_nwps.remove(new_nwp)
 
     def _assign_thief_skills(self):
+        def apply_race_dex_mods(skills):
+            for skill in skills:
+                if self.race in THIEF_SKILLS[skill]["Races"]:
+                    self.thief_skills[skill] += THIEF_SKILLS[skill]["Races"][self.race]
+                if "Dexterity" in THIEF_SKILLS[skill]:
+                    self.thief_skills[skill] += get_score_from_table(
+                        THIEF_SKILLS[skill]["Dexterity"], self.abilities["Dexterity"]
+                    )
+
         if "Bard" in self.classes:
             self.thief_skills["Climb Walls"] = 50
             self.thief_skills["Detect Noise"] = 20
@@ -801,16 +812,10 @@ class Character(object):
                 str(self.get_level("Ranger"))
             ]
         if "Thief" in self.classes:
-            for skill in THIEF_SKILLS:
+            for skill in THIEF_SKILLS_STANDARD:
                 self.thief_skills[skill] = THIEF_SKILLS[skill]["Base"]
 
-        for skill in self.thief_skills:
-            if self.race in THIEF_SKILLS[skill]["Races"]:
-                self.thief_skills[skill] += THIEF_SKILLS[skill]["Races"][self.race]
-            if "Dexterity" in THIEF_SKILLS[skill]:
-                self.thief_skills[skill] += get_score_from_table(
-                    THIEF_SKILLS[skill]["Dexterity"], self.abilities["Dexterity"]
-                )
+        apply_race_dex_mods(self.thief_skills)
 
         # Assign thief skills points after modifiers are applied, so that
         # skills can hit 95 and not be reduced.
@@ -831,8 +836,15 @@ class Character(object):
                         skills.remove(skill)
 
             assign_points(60)
-            for level in range(1, self.get_level("Thief")):
+            thief_level = self.get_level("Thief")
+            for level in range(1, thief_level + 1)[:20]:
                 assign_points(30)
+            if thief_level > 20:
+                for skill in THIEF_SKILLS_HLA:
+                    self.thief_skills[skill] = THIEF_SKILLS[skill]["Base"]
+                apply_race_dex_mods(THIEF_SKILLS_HLA)
+                for level in range(20, thief_level + 1):
+                    assign_point(30)
 
     def _populate_spells(self):
         spell_gen = Spells(expanded=self.expanded)

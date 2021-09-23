@@ -113,5 +113,73 @@
             "Halfling": -5
         },
         "Armor": [0, 0, 0]
+    },
+    "Bribe": {
+        "Base": 5,
+        "Races": {
+            "Dwarf": -5,
+            "Elf": 15,
+            "Gnome": 5,
+            "Half-Elf": 5
+        },
+        "Armor": [-10, 5, -5]
+    },
+    "Detect Illusion": {
+        "Base": 10,
+        "Races": {
+            "Dwarf": 5,
+            "Gnome": 10,
+            "Half-Elf": 5
+        },
+        "Armor": [0, 0, 0]
+    },
+    "Detect Magic": {
+        "Base": 5,
+        "Races": {
+            "Dwarf": 5,
+            "Elf": 10,
+            "Gnome": 5,
+            "Half-Elf": 5,
+            "Halfling": 5
+        },
+        "Armor": [0, 0, 0]
+    },
+    "Escape Bonds": {
+        "Base": 10,
+        "Races": {
+            "Halfling": 10
+        },
+        "Armor": [5, -5, -5],
+        "Dexterity": {
+            "9": -15,
+            "10": -10,
+            "11": -5,
+            "17": 5,
+            "18": 10,
+            "19": 15,
+            "20": 20,
+            "21": 25,
+            "22": 30
+        }
+    },
+    "Tunneling": {
+        "Base": 15,
+        "Races": {
+            "Dwarf": 10,
+            "Elf": -10,
+            "Gnome": 5,
+            "Half-Elf": -5,
+            "Halfling": 5
+        },
+        "Armor": [10, -5, -10],
+        "Dexterity": {
+            "9": -10,
+            "10": -5,
+            "18": 5,
+            "19": 10,
+            "20": 25,
+            "21": 20,
+            "22": 30
+        }
     }
 }
