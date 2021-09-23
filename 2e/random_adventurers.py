@@ -23,10 +23,10 @@ LEVEL_RANGE = {
 }
 
 EXPERIENCE_RANGE = {
-    "Low": [0, 4000],
-    "Medium": [10000, 58900],
-    "High": [75000, 652600],
-    "Very high": [300000, 4000000],
+    "Low": [0, 4545],
+    "Medium": [10000, 31818],
+    "High": [75000, 272727],
+    "Very high": [660000, 2200000],
     "Epic": [4500000, 15000000],
 }
 
@@ -353,11 +353,17 @@ def main():
         level_range = random.choice(LEVEL_RANGES)
     experience = None
     alignments = None
+    level_str = f"{LEVEL_RANGE[level_range][0]+LEVEL_RANGE[level_range][2]} - {LEVEL_RANGE[level_range][1]+LEVEL_RANGE[level_range][2]}"
 
-    print(f"{level_range} level Adventurer Party ({no_appearing} adventurers)")
+    print(
+        f"{level_range} level ({level_str}) Adventurer Party ({no_appearing} adventurers)"
+    )
     if args.experience:
+        min_mod = 1
+        if args.slow:
+            min_mod = 2
         experience = random.randint(
-            EXPERIENCE_RANGE[level_range][0], EXPERIENCE_RANGE[level_range][1]
+            EXPERIENCE_RANGE[level_range][0] * min_mod, EXPERIENCE_RANGE[level_range][1]
         )
         print(f"Base experience: {experience:,}")
     if args.slow:
