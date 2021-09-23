@@ -129,6 +129,9 @@ def get_all_classes():
 def get_best_thac0(classes, levels):
     thac0 = 20
     for class_name, level in zip(classes, levels):
+        # THAC0 stops improving past level 20
+        if level > 20:
+            level = 20
         if THAC0[get_class_group(class_name)][level - 1] < thac0:
             thac0 = THAC0[get_class_group(class_name)][level - 1]
     return thac0
@@ -175,7 +178,7 @@ def get_level_by_experience(class_name, experience):
     for level, requirement in enumerate(CLASSES[class_name]["Levels"]):
         if experience <= requirement:
             return level
-    return 20
+    return 30
 
 
 def get_levels_by_experience(classes, experience):
@@ -239,13 +242,13 @@ def get_random_classes(
 
 
 def get_random_experience_by_level(class_name, level):
-    if level < 20:
+    if level < 30:
         return random.randint(
             CLASSES[class_name]["Levels"][level - 1],
             CLASSES[class_name]["Levels"][level],
         )
     else:
-        xp = CLASSES[class_name]["Levels"][19]
+        xp = CLASSES[class_name]["Levels"][29]
         return xp + random.randint(0, xp / 10)
 
 
@@ -844,7 +847,7 @@ class Character(object):
                     self.thief_skills[skill] = THIEF_SKILLS[skill]["Base"]
                 apply_race_dex_mods(THIEF_SKILLS_HLA)
                 for level in range(20, thief_level + 1):
-                    assign_point(30)
+                    assign_points(30)
 
     def _populate_spells(self):
         spell_gen = Spells(expanded=self.expanded)
@@ -933,13 +936,11 @@ def main():
     args = parser.parse_args()
     for class_name in get_all_classes():
         print(Character(class_name=class_name, level=15, expanded=args.expanded))
-    print(Character(class_name="Fighter/Mage", level=12, expanded=args.expanded))
-    print(Character(class_name="Fighter/Mage/Thief", level=12, expanded=args.expanded))
-    print(
-        Character(
-            class_name="Fighter/Mage/Thief", experience=1000000, expanded=args.expanded
-        )
-    )
+    for class_name in get_all_classes():
+        print(Character(class_name=class_name, level=30, race="Human", expanded=args.expanded))
+    for class_name in MULTICLASSES:
+        print(Character(class_name=class_name, experience=15000000, expanded=args.expanded))
+
 
 
 if __name__ == "__main__":
