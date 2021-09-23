@@ -506,11 +506,10 @@ class Character(object):
             self.levels = get_levels_by_experience(self.classes, self.experience)
         elif levels:
             self.levels = levels
-            self.experience = []
-            for class_name, level in zip(self.classes, self.levels):
-                self.experience.append(
-                    get_random_experience_by_level(class_name, level)
-                )
+            self.experience = [
+                get_random_experience_by_level(x, y)
+                for x, y in zip(self.classes, self.levels)
+            ]
         else:
             self.experience = get_random_experiences_by_level(self.classes, level)
             self.levels = get_levels_by_experience(self.classes, self.experience)
@@ -692,14 +691,14 @@ class Character(object):
 
         ### Proficiencies
         s += f"Non-Weapon Proficiencies ({self.nwp_slots}):\n"
-        for nwp in self.profs["NWP"]:
+        for nwp in sorted(self.profs["NWP"]):
             modifier = "N/A"
             ability = NWPS[nwp][1]
             if ability != "N/A":
                 modifier = self.abilities[ability] + NWPS[nwp][2]
                 if "Ranger" in self.classes and nwp == "Tracking":
                     modifier += int(self.get_level("Ranger") / 3)
-            s += f"\t{nwp:20} {ability:12}  Mod: {modifier:2}  Slots: {NWPS[nwp][0]}\n"
+            s += f"\t{nwp:20} {ability:12}  Mod: {modifier:3}  Slots: {NWPS[nwp][0]}\n"
 
         ### Languages
         s += f"Languages known: {', '.join(self.profs['Languages'])}\n"
@@ -739,16 +738,24 @@ class Character(object):
 
     def _assign_nwps(self):
         slots = self.nwp_slots
-        possible_nwps = []
+        classgroups_nwps = []
+
         if "Bard" in self.classes:
             self.profs["NWP"].append("Local History")
             self.profs["NWP"].append("Reading/Writing")
         elif "Ranger" in self.classes:
             self.profs["NWP"].append("Tracking")
+
         for class_name in self.classes:
-            for group in CLASSES[class_name]["Proficiency Groups"]:
-                possible_nwps += NWP_GROUPS[group]
-        possible_nwps = list(set(possible_nwps))
+            groups = CLASSES[class_name]["Proficiency Groups"]
+            try:
+                groups.remove("General")
+            except ValueError:
+                pass
+            for group in groups:
+                classgroups_nwps += NWP_GROUPS[group]
+        classgroups_nwps = list(set(classgroups_nwps))
+        general_nwps = list(NWP_GROUPS["General"])
         while slots:
             # 50% chance for each slot to give demi-humans their racial language
             if (
@@ -785,13 +792,21 @@ class Character(object):
                 if languages:
                     self.profs["Languages"].append(random.choice(languages))
                     slots -= 1
-            else:
-                new_nwp = random.choice(possible_nwps)
+            # 67% chance to assign a non-general NWP
+            elif roll(1, 100, 0) > 33:
+                new_nwp = random.choice(classgroups_nwps)
                 while NWPS[new_nwp][0] > slots:
-                    new_nwp = random.choice(possible_nwps)
+                    new_nwp = random.choice(classgroups_nwps)
                 self.profs["NWP"].append(new_nwp)
                 slots -= NWPS[new_nwp][0]
-                possible_nwps.remove(new_nwp)
+                classgroups_nwps.remove(new_nwp)
+            else:
+                new_nwp = random.choice(general_nwps)
+                while NWPS[new_nwp][0] > slots:
+                    new_nwp = random.choice(general_nwps)
+                self.profs["NWP"].append(new_nwp)
+                slots -= NWPS[new_nwp][0]
+                general_nwps.remove(new_nwp)
 
     def _assign_thief_skills(self):
         def apply_race_dex_mods(skills):
