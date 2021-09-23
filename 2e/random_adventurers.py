@@ -241,10 +241,7 @@ def random_adventurer(
             # If the weapon requires ammo, give some ammo for it
             ammo = items.appropriate_ammo_type(weapon)
             if ammo:
-                try:
-                    ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
-                except:
-                    breakpoint()
+                ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
                 ammo_dice *= 2
                 ammo = f"{ammo} x{roll(ammo_dice, ammo_die, ammo_mod)}"
                 adventurer.add_equipment(weapon)
@@ -258,10 +255,7 @@ def random_adventurer(
                 )
             # If the weapon is thrown, give a few of them
             elif items.is_thrown_weapon(weapon):
-                try:
-                    ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
-                except:
-                    breakpoint()
+                ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
                 count = roll(ammo_dice, ammo_die, ammo_mod)
                 if count > 1:
                     adventurer.add_equipment(f"{weapon} x{count}")

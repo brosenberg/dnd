@@ -503,10 +503,7 @@ class Character(object):
                 ]
             else:
                 self.experience = experience
-            try:
-                self.levels = get_levels_by_experience(self.classes, self.experience)
-            except:
-                breakpoint()
+            self.levels = get_levels_by_experience(self.classes, self.experience)
         elif levels:
             self.levels = levels
             self.experience = []
