@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import random
+import re
 
 from dice import roll
 from items import get_ac
@@ -33,6 +34,7 @@ NWP_GROUPS = load_table("nwp_groups.json")
 RACES = load_table("races.json")
 SPELL_PROGRESSION = load_table("spell_progression.json")
 THAC0 = load_table("thac0.json")
+THIEF_SKILLS = load_table("thief_skills.json")
 WISDOM_CASTERS = load_table("wisdom_casters.json")
 
 
@@ -266,8 +268,7 @@ def get_random_race_by_classes(classes):
 
 
 def get_saving_throw(class_group, level):
-    key = [x for x in CLASS_GROUPS[class_group]["Saves"] if int(x) <= level][-1]
-    return CLASS_GROUPS[class_group]["Saves"][key]
+    return get_score_from_table(CLASS_GROUPS[class_group]["Saves"], level)
 
 
 def get_saving_throws(class_groups, levels, race, constitution):
@@ -282,6 +283,10 @@ def get_saving_throws(class_groups, levels, race, constitution):
         saving_throws[1] -= int(constitution / 3.5)
         saving_throws[4] -= int(constitution / 3.5)
     return saving_throws
+
+
+def get_score_from_table(table, value):
+    return table[[x for x in table if value >= int(x)][-1]]
 
 
 def get_spell_levels(class_name, level, wisdom):
@@ -552,7 +557,11 @@ class Character(object):
                 )
                 self.spells[class_name] = {}
         if self.spell_levels:
-            self.populate_spells()
+            self._populate_spells()
+
+        # Assign thief skills
+        self.thief_skills = {}
+        self._assign_thief_skills()
 
         # Assign proficiencies
         self.nwp_slots = get_nwp_slots(
@@ -563,7 +572,7 @@ class Character(object):
             self.profs["Languages"].append("Thieves' Cant")
         elif "Druid" in self.classes:
             self.druid_lang_known = 0
-        self.assign_nwps()
+        self._assign_nwps()
 
         # Determine misc. stats
         self.thac0 = get_best_thac0(self.classes, self.levels)
@@ -647,6 +656,23 @@ class Character(object):
         s += f"{self.characteristics['Gender']}  {convert_height(self.characteristics['Height'])}  {self.characteristics['Weight']} lbs.  {self.characteristics['Age']} years old\n"
         s += "\n"
 
+        ### Backstab
+        if "Thief" in self.classes:
+            backstab = int((self.get_level("Thief") - 1) / 4) + 2
+            if backstab > 5:
+                backstab = 5
+            s += f"Backstab Multiplier: x{backstab}\n\n"
+
+        ### Thief skills
+        if self.thief_skills:
+            skill_str = "  ".join(
+                [
+                    f"{re.sub(r'[^A-Z]', '', x)}: {self.thief_skills[x]}"
+                    for x in self.thief_skills
+                ]
+            )
+            s += f"Thief Skills: {skill_str}\n\n"
+
         ### Proficiencies
         s += f"Non-Weapon Proficiencies ({self.nwp_slots}):\n"
         for nwp in self.profs["NWP"]:
@@ -655,7 +681,7 @@ class Character(object):
             if ability != "N/A":
                 modifier = self.abilities[ability] + NWPS[nwp][2]
                 if "Ranger" in self.classes and nwp == "Tracking":
-                    modifier += int(self.levels[self.classes.index("Ranger")] / 3)
+                    modifier += int(self.get_level("Ranger") / 3)
             s += f"\t{nwp:20} {ability:12}  Mod: {modifier:2}  Slots: {NWPS[nwp][0]}\n"
 
         ### Languages
@@ -694,11 +720,7 @@ class Character(object):
         s += f"\n{'-'*10}"
         return s
 
-    def add_equipment(self, item):
-        if item is not None:
-            self.equipment.append(item)
-
-    def assign_nwps(self):
+    def _assign_nwps(self):
         slots = self.nwp_slots
         possible_nwps = []
         if "Bard" in self.classes:
@@ -738,8 +760,7 @@ class Character(object):
                     languages = load_table("languages.json")
                 if (
                     "Druid" in self.classes
-                    and self.druid_lang_known / self.levels[self.classes.index("Druid")]
-                    > 1
+                    and self.druid_lang_known / self.get_level("Druid") > 1
                 ):
                     languages += load_table("druid_languages.json")
                 languages = list(set(languages) - (set(self.profs["Languages"])))
@@ -755,7 +776,51 @@ class Character(object):
                 slots -= NWPS[new_nwp][0]
                 possible_nwps.remove(new_nwp)
 
-    def populate_spells(self):
+    def _assign_thief_skills(self):
+        if "Bard" in self.classes:
+            self.thief_skills["Climb Walls"] = 50
+            self.thief_skills["Detect Noise"] = 20
+            self.thief_skills["Pick Pockets"] = 10
+            self.thief_skills["Read Languages"] = 5
+        if "Ranged" in self.classes:
+            self.thief_skills = CLASSES["Ranger"]["Skills"][
+                str(self.get_level("Ranger"))
+            ]
+        if "Thief" in self.classes:
+            for skill in THIEF_SKILLS:
+                self.thief_skills[skill] = THIEF_SKILLS[skill]["Base"]
+
+        for skill in self.thief_skills:
+            if self.race in THIEF_SKILLS[skill]["Races"]:
+                self.thief_skills[skill] += THIEF_SKILLS[skill]["Races"][self.race]
+            if "Dexterity" in THIEF_SKILLS[skill]:
+                self.thief_skills[skill] += get_score_from_table(
+                    THIEF_SKILLS[skill]["Dexterity"], self.abilities["Dexterity"]
+                )
+
+        # Assign thief skills points after modifiers are applied, so that
+        # skills can hit 95 and not be reduced.
+        if "Thief" in self.classes:
+
+            def assign_points(points):
+                max_points = points / 2
+                skills = list(self.thief_skills)
+                assigned = {x: 0 for x in skills}
+                for skill in skills:
+                    if self.thief_skills[skill] >= 95:
+                        skills.remove(skill)
+                for point in range(0, points):
+                    skill = random.choice(skills)
+                    self.thief_skills[skill] += 1
+                    assigned[skill] += 1
+                    if assigned[skill] == max_points or self.thief_skills[skill] == 95:
+                        skills.remove(skill)
+
+            assign_points(60)
+            for level in range(1, self.get_level("Thief")):
+                assign_points(30)
+
+    def _populate_spells(self):
         spell_gen = Spells(expanded=self.expanded)
         for class_name in self.spell_levels:
 
@@ -803,6 +868,13 @@ class Character(object):
                             spell_level,
                             spell_gen.random_spell(spell_level, caster_class),
                         )
+
+    def add_equipment(self, item):
+        if item is not None:
+            self.equipment.append(item)
+
+    def get_level(self, class_name):
+        return self.levels[self.classes.index(class_name)]
 
     def update_ac(self):
         if "Bracers of Defenselessness" in self.equipment:

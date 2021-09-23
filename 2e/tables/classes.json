@@ -90,7 +90,29 @@
             3000000,
             3300000,
             3600000
-        ]
+        ],
+        "Skills": {
+            "1": {"Hide In Shadows": 10, "Move Silently": 15},
+            "2": {"Hide In Shadows": 15, "Move Silently": 21},
+            "3": {"Hide In Shadows": 20, "Move Silently": 27},
+            "4": {"Hide In Shadows": 25, "Move Silently": 33},
+            "5": {"Hide In Shadows": 31, "Move Silently": 40},
+            "6": {"Hide In Shadows": 37, "Move Silently": 47},
+            "7": {"Hide In Shadows": 43, "Move Silently": 55},
+            "8": {"Hide In Shadows": 49, "Move Silently": 62},
+            "9": {"Hide In Shadows": 56, "Move Silently": 70},
+            "10": {"Hide In Shadows": 63, "Move Silently": 78},
+            "11": {"Hide In Shadows": 70, "Move Silently": 86},
+            "12": {"Hide In Shadows": 77, "Move Silently": 94},
+            "13": {"Hide In Shadows": 85, "Move Silently": 99},
+            "14": {"Hide In Shadows": 93, "Move Silently": 99},
+            "15": {"Hide In Shadows": 99, "Move Silently": 99},
+            "16": {"Hide In Shadows": 99, "Move Silently": 99},
+            "17": {"Hide In Shadows": 99, "Move Silently": 99},
+            "18": {"Hide In Shadows": 99, "Move Silently": 99},
+            "19": {"Hide In Shadows": 99, "Move Silently": 99},
+            "20": {"Hide In Shadows": 99, "Move Silently": 99}
+        }
     },
     "Mage": {
         "Primary": ["Intelligence"],
