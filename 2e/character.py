@@ -470,6 +470,7 @@ class Character(object):
         alignment=None,
         experience=None,
         expanded=False,
+        slow_advancement=None,  # TODO: Implement this
     ):
         self.expanded = expanded
         if not classes and class_name:
@@ -937,10 +938,17 @@ def main():
     for class_name in get_all_classes():
         print(Character(class_name=class_name, level=15, expanded=args.expanded))
     for class_name in get_all_classes():
-        print(Character(class_name=class_name, level=30, race="Human", expanded=args.expanded))
+        print(
+            Character(
+                class_name=class_name, level=30, race="Human", expanded=args.expanded
+            )
+        )
     for class_name in MULTICLASSES:
-        print(Character(class_name=class_name, experience=15000000, expanded=args.expanded))
-
+        print(
+            Character(
+                class_name=class_name, experience=15000000, expanded=args.expanded
+            )
+        )
 
 
 if __name__ == "__main__":

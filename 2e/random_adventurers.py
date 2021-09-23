@@ -12,11 +12,14 @@ from roll_abilities import get_abilities
 from utils import intersect
 from utils import load_table
 
+LEVEL_RANGES = ["Low", "Medium", "High", "Very high"]
+
 LEVEL_RANGE = {
     "Low": (1, 3, 0),
     "Medium": (1, 4, 3),
     "High": (1, 6, 6),
     "Very high": (1, 12, 8),
+    "Epic": (1, 10, 20),
 }
 
 EXPERIENCE_RANGE = {
@@ -24,6 +27,7 @@ EXPERIENCE_RANGE = {
     "Medium": [10000, 58900],
     "High": [75000, 652600],
     "Very high": [300000, 4000000],
+    "Epic": [4500000, 15000000],
 }
 
 MAGIC_ITEMS = {
@@ -311,6 +315,13 @@ def main():
         help="generate consistent experience scores across characters",
     )
     parser.add_argument(
+        "-p",
+        "--epic",
+        default=False,
+        action="store_true",
+        help="generate epic level characters",
+    )
+    parser.add_argument(
         "-q",
         "--equipment",
         default=False,
@@ -327,7 +338,10 @@ def main():
 
     args = parser.parse_args()
     no_appearing = roll(1, 8, 0)
-    level_range = random.choice(list(LEVEL_RANGE.keys()))
+    if args.epic:
+        level_range = random.choice(LEVEL_RANGES + ["Epic"])
+    else:
+        level_range = random.choice(LEVEL_RANGES)
     experience = None
     alignments = None
 
