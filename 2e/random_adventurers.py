@@ -60,7 +60,13 @@ def get_magic_item_categories(class_groups):
 
 
 def random_adventurer(
-    level_range, expanded, more_equipment, more_classes, alignment=None, experience=None
+    level_range,
+    expanded,
+    more_equipment,
+    more_classes,
+    alignment=None,
+    experience=None,
+    slow_advancement=False,
 ):
     mig = magic_item.MagicItemGen(expanded)
     level = roll(
@@ -82,6 +88,7 @@ def random_adventurer(
             alignment=alignment,
             experience=experience,
             expanded=expanded,
+            slow_advancement=slow_advancement,
         )
         classes = adventurer.classes
     else:
@@ -99,6 +106,7 @@ def random_adventurer(
             alignment=alignment,
             experience=experience,
             expanded=expanded,
+            slow_advancement=slow_advancement,
         )
     class_groups = adventurer.class_groups
     for category in get_magic_item_categories(adventurer.class_groups):
@@ -316,6 +324,13 @@ def main():
         help="generate epic level characters",
     )
     parser.add_argument(
+        "-s",
+        "--slow",
+        default=False,
+        action="store_true",
+        help="use slow advancement but removed level limits for demi-humans",
+    )
+    parser.add_argument(
         "-q",
         "--equipment",
         default=False,
@@ -345,6 +360,8 @@ def main():
             EXPERIENCE_RANGE[level_range][0], EXPERIENCE_RANGE[level_range][1]
         )
         print(f"Base experience: {experience:,}")
+    if args.slow:
+        print("Using slow advancement for demi-humans optional rule")
     if args.alignments:
         alignments = random.choice(load_table("alignment_groups.json"))
         print(f"Alignments: {', '.join(alignments)}")
@@ -364,6 +381,7 @@ def main():
                 args.classes,
                 alignment=alignment,
                 experience=this_xp,
+                slow_advancement=args.slow,
             )
         )
         print()

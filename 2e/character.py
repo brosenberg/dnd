@@ -174,17 +174,35 @@ def get_hitpoints(class_groups, levels, constitution):
     return hitpoints
 
 
-def get_level_by_experience(class_name, experience):
+def get_level_by_experience(
+    class_name, experience, experience_penalty=[1, 1], level_limit=None
+):
+    if level_limit is None:
+        level_limit = 99
     for level, requirement in enumerate(CLASSES[class_name]["Levels"]):
-        if experience <= requirement:
+        penalty = (
+            experience_penalty[0] if level <= level_limit else experience_penalty[1]
+        )
+        if experience <= requirement * penalty:
             return level
     return 30
 
 
-def get_levels_by_experience(classes, experience):
+def get_levels_by_experience(
+    classes, experience, experience_penalty=[1, 1], level_limits=None
+):
     levels = []
-    for class_name, xp in zip(classes, experience):
-        levels.append(get_level_by_experience(class_name, xp))
+    if level_limits is None:
+        level_limits = [None for x in classes]
+    for class_name, xp, level_limit in zip(classes, experience, level_limits):
+        levels.append(
+            get_level_by_experience(
+                class_name,
+                xp,
+                experience_penalty=experience_penalty,
+                level_limit=level_limit,
+            )
+        )
     return levels
 
 
@@ -241,25 +259,25 @@ def get_random_classes(
         return [random.choice(list(classes))]
 
 
-def get_random_experience_by_level(class_name, level):
+def get_random_experience_by_level(class_name, level, penalty=1):
     if level < 30:
         return random.randint(
-            CLASSES[class_name]["Levels"][level - 1],
-            CLASSES[class_name]["Levels"][level],
+            CLASSES[class_name]["Levels"][level - 1] * penalty,
+            CLASSES[class_name]["Levels"][level] * penalty,
         )
     else:
-        xp = CLASSES[class_name]["Levels"][29]
+        xp = CLASSES[class_name]["Levels"][29] * penalty
         return xp + random.randint(0, xp / 10)
 
 
-def get_random_experiences_by_level(classes, level):
+def get_random_experiences_by_level(classes, level, penalty=1):
     base_experience = CLASSES[classes[0]]["Levels"][level - 1]
     base_class = classes[0]
     for class_name in classes[1:]:
         if base_experience > CLASSES[class_name]["Levels"][level - 1]:
             base_experience = CLASSES[class_name]["Levels"][level - 1]
             base_class = class_name
-    experience = get_random_experience_by_level(base_class, level)
+    experience = get_random_experience_by_level(base_class, level, penalty=penalty)
     return [experience for x in classes]
 
 
@@ -470,51 +488,70 @@ class Character(object):
         alignment=None,
         experience=None,
         expanded=False,
-        slow_advancement=None,  # TODO: Implement this
+        slow_advancement=False,
+        demi_experience_penalty=[2, 3],
     ):
         self.expanded = expanded
+
+        ### Determine classes
         if not classes and class_name:
             self.classes = class_name.split("/")
         else:
             self.classes = classes
-
-        # Determine a class
         if not self.classes:
             self.classes = get_random_classes(
                 class_group=class_group, alignment=alignment
             )
         self.class_groups = get_class_groups(self.classes)
 
-        # Choose a race
+        ### Assign or choose a race
         self.race = race
         if not self.race:
             self.race = get_random_race_by_classes(self.classes)
 
-        # Assign alignment
+        self.slow_advancement = slow_advancement
+        self.experience_penalty = [1, 1]  # No penalty
+        if slow_advancement and self.race != "Human":
+            self.experience_penalty = demi_experience_penalty
+
+        ### Assign alignment
         self.alignment = alignment
         if not self.alignment:
             self.alignment = get_alignment_by_classes(self.classes)
 
-        # Calculate experience
+        ### Calculate experience
         if experience is not None:
+            # Divide experience evenly across classes for multiclass characters
             if type(experience) is int:
                 self.experience = [
                     int(experience / len(self.classes)) for x in self.classes
                 ]
             else:
                 self.experience = experience
-            self.levels = get_levels_by_experience(self.classes, self.experience)
+            self.levels = get_levels_by_experience(
+                self.classes,
+                self.experience,
+                experience_penalty=self.experience_penalty,
+            )
         elif levels:
             self.levels = levels
             self.experience = [
-                get_random_experience_by_level(x, y)
-                for x, y in zip(self.classes, self.levels)
+                get_random_experience_by_level(
+                    class_name, level, penalty=self.experience_penalty[0]
+                )
+                for class_name, level in zip(self.classes, self.levels)
             ]
         else:
-            self.experience = get_random_experiences_by_level(self.classes, level)
-            self.levels = get_levels_by_experience(self.classes, self.experience)
+            self.experience = get_random_experiences_by_level(
+                self.classes, level, penalty=self.experience_penalty[0]
+            )
+            self.levels = get_levels_by_experience(
+                self.classes,
+                self.experience,
+                experience_penalty=self.experience_penalty,
+            )
 
-        # Roll abilities if necessary
+        ### Roll abilities if necessary
         self.abilities = abilities
         if not self.abilities:
             minimums = combine_minimums(
@@ -532,23 +569,31 @@ class Character(object):
                 extrao_str="Warrior" in self.class_groups and self.race != "Halfling",
             )
 
-        # Apply level limits
+        ### Apply level limits
         self.level_limits = get_level_limits(self.race, self.classes, self.abilities)
-        for index, (level, limit) in enumerate(zip(self.levels, self.level_limits)):
-            if level > limit:
-                self.levels[index] = limit
+        if slow_advancement:
+            self.levels = get_levels_by_experience(
+                self.classes,
+                self.experience,
+                experience_penalty=self.experience_penalty,
+                level_limits=self.level_limits,
+            )
+        else:
+            for index, (level, limit) in enumerate(zip(self.levels, self.level_limits)):
+                if level > limit:
+                    self.levels[index] = limit
 
-        # Calculate hitpoints
+        ### Calculate hitpoints
         self.hitpoints = get_hitpoints(
             self.class_groups, self.levels, self.abilities["Constitution"]
         )
 
-        # Calculate saving throws
+        ### Calculate saving throws
         self.saving_throws = get_saving_throws(
             self.class_groups, self.levels, self.race, self.abilities["Constitution"]
         )
 
-        # Determine if this character can cast spells, and assign them if so
+        ### Determine if this character can cast spells, and assign them if so
         self.spell_levels = {}
         self.spells = {}
         for class_name, level in zip(self.classes, self.levels):
@@ -561,11 +606,11 @@ class Character(object):
         if self.spell_levels:
             self._populate_spells()
 
-        # Assign thief skills
+        ### Assign thief skills
         self.thief_skills = {}
         self._assign_thief_skills()
 
-        # Assign proficiencies
+        ### Assign proficiencies
         self.nwp_slots = get_nwp_slots(
             self.class_groups, max(self.levels), self.abilities["Intelligence"]
         )
@@ -576,7 +621,7 @@ class Character(object):
             self.druid_lang_known = 0
         self._assign_nwps()
 
-        # Determine misc. stats
+        ### Determine misc. stats
         self.thac0 = get_best_thac0(self.classes, self.levels)
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
         self.equipment = []
@@ -602,7 +647,8 @@ class Character(object):
         if level_limits_str == "U":
             s += "Unlimited level limit\n"
         else:
-            s += f"Level limit: {level_limits_str}\n"
+            limit_str = "Soft level limit" if self.slow_advancement else "Level limit"
+            s += f"{limit_str}: {level_limits_str}\n"
         s += f"HP: {self.hitpoints}  AC: {self.ac}  THAC0: {self.thac0} (Melee:{self.thac0-str_hit_mod}/Ranged:{self.thac0-dex_hit_mod})\n"
 
         ### Saving Throws
@@ -757,6 +803,8 @@ class Character(object):
         classgroups_nwps = list(set(classgroups_nwps))
         general_nwps = list(NWP_GROUPS["General"])
         while slots:
+            classgroups_nwps = [x for x in classgroups_nwps if NWPS[x][0] <= slots]
+            general_nwps = [x for x in general_nwps if NWPS[x][0] <= slots]
             # 50% chance for each slot to give demi-humans their racial language
             if (
                 self.race not in ["Human", "Half-Elf"]
@@ -765,8 +813,20 @@ class Character(object):
             ):
                 self.profs["Languages"].append(RACES[self.race]["Languages"][0])
                 slots -= 1
-            # 20% - 2*(Number of Languages) chance for each slot to learn a language
-            elif roll(1, 100, 0) < 20 - 2 * len(self.profs["Languages"]):
+            # 60% chance to assign a non-general NWP if there's enough slots
+            elif classgroups_nwps and roll(1, 100, 0) > 40:
+                new_nwp = random.choice(classgroups_nwps)
+                self.profs["NWP"].append(new_nwp)
+                slots -= NWPS[new_nwp][0]
+                classgroups_nwps.remove(new_nwp)
+            # 20% chance to assign a non-general NWP if there's enough slots
+            elif general_nwps and roll(1, 100, 0) > 80:
+                new_nwp = random.choice(general_nwps)
+                self.profs["NWP"].append(new_nwp)
+                slots -= NWPS[new_nwp][0]
+                general_nwps.remove(new_nwp)
+            # Otherwise, learn a language
+            else:
                 languages = []
                 if self.race != "Human":
                     if self.race != "Half-Elf":
@@ -792,21 +852,6 @@ class Character(object):
                 if languages:
                     self.profs["Languages"].append(random.choice(languages))
                     slots -= 1
-            # 67% chance to assign a non-general NWP
-            elif roll(1, 100, 0) > 33:
-                new_nwp = random.choice(classgroups_nwps)
-                while NWPS[new_nwp][0] > slots:
-                    new_nwp = random.choice(classgroups_nwps)
-                self.profs["NWP"].append(new_nwp)
-                slots -= NWPS[new_nwp][0]
-                classgroups_nwps.remove(new_nwp)
-            else:
-                new_nwp = random.choice(general_nwps)
-                while NWPS[new_nwp][0] > slots:
-                    new_nwp = random.choice(general_nwps)
-                self.profs["NWP"].append(new_nwp)
-                slots -= NWPS[new_nwp][0]
-                general_nwps.remove(new_nwp)
 
     def _assign_thief_skills(self):
         def apply_race_dex_mods(skills):
@@ -845,7 +890,11 @@ class Character(object):
                     if self.thief_skills[skill] >= 95:
                         skills.remove(skill)
                 for point in range(0, points):
-                    skill = random.choice(skills)
+                    try:
+                        skill = random.choice(skills)
+                    except IndexError:
+                        # This thief has maxed their skills. Good for them!
+                        return
                     self.thief_skills[skill] += 1
                     assigned[skill] += 1
                     if assigned[skill] == max_points or self.thief_skills[skill] == 95:
@@ -940,6 +989,13 @@ class Character(object):
 def main():
     parser = argparse.ArgumentParser(description="Create a character")
     parser.add_argument(
+        "-s",
+        "--slow",
+        default=False,
+        action="store_true",
+        help="use slow advancement but removed level limits for demi-humans",
+    )
+    parser.add_argument(
         "-x",
         "--expanded",
         default=False,
@@ -948,17 +1004,31 @@ def main():
     )
     args = parser.parse_args()
     for class_name in get_all_classes():
-        print(Character(class_name=class_name, level=15, expanded=args.expanded))
+        print(
+            Character(
+                class_name=class_name,
+                level=15,
+                expanded=args.expanded,
+                slow_advancement=args.slow,
+            )
+        )
     for class_name in get_all_classes():
         print(
             Character(
-                class_name=class_name, level=30, race="Human", expanded=args.expanded
+                class_name=class_name,
+                level=30,
+                race="Human",
+                expanded=args.expanded,
+                slow_advancement=args.slow,
             )
         )
     for class_name in MULTICLASSES:
         print(
             Character(
-                class_name=class_name, experience=15000000, expanded=args.expanded
+                class_name=class_name,
+                experience=15000000,
+                expanded=args.expanded,
+                slow_advancement=args.slow,
             )
         )
 
