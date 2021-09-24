@@ -13,6 +13,7 @@ from utils import load_table
 AMMOS = load_table("weapons_ammos.json")
 ARMOR_STATS = load_table("armor_stats.json")
 SHIELDS = load_table("shields.json")
+SPECIAL_MAGIC_WEAPONS = load_table("weapons_magic_special.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
 WEAPONS = load_table("weapons_master_list.json")
 
@@ -214,6 +215,13 @@ def random_item_count(item):
 
 def random_shield():
     return random.choice(SHIELDS)
+
+
+def random_special_magic_weapon():
+    special = random.choice(SPECIAL_MAGIC_WEAPON)
+    try:
+        base_item = SPECIAL_MAGIC_WEAPON[special]
+    except KeyError:
 
 
 def random_weapon(
