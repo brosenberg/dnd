@@ -21,14 +21,9 @@ def do_action(action, data):
     elif action == "Roll":
         return roll(data[0], data[1], data[2])
     elif action == "Table":
-        table = {int(x): data[x] for x in data}
-        max_roll = max(table.keys())
-        result = roll(1, max_roll, 0)
-        for value in sorted(table):
-            if value >= result:
-                return table[value]
-        return table[max_roll]
-
+        return roll_table(data)
+    elif action == "Table Twice":
+        return [roll_table(data), roll_table(data)]
 
 def dump_data(**kwargs):
     dump = []
@@ -43,11 +38,23 @@ def dump_data(**kwargs):
 def gen(**kwargs):
     if not kwargs:
         return None
-    str_format = kwargs.get("Format", "{result}")
+    str_format = kwargs.get("Format", None)
     action = kwargs["Action"].format(**kwargs)
     result = do_action(action, kwargs["Data"])
     if type(result) is dict:
         result = gen(**result)
     if kwargs.get("Plusify", False):
         result = plusify(result)
-    return str_format.format(result=result, **kwargs)
+    if str_format:
+        return str_format.format(result=result, **kwargs)
+    return result
+
+
+def roll_table(data):
+    table = {int(x): data[x] for x in data}
+    max_roll = max(table.keys())
+    result = roll(1, max_roll, 0)
+    for value in sorted(table):
+        if value >= result:
+            return table[value]
+    return table[max_roll]

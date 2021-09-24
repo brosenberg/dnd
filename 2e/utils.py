@@ -7,6 +7,18 @@ import os
 from dice import roll
 
 
+
+def choice_table_count_unique(table_fname, subdir="tables", count=1):
+    table = load_table(table_fname, subdir=subdir)
+    results = []
+    if len(table) <= count:
+        return table
+    for _ in range(0, count):
+        result = random.choice(table)
+        table.remove(result)
+        results.append(result)
+    return results
+
 def intersect(list_a, list_b):
     if set(list_a).intersection(set(list_b)):
         return True
@@ -18,7 +30,6 @@ def load_table(fname, subdir="tables"):
     if not fname.endswith(".json"):
         fname += ".json"
     return json.load(open(f"{base_dir}/{subdir}/{fname}"))
-
 
 def plusify(number):
     number = int(number)

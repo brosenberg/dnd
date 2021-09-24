@@ -8,6 +8,7 @@ import os
 from dice import roll
 from magic_item import MagicItemGen
 from simple_gen import gen
+from utils import choice_table_count_unique
 from utils import load_table
 from utils import plusify
 
@@ -119,6 +120,109 @@ def get_other_ac_bonus(item):
             _, adjustment = get_adjustment(item)
             return adjustment
     return None
+
+
+def intelligent_weapon(base_weapon, table="standard"):
+    tables = load_table(f"weapons_intelligent_{table}")
+    (
+        intelligence,
+        primary_count,
+        extraordinary_count,
+        communication,
+        reading_power,
+    ) = gen(**tables["Intelligence"])
+    weapon_powers = {
+        "Ego": 0,
+        "Primary": [],
+        "Extraordinary": [],
+        "Special Purpose": None,
+        "Purpose Power": None,
+        "Languages": [],
+        "Alignment": gen(**tables["Alignment"]),
+        "Communication": communication,
+        "Intelligence": intelligence,
+    }
+    language_count = 0
+
+    if reading_power is not None:
+        weapon_powers["Primary"].append(reading_power)
+
+    for _ in range(0, primary_count):
+        power = gen(**tables["Primary"])
+        if power == "Extraordinary Power":
+            extraordinary_count += 1
+        else:
+            weapon_powers["Primary"].append(power)
+
+    for _ in range(0, extraordinary_count):
+
+        def special_powers():
+            powers = "Special Purpose"
+            if weapon_powers["Special Purpose"] is None:
+                weapon_powers["Special Purpose"] = gen(**tables["Special Purpose"])
+                weapon_powers["Purpose Power"] = gen(**tables["Special Purpose Powers"])
+            while powers == "Special Purpose":
+                powers = gen(**tables["Extraordinary"])
+            handle_powers(powers)
+
+        def handle_powers(powers):
+            if powers == "Special Purpose":
+                special_powers()
+            elif type(powers) is list:
+                for power in powers:
+                    if power == "Special Purpose":
+                        special_powers()
+                    else:
+                        weapon_powers["Extraordinary"].append(power)
+            else:
+                weapon_powers["Extraordinary"].append(power)
+
+        handle_powers(gen(**tables["Extraordinary"]))
+
+    if intelligence > 13:
+        language_count = 1 + gen(**tables["Languages"])
+        weapon_powers["Languages"] = choice_table_count_unique(
+            "languages", count=language_count
+        )
+
+    ego_bonus = 0
+    if weapon_powers["Special Purpose"] is not None:
+        ego_bonus += 5
+    if intelligence > 16:  # Telepathic ability
+        ego_bonus += 2
+    if intelligence > 15:  # Read magic ability
+        ego_bonus += 2
+    if intelligence > 14:  # Read language ability
+        ego_bonus += 1
+    weapon_powers["Ego"] = (
+        get_adjustment(base_weapon)[1]
+        + 2 * len(weapon_powers["Primary"])
+        + 2 * len(weapon_powers["Extraordinary"])
+        + int((len(weapon_powers["Languages"]) / 2) + 0.5)
+        + ego_bonus
+    )
+
+    s = f"{base_weapon} (Intelligent) - "
+    for key in [
+        "Intelligence",
+        "Ego",
+        "Alignment",
+        "Communication",
+        "Languages",
+        "Special Purpose",
+        "Abilities",
+    ]:
+        if key == "Abilities":
+            s += f"Abilities: {'; '.join(weapon_powers['Primary'] + weapon_powers['Extraordinary'])}  "
+        elif key == "Special Purpose":
+            if weapon_powers[key] is not None:
+                s += f"Special Purpose: {weapon_powers[key]}  Purpose Power: {weapon_powers['Purpose Power']}  "
+        elif type(weapon_powers[key]) is list:
+            if key == "Languages":
+                s += f"{key}: {', '.join(weapon_powers[key])}  "
+        else:
+            s += f"{key}: {weapon_powers[key]}  "
+    return s.strip()
 
 
 def is_cursed(item):
@@ -352,8 +456,9 @@ def main():
     # print(special_magic_weapon(special=weapon))
     # print(random_special_magic_weapon())
     # print(special_magic_weapon(special="Hornblade"))
-    for _ in range(0, 10):
-        print(random_magic_weapon())
+    # for _ in range(0, 10):
+    # print(random_magic_weapon())
+    print(intelligent_weapon("Short sword +3", table="expanded"))
 
 
 if __name__ == "__main__":
