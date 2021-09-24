@@ -219,6 +219,10 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
+def random_special_magic_weapon(table="magic_item_special_weapons_standard.json"):
+    return special_magic_weapon(special=gen(**load_table(table)))
+
+
 def random_weapon(
     expanded=False, classes=[], class_groups=[], table=None, weapon_filter=None, level=1
 ):
@@ -267,15 +271,7 @@ def special_magic_weapon(special=None):
         gen_results[sub_gen] = gen(**sub_gens[sub_gen], base_item=base_item)
 
     # Reformat name as specified
-    if not SPECIAL_MAGIC_WEAPONS[special].get("Ignore Name", False):
-        if SPECIAL_MAGIC_WEAPONS[special].get("Replace Name", False):
-            weapon = special
-        elif SPECIAL_MAGIC_WEAPONS[special].get("Prepend Name", False):
-            weapon = f"{special} {weapon}"
-        elif special.startswith(","):
-            weapon = f"{weapon}{special}"
-        else:
-            weapon = f"{weapon} {special}"
+    weapon = SPECIAL_MAGIC_WEAPONS[special]["Format"].format(base_item=base_item)
     weapon = " ".join(
         [weapon]
         + sorted(
@@ -305,8 +301,12 @@ def main():
     # print(appropriate_weapons_by_ammo("Flight arrow"))
     # print(base_weapon("Bastard sword +5"))
     # print(random_item_count("Dart"))
-    for _ in range(0, 10):
-        print(special_magic_weapon())
+    # for _ in range(0, 10):
+    #    print(special_magic_weapon())
+    # import simple_gen
+    # for weapon in simple_gen.dump_data(**load_table("magic_item_special_weapons_standard.json")):
+    # print(special_magic_weapon(special=weapon))
+    print(random_special_magic_weapon())
 
 
 if __name__ == "__main__":

@@ -799,7 +799,7 @@
             3,
             0
         ],
-        "Base Type": "Axe"
+        "Base Type": "Thrown"
     },
     "Throwing knife": {
         "Hands": 1,
@@ -809,7 +809,7 @@
             3,
             0
         ],
-        "Base Type": "Dagger"
+        "Base Type": "Thrown"
     },
     "Trident": {
         "Hands": 1,
