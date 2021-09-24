@@ -599,6 +599,16 @@
         ],
         "Base Type": "Arrow"
     },
+    "Pilum": {
+        "Hands": 1,
+        "Category": "Thrown",
+        "Quantity": [
+            1,
+            2,
+            0
+        ],
+        "Base Type": "Thrown"
+    },
     "Quarterstaff": {
         "Hands": 2,
         "Category": "Melee",

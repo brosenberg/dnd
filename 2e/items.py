@@ -8,8 +8,8 @@ import os
 from dice import roll
 from magic_item import MagicItemGen
 from simple_gen import gen
-from utils import do_action
 from utils import load_table
+from utils import plusify
 
 
 AMMOS = load_table("weapons_ammos.json")
@@ -65,6 +65,10 @@ def base_weapon(item):
     if candidates:
         return sorted(candidates, key=len)[-1]
     return None
+
+
+def gen_table(table, **kwargs):
+    return gen(**load_table(table), **kwargs)
 
 
 def get_ac(item):
@@ -219,8 +223,44 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
-def random_special_magic_weapon(table="magic_item_special_weapons_standard.json"):
-    return special_magic_weapon(special=gen(**load_table(table)))
+def random_magic_weapon(table="standard", base_item=None):
+    if not base_item:
+        if table:
+            base_item = gen_table(f"magic_item_weapons_{table}")
+        else:
+            base_item = random_weapon()
+
+    if base_item == "Special":
+        return random_special_magic_weapon(table=table)
+
+    quantity_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_item)
+    quantity = None
+    if quantity_match:
+        quantity = roll(int(quantity_match.group(1)), int(quantity_match.group(2)), 0)
+        base_item = re.sub(r"\s*\(\d+d\d+\)$", "", base_item)
+
+    # Assume this is a weapon category first
+    try:
+        base_item = random.choice(weapons_by_type(base_item))
+    except IndexError:
+        pass
+
+    adjustment = gen_table(
+        f"magic_item_weapon_adjustment_{table}",
+        base_type=WEAPONS[base_item]["Base Type"],
+    )
+
+    weapon = f"{base_item} {plusify(adjustment)}"
+    if quantity:
+        weapon = f"{weapon} x{quantity}"
+
+    return weapon
+
+
+def random_special_magic_weapon(table="standard"):
+    return special_magic_weapon(
+        special=gen_table(f"magic_item_special_weapons_{table}")
+    )
 
 
 def random_weapon(
@@ -249,7 +289,7 @@ def random_weapon(
     return mig.diversify_weapon(random.choice(weapons))
 
 
-def special_magic_weapon(special=None):
+def special_magic_weapon(special=None, force_results={}):
     gen_output_order = ["Adjustment", "Details", "Charges", "Quantity"]
     if special == None:
         special = random.choice(list(SPECIAL_MAGIC_WEAPONS))
@@ -268,7 +308,11 @@ def special_magic_weapon(special=None):
     sub_gens = SPECIAL_MAGIC_WEAPONS[special].get("Gens", {})
     gen_results = {}
     for sub_gen in sub_gens:
-        gen_results[sub_gen] = gen(**sub_gens[sub_gen], base_item=base_item)
+        if sub_gen not in force_results:
+            gen_results[sub_gen] = gen(**sub_gens[sub_gen], base_item=base_item)
+    # Force some gen_results
+    for sub_gen in force_results:
+        gen_results = force_results[sub_gen]
 
     # Reformat name as specified
     weapon = SPECIAL_MAGIC_WEAPONS[special]["Format"].format(base_item=base_item)
@@ -306,7 +350,10 @@ def main():
     # import simple_gen
     # for weapon in simple_gen.dump_data(**load_table("magic_item_special_weapons_standard.json")):
     # print(special_magic_weapon(special=weapon))
-    print(random_special_magic_weapon())
+    # print(random_special_magic_weapon())
+    # print(special_magic_weapon(special="Hornblade"))
+    for _ in range(0, 10):
+        print(random_magic_weapon())
 
 
 if __name__ == "__main__":

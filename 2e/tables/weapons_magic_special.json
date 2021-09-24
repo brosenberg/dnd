@@ -5,7 +5,35 @@
     },
     "Arrow of Slaying": {
         "Base Type": "Arrow",
-        "Format": "{base_item} of Slaying"
+        "Format": "{base_item} of Slaying",
+        "Gens": {
+            "Details": {
+                "Action": "Choice",
+                "Data": [
+                    "Arachnid",
+                    "Avian",
+                    "Bard",
+                    "Cleric",
+                    "Dragon",
+                    "Druid",
+                    "Elemental",
+                    "Fighter",
+                    "Giant",
+                    "Golem",
+                    "Illusionist",
+                    "Mage",
+                    "Mammal",
+                    "Paladin",
+                    "Ranger",
+                    "Reptile",
+                    "Sea monster",
+                    "Thieve",
+                    "Titan",
+                    "Undead"
+                ],
+                "Format": "({result} slaying)"
+            }
+        }
     },
     "Throwing Axe +2": {
         "Base Items": ["Throwing axe"],

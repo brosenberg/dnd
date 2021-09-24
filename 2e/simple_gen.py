@@ -3,14 +3,19 @@
 import random
 
 from dice import roll
+from utils import plusify
 
 
 def do_action(action, data):
     if action == "Choice":
         return random.choice(data)
-    elif action.startswith("Key_Roll"):
-        key = action.split(" ")[1]
-        return roll(data[key][0], data[key][1], data[key][2])
+    elif action.startswith("Key_"):
+        key_action, key = action.split(" ", 1)
+        key_action = key_action.replace("Key_", "")
+        try:
+            return do_action(key_action, data[key])
+        except KeyError:
+            return do_action(key_action, data["Default"])
     elif action == "Return":
         return data
     elif action == "Roll":
@@ -46,14 +51,3 @@ def gen(**kwargs):
     if kwargs.get("Plusify", False):
         result = plusify(result)
     return str_format.format(result=result, **kwargs)
-
-
-def plusify(number):
-    number = int(number)
-    try:
-        if number > 0:
-            return f"+{number}"
-        elif number < 0:
-            return f"-{number}"
-    except TypeError:
-        pass
