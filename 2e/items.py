@@ -7,6 +7,7 @@ import os
 
 from dice import roll
 from magic_item import MagicItemGen
+from simple_gen import gen
 from utils import do_action
 from utils import load_table
 
@@ -218,74 +219,6 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
-def random_special_magic_weapon():
-    def compute_action(action, **kwargs):
-        action_type = SPECIAL_MAGIC_WEAPONS[special].get(f"{action} Type", None)
-        if action_type:
-            if action_type.startswith("Key_Roll"):
-                action_type = action_type.format(**kwargs)
-            return do_action(action_type, SPECIAL_MAGIC_WEAPONS[special]["Adjustment"])
-        return None
-
-    special = random.choice(list(SPECIAL_MAGIC_WEAPONS))
-
-    # Determine base item, if any
-    base_item = None
-    if not SPECIAL_MAGIC_WEAPONS[special].get("Generic Item", False):
-        try:
-            base_item = random.choice(SPECIAL_MAGIC_WEAPONS[special]["Base Items"])
-        except KeyError:
-            base_item = random.choice(
-                weapons_by_type(SPECIAL_MAGIC_WEAPONS[special]["Base Type"])
-            )
-
-    weapon = base_item
-    adjustment_str = ""
-    adjustment = compute_action("Adjustment", base_item=base_item)
-    charges_str = ""
-    charges_roll = SPECIAL_MAGIC_WEAPONS[special].get("Charges", None)
-    detail_str = ""
-    details = compute_action("Details", base_item=base_item)
-    detail_type = SPECIAL_MAGIC_WEAPONS[special].get("Detail Type", None)
-    quantity_roll = SPECIAL_MAGIC_WEAPONS[special].get("Quantity")
-
-    # Determine adjustment, if any
-    try:
-        if adjustment > 0:
-            adjustment_str = f" +{adjustment}"
-        elif adjustment < 0:
-            adjustment_str = f" -{adjustment}"
-    except TypeError:
-        pass
-
-    # Determine charges, if any
-    if charges_roll:
-        charges_str = (
-            f" ({roll(charges_roll[0], charges_roll[1], charges_roll[2])} charges)"
-        )
-
-    # Determine details, if applicable
-    if details:
-        detail_str = f" ({details})"
-
-    # Reformat name as specified
-    if not SPECIAL_MAGIC_WEAPONS[special].get("Ignore Name", False):
-        if SPECIAL_MAGIC_WEAPONS[special].get("Replace Name", False):
-            weapon = special
-        elif SPECIAL_MAGIC_WEAPONS[special].get("Prepend Name", False):
-            weapon = f"{special} {weapon}"
-        elif special.startswith(","):
-            weapon = f"{weapon}{special}"
-        else:
-            weapon = f"{weapon} {special}"
-    weapon = f"{weapon}{adjustment_str}{charges_str}{detail_str}"
-    if SPECIAL_MAGIC_WEAPONS[special].get("Cursed"):
-        weapon += " (Cursed)"
-    if quantity_roll:
-        weapon += f" x{roll(quantity_roll[0], quantity_roll[1], quantity_roll[2])}"
-    return weapon
-
-
 def random_weapon(
     expanded=False, classes=[], class_groups=[], table=None, weapon_filter=None, level=1
 ):
@@ -312,6 +245,51 @@ def random_weapon(
     return mig.diversify_weapon(random.choice(weapons))
 
 
+def special_magic_weapon(special=None):
+    gen_output_order = ["Adjustment", "Details", "Charges", "Quantity"]
+    if special == None:
+        special = random.choice(list(SPECIAL_MAGIC_WEAPONS))
+
+    # Determine base item, if any
+    base_item = None
+    if not SPECIAL_MAGIC_WEAPONS[special].get("Generic Item", False):
+        try:
+            base_item = random.choice(SPECIAL_MAGIC_WEAPONS[special]["Base Items"])
+        except KeyError:
+            base_item = random.choice(
+                weapons_by_type(SPECIAL_MAGIC_WEAPONS[special]["Base Type"])
+            )
+
+    weapon = base_item
+    sub_gens = SPECIAL_MAGIC_WEAPONS[special].get("Gens", {})
+    gen_results = {}
+    for sub_gen in sub_gens:
+        gen_results[sub_gen] = gen(**sub_gens[sub_gen], base_item=base_item)
+
+    # Reformat name as specified
+    if not SPECIAL_MAGIC_WEAPONS[special].get("Ignore Name", False):
+        if SPECIAL_MAGIC_WEAPONS[special].get("Replace Name", False):
+            weapon = special
+        elif SPECIAL_MAGIC_WEAPONS[special].get("Prepend Name", False):
+            weapon = f"{special} {weapon}"
+        elif special.startswith(","):
+            weapon = f"{weapon}{special}"
+        else:
+            weapon = f"{weapon} {special}"
+    weapon = " ".join(
+        [weapon]
+        + sorted(
+            [gen_results[x] for x in gen_results],
+            key=lambda y: gen_output_order.index(y)
+            if y in gen_output_order
+            else len(gen_output_order) + 1,
+        )
+    )
+    if SPECIAL_MAGIC_WEAPONS[special].get("Cursed"):
+        weapon += " (Cursed)"
+    return weapon
+
+
 def weapons_by_type(weapon_type):
     return [x for x in WEAPONS if WEAPONS[x]["Base Type"] == weapon_type]
 
@@ -328,7 +306,7 @@ def main():
     # print(base_weapon("Bastard sword +5"))
     # print(random_item_count("Dart"))
     for _ in range(0, 10):
-        print(random_special_magic_weapon())
+        print(special_magic_weapon())
 
 
 if __name__ == "__main__":
