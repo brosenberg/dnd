@@ -2,22 +2,26 @@
     "Adze": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Axe"
+        "Base Type": "Axe",
+        "Source": "expanded"
     },
     "Ankus": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Staff"
+        "Base Type": "Staff",
+        "Source": "expanded"
     },
     "Awl pike": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Bagh nakh": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Hand"
+        "Base Type": "Hand",
+        "Source": "expanded"
     },
     "Barbed dart": {
         "Hands": 1,
@@ -27,42 +31,50 @@
             4,
             0
         ],
-        "Base Type": "Blow gun ammo"
+        "Base Type": "Blow gun ammo",
+        "Source": "standard"
     },
     "Bardiche": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Baselard": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Bastard sword": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Battle axe": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Axe"
+        "Base Type": "Axe",
+        "Source": "standard"
     },
     "Bec de corbin": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Bill": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Bill-guisarme": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Blow gun": {
         "Hands": 2,
@@ -71,12 +83,14 @@
             "Barbed dart",
             "Needle"
         ],
-        "Base Type": "Blow gun"
+        "Base Type": "Blow gun",
+        "Source": "standard"
     },
     "Bo stick": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Staff"
+        "Base Type": "Staff",
+        "Source": "expanded"
     },
     "Bolas": {
         "Hands": 1,
@@ -86,17 +100,20 @@
             1,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "expanded"
     },
     "Bone dagger": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Bone knife": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Boomerang": {
         "Hands": 1,
@@ -106,22 +123,26 @@
             1,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "expanded"
     },
     "Brandistock": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Staff"
+        "Base Type": "Staff",
+        "Source": "expanded"
     },
     "Broad sword": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Cestus": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Hand"
+        "Base Type": "Hand",
+        "Source": "expanded"
     },
     "Chakram": {
         "Hands": 1,
@@ -131,12 +152,14 @@
             1,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "expanded"
     },
     "Chijikiri": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Chain"
+        "Base Type": "Chain",
+        "Source": "expanded"
     },
     "Cho-ku-no": {
         "Hands": 2,
@@ -144,22 +167,26 @@
         "Ammo": [
             "Light bolt"
         ],
-        "Base Type": "Crossbow"
+        "Base Type": "Crossbow",
+        "Source": "expanded"
     },
     "Cinquedea": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Claymore": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Club": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Club"
+        "Base Type": "Club",
+        "Source": "standard"
     },
     "Composite long bow": {
         "Hands": 2,
@@ -170,7 +197,8 @@
             "Sheaf arrow",
             "Stone arrow"
         ],
-        "Base Type": "Bow"
+        "Base Type": "Bow",
+        "Source": "standard"
     },
     "Composite short bow": {
         "Hands": 2,
@@ -179,17 +207,20 @@
             "Flight arrow",
             "Stone arrow"
         ],
-        "Base Type": "Bow"
+        "Base Type": "Bow",
+        "Source": "standard"
     },
     "Cutlass": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Dagger": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "standard"
     },
     "Daikyu": {
         "Hands": 2,
@@ -197,7 +228,8 @@
         "Ammo": [
             "Daikyu arrow"
         ],
-        "Base Type": "Bow"
+        "Base Type": "Bow",
+        "Source": "expanded"
     },
     "Daikyu arrow": {
         "Hands": 1,
@@ -207,7 +239,8 @@
             6,
             0
         ],
-        "Base Type": "Arrow"
+        "Base Type": "Arrow",
+        "Source": "expanded"
     },
     "Dart": {
         "Hands": 1,
@@ -217,37 +250,44 @@
             4,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "standard"
     },
     "Dirk": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "standard"
     },
     "Drusus": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Estoc": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Falchion": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Fauchard": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Fauchard-fork": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Flight arrow": {
         "Hands": 1,
@@ -257,67 +297,80 @@
             6,
             0
         ],
-        "Base Type": "Arrow"
+        "Base Type": "Arrow",
+        "Source": "standard"
     },
     "Footman's flail": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Flail"
+        "Base Type": "Flail",
+        "Source": "standard"
     },
     "Footman's mace": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Mace"
+        "Base Type": "Mace",
+        "Source": "standard"
     },
     "Footman's pick": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Pick"
+        "Base Type": "Pick",
+        "Source": "standard"
     },
     "Gladius": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Glaive": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Glaive-guisarme": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Great club": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Club"
+        "Base Type": "Club",
+        "Source": "expanded"
     },
     "Great scimitar": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Guisarme": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Guisarme-voulge": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Halberd": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Hand axe": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Axe"
+        "Base Type": "Axe",
+        "Source": "standard"
     },
     "Hand crossbow": {
         "Hands": 1,
@@ -325,7 +378,8 @@
         "Ammo": [
             "Hand quarrel"
         ],
-        "Base Type": "Crossbow"
+        "Base Type": "Crossbow",
+        "Source": "standard"
     },
     "Hand quarrel": {
         "Hands": 1,
@@ -335,17 +389,20 @@
             8,
             0
         ],
-        "Base Type": "Bolt"
+        "Base Type": "Bolt",
+        "Source": "standard"
     },
     "Harpoon": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Spear"
+        "Base Type": "Spear",
+        "Source": "standard"
     },
     "Heavy lance": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Lance"
+        "Base Type": "Lance",
+        "Source": "standard"
     },
     "Heavy bolt": {
         "Hands": 1,
@@ -355,7 +412,8 @@
             8,
             0
         ],
-        "Base Type": "Bolt"
+        "Base Type": "Bolt",
+        "Source": "standard"
     },
     "Heavy crossbow": {
         "Hands": 2,
@@ -363,32 +421,38 @@
         "Ammo": [
             "Heavy bolt"
         ],
-        "Base Type": "Crossbow"
+        "Base Type": "Crossbow",
+        "Source": "standard"
     },
     "Hook fauchard": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Horseman's flail": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Flail"
+        "Base Type": "Flail",
+        "Source": "standard"
     },
     "Horseman's mace": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Mace"
+        "Base Type": "Mace",
+        "Source": "standard"
     },
     "Horseman's pick": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Pick"
+        "Base Type": "Pick",
+        "Source": "standard"
     },
     "Jambiya": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Javelin": {
         "Hands": 1,
@@ -398,72 +462,86 @@
             2,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "standard"
     },
     "Jitte": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Mace"
+        "Base Type": "Mace",
+        "Source": "expanded"
     },
     "Jousting lance": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Lance"
+        "Base Type": "Lance",
+        "Source": "standard"
     },
     "Kama": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sickle"
+        "Base Type": "Sickle",
+        "Source": "expanded"
     },
     "Katana": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Katar": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Hand"
+        "Base Type": "Hand",
+        "Source": "expanded"
     },
     "Kau sin ke": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Flail"
+        "Base Type": "Flail",
+        "Source": "expanded"
     },
     "Kawanaga": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Chain"
+        "Base Type": "Chain",
+        "Source": "expanded"
     },
     "Khanjar": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Khopseh": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Knife": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "standard"
     },
     "Kusari-gama": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Chain"
+        "Base Type": "Chain",
+        "Source": "expanded"
     },
     "Lajatang": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "expanded"
     },
     "Light lance": {
         "Hands": 3,
         "Category": "Melee",
-        "Base Type": "Lance"
+        "Base Type": "Lance",
+        "Source": "standard"
     },
     "Light bolt": {
         "Hands": 1,
@@ -473,7 +551,8 @@
             8,
             0
         ],
-        "Base Type": "Bolt"
+        "Base Type": "Bolt",
+        "Source": "standard"
     },
     "Light crossbow": {
         "Hands": 2,
@@ -481,7 +560,8 @@
         "Ammo": [
             "Light bolt"
         ],
-        "Base Type": "Crossbow"
+        "Base Type": "Crossbow",
+        "Source": "standard"
     },
     "Long bow": {
         "Hands": 2,
@@ -492,67 +572,80 @@
             "Sheaf arrow",
             "Stone arrow"
         ],
-        "Base Type": "Bow"
+        "Base Type": "Bow",
+        "Source": "standard"
     },
     "Long spear": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Spear"
+        "Base Type": "Spear",
+        "Source": "expanded"
     },
     "Long sword": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Lucern hammer": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Mace-axe": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Axe"
+        "Base Type": "Axe",
+        "Source": "expanded"
     },
     "Machete": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Main-gauche": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Maul": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Hammer"
+        "Base Type": "Hammer",
+        "Source": "expanded"
     },
     "Medium lance": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Lance"
+        "Base Type": "Lance",
+        "Source": "standard"
     },
     "Military fork": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Morning star": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Mace"
+        "Base Type": "Mace",
+        "Source": "standard"
     },
     "Nagimaki": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "expanded"
     },
     "Naginata": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "expanded"
     },
     "Needle": {
         "Hands": 1,
@@ -562,32 +655,38 @@
             4,
             0
         ],
-        "Base Type": "Blow gun ammo"
+        "Base Type": "Blow gun ammo",
+        "Source": "standard"
     },
     "Ninja-to": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "No-dachi": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Nunchaku": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Flail"
+        "Base Type": "Flail",
+        "Source": "expanded"
     },
     "Partisan": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Pike": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "expanded"
     },
     "Pile arrow": {
         "Hands": 1,
@@ -597,7 +696,8 @@
             6,
             0
         ],
-        "Base Type": "Arrow"
+        "Base Type": "Arrow",
+        "Source": "expanded"
     },
     "Pilum": {
         "Hands": 1,
@@ -607,57 +707,68 @@
             2,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "expanded"
     },
     "Quarterstaff": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Staff"
+        "Base Type": "Staff",
+        "Source": "standard"
     },
     "Ranseur": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Rapier": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Sabre": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Sai": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Sang kauw": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Spear"
+        "Base Type": "Spear",
+        "Source": "expanded"
     },
     "Sapara": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Scimitar": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Scourge": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Whip"
+        "Base Type": "Whip",
+        "Source": "standard"
     },
     "Scythe": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Sickle"
+        "Base Type": "Sickle",
+        "Source": "expanded"
     },
     "Sheaf arrow": {
         "Hands": 1,
@@ -667,7 +778,8 @@
             6,
             0
         ],
-        "Base Type": "Arrow"
+        "Base Type": "Arrow",
+        "Source": "standard"
     },
     "Short bow": {
         "Hands": 2,
@@ -676,12 +788,14 @@
             "Flight arrow",
             "Stone arrow"
         ],
-        "Base Type": "Bow"
+        "Base Type": "Bow",
+        "Source": "standard"
     },
     "Short sword": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Shuriken": {
         "Hands": 1,
@@ -691,12 +805,14 @@
             4,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "expanded"
     },
     "Sickle": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sickle"
+        "Base Type": "Sickle",
+        "Source": "standard"
     },
     "Sling": {
         "Hands": 1,
@@ -705,7 +821,8 @@
             "Sling bullet",
             "Sling stone"
         ],
-        "Base Type": "Sling"
+        "Base Type": "Sling",
+        "Source": "standard"
     },
     "Sling bullet": {
         "Hands": 1,
@@ -715,7 +832,8 @@
             4,
             0
         ],
-        "Base Type": "Sling ammo"
+        "Base Type": "Sling ammo",
+        "Source": "standard"
     },
     "Sling stone": {
         "Hands": 1,
@@ -725,22 +843,26 @@
             4,
             0
         ],
-        "Base Type": "Sling ammo"
+        "Base Type": "Sling ammo",
+        "Source": "standard"
     },
     "Spatha": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Spear": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Spear"
+        "Base Type": "Spear",
+        "Source": "standard"
     },
     "Spetum": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Staff sling": {
         "Hands": 2,
@@ -749,12 +871,14 @@
             "Sling bullet",
             "Sling stone"
         ],
-        "Base Type": "Sling"
+        "Base Type": "Sling",
+        "Source": "standard"
     },
     "Stiletto": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Stone arrow": {
         "Hands": 1,
@@ -764,42 +888,50 @@
             6,
             0
         ],
-        "Base Type": "Arrow"
+        "Base Type": "Arrow",
+        "Source": "expanded"
     },
     "Stone dagger": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Stone knife": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Stone spear": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Spear"
+        "Base Type": "Spear",
+        "Source": "expanded"
     },
     "Sword-axe": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Tanto": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Dagger"
+        "Base Type": "Dagger",
+        "Source": "expanded"
     },
     "Tetsubo": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "expanded"
     },
     "Three-piece rod": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Chain"
+        "Base Type": "Chain",
+        "Source": "expanded"
     },
     "Throwing axe": {
         "Hands": 1,
@@ -809,7 +941,8 @@
             3,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "standard"
     },
     "Throwing knife": {
         "Hands": 1,
@@ -819,51 +952,61 @@
             3,
             0
         ],
-        "Base Type": "Thrown"
+        "Base Type": "Thrown",
+        "Source": "expanded"
     },
     "Trident": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Spear"
+        "Base Type": "Spear",
+        "Source": "standard"
     },
     "Tulwar": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "Two-handed axe": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Axe"
+        "Base Type": "Axe",
+        "Source": "expanded"
     },
     "Two-handed sword": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "standard"
     },
     "Voulge": {
         "Hands": 2,
         "Category": "Melee",
-        "Base Type": "Pole arm"
+        "Base Type": "Pole arm",
+        "Source": "standard"
     },
     "Wakizashi": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Sword"
+        "Base Type": "Sword",
+        "Source": "expanded"
     },
     "War club": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Club"
+        "Base Type": "Club",
+        "Source": "expanded"
     },
     "Warhammer": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Hammer"
+        "Base Type": "Hammer",
+        "Source": "standard"
     },
     "Whip": {
         "Hands": 1,
         "Category": "Melee",
-        "Base Type": "Whip"
+        "Base Type": "Whip",
+        "Source": "standard"
     }
 }

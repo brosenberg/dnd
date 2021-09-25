@@ -177,7 +177,7 @@ def intelligent_weapon(base_weapon, table="standard"):
                     else:
                         weapon_powers["Extraordinary"].append(power)
             else:
-                weapon_powers["Extraordinary"].append(power)
+                weapon_powers["Extraordinary"].append(powers)
 
         handle_powers(gen(**tables["Extraordinary"]))
 
@@ -351,6 +351,7 @@ def random_magic_item(category, table="standard", expanded=False):
         if category == "Scrolls" and item == "Spell Scroll":
             return str(generate_scroll())
         elif category == "Rings" and item == "Ring of Spell Storing":
+
             def spell_storing_level(caster_class):
                 if caster_class == "Wizard":
                     spell_level = roll(1, 8, 0)
@@ -395,7 +396,9 @@ def random_magic_weapon(table="standard", base_item=None):
 
     # Assume this is a weapon category first
     try:
-        base_item = random.choice(weapons_by_type(base_item))
+        base_item = random.choice(
+            weapons_by_filter({"Base Type": base_item, "Source": table})
+        )
     except IndexError:
         pass
 
@@ -408,12 +411,20 @@ def random_magic_weapon(table="standard", base_item=None):
     if quantity:
         weapon = f"{weapon} x{quantity}"
 
+    # Check to see if weapon is intelligent
+    if WEAPONS[base_item]["Category"] == "Melee":
+        intelligent_chance = 5
+        if WEAPONS[base_item]["Base Type"] == "Sword":
+            intelligent_chance = 25
+        if roll(1, 100, 0) <= intelligent_chance:
+            weapon = intelligent_weapon(weapon, table=table)
+
     return weapon
 
 
 def random_special_magic_weapon(table="standard"):
     return special_magic_weapon(
-        special=gen_table(f"magic_item_special_weapons_{table}")
+        special=gen_table(f"magic_item_special_weapons_{table}"), table="standard"
     )
 
 
@@ -443,7 +454,7 @@ def random_weapon(
     return mig.diversify_weapon(random.choice(weapons))
 
 
-def special_magic_weapon(special=None, force_results={}):
+def special_magic_weapon(special=None, force_results={}, table="standard"):
     gen_output_order = ["Adjustment", "Details", "Charges", "Quantity"]
     if special == None:
         special = random.choice(list(SPECIAL_MAGIC_WEAPONS))
@@ -455,7 +466,7 @@ def special_magic_weapon(special=None, force_results={}):
             base_item = random.choice(SPECIAL_MAGIC_WEAPONS[special]["Base Items"])
         except KeyError:
             base_item = random.choice(
-                weapons_by_type(SPECIAL_MAGIC_WEAPONS[special]["Base Type"])
+                weapons_by_filter({"Base Type": SPECIAL_MAGIC_WEAPONS[special]["Base Type"], "Source": table})
             )
 
     weapon = base_item
@@ -484,6 +495,21 @@ def special_magic_weapon(special=None, force_results={}):
     return weapon
 
 
+def weapons_by_filter(filter_dict):
+    results = []
+    for weapon in WEAPONS:
+        match = True
+        for key in filter_dict.keys():
+            if key == "Source" and filter_dict[key] == "expanded":
+               if WEAPONS[weapon][key] not in ['standard', 'expanded']:
+                   match = False
+            elif WEAPONS[weapon][key] != filter_dict[key]:
+                match = False
+        if match:
+            results.append(weapon)
+    return results
+
+
 def weapons_by_type(weapon_type):
     return [x for x in WEAPONS if WEAPONS[x]["Base Type"] == weapon_type]
 
@@ -499,8 +525,6 @@ def main():
     # print(appropriate_weapons_by_ammo("Flight arrow"))
     # print(base_weapon("Bastard sword +5"))
     # print(random_item_count("Dart"))
-    # for _ in range(0, 10):
-    #    print(special_magic_weapon())
     # import simple_gen
     # for weapon in simple_gen.dump_data(**load_table("magic_item_special_weapons_standard.json")):
     # print(special_magic_weapon(special=weapon))
@@ -509,11 +533,16 @@ def main():
     # for _ in range(0, 10):
     # print(random_magic_weapon())
 
-    import simple_gen
-    for category in simple_gen.dump_data(**load_table("magic_item_categories_standard.json")):
-        print(random_magic_item(category))
-    print(intelligent_weapon("Short sword +3"))
-    print(intelligent_weapon("Short sword +3", table="expanded"))
+    #import simple_gen
+
+    #for category in simple_gen.dump_data(
+    #    **load_table("magic_item_categories_standard.json")
+    #):
+    #    print(random_magic_item(category))
+    #print(intelligent_weapon("Short sword +3"))
+    #print(intelligent_weapon("Short sword +3", table="expanded"))
+     for _ in range(0, 10):
+        print(random_magic_weapon())
 
 
 if __name__ == "__main__":
