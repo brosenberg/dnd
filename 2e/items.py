@@ -17,7 +17,6 @@ from utils import plusify
 
 AMMOS = load_table("weapons_ammos.json")
 ARMOR_STATS = load_table("armor_stats.json")
-MAGIC_ITEMS = load_table("magic_items_standard.json")
 SHIELDS = load_table("shields.json")
 SPECIAL_MAGIC_WEAPONS = load_table("weapons_magic_special.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
@@ -191,17 +190,25 @@ def intelligent_weapon(base_weapon, table="standard"):
     ego_bonus = 0
     if weapon_powers["Special Purpose"] is not None:
         ego_bonus += 5
-    if intelligence > 16:  # Telepathic ability
-        ego_bonus += 2
-    if intelligence > 15:  # Read magic ability
-        ego_bonus += 2
-    if intelligence > 14:  # Read language ability
-        ego_bonus += 1
+    if table == "standard":
+        if intelligence > 16:  # Telepathic and Read magic ability
+            ego_bonus += 4
+        if intelligence > 15:  # Read language ability
+            ego_bonus += 1
+        ego_bonus += len(weapon_powers["Primary"])
+        ego_bonus += len(weapon_powers["Languages"])
+    elif table == "expanded":
+        if intelligence > 16:  # Telepathic ability
+            ego_bonus += 2
+        if intelligence > 16:  # Read magic ability
+            ego_bonus += 2
+        if intelligence > 15:  # Read language ability
+            ego_bonus += 1
+        ego_bonus += 2 * len(weapon_powers["Primary"])
+        ego_bonus += int((len(weapon_powers["Languages"]) / 2) + 0.5)
     weapon_powers["Ego"] = (
         get_adjustment(base_weapon)[1]
-        + 2 * len(weapon_powers["Primary"])
         + 2 * len(weapon_powers["Extraordinary"])
-        + int((len(weapon_powers["Languages"]) / 2) + 0.5)
         + ego_bonus
     )
 
@@ -333,13 +340,14 @@ def random_shield():
 
 
 def random_magic_item(category, table="standard", expanded=False):
+    magic_items = load_table(f"magic_items_{table}")
     if category == "Weapons":
         return random_magic_weapon(table=table)
     elif category == "Armor and Shields":
         # TODO: Implement armor
         return "Rubicite Breastplate"
     else:
-        item = gen(**MAGIC_ITEMS[category])
+        item = gen(**magic_items[category])
         if category == "Scrolls" and item == "Spell Scroll":
             return str(generate_scroll())
         elif category == "Rings" and item == "Ring of Spell Storing":
@@ -500,11 +508,12 @@ def main():
     # print(special_magic_weapon(special="Hornblade"))
     # for _ in range(0, 10):
     # print(random_magic_weapon())
-    #print(intelligent_weapon("Short sword +3", table="expanded"))
 
     import simple_gen
     for category in simple_gen.dump_data(**load_table("magic_item_categories_standard.json")):
         print(random_magic_item(category))
+    print(intelligent_weapon("Short sword +3"))
+    print(intelligent_weapon("Short sword +3", table="expanded"))
 
 
 if __name__ == "__main__":

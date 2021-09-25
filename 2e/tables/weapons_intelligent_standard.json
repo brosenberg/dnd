@@ -1,0 +1,133 @@
+{
+    "Intelligence": {
+        "Action": "Table",
+        "Data": {
+            "34": [12, 1, 0, "Semiempathy", null],
+            "59": [13, 2, 0, "Empathy", null],
+            "79": [14, 2, 0, "Speech", null],
+            "91": [15, 3, 0, "Speech", null],
+            "97": [16, 3, 0, "Speech", "Read non-magical languages and maps"], 
+            "100": [17, 3, 1, "Speech, telepathy", "Read magical writings, languages, and maps"]
+        }
+    },
+    "Alignment": {
+        "Action": "Table",
+        "Data": {
+            "5": "Chaotic Good",
+            "15": "Chaotic Neutral",
+            "20": "Chaotic Evil",
+            "25": "Neutral Evil",
+            "30": "Lawful Evil",
+            "55": "Lawful Good",
+            "60": "Lawful Neutral",
+            "80": "True Neutral",
+            "100": "Neutral Good"
+        }
+    },
+    "Primary": {
+        "Action": "Table",
+        "Data": {
+            "11": "Detect elevator/shifting rooms/walls, 10' radius",
+            "22": "Detect sloping passages 10' radius",
+            "33": "Find traps, 10' radius",
+            "44": "Detect evil/good 10' radius",
+            "55": "Detect precious metals, kind and amount, 20' radius",
+            "66": "Detect gems, number and kind, 5' radius",
+            "77": "Detect magic, 10' radius",
+            "82": "Detect secret doors, 5' radius",
+            "87": "Detect invisibilty, 10' radius",
+            "92": "Locate object, 120' radius",
+            "98": {"Action": "Table", "Data": {
+                "11": "Detect elevator/shifting rooms/walls, 10' radius",
+                "22": "Detect sloping passages 10' radius",
+                "33": "Find traps, 10' radius",
+                "44": "Detect evil/good 10' radius",
+                "55": "Detect precious metals, kind and amount, 20' radius",
+                "66": "Detect gems, number and kind, 5' radius",
+                "77": "Detect magic, 10' radius",
+                "82": "Detect secret doors, 5' radius",
+                "87": "Detect invisibilty, 10' radius",
+                "92": "Locate object, 120' radius",
+                "94": "Extraordinary Power"
+            }},
+            "100": "Extraordinary Power"
+        }
+    },
+    "Extraordinary": {
+        "Action": "Table",
+        "Data": {
+            "7": "Charm person on contact, 3/day",
+            "15": "Clairaudience, 90' range, 3/day, 1 round duration",
+            "22": "Clairvoyance, 90' range, 3/day, 1 round duration",
+            "28": "Determine direction and depth, 2/day",
+            "34": "ESP, 90' range, 3/day, 1 round duration",
+            "41": "Flying, 120'/turn, 1 hour/day",
+            "47": "Heal, 1/day",
+            "54": "Illusion, 360' range, 2/day, as the wand",
+            "61": "Levitation, 3/day, 1 turn duration, CL 6",
+            "67": "Strength, self only, 1/day",
+            "75": "Telekinses, 250 lbs., 2/day, 1 round duration",
+            "81": "Telepathy, 180' range, 2/day",
+            "88": "Teleportation, 600 lbs., 1/day, casting time 2",
+            "94": "X-ray vision, 120' range, 2/day, 1 turn duration",
+            "97": {
+                "Action": "Table Twice",
+                "Data": {
+                    "7": "Charm person on contact, 3/day",
+                    "15": "Clairaudience, 90' range, 3/day, 1 round duration",
+                    "22": "Clairvoyance, 90' range, 3/day, 1 round duration",
+                    "28": "Determine direction and depth, 2/day",
+                    "34": "ESP, 90' range, 3/day, 1 round duration",
+                    "41": "Flying, 120'/turn, 1 hour/day",
+                    "47": "Heal, 1/day",
+                    "54": "Illusion, 360' range, 2/day, as the wand",
+                    "61": "Levitation, 3/day, 1 turn duration, CL 6",
+                    "67": "Strength, self only, 1/day",
+                    "75": "Telekinses, 250 lbs., 2/day, 1 round duration",
+                    "81": "Telepathy, 180' range, 2/day",
+                    "88": "Teleportation, 600 lbs., 1/day, casting time 2",
+                    "94": "X-ray vision, 120' range, 2/day, 1 turn duration",
+                    "95": "Special Purpose"
+                }
+            },
+            "98": "Special Purpose"
+        }
+    },
+    "Special Purpose": {
+        "Action": "Table",
+        "Data": {
+            "10": "Slay opposite alignment",
+            "20": "Slay priests",
+            "30": "Slay fighers",
+            "40": "Slay wizards",
+            "50": "Slay thieves",
+            "55": "Slay bards",
+            "65": "Overthrow law and/or chaos",
+            "75": "Slay good and/or evil",
+            "95": "Slay non-human monsters"
+        }
+    },
+    "Special Purpose Powers": {
+        "Action": "Table",
+        "Data": {
+            "10": "Cause blindness, 2d6 rounds",
+            "20": "Confusion, 2d6 rounds",
+            "25": "Disintegration",
+            "55": "Cause fear, 1d4 rounds",
+            "65": "Insanity, 1d4 rounds",
+            "80": "Paralyzation, 1d4 rounds",
+            "100": "Wielder gains +2 to all saving throws, -1 to each die of damage sustained"
+        }
+    },
+    "Languages": {
+        "Action": "Table",
+        "Data": {
+            "40": 1,
+            "70": 2,
+            "85": 3,
+            "95": 4,
+            "99": 5,
+            "100": 6
+        }
+    }
+}
