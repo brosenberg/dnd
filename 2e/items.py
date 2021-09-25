@@ -421,12 +421,12 @@ def random_magic_item(category, table="standard", expanded=False):
     return item
 
 
-def random_magic_weapon(table="standard", base_item=None):
+def random_magic_weapon(table="standard", base_item=None, load_table=True, weapon_filter={}):
     if not base_item:
-        if table:
+        if load_table:
             base_item = gen_table(f"magic_item_weapons_{table}")
         else:
-            base_item = random_weapon()
+            base_item = random.choice(table_by_filter(WEAPONS, weapon_filter))
 
     if base_item == "Special":
         return random_special_magic_weapon(table=table)
@@ -616,6 +616,7 @@ def main():
     # print(intelligent_weapon("Short sword +3", table="expanded"))
 
     print(special_magic_armor("Armor of Blending"))
+    print(random_magic_weapon(load_table=False))
 
 
 if __name__ == "__main__":
