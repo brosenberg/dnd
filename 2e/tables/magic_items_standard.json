@@ -787,6 +787,7 @@
                     }
                 },
                 "Join": ", ",
+                "Sort": true,
                 "Format": "Robe of Useful Items (Items: {result})"
             },
 
@@ -828,7 +829,7 @@
                     "Wyvern"
                 ],
                 "Join": ", ",
-                "Format": "Boots of Varied Tracks ({result} tracks)"
+                "Format": "Boots of Varied Tracks (Tracks: {result})"
             },
             "8": {
                 "Action": "Choice",

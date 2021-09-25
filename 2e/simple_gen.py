@@ -40,9 +40,10 @@ def do_action(action, data):
         results = []
         for _ in range(0, count):
             results.append(roll_table(data))
-        return sorted(results)
+        return results
     elif action == "Table Twice":
         return [roll_table(data), roll_table(data)]
+
 
 def dump_data(**kwargs):
     dump = []
@@ -66,10 +67,12 @@ def gen(**kwargs):
         result = gen(**result)
     if kwargs.get("Plusify", False):
         result = plusify(result)
+    if kwargs.get("Sort", False):
+        result = sorted(result)
     if math:
         for operator in math.split(" "):
             op = operator[0]
-            number = int(operator[1:]
+            number = int(operator[1:])
             if op == "+":
                 result += number
             elif op == "-":

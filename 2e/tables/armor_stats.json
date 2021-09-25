@@ -18,7 +18,7 @@
     "Leather": {"AC": 8},
     "Leather Scale": {"AC": 7},
     "O-Yoroi": {"AC": 2},
-    "Padded": {"AC": 8},
+    "Padded Armor": {"AC": 8},
     "Plate Mail": {"AC": 3},
     "Plate Mail Of Etherealness": {"AC": -2},
     "Plate Mail Of Fear": {"AC": 2},
