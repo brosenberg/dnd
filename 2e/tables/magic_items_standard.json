@@ -538,14 +538,27 @@
         "Data": {
             "3": "Boccob's Blessed Book",
             "4": "Book of Exalted Deeds",
-            "5": "Book of Infinite Spells",
+            "5": {
+                "Action": "Roll",
+                "Data": [1, 8, 22],
+                "Format": "Book of Infinite Spells ({result pages)"
+            },
             "6": "Book of Vile Darkness",
             "7": "Libram of Gainful Conjuration",
             "8": "Libram of Ineffable Damnation",
             "9": "Libram of Silver Magic",
             "10": "Manual of Bodily Health",
             "11": "Manual of Gainful Exercise",
-            "12": "Manual of Golems",
+            "12": {
+                "Action": "Table",
+                "Data": {
+                    "5": "Clay",
+                    "17": "Flesh",
+                    "18": "Iron",
+                    "20": "Stone"
+                },
+                "Format": "Manual of {result} Golems"
+            },
             "13": "Manual of Puissant Skill at Arms",
             "14": "Manual of Quickness in Action",
             "15": "Manual of Stealthy Pilfering",
@@ -580,27 +593,126 @@
             "10": "Gem of Seeing",
             "11": "Jewel of Attacks",
             "12": "Jewel of Flawlessness",
-            "13": "Medallion of ESP",
+            "13": {
+                "Action": "Table",
+                "Data": {
+                    "15": "30' range",
+                    "18": "30' range with empathy",
+                    "19": "60' range",
+                    "20": "90' range"
+                },
+                "Format": "Medallion of ESP ({result})"
+            },
             "14": "Medallion of Thought Projection",
             "15": "Necklace of Adaption",
-            "17": "Necklace of Missiles",
-            "18": "Necklace of Prayer Beads",
+            "17": {
+                "Action": "Table",
+                "Data": {
+                    "4": "One 5-dice, Two 3-dice",
+                    "8": "One 6-dice, Two 4-dice, Two 2-dice",
+                    "12": "One 7-dice, Two 5-dice, Four 3-dice",
+                    "16": "One 8-dice, Two 6-dice, Two 4-dice, Four 2-dice",
+                    "18": "One 9-dice, Two 7-dice, Two 5-dice, Two 3-dice",
+                    "19": "One 10-dice, Two 8-dice, Two 6-dice, Four 4-dice",
+                    "20": "One 11-dice, Two 9-dice, Two 7-dice, Two 5-dice, Two 3-dice"
+                },
+                "Format": "Necklace of Missiles ({result})"
+            },
+            "18": {
+                "Action": "Table_N_Roll 1 4 2",
+                "Data": {
+                    "5": "Bead of atonement",
+                    "10": "Bead of blessing",
+                    "15": "Bead of curing",
+                    "17": "Bead of karma",
+                    "18": "Bead of summons",
+                    "20": "Bead of wind walking"
+                },
+                "Join": ", ",
+                "Format": "Necklace of Prayer Beads (Beads: {result})"
+            },
             "19": "Necklace of Strangulation",
-            "20": "Pearl of Power",
+            "20": {
+                "Action": "Table",
+                "Data": {
+                    "25": "first",
+                    "45": "second",
+                    "60": "third",
+                    "75": "fourth",
+                    "85": "fifth",
+                    "92": "six",
+                    "96": "seventh",
+                    "98": "eigth",
+                    "99": "ninth",
+                    "100": {
+                        "Action": "Choice Twice",
+                        "Data": [
+                            "first",
+                            "second",
+                            "third",
+                            "fourth",
+                            "fifth",
+                            "six"
+                        ],
+                        "Join": ", "
+                    }
+                },
+                "Format": "Pearl of Power ({result})"
+            },
             "21": "Pearl of the Sirines",
             "22": "Pearl of Wisdom",
             "23": "Periapt of Foul Rotting",
             "24": "Periapt of Health",
-            "25": "Periapt of Proof Against Poison",
+            "25": {
+                "Action": "Table",
+                "Data": {
+                    "8": "+1",
+                    "14": "+2",
+                    "18": "+3",
+                    "20": "+4"
+                },
+                "Format": "Periapt of Proof Against Poison {result}"
+            },
             "26": "Periapt of Wound Closure",
             "27": "Phylactery of Faithfulness",
-            "28": "Phylactery of Long Years",
+            "28": {
+                "Action": "Table",
+                "Data": {
+                    "19": "Phylactery of Long Years",
+                    "20": "Phylactery of Long Years (Cursed)"
+                }
+            },
             "29": "Phylactery of Monstrous Attention",
             "30": "Scarab of Death",
-            "31": "Scarab of Enraging Enemies",
-            "32": "Scarab of Insanity",
-            "33": "Scarab of Protection",
-            "34": "Scarab Versus Golems",
+            "31": {
+                "Action": "Roll",
+                "Data": [1, 6, 18],
+                "Format": "Scarab of Enraging Enemies ({result} charges)"
+            },
+            "32": {
+                "Action": "Roll",
+                "Data": [1, 8, 8],
+                "Format": "Scarab of Insanity ({result} charges)"
+            },
+            "33": {
+                "Action": "Table",
+                "Data": {
+                    "19": "Scarab of Protection",
+                    "20": "Scarab of Protection (Cursed)"
+                }
+            },
+            "34": {
+                "Action": "Table",
+                "Data": {
+                    "30": "Flesh",
+                    "55": "Clay",
+                    "75": "Stone",
+                    "85": "Iron",
+                    "95": "Flesh, Clay, and Wood",
+                    "100": "All"
+                },
+                "Format": "Scarab Versus {result} Golems"
+            },
             "35": "Talisman of Pure Good",
             "36": "Talisman of the Sphere",
             "37": "Talisman of Ultimate Evil",
@@ -614,16 +726,70 @@
             "2": "Cloak of Displacement",
             "4": "Cloak of Elvenkind",
             "5": "Cloak of Poisonousness",
-            "8": "Cloak of Protection",
+            "8": {
+                "Action": "Table",
+                "Data": {
+                    "35": "+1",
+                    "65": "+2",
+                    "85": "+3",
+                    "95": "+4",
+                    "100": "+5"
+                },
+                "Format": "Cloak of Protection {result}"
+            },
             "9": "Cloak of the Bat",
             "10": "Cloak of the Manta Ray",
-            "11": "Robe of the Archmagi",
+            "11": {
+                "Action": "Table",
+                "Data": {
+                    "45": "Good",
+                    "75": "Neutral",
+                    "100": "Evil"
+                },
+                "Format": "Robe of the {result} Archmagi"
+            },
             "12": "Robe of Blending",
             "13": "Robe of Eyes",
             "14": "Robe of Powerlessness",
             "15": "Robe of Scintillating Colors",
             "16": "Robe of Stars",
-            "18": "Robe of Useful Items",
+            "18": {
+                "Action": "Table_N_Roll 4 4 0",
+                "Data": {
+                    "8": "Bag of 100 gold pieces",
+                    "15": "Silver coffer",
+                    "22": "Iron Door",
+                    "30": "10 100gp gems",
+                    "44": "24' Wooden Ladder",
+                    "51": "Mule with saddle bags",
+                    "59": "Open pit",
+                    "68": "Potion of extra healing",
+                    "75": "12' Rowboat",
+                    "83": "Scroll",
+                    "90": "Pair of war dogs",
+                    "96": "Window",
+                    "100": {
+                        "Action": "Table Twice",
+                        "Data": {
+                            "8": "Bag of 100 gold pieces",
+                            "15": "Silver coffer",
+                            "22": "Iron Door",
+                            "30": "10 100gp gems",
+                            "44": "24' Wooden Ladder",
+                            "51": "Mule with saddle bags",
+                            "59": "Open pit",
+                            "68": "Potion of extra healing",
+                            "75": "12' Rowboat",
+                            "83": "Scroll",
+                            "90": "Pair of war dogs",
+                            "96": "Window"
+                        }
+                    }
+                },
+                "Join": ", ",
+                "Format": "Robe of Useful Items (Items: {result})"
+            },
+
             "19": "Robe of Vermin"
         }
     },
@@ -632,7 +798,12 @@
         "Data": {
             "1": "Boots of Dancing",
             "2": "Boots of Elvenkind",
-            "3": "Boots of Levitation",
+            "3": {
+                "Action": "Roll",
+                "Data": [1, 20, 0],
+                "Math": "*14 +280",
+                "Format": "Boots of Levitation ({result} lbs.)"
+            },
             "4": "Boots of Speed",
             "5": "Boots of Striding and Springing",
             "6": "Boots of the North",
@@ -659,7 +830,16 @@
                 "Join": ", ",
                 "Format": "Boots of Varied Tracks ({result} tracks)"
             },
-            "8": "Winged Boots",
+            "8": {
+                "Action": "Choice",
+                "Data": [
+                    "Fl 15 (A)",
+                    "Fl 18 (B)",
+                    "Fl 21 (C)",
+                    "Fl 24 (D)"
+                ],
+                "Format": "Winged Boots ({result})"
+            },
             "9": "Bracers of Archery",
             "10": "Bracers of Brachiation",
             "12": {
@@ -689,7 +869,18 @@
         "Data": {
             "3": "Girdle of Dwarvenkind",
             "4": "Girdle of Femininity/Masculinity",
-            "6": "Girdle of Giant Strength",
+            "6": {
+                "Action": "Table",
+                "Data": {
+                    "30": "Hill Giant",
+                    "50": "Stone Giant",
+                    "70": "Frost Giant",
+                    "85": "Fire Giant",
+                    "95": "Cloud Giant",
+                    "100": "Storm Giant"
+                },
+                "Format": "Girdle of {result} Strength"
+            },
             "9": "Girdle of Many Pouches",
             "10": "Hat of Disguise",
             "11": "Hat of Stupidity",
@@ -705,7 +896,11 @@
         "Action": "Table",
         "Data": {
             "1": "Alchemy Jug",
-            "2": "Bag of Beans",
+            "2": {
+                "Action": "Roll",
+                "Data": [3, 4, 0],
+                "Format": "Bag of Beans ({result} beans)"
+            },
             "3": "Bag of Devouring",
             "7": {
                 "Action": "Table",
@@ -742,7 +937,24 @@
             "14": "Eversmoking Bottle",
             "15": "Flask of Curses",
             "16": "Heward's Handy Haversack",
-            "17": "Iron Flask",
+            "17": {
+                "Action": "Table",
+                "Data": {
+                    "50": "Empty",
+                    "54": "Air elemental",
+                    "65": "Djinni",
+                    "69": "Earth Elemental",
+                    "72": "Efreeti",
+                    "76": "Fire elemental",
+                    "86": "Invisible stalker",
+                    "89": "Rakshasa",
+                    "93": "Salamander",
+                    "97": "Water elemental",
+                    "99": "Wind walker",
+                    "100": "Xorn"
+                },
+                "Format": "Iron Flask ({result})"
+            },
             "18": "Portable Hole",
             "19": "Pouch of Accessibility"
         }
@@ -753,18 +965,80 @@
             "1": "Candle of Invocation",
             "2": "Dust of Appearance",
             "3": "Dust of Disappearance",
-            "4": "Dust of Dryness",
-            "5": "Dust of Illusion",
-            "6": "Dust of Tracelessness",
+            "4": {
+                "Action": "Roll",
+                "Data": [1, 6, 4],
+                "Format":"Dust of Dryness ({result} charges)"
+            },
+            "5": {
+                "Action": "Roll",
+                "Data": [1, 10, 10],
+                "Format":"Dust of Illusion ({result} charges)"
+            },
+            "6": {
+                "Action": "Roll",
+                "Data": [1, 12, 12],
+                "Format":"Dust of Tracelessness ({result} charges)"
+            },
             "7": "Dust of Sneezing and Choking",
-            "8": "Incense of Meditation",
-            "9": "Incense of Obsession",
-            "10": "Ioun Stone",
-            "11": "Keoghtom's Ointment",
+            "8": {
+                "Action": "Roll",
+                "Data": [2, 4, 0],
+                "Format":"Incense of Meditation ({result} charges)"
+            },
+            "9": {
+                "Action": "Roll",
+                "Data": [2, 4, 0],
+                "Format":"Incense of Obsession ({result} charges)"
+            },
+            "10": {
+                "Action": "Table",
+                "Data": {
+                    "1": "Pale Blue Rhomboid",
+                    "2": "Scarlet & Blue Sphere",
+                    "3": "Incandescent Blue Sphere",
+                    "4": "Deep Red Sphere",
+                    "5": "Pink Rhomboid",
+                    "6": "Pink & Green Sphere",
+                    "7": "Pale Green Prism",
+                    "8": "Clear Spindle",
+                    "9": "Iridescent Spindle",
+                    "10": "Pearly White Spindle",
+                    "11": "Pale Lavender Ellipsoid",
+                    "12": "Lavender & Green Ellipsoid",
+                    "13": "Vibrant Purple Prism",
+                    "14": "Dusty Rose Prism",
+                    "20": {
+                        "Action": "Table",
+                        "Data": {
+                            "2": "Ellipsoid",
+                            "5": "Prism",
+                            "7": "Rhomboid",
+                            "11": "Sphere",
+                            "14": "Spindle"
+                        },
+                        "Format": "Dull Gray {result}"
+                    }
+                },
+                "Format": "{result} Ioun Stone"
+            },
+            "11": {
+                "Action": "Roll",
+                "Data": [1, 3, 0],
+                "Format": "Keoghtom's Ointment ({result} jars)"
+            },
             "12": "Nolzur's Marvelous Pigments",
             "13": "Philosopher's Stone",
-            "14": "Smoke Powder",
-            "15": "Sovereign Glue",
+            "14": {
+                "Action": "Roll",
+                "Data": [3, 6, 0],
+                "Format":"Smoke Powder ({result} charges)"
+            },
+            "15": {
+                "Action": "Roll",
+                "Data": [1, 10, 0],
+                "Format":"Sovereign Glue ({result} ounces)"
+            },
             "16": "Stone of Controlling Earth Elementals",
             "17": "Stone of Good Luck (Luckstone)",
             "18": "Stone of Weight (Loadstone)",
@@ -778,7 +1052,16 @@
             "2": "Brazier of Sleep Smoke",
             "3": "Broom of Animated Attack",
             "4": "Broom of Flying",
-            "5": "Carpet of Flying",
+            "5": {
+                "Action": "Table",
+                "Data": {
+                    "20": "3'x5', 1 person, Fl 42",
+                    "55": "4'x6', 2 people, Fl 36",
+                    "80": "5'x7', 3 people, Fl 30",
+                    "100": "6'x9', 4 people, Fl 24"
+                },
+                "Format": "Carpet of Flying ({result})"
+            },
             "6": "Mattock of the Titans",
             "7": "Maul of the Titans",
             "8": "Mirror of Life Trapping",
@@ -810,7 +1093,16 @@
             "11": "Horn of Fog",
             "12": "Horn of Goodness",
             "13": "Horn of the Tritons",
-            "14": "Horn of Valhalla",
+            "14": {
+                "Action": "Table",
+                "Data": {
+                    "8": "Silver",
+                    "15": "Brass",
+                    "18": "Bronze",
+                    "20": "Iron"
+                },
+                "Format": "{result} Horn of Valhalla"
+            },
             "15": "Lyre of Building",
             "16": "Pipes of Haunting",
             "17": "Pipes of Pain",
@@ -827,7 +1119,15 @@
             "5": "Bowl of Watery Death",
             "6": "Censer Controlling Air Elementals",
             "7": "Censer of Summoning Hostile Air Elementals",
-            "9": "Crystal Ball",
+            "9": {
+                "Action": "Table",
+                "Data": {
+                    "50": "Crystal Ball",
+                    "75": "Crystal Ball with clairaudience",
+                    "90": "Crystall Ball with ESP",
+                    "100": "Crystal Ball with telepathy"
+                }
+            },
             "10": "Crystal Hypnosis Ball",
             "11": "Cube of Force",
             "13": "Cube of Frost Resistance",
@@ -839,12 +1139,42 @@
             "19": "Eyes of Minute Seeing",
             "20": "Eyes of Petrification",
             "21": "Eyes of the Eagle",
-            "23": "Figurine of Wondrous Power",
+            "23": {
+                "Action": "Table",
+                "Data": {
+                    "15": "Ebony fly",
+                    "30": "Golden lions (pair)",
+                    "40": "Ivory goats (trio)",
+                    "55": {
+                        "Action": "Table",
+                        "Data": {
+                            "90": "normal",
+                            "100": "prehistoric"
+                        },
+                        "Format": "Marble {result} elephant"
+                    },
+                    "65": "Obsidian Steed",
+                    "85": "Onyx dog",
+                    "100": "Serpentine owl"
+                },
+                "Format": "Figurine of Wondrous Power ({result})"
+            },
             "24": "Horseshoes of a Zephyr",
             "26": "Horseshoes of Speed",
             "27": "Iron Bands of Bilarro",
             "28": "Lens of Detection",
-            "29": "Quaal's Feather Token",
+            "29": {
+                "Action": "Table",
+                "Data": {
+                    "4": "Anchor",
+                    "7": "Bird",
+                    "10": "Fan",
+                    "13": "Swan Boat",
+                    "18": "Tree",
+                    "20": "Whip"
+                },
+                "Format": "Quaal's Feather Token ({result})"
+            },
             "31": "Quiver of Ehlonna",
             "32": "Sheet of Smallness",
             "33": "Sphere of Annihilation",

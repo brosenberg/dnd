@@ -348,7 +348,14 @@ def random_magic_item(category, table="standard", expanded=False):
         return "Rubicite Breastplate"
     else:
         item = gen(**magic_items[category])
-        if category == "Scrolls" and item == "Spell Scroll":
+        if category == "Bags and Bottles" and item == "Beaker of Plentiful Potions":
+            potions = []
+            for _ in range(0, roll(1, 4, 1)):
+                doses = roll(1, 4, 1)
+                potion = random_magic_item("Potions and Oils", table=table, expanded=expanded)
+                potions.append(f"{potion} ({doses} doses)")
+            item = f"{item} (Potions: {', '.join(potions)})"
+        elif category == "Scrolls" and item == "Spell Scroll":
             item = str(generate_scroll())
         elif category == "Rings" and item == "Ring of Spell Storing":
 
@@ -375,6 +382,7 @@ def random_magic_item(category, table="standard", expanded=False):
                     f"{spell_level}:{random_spell(spell_level, caster_class, expanded=expanded)}"
                 )
             item = f"{base_ring} ({caster_class}): {', '.join(spells)}"
+
         if category == "Wands":
             if roll(1, 100, 0) == 1:
                 item = f"{item} (Trapped)"

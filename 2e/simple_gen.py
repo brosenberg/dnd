@@ -19,6 +19,8 @@ def do_action(action, data):
             results.append(result)
             data.remove(result)
         return results
+    elif action == "Choice Twice":
+        return [random.choice(data), random.choice(data)]
     elif action.startswith("Key_"):
         key_action, key = action.split(" ", 1)
         key_action = key_action.replace("Key_", "")
@@ -32,6 +34,13 @@ def do_action(action, data):
         return roll(*data)
     elif action == "Table":
         return roll_table(data)
+    elif action.startswith("Table_N_Roll"):
+        roll_dice = (int(x) for x in action.split(" ")[1:])
+        count = roll(*roll_dice)
+        results = []
+        for _ in range(0, count):
+            results.append(roll_table(data))
+        return sorted(results)
     elif action == "Table Twice":
         return [roll_table(data), roll_table(data)]
 
@@ -50,12 +59,25 @@ def gen(**kwargs):
         return None
     str_format = kwargs.get("Format", None)
     join = kwargs.get("Join", None)
+    math = kwargs.get("Math", None)
     action = kwargs["Action"].format(**kwargs)
     result = do_action(action, kwargs["Data"])
     if type(result) is dict:
         result = gen(**result)
     if kwargs.get("Plusify", False):
         result = plusify(result)
+    if math:
+        for operator in math.split(" "):
+            op = operator[0]
+            number = int(operator[1:]
+            if op == "+":
+                result += number
+            elif op == "-":
+                result -= number
+            elif op == "*":
+                result *= number
+            elif op == "/":
+                result /= number
     if join:
         result = join.join(result)
     if str_format:
