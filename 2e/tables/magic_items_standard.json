@@ -541,7 +541,7 @@
             "5": {
                 "Action": "Roll",
                 "Data": [1, 8, 22],
-                "Format": "Book of Infinite Spells ({result pages)"
+                "Format": "Book of Infinite Spells ({result} pages)"
             },
             "6": "Book of Vile Darkness",
             "7": "Libram of Gainful Conjuration",

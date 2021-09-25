@@ -350,6 +350,11 @@ def random_magic_armor(table="standard", base_item=None):
 
     if base_item == "Special":
         return random_special_magic_armor(table=table)
+    adjustment = gen(**load_table(f"magic_item_armor_adjustment_{table}"))
+    base_item = f"{base_item} {plusify(adjustment)}"
+    if adjustment < 0:
+        base_item += " (Cursed)"
+    return base_item
 
 
 def random_magic_item(category, table="standard", expanded=False):
@@ -357,10 +362,10 @@ def random_magic_item(category, table="standard", expanded=False):
     if category == "Weapons":
         return random_magic_weapon(table=table)
     elif category == "Armor and Shields":
-        # TODO: Implement armor
-        return "Rubicite Breastplate"
+        return random_magic_armor(table=table)
     else:
         item = gen(**magic_items[category])
+        # Fill the Beaker
         if category == "Bags and Bottles" and item == "Beaker of Plentiful Potions":
             potions = []
             for _ in range(0, roll(1, 4, 1)):
@@ -370,8 +375,18 @@ def random_magic_item(category, table="standard", expanded=False):
                 )
                 potions.append(f"{potion} ({doses} doses)")
             item = f"{item} (Potions: {', '.join(potions)})"
+        # Write the Robe of Useful Items' scrolls
+        if category == "Cloaks and Robes" and item.startswith("Robe of Useful Items") and "Scroll" in item:
+            scroll_count = len(re.findall('Scroll', item))
+            scroll_match = re.match(r'^(.+?) (Scroll(, )?)+(, .+?)?$', item)
+            scrolls = [str(generate_scroll()) for x in range(0, scroll_count)]
+            item = f"{m.group(1)} {', '.join(scrolls)}"
+            if m.group(4):
+                item += m.group(4)
+        # Write the scrolls
         elif category == "Scrolls" and item == "Spell Scroll":
             item = str(generate_scroll())
+        # Fill the Ring of Spell Storing with spells
         elif category == "Rings" and item == "Ring of Spell Storing":
 
             def spell_storing_level(caster_class):
@@ -398,6 +413,7 @@ def random_magic_item(category, table="standard", expanded=False):
                 )
             item = f"{base_ring} ({caster_class}): {', '.join(spells)}"
 
+        # Trap some wands
         if category == "Wands":
             if roll(1, 100, 0) == 1:
                 item = f"{item} (Trapped)"
@@ -451,7 +467,7 @@ def random_magic_weapon(table="standard", base_item=None):
 
 def random_special_magic_armor(table="standard"):
     return special_magic_armor(
-        special=gen_table(f"magic_item_special_armors_{table}"), table="standard"
+        special=gen_table(f"magic_item_special_armor_{table}"), table="standard"
     )
 
 
