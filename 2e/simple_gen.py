@@ -9,6 +9,16 @@ from utils import plusify
 def do_action(action, data):
     if action == "Choice":
         return random.choice(data)
+    elif action.startswith("Choice_Unique_N"):
+        count = int(action.split(" ")[1])
+        results = []
+        if count > len(data):
+            return data
+        for _ in range(0, count):
+            result = random.choice(data)
+            results.append(result)
+            data.remove(result)
+        return results
     elif action.startswith("Key_"):
         key_action, key = action.split(" ", 1)
         key_action = key_action.replace("Key_", "")
@@ -19,7 +29,7 @@ def do_action(action, data):
     elif action == "Return":
         return data
     elif action == "Roll":
-        return roll(data[0], data[1], data[2])
+        return roll(*data)
     elif action == "Table":
         return roll_table(data)
     elif action == "Table Twice":
@@ -39,12 +49,15 @@ def gen(**kwargs):
     if not kwargs:
         return None
     str_format = kwargs.get("Format", None)
+    join = kwargs.get("Join", None)
     action = kwargs["Action"].format(**kwargs)
     result = do_action(action, kwargs["Data"])
     if type(result) is dict:
         result = gen(**result)
     if kwargs.get("Plusify", False):
         result = plusify(result)
+    if join:
+        result = join.join(result)
     if str_format:
         return str_format.format(result=result, **kwargs)
     return result

@@ -16,15 +16,14 @@
         "16": "Knife",
         "17": "Lance",
         "19": "Mace",
-        "20": "Special",
-        "21": "Pick",
-        "22": "Morning star",
-        "23": "Pole arm",
-        "25": "Scimitar",
-        "28": "Spear",
-        "37": "Sword",
-        "38": "Trident",
-        "39": "Warhammer",
+        "20": "Pick",
+        "21": "Morning star",
+        "22": "Pole arm",
+        "24": "Scimitar",
+        "27": "Spear",
+        "36": "Sword",
+        "37": "Trident",
+        "38": "Warhammer",
         "40": "Special"
     }
 }

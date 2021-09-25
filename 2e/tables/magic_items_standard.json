@@ -1,0 +1,692 @@
+{
+    "Potions and Oils": {
+        "Action": "Table",
+        "Data": {
+            "1": "Potion of Animal Control",
+            "2": "Potion of Clairaudience",
+            "3": "Potion of Clairvoyance",
+            "4": "Potion of Climbing",
+            "6": "Potion of Delusion",
+            "7": "Potion of Diminution",
+            "8": {
+                "Action": "Table",
+                {
+                    "2": "White Dragon",
+                    "4": "Black Dragon",
+                    "7": "Green Dragon",
+                    "9": "Blue Dragon",
+                    "10": "Red Dragon",
+                    "12": "Brass Dragon",
+                    "14": "Copper Dragon",
+                    "15": "Bronze Dragon",
+                    "16": "Silver Dragon",
+                    "17": "Gold Dragon",
+                    "19": "Evil Dragon",
+                    "20": "Good Dragon"
+                },
+                "Format": "Potion of {result} Control"
+            },
+            "9": "Elixir of Health",
+            "11": "Elixir of Madness",
+            "12": "Elixir of Youth",
+            "13": "Potion of ESP",
+            "15": "Potion of Extra-healing",
+            "16": "Potion of Fire Breath",
+            "17": "Potion of Fire Resistance",
+            "18": "Potion of Flying",
+            "19": "Potion of Gaseous Form",
+            "20": {
+                "Action": "Table",
+                {
+                    "5": "Hill Giant",
+                    "9": "Stone Giant",
+                    "13": "Frost Giant",
+                    "17": "Fire Giant",
+                    "19": "Cloud Giant",
+                    "20": "Storm Giant"
+                },
+                "Format": "Potion of {result} Control"
+            },
+            "21": {
+                "Action": "Table",
+                "Data": {
+                    "5": "Hill Giant",
+                    "9": "Stone Giant",
+                    "13": "Frost Giant",
+                    "17": "Fire Giant",
+                    "19": "Cloud Giant",
+                    "20": "Storm Giant"
+                },
+                "Format": "Potion of {result} Strength"
+            },
+            "22": "Potion of Growth",
+            "24": "Potion of Healing",
+            "25": "Potion of Heroism",
+            "26": {
+                "Action": "Table",
+                "Data": {
+                    "2": "Dwarf",
+                    "4": "Elf and Half-Elf",
+                    "6": "Gnome",
+                    "8": "Halfling",
+                    "10": "Half-Orc",
+                    "16": "Human",
+                    "19": "Humanoid",
+                    "20": "Elf, Half-Elf, and Human"
+                },
+                "Format": "Potion of {result} Control"
+            },
+            "27": "Potion of Invisibility",
+            "28": "Potion of Invulnerability",
+            "29": "Potion of Levitation",
+            "30": "Potion of Longveity",
+            "31": "Oil of Acid Resistance",
+            "32": "Oil of Disenchantment",
+            "33": {
+                "Action": "Choice",
+                "Data": ["Air", "Earth", "Fire", "Water"],
+                "Format": "Oil of Elemental Invulnerability ({result})"
+            },
+            "34": "Oil of Etherealness",
+            "35": "Oil of Fiery Burning",
+            "36": "Oil of Fumbling",
+            "37": "Oil of Impact",
+            "38": "Oil of Slipperiness",
+            "39": "Oil of Timelessness",
+            "40": "Philter of Glibness",
+            "41": "Philter of Love",
+            "42": "Philter of Persuasiveness",
+            "43": "Philter of Stammering and Stuttering",
+            "44": "Potion of Plant Control",
+            "46": "Potion of Poison",
+            "47": "Potion of Polymorph Self",
+            "48": "Potion of Rainbow Hues",
+            "49": "Potion of Speed",
+            "51": "Potion of Super-heroism",
+            "52": "Potion of Sweet Water",
+            "53": "Potion of Treasure Finding",
+            "54": {
+                "Action": "Choice",
+                "Data": [
+                    "Ghast",
+                    "Ghost",
+                    "Ghoul",
+                    "Shadow",
+                    "Skeleton",
+                    "Spectre",
+                    "Wight",
+                    "Wraith",
+                    "Vampire",
+                    "Zombie"
+                ],
+                "Format": "Potion of {result} Control",
+            "55": "Potion of Ventriloquism",
+            "56": "Potion of Vitality",
+            "57": "Potion of Water Breathing"
+        }
+    },
+    "Scrolls": {
+        "Action": "Table",
+        "Data": {
+            "4": "Spell Scroll",
+            "6": {
+                "Action": "Table",
+                "Data": {
+                    "1": "Map",
+                    "2": "Scroll of Protection - Acid",
+                    "3": "Scroll of Protection - Cold",
+                    "4": "Scroll of Protection - Dragon Breath",
+                    "5": "Scroll of Protection - Electricity",
+                    "7": {
+                        "Action": "Table",
+                        "Data": {
+                            "15": "Air Elementals",
+                            "30": "Earth Elementals",
+                            "45": "Fire Elementals",
+                            "60": "Water Elementals",
+                            "100": "All Elementals"
+                        },
+                        "Format": "Scroll of Protection - {result}"
+                    },
+                    "8": "Scroll of Protection - Fire",
+                    "9": "Scroll of Protection - Gas",
+                    "11": {
+                        "Action": "Table",
+                        "Data": {
+                            "5": "Werebears",
+                            "10": "Wereboars",
+                            "20": "Wererats",
+                            "25": "Weretigers",
+                            "40": "Werewolves",
+                            "98": "All Lycanthropes",
+                            "100": "Shapechangers"
+                        },
+                        "Format": "Scroll of Protection - {result}"
+                    },
+                    "12": "Scroll of Protection - Magic",
+                    "13": "Scroll of Protection - Petrification",
+                    "14": "Scroll of Protection - Plants",
+                    "15": "Scroll of Protection - Poison",
+                    "16": "Scroll of Protection - Possession",
+                    "17": "Scroll of Protection - Undead",
+                    "18": "Scroll of Protection - Water",
+                    "19": "Cursed Scroll"
+                }
+            }
+        }
+    },
+    "Rings": {
+        "Action": "Table",
+        "Data": {
+            "4": {
+                "1": "Ring of Animal Friendship",
+                "2": "Ring of Blinking",
+                "3": "Ring of Chameleon Power",
+                "4": {
+                    "Action": "Table",
+                    "Data": {
+                        "10": "Free action",
+                        "20": "Feather falling",
+                        "35": "Invisibility",
+                        "50": "Jumping",
+                        "60": "Swimming",
+                        "80": "Warmth",
+                        "100": "Water Walking"
+                    },
+                    "Format": "Ring of Clumsiness ({result})"
+                },
+                "5": {
+                    "Action": "Table",
+                    "Data": {
+                        "20": "Flying",
+                        "40": "Invisibility",
+                        "60": "Levitation",
+                        "70": "Shocking Grasp (once per round)",
+                        "80": "Spell Turning",
+                        "100": "Strength (18/00)"
+                    },
+                    "Format": "Ring of Contrariness ({result})",
+                "7": "Ring of Delusion",
+                "8": "Ring of Djinni Summoning",
+                "9": "Ring of Elemental Command",
+                "10": "Ring of Feather Falling",
+                "11": "Ring of Fire Resistance",
+                "12": "Ring of Free Action",
+                "13": "Ring of Human Influence",
+                "14": "Ring of Invisibility",
+                "16": "Ring of Jumping",
+                "17": "Ring of Mammal Control",
+                "18": "Ring of Mind Shielding",
+                "19": {
+                    "Action": "Table",
+                    "Data": {
+                        "70": "+1",
+                        "82": "+2",
+                        "83": "+2, 5' radius",
+                        "90": "+3",
+                        "91": "+3, 5' radius",
+                        "97": "+4 AC, +2 to saving throws",
+                        "100": "+6 AC, +1 to saving throws"
+                    },
+                    "Format": "Ring of Protection {result}"
+                }
+            },
+            "6": {
+                "2": {
+                    "Action": "Table",
+                    "Data": {
+                        "70": "+1",
+                        "82": "+2",
+                        "83": "+2, 5' radius",
+                        "90": "+3",
+                        "91": "+3, 5' radius",
+                        "97": "+4 AC, +2 to saving throws",
+                        "100": "+6 AC, +1 to saving throws"
+                    },
+                    "Format": "Ring of Protection {result}"
+                },
+                "3": "Ring of the Ram",
+                "4": {
+                    "Action": "Table",
+                    "Data": {
+                        "90": "Ring of Regeneration",
+                        "100": "Vampiric Regeneration Ring"
+                    }
+                },
+                "5": "Ring of Shocking Grasp",
+                "6": "Ring of Shooting Stars",
+                "7": "Ring of Spell Storing",
+                "8": "Ring of Spell Turning",
+                "9": "Ring of Sustenance",
+                "10": "Ring of Swimming",
+                "11": {
+                    "Action": "Table",
+                    "Data": {
+                        "25": "25",
+                        "50": "50",
+                        "89": "100",
+                        "99": "200",
+                        "100": "400"
+                    },
+                    "Format": "Ring of Telekinesis ({result} lbs. maximum)"
+                },
+                "12": "Ring of Truth",
+                "13": "Ring of Warmth",
+                "14": "Ring of Water Walking",
+                "15": "Ring of Weakness",
+                "16": {
+                    "Action": "Roll",
+                    "Data": [2, 4, 0],
+                    "Format": "Ring of Multiple Wishes ({result} wishes)"
+                },
+                "17": {
+                    "Action": "Table",
+                    "Data": {
+                        "25": "Limited Wish",
+                        "100": "Wish"
+                    },
+                    "Format": "Ring of Three {result}es"
+                },
+                "18": {
+                    "Action": "Table",
+                    "Data": {
+                        "50": "doubles 1st-level spells",
+                        "75": "doubles 2nd-level spells",
+                        "82": "doubles 3rd-level spells",
+                        "88": "doubles 1st- and 2nd-level spells",
+                        "92": "doubles 4th-level spells",
+                        "95": "doubles 5th-level spells",
+                        "99": "doubles 1st- through 3rd-level spells",
+                        "100": "doubles 4th- and 5th-level spells"
+                    },
+                    "Format": "Ring of Wizardry ({result})"
+                },
+                "19": "Ring of X-Ray Vision"
+            }
+        }
+    },
+    "Rods": {
+        "Action": "Table",
+        "Data": {
+            "2": "Rod of Absorption",
+            "4": "Rod of Alertness",
+            "5": "Rod of Beguiling",
+            "7": "Rod of Cancellation",
+            "8": "Rod of Flailing",
+            "9": "Rod of Lordly Might",
+            "10": "Rod of Passage",
+            "11": "Rod of Ressurection",
+            "12": "Rod of Rulership",
+            "14": "Rod of Security",
+            "16": "Rod of Smiting",
+            "17": "Rod of Splendor",
+            "19": "Rod of Terror"
+        }
+    },
+    "Staves": {
+        "Action": "Table",
+        "Data": {
+            "2": "Staff-Mace",
+            "3": "Staff of Command",
+            "5": "Staff of Curing",
+            "6": "Staff of the Magi",
+            "7": "Staff of Power",
+            "8": "Staff of the Serpent",
+            "10": "Staff of Slinging",
+            "12": {
+                "Action": "Table",
+                "Data": {
+                    "6": "+1",
+                    "10": "+2",
+                    "13": "+3",
+                    "16": "+4",
+                    "19": "+5",
+                    "20": "+3 (Ranseur)"
+                },
+                "Format": "Staff-Spear {result}"
+            },
+            "14": "Staff of Striking",
+            "15": "Staff of Swarming Insects",
+            "16": "Staff of Thunder & Lightning",
+            "18": "Staff of Withering",
+            "19": "Staff of the Woodlands"
+        }
+    },
+    "Wands": {
+        "Action": "Table",
+        "Data": {
+            "1": "Wand of Conjuration",
+            "2": "Wand of Earth and Stone",
+            "3": "Wand of Enemy Detection",
+            "4": "Wand of Fear",
+            "5": "Wand of Fire",
+            "6": "Wand of Flame Extinguishing",
+            "7": "Wand of Frost",
+            "8": "Wand of Illumination",
+            "9": "Wand of Illusion",
+            "10": "Wand of Lightning",
+            "11": "Wand of Magic Detection",
+            "12": "Wand of Magic Missiles",
+            "13": "Wand of Metal and Mineral Detection",
+            "14": "Wand of Negation",
+            "15": "Wand of Paralyzation",
+            "16": "Wand of Polymorphing",
+            "17": "Wand of Secret Door and Trap Location",
+            "18": "Wand of Size Alteration",
+            "19": "Wand of Wonder"
+        }
+    },
+    "Books and Tomes": {
+        "Action": "Table",
+        "Data": {
+            "3": "Boccob's Blessed Book",
+            "4": "Book of Exalted Deeds",
+            "5": "Book of Infinite Spells",
+            "6": "Book of Vile Darkness",
+            "7": "Libram of Gainful Conjuration",
+            "8": "Libram of Ineffable Damnation",
+            "9": "Libram of Silver Magic",
+            "10": "Manual of Bodily Health",
+            "11": "Manual of Gainful Exercise",
+            "12": "Manual of Golems",
+            "13": "Manual of Puissant Skill at Arms",
+            "14": "Manual of Quickness in Action",
+            "15": "Manual of Stealthy Pilfering",
+            "16": "Tome of Clear Thought",
+            "17": "Tome of Leadership and Influence",
+            "18": "Tome of Understanding",
+            "19": "Vacuous Grimoire"
+        }
+    },
+    "Jewels and Jewelry": {
+        "Action": "Table",
+        "Data": {
+            "1": "Amulet of Inescapable Location",
+            "2": "Amulet of Life Protection",
+            "3": "Amulet of the Planes",
+            "4": "Amulet of Proof Against Detection and Location",
+            "5": {
+                "Action": "Table",
+                "Data": {
+                    "30": "5th",
+                    "55": "6th",
+                    "75": "7th",
+                    "90": "8th",
+                    "100": "9th"
+                },
+                "Format": "Amulet Versus Undead ({result} level)"
+            },
+            "6": "Beads of Force",
+            "7": "Brooch of Shielding",
+            "8": "Gem of Brightness",
+            "9": "Gem of Insight",
+            "10": "Gem of Seeing",
+            "11": "Jewel of Attacks",
+            "12": "Jewel of Flawlessness",
+            "13": "Medallion of ESP",
+            "14": "Medallion of Thought Projection",
+            "15": "Necklace of Adaption",
+            "17": "Necklace of Missiles",
+            "18": "Necklace of Prayer Beads",
+            "19": "Necklace of Strangulation",
+            "20": "Pearl of Power",
+            "21": "Pearl of the Sirines",
+            "22": "Pearl of Wisdom",
+            "23": "Periapt of Foul Rotting",
+            "24": "Periapt of Health",
+            "25": "Periapt of Proof Against Poison",
+            "26": "Periapt of Wound Closure",
+            "27": "Phylactery of Faithfulness",
+            "28": "Phylactery of Long Years",
+            "29": "Phylactery of Monstrous Attention",
+            "30": "Scarab of Death",
+            "31": "Scarab of Enraging Enemies",
+            "32": "Scarab of Insanity",
+            "33": "Scarab of Protection",
+            "34": "Scarab Versus Golems",
+            "35": "Talisman of Pure Good",
+            "36": "Talisman of the Sphere",
+            "37": "Talisman of Ultimate Evil",
+            "38": "Talisman of Zagy"
+        }
+    },
+    "Cloaks and Robes": {
+        "Action": "Table",
+        "Data": {
+            "1": "Cloak of Arachnida",
+            "2": "Cloak of Displacement",
+            "4": "Cloak of Elvenkind",
+            "5": "Cloak of Poisonousness",
+            "8": "Cloak of Protection",
+            "9": "Cloak of the Bat",
+            "10": "Cloak of the Manta Ray",
+            "11": "Robe of the Archmagi",
+            "12": "Robe of Blending",
+            "13": "Robe of Eyes",
+            "14": "Robe of Powerlessness",
+            "15": "Robe of Scintillating Colors",
+            "16": "Robe of Stars",
+            "18": "Robe of Useful Items",
+            "19": "Robe of Vermin"
+        }
+    },
+    "Boots and Gloves": {
+        "Action": "Table",
+        "Data": {
+            "1": "Boots of Dancing",
+            "2": "Boots of Elvenkind",
+            "3": "Boots of Levitation",
+            "4": "Boots of Speed",
+            "5": "Boots of Striding and Springing",
+            "6": "Boots of the North",
+            "7": {
+                "Action": "Choice_Unique_N 4",
+                "Data": {
+                    "Basilisk",
+                    "Bear",
+                    "Boar",
+                    "Bull",
+                    "Camel",
+                    "Dog",
+                    "Hill Giant",
+                    "Goat",
+                    "Horse",
+                    "Lion (or giant lynx)",
+                    "Mule",
+                    "Rabbit",
+                    "Stag",
+                    "Tiger (or leopard)",
+                    "Wolf",
+                    "Wyvern"
+                },
+                "Join": ", ",
+                "Format": "Boots of Varied Tracks ({result} tracks)"
+            },
+            "8": "Winged Boots",
+            "9": "Bracers of Archery",
+            "10": "Bracers of Brachiation",
+            "12": {
+                "Action": "Table",
+                "Data": {
+                    "5": "8",
+                    "15": "7",
+                    "35": "6",
+                    "50": "5",
+                    "70": "4",
+                    "85": "3",
+                    "100": "2"
+                },
+                "Format": "Bracers of Defense (AC {result})"
+            },
+            "13": "Bracers of Defenselessness",
+            "14": "Gauntlets of Dexterity",
+            "15": "Gauntlets of Fumbling",
+            "16": "Gauntlets of Ogre Power",
+            "17": "Gauntlets of Swimming and Climbing",
+            "18": "Gloves of Missile Snaring",
+            "19": "Slippers of Spider Climbing"
+        }
+    },
+    "Girdles and Helms": {
+        "Action": "Table",
+        "Data": {
+            "3": "Girdle of Dwarvenkind",
+            "4": "Girdle of Femininity/Masculinity",
+            "6": "Girdle of Giant Strength",
+            "9": "Girdle of Many Pouches",
+            "10": "Hat of Disguise",
+            "11": "Hat of Stupidity",
+            "12": "Helm of Brilliance",
+            "14": "Helm of Comprehending Languages and Reading Magic",
+            "15": "Helm of Opposite Alignment",
+            "16": "Helm of Telepathy",
+            "17": "Helm of Teleportation",
+            "19": "Helm of Underwater Action"
+        }
+    },
+    "Bags and Bottles": {
+        "Action": "Table",
+        "Data": {
+            "1": "Alchemy Jug",
+            "2": "Bag of Beans",
+            "3": "Bag of Devouring",
+            "7": {
+                "Action": "Table",
+                "Data": {
+                    "30": "250",
+                    "70": "500",
+                    "90": "1000",
+                    "100": "1500"
+                },
+                "Format": "Bag of Holding ({result} lbs.)"
+            },
+            "8": "Bag of Transmuting",
+            "9": {
+                "Action": "Table",
+                "Data": {
+                    "5": "A",
+                    "8": "B",
+                    "10": "C"
+                },
+                "Format": "Bag of Tricks ({result})"
+            },
+            "10": "Beaker of Plentiful Potions",
+            "11": "Bucknard's Everfull Purse",
+            "12": "Decanter of Endless Water",
+            "13": "Efreeti Bottle",
+            "14": "Eversmoking Bottle",
+            "15": "Flask of Curses",
+            "16": "Heward's Handy Haversack",
+            "17": "Iron Flask",
+            "18": "Portable Hole",
+            "19": "Pouch of Accessibility"
+        }
+    },
+    "Dusts and Stones": {
+        "Action": "Table",
+        "Data": {
+            "1": "Candle of Invocation",
+            "2": "Dust of Appearance",
+            "3": "Dust of Disappearance",
+            "4": "Dust of Dryness",
+            "5": "Dust of Illusion",
+            "6": "Dust of Tracelessness",
+            "7": "Dust of Sneezing and Choking",
+            "8": "Incense of Meditation",
+            "9": "Incense of Obsession",
+            "10": "Ioun Stone",
+            "11": "Keoghtom's Ointment",
+            "12": "Nolzur's Marvelous Pigments",
+            "13": "Philosopher's Stone",
+            "14": "Smoke Powder",
+            "15": "Sovereign Glue",
+            "16": "Stone of Controlling Earth Elementals",
+            "17": "Stone of Good Luck (Luckstone)",
+            "18": "Stone of Weight (Loadstone)",
+            "19": "Universal Solvent"
+        }
+    },
+    "Household Items and Tools": {
+        "Action": "Table",
+        "Data": {
+            "1": "Brazier Commanding Fire Elementals",
+            "2": "Brazier of Sleep Smoke",
+            "3": "Broom of Animated Attack",
+            "4": "Broom of Flying",
+            "5": "Carpet of Flying",
+            "6": "Mattock of the Titans",
+            "7": "Maul of the Titans",
+            "8": "Mirror of Life Trapping",
+            "9": "Mirror of Mental Prowess",
+            "10": "Mirror of Opposition",
+            "11": "Murlynd's Spoon",
+            "13": "Rope of Climbing",
+            "14": "Rope of Constriction",
+            "15": "Rope of Entanglement",
+            "16": "Rug of Smothering",
+            "17": "Rug of Welcome",
+            "18": "Saw of Mighty Cutting",
+            "19": "Spade of Colossal Excavation"
+        }
+    },
+    "Musical Instruments": {
+        "Action": "Table",
+        "Data": {
+            "1": "Chime of Interruption",
+            "2": "Chime of Opening",
+            "3": "Chime of Hunger",
+            "4": "Drums of Deafening",
+            "5": "Drums of Panic",
+            "6": "Hard of Charming",
+            "7": "Harp of Discord",
+            "8": "Horn of Blasting",
+            "9": "Horn of Bubbles",
+            "10": "Horn of Collapsing",
+            "11": "Horn of Fog",
+            "12": "Horn of Goodness",
+            "13": "Horn of the Tritons",
+            "14": "Horn of Valhalla",
+            "15": "Lyre of Building",
+            "16": "Pipes of Haunting",
+            "17": "Pipes of Pain",
+            "18": "Pipes of Sounding",
+            "19": "Pipes of the Sewers"
+        }
+    },
+    "The Weird Stuff": {
+        "Action": "Table",
+        "Data": {
+            "1": "Apparatus of Kwalish",
+            "3": "Folding Boat",
+            "4": "Bowl Commanding Water Elementals",
+            "5": "Bowl of Watery Death",
+            "6": "Censer Controlling Air Elementals",
+            "7": "Censer of Summoning Hostile Air Elementals",
+            "9": "Crystal Ball",
+            "10": "Crystal Hypnosis Ball",
+            "11": "Cube of Force",
+            "13": "Cube of Frost Resistance",
+            "14": "Cubic Gate",
+            "15": "Daern's Instant Fortress",
+            "16": "Deck of Illusions",
+            "17": "Deck of Many Things",
+            "18": "Eyes of Charming",
+            "19": "Eyes of Minute Seeing",
+            "20": "Eyes of Petrification",
+            "21": "Eyes of the Eagle",
+            "23": "Figurine of Wondrous Power",
+            "24": "Horseshoes of a Zephyr",
+            "26": "Horseshoes of Speed",
+            "27": "Iron Bands of Bilarro",
+            "28": "Lens of Detection",
+            "29": "Quaal's Feather Token",
+            "31": "Quiver of Ehlonna",
+            "32": "Sheet of Smallness",
+            "33": "Sphere of Annihilation",
+            "34": "Stone Horse",
+            "35": "Well of Many Worlds",
+            "37": "Wind Fan",
+            "38": "Wings of Flying"
+        }
+    }
+}

@@ -235,6 +235,8 @@ def is_cursed(item):
         or "Defenselessness" in item
         or "Stammering" in item
         or "Jewel of Attacks" in item
+        or "Elixir of Madness" in item
+        or "Ring of Weakness" in item
     )
 
 
