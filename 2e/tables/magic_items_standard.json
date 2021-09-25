@@ -426,25 +426,111 @@
     "Wands": {
         "Action": "Table",
         "Data": {
-            "1": "Wand of Conjuration",
-            "2": "Wand of Earth and Stone",
-            "3": "Wand of Enemy Detection",
-            "4": "Wand of Fear",
-            "5": "Wand of Fire",
-            "6": "Wand of Flame Extinguishing",
-            "7": "Wand of Frost",
-            "8": "Wand of Illumination",
-            "9": "Wand of Illusion",
-            "10": "Wand of Lightning",
-            "11": "Wand of Magic Detection",
-            "12": "Wand of Magic Missiles",
-            "13": "Wand of Metal and Mineral Detection",
-            "14": "Wand of Negation",
-            "15": "Wand of Paralyzation",
-            "16": "Wand of Polymorphing",
-            "17": "Wand of Secret Door and Trap Location",
-            "18": "Wand of Size Alteration",
-            "19": "Wand of Wonder"
+            "1": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Conjuration ({result} charges)"
+            },
+            "2": {
+                "Action": "Choice",
+                "Data": [
+                    {
+                        "Action": "Roll",
+                        "Data": [1, 20, 80],
+                        "Format":"Wand of Earth and Stone ({result} charges)"
+                    },
+                    {
+                        "Action": "Roll",
+                        "Data": [1, 20, 80],
+                        "Format":"Wand of Earth and Stone (Transmute Mud to Rock and Transmute Rock to Mud) ({result} charges)"
+                    }
+                ]
+            },
+            "3": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Enemy Detection ({result} charges)"
+            },
+            "4": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Fear ({result} charges)"
+            },
+            "5": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Fire ({result} charges)"
+            },
+            "6": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Flame Extinguishing ({result} charges)"
+            },
+            "7": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Frost ({result} charges)"
+            },
+            "8": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Illumination ({result} charges)"
+            },
+            "9": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Illusion ({result} charges)"
+            },
+            "10": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Lightning ({result} charges)"
+            },
+            "11": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Magic Detection ({result} charges)"
+            },
+            "12": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Magic Missiles ({result} charges)"
+            },
+            "13": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Metal and Mineral Detection ({result} charges)"
+            },
+            "14": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Negation ({result} charges)"
+            },
+            "15": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Paralyzation ({result} charges)"
+            },
+            "16": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Polymorphing ({result} charges)"
+            },
+            "17": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Secret Door and Trap Location ({result} charges)"
+            },
+            "18": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Size Alteration ({result} charges)"
+            },
+            "19": {
+                "Action": "Roll",
+                "Data": [1, 20, 80],
+                "Format":"Wand of Wonder ({result} charges)"
+            }
         }
     },
     "Books and Tomes": {

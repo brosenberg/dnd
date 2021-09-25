@@ -349,7 +349,7 @@ def random_magic_item(category, table="standard", expanded=False):
     else:
         item = gen(**magic_items[category])
         if category == "Scrolls" and item == "Spell Scroll":
-            return str(generate_scroll())
+            item = str(generate_scroll())
         elif category == "Rings" and item == "Ring of Spell Storing":
 
             def spell_storing_level(caster_class):
@@ -374,7 +374,11 @@ def random_magic_item(category, table="standard", expanded=False):
                 spells.append(
                     f"{spell_level}:{random_spell(spell_level, caster_class, expanded=expanded)}"
                 )
-            return f"{base_ring} ({caster_class}): {', '.join(spells)}"
+            item = f"{base_ring} ({caster_class}): {', '.join(spells)}"
+        if category == "Wands":
+            if roll(1, 100, 0) == 1:
+                item = f"{item} (Trapped)"
+
     return item
 
 
@@ -466,7 +470,12 @@ def special_magic_weapon(special=None, force_results={}, table="standard"):
             base_item = random.choice(SPECIAL_MAGIC_WEAPONS[special]["Base Items"])
         except KeyError:
             base_item = random.choice(
-                weapons_by_filter({"Base Type": SPECIAL_MAGIC_WEAPONS[special]["Base Type"], "Source": table})
+                weapons_by_filter(
+                    {
+                        "Base Type": SPECIAL_MAGIC_WEAPONS[special]["Base Type"],
+                        "Source": table,
+                    }
+                )
             )
 
     weapon = base_item
@@ -501,8 +510,8 @@ def weapons_by_filter(filter_dict):
         match = True
         for key in filter_dict.keys():
             if key == "Source" and filter_dict[key] == "expanded":
-               if WEAPONS[weapon][key] not in ['standard', 'expanded']:
-                   match = False
+                if WEAPONS[weapon][key] not in ["standard", "expanded"]:
+                    match = False
             elif WEAPONS[weapon][key] != filter_dict[key]:
                 match = False
         if match:
@@ -533,16 +542,14 @@ def main():
     # for _ in range(0, 10):
     # print(random_magic_weapon())
 
-    #import simple_gen
+    import simple_gen
 
-    #for category in simple_gen.dump_data(
-    #    **load_table("magic_item_categories_standard.json")
-    #):
-    #    print(random_magic_item(category))
-    #print(intelligent_weapon("Short sword +3"))
-    #print(intelligent_weapon("Short sword +3", table="expanded"))
-     for _ in range(0, 10):
-        print(random_magic_weapon())
+    for category in simple_gen.dump_data(
+        **load_table("magic_item_categories_standard.json")
+    ):
+        print(random_magic_item(category))
+    # print(intelligent_weapon("Short sword +3"))
+    # print(intelligent_weapon("Short sword +3", table="expanded"))
 
 
 if __name__ == "__main__":
