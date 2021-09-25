@@ -6,8 +6,10 @@ import re
 import os
 
 from dice import roll
+from generate_scroll import generate_scroll
 from magic_item import MagicItemGen
 from simple_gen import gen
+from spells import random_spell
 from utils import choice_table_count_unique
 from utils import load_table
 from utils import plusify
@@ -15,6 +17,7 @@ from utils import plusify
 
 AMMOS = load_table("weapons_ammos.json")
 ARMOR_STATS = load_table("armor_stats.json")
+MAGIC_ITEMS = load_table("magic_items_standard.json")
 SHIELDS = load_table("shields.json")
 SPECIAL_MAGIC_WEAPONS = load_table("weapons_magic_special.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
@@ -329,6 +332,43 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
+def random_magic_item(category, table="standard", expanded=False):
+    if category == "Weapons":
+        return random_magic_weapon(table=table)
+    elif category == "Armor and Shields":
+        # TODO: Implement armor
+        return "Rubicite Breastplate"
+    else:
+        item = gen(**MAGIC_ITEMS[category])
+        if category == "Scrolls" and item == "Spell Scroll":
+            return str(generate_scroll())
+        elif category == "Rings" and item == "Ring of Spell Storing":
+            def spell_storing_level(caster_class):
+                if caster_class == "Wizard":
+                    spell_level = roll(1, 8, 0)
+                    if spell_level == 8:
+                        spell_level = roll(1, 6, 0)
+                else:
+                    spell_level = roll(1, 6, 0)
+                    if spell_level == 6:
+                        spell_level = roll(1, 4, 0)
+                return spell_level
+
+            caster_class = "Wizard"
+            if roll(1, 100, 0) > 70:
+                caster_class = "Priest"
+            spell_levels = sorted(
+                [spell_storing_level(caster_class) for x in range(0, roll(1, 4, 1))]
+            )
+            spells = []
+            for spell_level in spell_levels:
+                spells.append(
+                    f"{spell_level}:{random_spell(spell_level, caster_class, expanded=expanded)}"
+                )
+            return f"{base_ring} ({caster_class}): {', '.join(spells)}"
+    return item
+
+
 def random_magic_weapon(table="standard", base_item=None):
     if not base_item:
         if table:
@@ -460,7 +500,11 @@ def main():
     # print(special_magic_weapon(special="Hornblade"))
     # for _ in range(0, 10):
     # print(random_magic_weapon())
-    print(intelligent_weapon("Short sword +3", table="expanded"))
+    #print(intelligent_weapon("Short sword +3", table="expanded"))
+
+    import simple_gen
+    for category in simple_gen.dump_data(**load_table("magic_item_categories_standard.json")):
+        print(random_magic_item(category))
 
 
 if __name__ == "__main__":
