@@ -1,0 +1,75 @@
+{
+    "Armor of Command": {
+        "Random Armor": false,
+        "Format": "{base_item}"
+    },
+    "Armor of Blending": {
+        "Random Armor": true,
+        "Format": "{base_item} of Blending",
+        "Adjustment": {
+            "Action": "Table",
+            "Data": {
+              "8": "+1",
+              "12": "+2",
+              "15": "+3",
+              "17": "+4",
+              "18": "+5"
+            }
+        }
+    },
+    "Armor of Missile Attraction": {
+        "Random Armor": true,
+        "Format": "{base_item} of Missile Attraction",
+        "Adjustment": {
+            "Action": "Table",
+            "Data": {
+              "2": "-1",
+              "10": "+1",
+              "14": "+2",
+              "17": "+3",
+              "19": "+4",
+              "20": "+5"
+            }
+        },
+        "Cursed": true
+    },
+    "Armor of Rage +1": {
+        "Random Armor": false,
+        "Format": "{base_item}",
+        "Cursed": true
+    },
+    "Elven Chain Mail": {
+        "Random Armor": false,
+        "Format": "{base_item}"
+    },
+    "Plate Mail of Etherealness": {
+        "Random Armor": false,
+        "Format": "{base_item}"
+    },
+    "Plate Mail of Fear": {
+        "Random Armor": false,
+        "Format": "{base_item}"
+    },
+    "Plate Mail of Vulnerability": {
+        "Random Armor": false,
+        "Format": "{base_item}",
+        "Adjustment": {
+            "Action": "Table",
+            "Data": {
+              "4": "-2",
+              "7": "-3",
+              "9": "-4"
+            }
+        },
+        "Cursed": true
+    },
+    "Shield, Large, +1, +4 vs. Missiles": {
+        "Random Armor": false,
+        "Format": "{base_item}"
+    },
+    "Shield -1, Missile Attractor": {
+        "Random Armor": false,
+        "Format": "{base_item}",
+        "Cursed": true
+    }
+}

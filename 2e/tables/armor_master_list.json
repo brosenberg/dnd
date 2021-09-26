@@ -1,0 +1,176 @@
+{
+    "Banded mail": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 200
+    },
+    "Brigadine": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 120
+    },
+    "Bronze plate": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 400
+    },
+    "Chain mail": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 75
+    },
+    "Coin mail": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior"],
+        "Cost": 1000
+    },
+    "Drow chain mail": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior", "Bard", "Rogue", "Elf Fighter/Mage"],
+        "Cost": 1200 
+    },
+    "Dwarven plate": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior"],
+        "Cost": 6000
+    },
+    "Elven chain mail": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior", "Bard", "Rogue", "Elf Fighter/Mage"],
+        "Cost": 750 
+    },
+    "Elven plate": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior"],
+        "Cost": 6000
+    },
+    "Field plate": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 2000
+    },
+    "Full Plate": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 4000
+    },
+    "Gnomish leather": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior", "Ranger", "Rogue", "Bard", "Druid"],
+        "Cost": 500
+    },
+    "Hide armor": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior", "Bard", "Druid"],
+        "Cost": 35
+    },
+    "Lamellar": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior"],
+        "Cost": 250
+    },
+    "Leather": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior", "Ranger", "Rogue", "Bard", "Druid"],
+        "Cost": 5
+    },
+    "Leather scale": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior", "Ranger", "Rogue", "Bard", "Druid"],
+        "Cost": 80
+    },
+    "O-Yoroi": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior"],
+        "Cost": 3000
+    },
+    "Padded Armor": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior", "Ranger", "Rogue", "Bard", "Druid"],
+        "Cost": 4
+    },
+    "Plate mail": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 600
+    },
+    "Ring Mail": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 40
+    },
+    "Scale mail": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 60
+    },
+    "Sea elf scale mail": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior"],
+        "Cost": 1200
+    },
+    "Spiked leather": {
+        "Category": "Armor",
+        "Source": "expanded",
+        "Usable By": ["Warrior", "Ranger", "Rogue", "Bard"],
+        "Cost": 30
+    },
+    "Splint mail": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 80
+    },
+    "Studded leather": {
+        "Category": "Armor",
+        "Source": "standard",
+        "Usable By": ["Warrior", "Ranger", "Rogue", "Bard"],
+        "Cost": 20
+    },
+    "Tower shield": {
+        "Category": "Shield",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 10
+    },
+    "Buckler": {
+        "Category": "Shield",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 3
+    },
+    "Medium shield": {
+        "Category": "Shield",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 7
+    },
+    "Small shield": {
+        "Category": "Shield",
+        "Source": "standard",
+        "Usable By": ["Warrior"],
+        "Cost": 5
+    }
+}

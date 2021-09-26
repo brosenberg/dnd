@@ -346,7 +346,9 @@ def random_magic_armor(table="standard", base_item=None):
         if table:
             base_item = gen_table(f"magic_item_armors_{table}")
         else:
-            base_item = random.choice(table_by_filter(ARMOR, {"Source": table, "Category": "Armor"}))
+            base_item = random.choice(
+                table_by_filter(ARMOR, {"Source": table, "Category": "Armor"})
+            )
 
     if base_item == "Special":
         return random_special_magic_armor(table=table)
@@ -376,9 +378,13 @@ def random_magic_item(category, table="standard", expanded=False):
                 potions.append(f"{potion} ({doses} doses)")
             item = f"{item} (Potions: {', '.join(potions)})"
         # Write the Robe of Useful Items' scrolls
-        if category == "Cloaks and Robes" and item.startswith("Robe of Useful Items") and "Scroll" in item:
-            scroll_count = len(re.findall('Scroll', item))
-            scroll_match = re.match(r'^(.+?) (Scroll(, )?)+(, .+?)?$', item)
+        if (
+            category == "Cloaks and Robes"
+            and item.startswith("Robe of Useful Items")
+            and "Scroll" in item
+        ):
+            scroll_count = len(re.findall("Scroll", item))
+            scroll_match = re.match(r"^(.+?) (Scroll(, )?)+(, .+?)?$", item)
             scrolls = [str(generate_scroll()) for x in range(0, scroll_count)]
             item = f"{m.group(1)} {', '.join(scrolls)}"
             if m.group(4):
@@ -421,7 +427,9 @@ def random_magic_item(category, table="standard", expanded=False):
     return item
 
 
-def random_magic_weapon(table="standard", base_item=None, load_table=True, weapon_filter={}):
+def random_magic_weapon(
+    table="standard", base_item=None, load_table=True, weapon_filter={}
+):
     if not base_item:
         if load_table:
             base_item = gen_table(f"magic_item_weapons_{table}")
@@ -510,7 +518,11 @@ def special_magic_armor(special=None, force_results={}, table="standard"):
     armor = special
     # Determine base item, if any
     if SPECIAL_MAGIC_ARMOR[special]["Random Armor"]:
-        armor = SPECIAL_MAGIC_ARMOR[special]["Format"].format(base_item=random.choice(table_by_filter(ARMOR, {"Source": table, "Category": "Armor"})))
+        armor = SPECIAL_MAGIC_ARMOR[special]["Format"].format(
+            base_item=random.choice(
+                table_by_filter(ARMOR, {"Source": table, "Category": "Armor"})
+            )
+        )
 
     adjustment = SPECIAL_MAGIC_ARMOR[special].get("Adjustment", None)
     if adjustment:
