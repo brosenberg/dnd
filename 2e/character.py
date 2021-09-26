@@ -489,6 +489,7 @@ class Character(object):
         experience=None,
         expanded=False,
         slow_advancement=False,
+        starting_money=True,
         demi_experience_penalty=[2, 3],
     ):
         self.expanded = expanded
@@ -625,6 +626,16 @@ class Character(object):
         self.thac0 = get_best_thac0(self.classes, self.levels)
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
         self.equipment = []
+        self.currency = {"cp": 0, "sp": 0, "gp": 0, "ep": 0, "pp": 0}
+        if starting_money:
+            funds_roll = (1, 4, 1)
+            if "Rogue" in self.class_groups:
+                funds_roll = (2, 6, 0)
+            if "Priest" in self.class_groups:
+                fund_roll = (3, 6, 0)
+            if "Warrior" in self.class_groups:
+                funds_roll = (5, 4, 0)
+            self.currency["gp"] = 10 * roll(*funds_roll)
         self.characteristics = generate_characteristics(self.race, max(self.levels))
 
     def __str__(self):
@@ -750,7 +761,7 @@ class Character(object):
         s += f"Languages known: {', '.join(self.profs['Languages'])}\n"
 
         ### Spells
-        if self.spell_levels:
+        if self.spells:
             s += "\nSpells:"
             for class_name in self.spell_levels:
                 s += f"{class_name} ({'/'.join([str(x) for x in self.spell_levels[class_name]])}):\n"
@@ -763,6 +774,11 @@ class Character(object):
                             count = f" ({self.spells[class_name][spell_level].count(spell)})"
                         cur_spells.append(f"{spell}{count}")
                     s += f"{'; '.join(cur_spells)}\n"
+
+        ### Currency
+        funds_str = ", ".join([f"{self.currency[x]:,}{x}" for x in self.currency if self.currency[x]])
+        if funds_str:
+            s += f"\nCurrency: {funds_str}\n"
 
         ### Equipment
         if self.equipment:

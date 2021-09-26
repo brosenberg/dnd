@@ -580,18 +580,30 @@ def special_magic_weapon(special=None, force_results={}, table="standard"):
     return weapon
 
 
-def table_by_filter(table, filter_dict):
+def table_by_filter(table, filter_dict, do_extra=True):
     results = []
-    for weapon in table:
+    for entry in table:
         match = True
         for key in filter_dict.keys():
-            if key == "Source" and filter_dict[key] == "expanded":
-                if table[weapon][key] not in ["standard", "expanded"]:
+            def default_match():
+                if type(filter_dict[key]) is list:
+                    if not intersect(table[entry][key], filter_dict[key]):
+                        match = False
+                elif table[entry][key] != filter_dict[key]:
                     match = False
-            elif table[weapon][key] != filter_dict[key]:
-                match = False
+            if do_extra:
+                if key == "Source" and filter_dict[key] == "expanded":
+                    if table[entry][key] not in ["standard", "expanded"]:
+                        match = False
+                elif key == "Cost":
+                    if table[entry][key] > filter_dict[key]:
+                        match = False
+                else:
+                    default_match()
+            else:
+                default_match()
         if match:
-            results.append(weapon)
+            results.append(entry)
     return results
 
 
@@ -629,6 +641,7 @@ def main():
 
     print(special_magic_armor("Armor of Blending"))
     print(random_magic_weapon(load_table=False))
+    print("\n".join(table_by_filter(ARMOR, {"Cost": 100})))
 
 
 if __name__ == "__main__":
