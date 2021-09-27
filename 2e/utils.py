@@ -41,3 +41,33 @@ def plusify(number):
             return f"{number}"
     except TypeError:
         pass
+
+
+def table_keys_by_filter(table, filter_dict, do_extra=True, inverse=False):
+    results = []
+    for entry in table:
+        match = False
+        for key in filter_dict.keys():
+
+            def default_match():
+                if type(filter_dict[key]) is list:
+                    return intersect(table[entry][key], filter_dict[key])
+                return table[entry][key] == filter_dict[key]
+
+            if do_extra:
+                if key == "Source" and filter_dict[key] == "expanded":
+                    if table[entry][key] in ["standard", "expanded"]:
+                        match = True
+                elif key == "Cost":
+                    if table[entry][key] <= filter_dict[key]:
+                        match = True
+                elif default_match():
+                    match = True
+            elif default_match():
+                match = True
+        if match and not inverse:
+            results.append(entry)
+        elif not match and inverse:
+            results.append(entry)
+
+    return results

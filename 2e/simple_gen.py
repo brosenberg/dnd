@@ -39,7 +39,11 @@ def do_action(action, data):
         count = roll(*roll_dice)
         results = []
         for _ in range(0, count):
-            results.append(roll_table(data))
+            result = roll_table(data)
+            if type(result) is list:
+                results += result
+            else:
+                results.append(result)
         return results
     elif action == "Table Twice":
         return [roll_table(data), roll_table(data)]
@@ -62,9 +66,20 @@ def gen(**kwargs):
     join = kwargs.get("Join", None)
     math = kwargs.get("Math", None)
     action = kwargs["Action"].format(**kwargs)
+    filters = kwargs.get("Filters", {})
+    filter_options = kwargs.get("Filter Options", {})
+
     result = do_action(action, kwargs["Data"])
+
+    # Generate sub sub_gens
     if type(result) is dict:
         result = gen(**result)
+    # Generate sub sub_gens in lists
+    elif type(result) is list:
+        for index, entry in enumerate(result):
+            if type(entry) is dict:
+                result[index] = gen(**entry)
+
     if kwargs.get("Plusify", False):
         result = plusify(result)
     if kwargs.get("Sort", False):
@@ -86,6 +101,21 @@ def gen(**kwargs):
     if str_format:
         return str_format.format(result=result, **kwargs)
     return result
+
+
+def table_mutate_values(table, include=None, exclude=None):
+    last = 0
+    subtract = 0
+    new_table = {}
+    for key, value in table.items():
+        if (include is not None and value not in include) or (
+            exclude is not None and value in exclude
+        ):
+            subtract += int(key) - last
+        else:
+            last = int(key)
+            new_table[str(int(key) - subtract)] = value
+    return new_table
 
 
 def roll_table(data):

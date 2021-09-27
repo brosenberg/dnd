@@ -1,8 +1,4 @@
 {
-    "Armor of Command": {
-        "Random Armor": false,
-        "Format": "{base_item}"
-    },
     "Armor of Blending": {
         "Random Armor": true,
         "Format": "{base_item} of Blending",
@@ -16,6 +12,11 @@
               "18": "+5"
             }
         }
+    },
+    "Armor of Command": {
+        "Usable By": ["Heavy"],
+        "Random Armor": false,
+        "Format": "{base_item}"
     },
     "Armor of Missile Attraction": {
         "Random Armor": true,
@@ -34,23 +35,28 @@
         "Cursed": true
     },
     "Armor of Rage +1": {
+        "Usable By": ["Heavy"],
         "Random Armor": false,
         "Format": "{base_item}",
         "Cursed": true
     },
     "Elven Chain Mail": {
+        "Usable By": ["Heavy", "Bard", "Rogue", "Elf Fighter/Mage"],
         "Random Armor": false,
         "Format": "{base_item}"
     },
     "Plate Mail of Etherealness": {
+        "Usable By": ["Heavy"],
         "Random Armor": false,
         "Format": "{base_item}"
     },
     "Plate Mail of Fear": {
+        "Usable By": ["Heavy"],
         "Random Armor": false,
         "Format": "{base_item}"
     },
     "Plate Mail of Vulnerability": {
+        "Usable By": ["Heavy"],
         "Random Armor": false,
         "Format": "{base_item}",
         "Adjustment": {
@@ -64,10 +70,12 @@
         "Cursed": true
     },
     "Shield, Large, +1, +4 vs. Missiles": {
+        "Usable By": ["Heavy"],
         "Random Armor": false,
         "Format": "{base_item}"
     },
     "Shield -1, Missile Attractor": {
+        "Usable By": ["Heavy"],
         "Random Armor": false,
         "Format": "{base_item}",
         "Cursed": true

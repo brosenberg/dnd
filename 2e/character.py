@@ -776,7 +776,9 @@ class Character(object):
                     s += f"{'; '.join(cur_spells)}\n"
 
         ### Currency
-        funds_str = ", ".join([f"{self.currency[x]:,}{x}" for x in self.currency if self.currency[x]])
+        funds_str = ", ".join(
+            [f"{self.currency[x]:,}{x}" for x in self.currency if self.currency[x]]
+        )
         if funds_str:
             s += f"\nCurrency: {funds_str}\n"
 

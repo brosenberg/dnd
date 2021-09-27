@@ -13,14 +13,15 @@ from spells import random_spell
 from utils import choice_table_count_unique
 from utils import load_table
 from utils import plusify
+from utils import table_keys_by_filter
 
 
 AMMOS = load_table("weapons_ammos.json")
 ARMOR = load_table("armor_master_list.json")
 ARMOR_STATS = load_table("armor_stats.json")
 SHIELDS = load_table("shields.json")
-SPECIAL_MAGIC_ARMOR = load_table("armor_magic_special.json")
-SPECIAL_MAGIC_WEAPONS = load_table("weapons_magic_special.json")
+SPECIAL_MAGIC_ARMOR = load_table("magic_item_armor_special.json")
+SPECIAL_MAGIC_WEAPONS = load_table("magic_item_weapons_special.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
 WEAPONS = load_table("weapons_master_list.json")
 
@@ -127,7 +128,7 @@ def get_other_ac_bonus(item):
 
 
 def intelligent_weapon(base_weapon, table="standard"):
-    tables = load_table(f"weapons_intelligent_{table}")
+    tables = load_table(f"magic_item_weapons_intelligent_{table}")
     (
         intelligence,
         primary_count,
@@ -341,17 +342,17 @@ def random_shield():
     return random.choice(SHIELDS)
 
 
-def random_magic_armor(table="standard", base_item=None):
+def random_magic_armor(table="standard", base_item=None, filters={}):
+    if not filters:
+        filters["Source"] = table
     if not base_item:
         if table:
             base_item = gen_table(f"magic_item_armors_{table}")
         else:
-            base_item = random.choice(
-                table_by_filter(ARMOR, {"Source": table, "Category": "Armor"})
-            )
+            base_item = random.choice(table_keys_by_filter(ARMOR, filters))
 
     if base_item == "Special":
-        return random_special_magic_armor(table=table)
+        return random_special_magic_armor(table=table, filters=filters)
     adjustment = gen(**load_table(f"magic_item_armor_adjustment_{table}"))
     base_item = f"{base_item} {plusify(adjustment)}"
     if adjustment < 0:
@@ -361,6 +362,26 @@ def random_magic_armor(table="standard", base_item=None):
 
 def random_magic_item(category, table="standard", expanded=False):
     magic_items = load_table(f"magic_items_{table}")
+    data = None
+    subcategories = {
+        "Armor No Shields": {
+            "Category": "Armor and Shields",
+            "Data": f"magic_item_armor_only_{table}"
+        },
+        "Sword": {
+            "Category": "Weapons",
+            "Data": f"magic_item_weapon_sword_{table}"
+        },
+        "Nonsword": {
+            "Category": "Weapons",
+            "Data": f"magic_item_weapon_nonsword_{table}"
+        },
+    }
+
+    if category in subcategories:
+        data = subcategories[category]["Data"]
+        category = subcategories[category]["Category"]
+
     if category == "Weapons":
         return random_magic_weapon(table=table)
     elif category == "Armor and Shields":
@@ -427,17 +448,22 @@ def random_magic_item(category, table="standard", expanded=False):
     return item
 
 
-def random_magic_weapon(
-    table="standard", base_item=None, load_table=True, weapon_filter={}
-):
+def random_magic_weapon(**kwargs):
+    base_item = kwargs.get("base_item")
+    data = kwargs.get("data")
+    table = kwargs.get("table", "standard")
+    filters = kwargs.get("filters", {"Source": table})
+    if kwargs.get("load_table") and data is None:
+        data = load_table("magic_item_weapons_{table}")
+
     if not base_item:
-        if load_table:
-            base_item = gen_table(f"magic_item_weapons_{table}")
+        if data is not None:
+            base_item = gen(**data)
         else:
-            base_item = random.choice(table_by_filter(WEAPONS, weapon_filter))
+            base_item = random.choice(table_keys_by_filter(WEAPONS, filters))
 
     if base_item == "Special":
-        return random_special_magic_weapon(table=table)
+        return random_special_magic_weapon(table=table, filters=filters)
 
     quantity_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_item)
     quantity = None
@@ -448,7 +474,7 @@ def random_magic_weapon(
     # Assume this is a weapon category first
     try:
         base_item = random.choice(
-            table_by_filter(WEAPONS, {"Base Type": base_item, "Source": table})
+            table_keys_by_filter(WEAPONS, {"Base Type": base_item, "Source": table})
         )
     except IndexError:
         pass
@@ -473,18 +499,21 @@ def random_magic_weapon(
     return weapon
 
 
-def random_special_magic_armor(table="standard"):
+def random_special_magic_armor(table="standard", usable=None, filters={}):
     return special_magic_armor(
-        special=gen_table(f"magic_item_special_armor_{table}"), table="standard"
+        special=gen_table(f"magic_item_special_armor_{table}"),
+        table=table,
+        usable=usable,
     )
 
 
-def random_special_magic_weapon(table="standard"):
+def random_special_magic_weapon(table="standard", filters={}):
     return special_magic_weapon(
-        special=gen_table(f"magic_item_special_weapons_{table}"), table="standard"
+        special=gen_table(f"magic_item_special_weapons_{table}"), table=table
     )
 
 
+# TODO: Update or remove this
 def random_weapon(
     expanded=False, classes=[], class_groups=[], table=None, weapon_filter=None, level=1
 ):
@@ -511,17 +540,18 @@ def random_weapon(
     return mig.diversify_weapon(random.choice(weapons))
 
 
-def special_magic_armor(special=None, force_results={}, table="standard"):
+def special_magic_armor(special=None, force_results={}, table="standard", usable=None):
     if special == None:
         special = random.choice(list(SPECIAL_MAGIC_ARMOR))
 
     armor = special
     # Determine base item, if any
     if SPECIAL_MAGIC_ARMOR[special]["Random Armor"]:
+        filters = {"Source": table, "Category": "Armor"}
+        if usable:
+            filters["Usable By"] = usable
         armor = SPECIAL_MAGIC_ARMOR[special]["Format"].format(
-            base_item=random.choice(
-                table_by_filter(ARMOR, {"Source": table, "Category": "Armor"})
-            )
+            base_item=random.choice(table_keys_by_filter(ARMOR, filters))
         )
 
     adjustment = SPECIAL_MAGIC_ARMOR[special].get("Adjustment", None)
@@ -545,7 +575,7 @@ def special_magic_weapon(special=None, force_results={}, table="standard"):
             base_item = random.choice(SPECIAL_MAGIC_WEAPONS[special]["Base Items"])
         except KeyError:
             base_item = random.choice(
-                table_by_filter(
+                table_keys_by_filter(
                     WEAPONS,
                     {
                         "Base Type": SPECIAL_MAGIC_WEAPONS[special]["Base Type"],
@@ -580,68 +610,27 @@ def special_magic_weapon(special=None, force_results={}, table="standard"):
     return weapon
 
 
-def table_by_filter(table, filter_dict, do_extra=True):
-    results = []
-    for entry in table:
-        match = True
-        for key in filter_dict.keys():
-            def default_match():
-                if type(filter_dict[key]) is list:
-                    if not intersect(table[entry][key], filter_dict[key]):
-                        match = False
-                elif table[entry][key] != filter_dict[key]:
-                    match = False
-            if do_extra:
-                if key == "Source" and filter_dict[key] == "expanded":
-                    if table[entry][key] not in ["standard", "expanded"]:
-                        match = False
-                elif key == "Cost":
-                    if table[entry][key] > filter_dict[key]:
-                        match = False
-                else:
-                    default_match()
-            else:
-                default_match()
-        if match:
-            results.append(entry)
-    return results
-
-
 def weapons_by_type(weapon_type):
     return [x for x in WEAPONS if WEAPONS[x]["Base Type"] == weapon_type]
 
 
 def main():
-    # print(get_armor_ac("Hide armor +3"))
-    # print(get_armor_ac("Leather of Blending +1"))
-    # print(get_armor_ac("Plate mail -4"))
-    # print(get_armor_ac("Plate Mail of Etherealness"))
-    # for _ in range(0, 10):
-    #    print(random_weapon())
-    # print(appropriate_ammo_type("Light crossbow"))
-    # print(appropriate_weapons_by_ammo("Flight arrow"))
-    # print(base_weapon("Bastard sword +5"))
-    # print(random_item_count("Dart"))
-    # import simple_gen
-    # for weapon in simple_gen.dump_data(**load_table("magic_item_special_weapons_standard.json")):
-    # print(special_magic_weapon(special=weapon))
-    # print(random_special_magic_weapon())
-    # print(special_magic_weapon(special="Hornblade"))
-    # for _ in range(0, 10):
-    # print(random_magic_weapon())
-
     import simple_gen
 
-    for category in simple_gen.dump_data(
-        **load_table("magic_item_categories_standard.json")
-    ):
-        print(random_magic_item(category))
-    # print(intelligent_weapon("Short sword +3"))
-    # print(intelligent_weapon("Short sword +3", table="expanded"))
+    def gen_all_special_weapons():
+        for weapon in simple_gen.dump_data(
+            **load_table("magic_item_special_weapons_standard.json")
+        ):
+            print(special_magic_weapon(special=weapon))
 
-    print(special_magic_armor("Armor of Blending"))
-    print(random_magic_weapon(load_table=False))
-    print("\n".join(table_by_filter(ARMOR, {"Cost": 100})))
+    def gen_all_categories():
+        for category in simple_gen.dump_data(
+            **load_table("magic_item_categories_standard.json")
+        ):
+            print(random_magic_item(category))
+
+    gen_all_special_weapons()
+    gen_all_categories()
 
 
 if __name__ == "__main__":
