@@ -366,26 +366,23 @@ def random_magic_item(category, table="standard", expanded=False):
     subcategories = {
         "Armor No Shields": {
             "Category": "Armor and Shields",
-            "Data": f"magic_item_armor_only_{table}"
+            "Data": f"magic_item_armor_only_{table}",
         },
-        "Sword": {
-            "Category": "Weapons",
-            "Data": f"magic_item_weapon_sword_{table}"
-        },
+        "Sword": {"Category": "Weapons", "Data": f"magic_item_weapon_sword_{table}"},
         "Nonsword": {
             "Category": "Weapons",
-            "Data": f"magic_item_weapon_nonsword_{table}"
+            "Data": f"magic_item_weapon_nonsword_{table}",
         },
     }
 
     if category in subcategories:
-        data = subcategories[category]["Data"]
+        data = load_table(subcategories[category]["Data"])
         category = subcategories[category]["Category"]
 
     if category == "Weapons":
-        return random_magic_weapon(table=table)
+        return random_magic_weapon(table=table, data=data)
     elif category == "Armor and Shields":
-        return random_magic_armor(table=table)
+        return random_magic_armor(table=table, data=data)
     else:
         item = gen(**magic_items[category])
         # Fill the Beaker
@@ -463,7 +460,9 @@ def random_magic_weapon(**kwargs):
             base_item = random.choice(table_keys_by_filter(WEAPONS, filters))
 
     if base_item == "Special":
-        return random_special_magic_weapon(table=table, filters=filters)
+        return random_special_magic_weapon(table=table)
+    elif base_item in SPECIAL_MAGIC_WEAPONS:
+        return special_magic_weapon(special=base_item, table=table)
 
     quantity_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_item)
     quantity = None
@@ -471,13 +470,10 @@ def random_magic_weapon(**kwargs):
         quantity = roll(int(quantity_match.group(1)), int(quantity_match.group(2)), 0)
         base_item = re.sub(r"\s*\(\d+d\d+\)$", "", base_item)
 
-    # Assume this is a weapon category first
-    try:
+    if base_item in set([WEAPONS[x]["Base Type"] for x in WEAPONS]):
         base_item = random.choice(
             table_keys_by_filter(WEAPONS, {"Base Type": base_item, "Source": table})
         )
-    except IndexError:
-        pass
 
     adjustment = gen_table(
         f"magic_item_weapon_adjustment_{table}",
@@ -507,9 +503,9 @@ def random_special_magic_armor(table="standard", usable=None, filters={}):
     )
 
 
-def random_special_magic_weapon(table="standard", filters={}):
+def random_special_magic_weapon(table="standard"):
     return special_magic_weapon(
-        special=gen_table(f"magic_item_special_weapons_{table}"), table=table
+        special=gen_table(f"magic_item_special_weapons_{table}", table=table)
     )
 
 
@@ -629,8 +625,13 @@ def main():
         ):
             print(random_magic_item(category))
 
-    gen_all_special_weapons()
-    gen_all_categories()
+    # gen_all_special_weapons()
+    # gen_all_categories()
+    for _ in range(0, 10):
+        print(random_magic_item("Sword"))
+    print()
+    for _ in range(0, 10):
+        print(random_magic_item("Nonsword"))
 
 
 if __name__ == "__main__":

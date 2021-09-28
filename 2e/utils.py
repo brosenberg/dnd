@@ -46,7 +46,7 @@ def plusify(number):
 def table_keys_by_filter(table, filter_dict, do_extra=True, inverse=False):
     results = []
     for entry in table:
-        match = False
+        match = True
         for key in filter_dict.keys():
 
             def default_match():
@@ -56,15 +56,15 @@ def table_keys_by_filter(table, filter_dict, do_extra=True, inverse=False):
 
             if do_extra:
                 if key == "Source" and filter_dict[key] == "expanded":
-                    if table[entry][key] in ["standard", "expanded"]:
-                        match = True
+                    if table[entry][key] not in ["standard", "expanded"]:
+                        match = False
                 elif key == "Cost":
-                    if table[entry][key] <= filter_dict[key]:
-                        match = True
-                elif default_match():
-                    match = True
-            elif default_match():
-                match = True
+                    if table[entry][key] > filter_dict[key]:
+                        match = False
+                elif not default_match():
+                    match = False
+            elif not default_match():
+                match = False
         if match and not inverse:
             results.append(entry)
         elif not match and inverse:

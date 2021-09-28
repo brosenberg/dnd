@@ -34,6 +34,14 @@ def do_action(action, data):
         return roll(*data)
     elif action == "Table":
         return roll_table(data)
+    elif action == "Table_Calc":
+        new_data = {}
+        last = 0
+        for key, value in data:
+            this = key + last
+            new_data[str(this)] = value
+            last = this
+        return roll_table(new_data)
     elif action.startswith("Table_N_Roll"):
         roll_dice = (int(x) for x in action.split(" ")[1:])
         count = roll(*roll_dice)
