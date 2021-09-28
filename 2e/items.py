@@ -86,7 +86,10 @@ def build_filters(**kwargs):
         if not usable and kwargs.get("classes"):
             usable = usable_by(kwargs.get("classes"))
         if usable:
-            filters["Usable By"] = usable[item_type]
+            try:
+                filters["Usable By"] = usable[item_type]
+            except KeyError:
+                pass
 
     return filters
 
@@ -387,11 +390,12 @@ def random_magic_armor(**kwargs):
     return base_item
 
 
-def random_magic_item(category, **kwargs):
+def random_magic_item(**kwargs):
     table = kwargs.get("table", "standard")
+    category = kwargs.get("category", gen_table(f"magic_item_categories_{table}"))
     magic_items = load_table(f"magic_items_{table}")
     data = None
-    filters = build_filters(**kwargs)
+    filters = build_filters(**kwargs, item_type=category)
     subcategories = {
         "Armor No Shields": {
             "Category": "Armor and Shields",
@@ -452,13 +456,18 @@ def random_magic_item(category, **kwargs):
         ):
             scroll_count = len(re.findall("Scroll", item))
             scroll_match = re.match(r"^(.+?) (Scroll(, )?)+(, .+?)?$", item)
-            scrolls = [str(generate_scroll()) for x in range(0, scroll_count)]
-            item = f"{m.group(1)} {', '.join(scrolls)}"
-            if m.group(4):
-                item += m.group(4)
+            if scroll_match:
+                scrolls = [str(generate_scroll()) for x in range(0, scroll_count)]
+                item = f"{scroll_match.group(1)} {', '.join(scrolls)}"
+                if scroll_match.group(4):
+                    item += scroll_match.group(4)
         # Write the scrolls
         elif category == "Scrolls" and item == "Spell Scroll":
-            item = str(generate_scroll())
+            scroll_type = None
+            scroll_data = load_table("scroll_types.json")
+            mutate_data_if_equal_keys(scroll_data, filters["Usable By"])
+            scroll_type = gen(**scroll_data)
+            item = str(generate_scroll(scroll_type=scroll_type))
         # Fill the Ring of Spell Storing with spells
         elif category == "Rings" and item == "Ring of Spell Storing":
 
@@ -485,7 +494,7 @@ def random_magic_item(category, **kwargs):
                 spells.append(
                     f"{spell_level}:{random_spell(spell_level, caster_class, expanded=expanded)}"
                 )
-            item = f"{base_ring} ({caster_class}): {', '.join(spells)}"
+            item = f"{item} ({caster_class}): {', '.join(spells)}"
 
         # Trap some wands
         if category == "Wands":
@@ -690,12 +699,14 @@ def usable_by(classes):
         ]
 
     exclusive_weapon_groups = set(["Druid", "Cleric"])
-    usable_lists = {"Armor": [], "Weapons": []}
-    usable = {"Armor": "Mage", "Weapons": "Mage"}
+    usable_lists = {"Armor": [], "Weapons": [], "Scrolls": []}
+    usable = {"Armor": "Mage", "Weapons": "Mage", "Scrolls": []}
     for class_name in classes:
-        usable_lists["Armor"].append(CLASSES[class_name]["Usable By"]["Armor"])
-        usable_lists["Weapons"].append(CLASSES[class_name]["Usable By"]["Weapons"])
+        for category in ["Armor", "Weapons"]:
+            usable_lists[category].append(CLASSES[class_name]["Usable By"][category])
+        usable_lists["Scrolls"] += list(CLASSES[class_name]["Usable By"]["Scrolls"])
     usable["Armor"] = best_option("Armor", usable_lists["Armor"])
+    usable["Scrolls"] = list(set(usable_lists["Scrolls"]))
     usable["Weapons"] = best_option("Weapons", usable_lists["Weapons"])
     has_exclusive = list(
         set(usable_lists["Weapons"]).intersection(exclusive_weapon_groups)
@@ -718,11 +729,11 @@ def main():
         ):
             print(special_magic_weapon(special=weapon))
 
-    def gen_all_categories():
+    def gen_all_categories(**kwargs):
         for category in simple_gen.dump_data(
             **load_table("magic_item_categories_standard.json")
         ):
-            print(random_magic_item(category))
+            print(f"{category:25}  {random_magic_item(category=category, **kwargs)}")
 
     # gen_all_special_weapons()
     # gen_all_categories()
@@ -745,14 +756,15 @@ def main():
     # for _ in range(0, 10):
     #    print(random_magic_weapon(classes=["Druid"]))
     # print()
-    for _ in range(0, 10):
-        print(random_special_magic_item(item_type="Armor", classes=["Druid"]))
-    print()
-    for _ in range(0, 10):
-        print(random_special_magic_item(item_type="Weapons", classes=["Druid"]))
-    print()
+    # for _ in range(0, 10):
+    #    print(random_special_magic_item(item_type="Armor", classes=["Druid"]))
+    # print()
+    # for _ in range(0, 10):
+    #    print(random_special_magic_item(item_type="Weapons", classes=["Druid"]))
+    # print()
 
     # print(random_magic_armor(classes=["Druid"]))
+    gen_all_categories(classes=["Mage"])
 
 
 if __name__ == "__main__":

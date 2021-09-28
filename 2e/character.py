@@ -898,6 +898,7 @@ class Character(object):
 
         # Assign thief skills points after modifiers are applied, so that
         # skills can hit 95 and not be reduced.
+        # TODO: Assign Bard points in here, too
         if "Thief" in self.classes:
 
             def assign_points(points):

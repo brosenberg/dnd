@@ -55,15 +55,17 @@ class Scroll(object):
                 self.scroll[spell_level].append(new_spell)
 
 
-def random_spell_scroll(spells):
+def random_spell_scroll(spells, scroll_type=None):
     scroll_roll = random.randint(1, 19)
-    type_roll = random.randint(1, 100)
-    scroll_type = "Wizard"
     spell_count = 1
     min_level = 1
     max_level = 4
-    if type_roll > 70:
-        scroll_type = "Priest"
+
+    if scroll_type is None:
+        if random.randint(1, 100) > 70:
+            scroll_type = "Priest"
+        else:
+            scroll_type = "Wizard"
 
     if scroll_roll == 7 or scroll_roll == 8:
         spell_count = 2
@@ -100,8 +102,8 @@ def random_spell_scroll(spells):
     return scroll
 
 
-def generate_scroll(expanded=False):
-    return random_spell_scroll(Spells(expanded=expanded))
+def generate_scroll(expanded=False, scroll_type=None):
+    return random_spell_scroll(Spells(expanded=expanded), scroll_type=scroll_type)
 
 
 def main():
