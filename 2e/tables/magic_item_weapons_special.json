@@ -1,369 +1,725 @@
 {
-    "Arrow of Direction": {
-        "Base Type": "Arrow",
-        "Format": "{base_item} of Direction"
-    },
-    "Arrow of Slaying": {
-        "Base Type": "Arrow",
-        "Format": "{base_item} of Slaying",
-        "Gens": {
-            "Details": {
-                "Action": "Choice",
-                "Data": [
-                    "Arachnid",
-                    "Avian",
-                    "Bard",
-                    "Cleric",
-                    "Dragon",
-                    "Druid",
-                    "Elemental",
-                    "Fighter",
-                    "Giant",
-                    "Golem",
-                    "Illusionist",
-                    "Mage",
-                    "Mammal",
-                    "Paladin",
-                    "Ranger",
-                    "Reptile",
-                    "Sea monster",
-                    "Thieve",
-                    "Titan",
-                    "Undead"
-                ],
-                "Format": "({result} slaying)"
-            }
+  "Arrow of Direction": {
+    "Base Type": "Arrow",
+    "Format": "{base_item} of Direction",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Arrow of Slaying": {
+    "Base Type": "Arrow",
+    "Format": "{base_item} of Slaying",
+    "Gens": {
+        "Details": {
+            "Action": "Choice",
+            "Data": [
+                "Arachnid",
+                "Avian",
+                "Bard",
+                "Cleric",
+                "Dragon",
+                "Druid",
+                "Elemental",
+                "Fighter",
+                "Giant",
+                "Golem",
+                "Illusionist",
+                "Mage",
+                "Mammal",
+                "Paladin",
+                "Ranger",
+                "Reptile",
+                "Sea monster",
+                "Thieve",
+                "Titan",
+                "Undead"
+            ],
+            "Format": "({result} slaying)"
         }
     },
-    "Throwing Axe +2": {
-        "Base Items": ["Throwing axe"],
-        "Format": "Throwing Axe +2"
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Throwing Axe +2": {
+    "Base Items": [
+      "Throwing axe"
+    ],
+    "Format": "Throwing Axe +2",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Axe of Hurling": {
+    "Base Items": [
+      "Hand axe"
+    ],
+    "Format": "{base_item} of Hurling",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Bow +1": {
+    "Base Type": "Bow",
+    "Format": "{base_item} +1",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Crossbow of Accuracy +3": {
+    "Base Type": "Crossbow",
+    "Format": "{base_item} of Accuracy +3",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Crossbow of Distance": {
+    "Base Type": "Crossbow",
+    "Format": "{base_item} of Distace",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Crossbow of Speed": {
+    "Base Type": "Crossbow",
+    "Format": "{base_item} of Speed",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Dagger +1, +2 vs. Tiny or Small creatures": {
+    "Base Type": "Dagger",
+    "Format": "{base_item} +1, +2 vs. Tiny or Small creatures",
+    "Source": "standard",
+    "Usable By": [
+      "Rogue",
+      "Mage",
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Dagger +2, +3 vs. larger than man-size": {
+    "Base Type": "Dagger",
+    "Format": "{base_item} +2, +3 vs. larger than man-size",
+    "Source": "standard",
+    "Usable By": [
+      "Rogue",
+      "Mage",
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Dagger +2, Longtooth": {
+    "Base Type": "Dagger",
+    "Format": "Longtooth ({base_item} +2)",
+    "Source": "standard",
+    "Usable By": [
+      "Rogue",
+      "Mage",
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Dagger of Throwing": {
+    "Base Type": "Dagger",
+    "Format": "{base_item} of Throwing",
+    "Source": "standard",
+    "Usable By": [
+      "Rogue",
+      "Mage",
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Dagger of Venom": {
+    "Base Type": "Dagger",
+    "Format": "{base_item} of Venom",
+    "Source": "standard",
+    "Usable By": [
+      "Rogue",
+      "Mage",
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Dart of Homing +3": {
+    "Base Items": [
+      "Dart"
+    ],
+    "Format": "{base_item} of Homing +3",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Mage",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Hammer +3, Dwarven Thrower": {
+    "Base Items": [
+      "Warhammer"
+    ],
+    "Format": "{base_item} +3, Dwarven Thrower",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Cleric"
+    ]
+  },
+  "Hammer of Thunderbolts": {
+    "Base Items": [
+      "Warhammer"
+    ],
+    "Format": "Hammer of Thunderbolts",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Cleric"
+    ]
+  },
+  "Hornblade": {
+    "Base Items": [
+      "Knife",
+      "Dagger",
+      "Scimitar"
+    ],
+    "Format": "Hornblade",
+    "Gens": {
+        "Adjustment": {
+            "Action": "Key_Roll {base_item}",
+            "Data": {
+                "Knife": [1, 2, 0],
+                "Dagger": [1, 2, 0],
+                "Scimitar": [1, 2, 1]
+            },
+            "Plusify": true,
+            "Format": "{result} ({base_item})"
+        }
     },
-    "Axe of Hurling": {
-        "Base Items": ["Hand axe"],
-        "Format": "{base_item} of Hurling"
+    "Source": "standard",
+    "Usable By": [
+      "Mage",
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Javelin of Lightning": {
+    "Base Items": [
+      "Javelin"
+    ],
+    "Format": "{base_item} of Lightning",
+    "Gens": {
+        "Quantity": {
+            "Action": "Roll",
+            "Data": [1, 4, 1],
+            "Format": "x{result}"
+        }
     },
-    "Bow +1": {
-        "Base Type": "Bow",
-        "Format": "{base_item} +1"
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Javelin of Piercing": {
+    "Base Items": [
+      "Javelin"
+    ],
+    "Format": "{base_item} of Piercing",
+    "Gens": {
+        "Quantity": {
+            "Action": "Roll",
+            "Data": [2, 4, 0],
+            "Format": "x{result}"
+        }
     },
-    "Crossbow of Accuracy +3": {
-        "Base Type": "Crossbow",
-        "Format": "{base_item} of Accuracy +3"
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Buckle Knife": {
+    "Base Items": [
+      "Knife"
+    ],
+    "Format": "Buckle Knife",
+    "Gens": {
+        "Adjustment": {
+            "Action": "Table",
+            "Data": {
+                "4": 1,
+                "7": 2,
+                "9": 3,
+                "10": 4
+            },
+            "Plusify": true
+        }
     },
-    "Crossbow of Distance": {
-        "Base Type": "Crossbow",
-        "Format": "{base_item} of Distace"
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Mage",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Mace of Disruption +1": {
+    "Base Type": "Mace",
+    "Format": "{base_item} of Disruption",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Cleric"
+    ]
+  },
+  "Net of Entrapment": {
+    "Generic Item": "True",
+    "Format": "Net of Entrapment",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Druid",
+      "Cleric",
+      "Rogue",
+      "Mage"
+    ]
+  },
+  "Net of Snaring": {
+    "Generic Item": "True",
+    "Format": "Net of Snaring",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Druid",
+      "Cleric",
+      "Rogue",
+      "Mage"
+    ]
+  },
+  "Quarterstaff, Magical": {
+    "Base Items": [
+      "Quarterstaff"
+    ],
+    "Format": "{base_item}",
+    "Gens": {
+        "Adjustment": {
+            "Action": "Table",
+            "Data": {
+                "5": 1,
+                "9": 2,
+                "13": 3,
+                "17": 4,
+                "20": 5
+            },
+            "Plusify": true
+        }
     },
-    "Crossbow of Speed": {
-        "Base Type": "Crossbow",
-        "Format": "{base_item} of Speed"
-    },
-    "Dagger +1, +2 vs. Tiny or Small creatures": {
-        "Base Type": "Dagger",
-        "Format": "{base_item} +1, +2 vs. Tiny or Small creatures"
-    },
-    "Dagger +2, +3 vs. larger than man-size": {
-        "Base Type": "Dagger",
-        "Format": "{base_item} +2, +3 vs. larger than man-size"
-    },
-    "Dagger +2, Longtooth": {
-        "Base Type": "Dagger",
-        "Format": "Longtooth ({base_item} +2)"
-    },
-    "Dagger of Throwing": {
-        "Base Type": "Dagger",
-        "Format": "{base_item} of Throwing"
-    },
-    "Dagger of Venom": {
-        "Base Type": "Dagger",
-        "Format": "{base_item} of Venom"
-    },
-    "Dart of Homing +3": {
-        "Base Items": ["Dart"],
-        "Format": "{base_item} of Homing +3"
-    },
-    "Hammer +3, Dwarven Thrower": {
-        "Base Items": ["Warhammer"],
-        "Format": "{base_item} +3, Dwarven Thrower"
-    },
-    "Hammer of Thunderbolts": {
-        "Base Items": ["Warhammer"],
-        "Format": "Hammer of Thunderbolts"
-    },
-    "Hornblade": {
-        "Base Items": ["Knife", "Dagger", "Scimitar"],
-        "Format": "Hornblade",
-        "Gens": {
-            "Adjustment": {
-                "Action": "Key_Roll {base_item}",
-                "Data": {
-                    "Knife": [1, 2, 0],
-                    "Dagger": [1, 2, 0],
-                    "Scimitar": [1, 2, 1]
+    "Source": "standard",
+    "Usable By": [
+      "Cleric",
+      "Mage",
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Scimitar of Speed": {
+    "Base Items": [
+      "Scimitar"
+    ],
+    "Format": "{base_item} of Speed",
+    "Gens": {
+        "Adjustment": {
+            "Action": "Table",
+            "Data": {
+                "75": {
+                    "Action": "Return",
+                    "Data": 2
                 },
-                "Plusify": true,
-                "Format": "{result} ({base_item})"
-            }
-        }
-    },
-    "Javelin of Lightning": {
-        "Base Items": ["Javelin"],
-        "Format": "{base_item} of Lightning",
-        "Gens": {
-            "Quantity": {
-                "Action": "Roll",
-                "Data": [1, 4, 1],
-                "Format": "x{result}"
-            }
-        }
-    },
-    "Javelin of Piercing": {
-        "Base Items": ["Javelin"],
-        "Format": "{base_item} of Piercing",
-        "Gens": {
-            "Quantity": {
-                "Action": "Roll",
-                "Data": [2, 4, 0],
-                "Format": "x{result}"
-            }
-        }
-    },
-    "Buckle Knife": {
-        "Base Items": ["Knife"],
-        "Format": "Buckle Knife",
-        "Gens": {
-            "Adjustment": {
-                "Action": "Table",
-                "Data": {
-                    "4": 1,
-                    "7": 2,
-                    "9": 3,
-                    "10": 4
-                },
-                "Plusify": true
-            }
-        }
-    },
-    "Mace of Disruption +1": {
-        "Base Type": "Mace",
-        "Format": "{base_item} of Disruption"
-    },
-    "Net of Entrapment": {
-        "Generic Item": true,
-        "Format": "Net of Entrapment"
-    },
-    "Net of Snaring": {
-        "Generic Item": true,
-        "Format": "Net of Snaring"
-    },
-    "Quarterstaff, Magical": {
-        "Base Items": ["Quarterstaff"],
-        "Format": "{base_item}",
-        "Gens": {
-            "Adjustment": {
-                "Action": "Table",
-                "Data": {
-                    "5": 1,
-                    "9": 2,
-                    "13": 3,
-                    "17": 4,
-                    "20": 5
-                },
-                "Plusify": true
-            }
-    }
-    },
-    "Scimitar of Speed": {
-        "Base Items": ["Scimitar"],
-        "Format": "{base_item} of Speed",
-        "Gens": {
-            "Adjustment": {
-                "Action": "Table",
-                "Data": {
-                    "75": {
-                        "Action": "Return",
-                        "Data": 2
-                    },
-                    "100": {
-                        "Action": "Table",
-                        "Data": {
-                            "50": 1,
-                            "75": 3,
-                            "90": 4,
-                            "100": 5
-                        }
+                "100": {
+                    "Action": "Table",
+                    "Data": {
+                        "50": 1,
+                        "75": 3,
+                        "90": 4,
+                        "100": 5
                     }
-                },
-                "Plusify": true
-            }
+                }
+            },
+            "Plusify": true
         }
     },
-    "Sling of Seeking +2": {
-        "Base Items": ["Sling"],
-        "Format": "{base_item} of Seeking +2"
-    },
-    "Spear, Cursed Backbiter": {
-        "Base Items": ["Spear"],
-        "Format": "{base_item}, Cursed Backbiter",
-        "Gens": {
-            "Adjustment": {
-                "Action": "Choice",
-                "Data": [1, 2, 3],
-                "Plusify": true
-            }
-        },
-        "Cursed": true
-    },
-    "Trident of Fish Command +1": {
-        "Base Items": ["Trident"],
-        "Format": "{base_item} of Fish Command +1",
-        "Gens": {
-            "Charges": {
-                "Action": "Roll",
-                "Data": [1, 4, 16],
-                "Format": "({result} charges)"
-            }
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Sling of Seeking +2": {
+    "Base Items": [
+      "Sling"
+    ],
+    "Format": "{base_item} of Seeking +2",
+    "Source": "standard",
+    "Usable By": [
+      "Cleric",
+      "Mage",
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Spear, Cursed Backbiter": {
+    "Base Items": [
+      "Spear"
+    ],
+    "Format": "{base_item}, Cursed Backbiter",
+    "Gens": {
+        "Adjustment": {
+            "Action": "Choice",
+            "Data": [1, 2, 3],
+            "Plusify": true
         }
     },
-    "Trident of Submission +1": {
-        "Base Items": ["Trident"],
-        "Format": "{base_item} of Submission +1",
-        "Gens": {
-            "Charges": {
-                "Action": "Roll",
-                "Data": [1, 4, 16],
-                "Format": "({result} charges)"
-            }
+    "Cursed": "True",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Druid"
+    ]
+  },
+  "Trident of Fish Command +1": {
+    "Base Items": [
+      "Trident"
+    ],
+    "Format": "{base_item} of Fish Command +1",
+    "Gens": {
+        "Charges": {
+            "Action": "Roll",
+            "Data": [1, 4, 16],
+            "Format": "({result} charges)"
         }
     },
-    "Trident of Warning +2": {
-        "Base Items": ["Trident"],
-        "Format": "{base_item} of Warning +2",
-        "Gens": {
-            "Charges": {
-                "Action": "Roll",
-                "Data": [1, 6, 18],
-                "Format": "({result} charges)"
-            }
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Trident of Submission +1": {
+    "Base Items": [
+      "Trident"
+    ],
+    "Format": "{base_item} of Submission +1",
+    "Gens": {
+        "Charges": {
+            "Action": "Roll",
+            "Data": [1, 4, 16],
+            "Format": "({result} charges)"
         }
     },
-    "Trident of Yearning -2": {
-        "Base Items": ["Trident"],
-        "Format": "{base_item} of Yearning -2",
-        "Cursed": true
-    },
-    "Sun Blade +2": {
-        "Base Items": ["Bastard sword"],
-        "Format": "Sun Blade +2"
-    },
-    "Sword +1, +2 vs. magic-using and enchanted creatures": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, +2 vs. magic-using and enchanted creatures"
-    },
-    "Sword +1, +3 vs. lycanthropes and shape-changers": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, +3 vs. lycanthropes and shape-changers"
-    },
-    "Sword +1, +3 vs. regenerating creatures": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, +3 vs. regenerating creatures"
-    },
-    "Sword +1, +4 vs. reptiles": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, +4 vs. reptiles"
-    },
-    "Sword +1, Cursed": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, Cursed",
-        "Cursed": true
-    },
-    "Sword +1, Flame Tongue": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, Flame Tongue"
-    },
-    "Sword +1, Luck Blade": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +1, Luck Blade",
-        "Gens": {
-            "Details": {
-                "Action": "Roll",
-                "Data": [1, 4, 1],
-                "Format": "({result} wishes)"
-            }
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Trident of Warning +2": {
+    "Base Items": [
+      "Trident"
+    ],
+    "Format": "{base_item} of Warning +2",
+    "Gens": {
+        "Charges": {
+            "Action": "Roll",
+            "Data": [1, 6, 18],
+            "Format": "({result} charges)"
         }
     },
-    "Sword +2, Dragon Slayer": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +2, Dragon Slayer",
-        "Gens": {
-            "Details": {
-                "Action": "Choice",
-                "Data": ["Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"],
-                "Format": "({result} dragon slaying)"
-            }
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Trident of Yearning -2": {
+    "Base Items": [
+      "Trident"
+    ],
+    "Format": "{base_item} of Yearning -2",
+    "Cursed": "True",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Sun Blade +2": {
+    "Base Items": [
+      "Bastard sword"
+    ],
+    "Format": "Sun Blade +2",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior"
+    ]
+  },
+  "Sword +1, +2 vs. magic-using and enchanted creatures": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, +2 vs. magic-using and enchanted creatures",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +1, +3 vs. lycanthropes and shape-changers": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, +3 vs. lycanthropes and shape-changers",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +1, +3 vs. regenerating creatures": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, +3 vs. regenerating creatures",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +1, +4 vs. reptiles": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, +4 vs. reptiles",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +1, Cursed": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, Cursed",
+    "Cursed": "True",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +1, Flame Tongue": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, Flame Tongue",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +1, Luck Blade": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +1, Luck Blade",
+    "Gens": {
+        "Details": {
+            "Action": "Roll",
+            "Data": [1, 4, 1],
+            "Format": "({result} wishes)"
         }
     },
-    "Sword +2, Giant Slayer": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +2, Giant Slayer"
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +2, Dragon Slayer": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +2, Dragon Slayer",
+    "Gens": {
+        "Details": {
+            "Action": "Choice",
+            "Data": ["Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"],
+            "Format": "({result} dragon slaying)"
+        }
     },
-    "Sword +2, Nine Lives Stealer": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +2, Nine Lives Stealer"
-    },
-    "Sword +3, Frost Brand": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +3, Frost Brand"
-    },
-    "Sword +4, Defender": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +4, Defender"
-    },
-    "Sword +5, Defender": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +5, Defender"
-    },
-    "Sword +5, Holy Avenger": {
-        "Base Type": "Sword",
-        "Format": "{base_item} +5, Holy Avenger"
-    },
-    "Sword -2, Cursed": {
-        "Base Type": "Sword",
-        "Format": "{base_item} -2, Cursed",
-        "Cursed": true
-    },
-    "Sword of Dancing": {
-        "Base Type": "Sword",
-        "Format": "{base_item} of Dancing"
-    },
-    "Sword of Life Stealing": {
-        "Base Type": "Sword",
-        "Format": "{base_item} of Life Stealing"
-    },
-    "Sword of Sharpness": {
-        "Base Type": "Sword",
-        "Format": "{base_item} of Sharpness"
-    },
-    "Sword of the Planes": {
-        "Base Type": "Sword",
-        "Format": "{base_item} of the Planes"
-    },
-    "Sword of Wounding": {
-        "Base Type": "Sword",
-        "Format": "{base_item} of Wounding"
-    },
-    "Sword, Cursed Berserking +2": {
-        "Base Type": "Sword",
-        "Format": "{base_item}, Cursed Berserking +2",
-        "Cursed": true
-    },
-    "Short Sword of Quickness +2": {
-        "Base Items": ["Short sword"],
-        "Format": "{base_item} of Quickness +2"
-    },
-    "Vorpal Sword": {
-        "Base Type": "Sword",
-        "Format": "Vorpal {base_item}"
-    }
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +2, Giant Slayer": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +2, Giant Slayer",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +2, Nine Lives Stealer": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +2, Nine Lives Stealer",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +3, Frost Brand": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +3, Frost Brand",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +4, Defender": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +4, Defender",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +5, Defender": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +5, Defender",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword +5, Holy Avenger": {
+    "Base Type": "Sword",
+    "Format": "{base_item} +5, Holy Avenger",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword -2, Cursed": {
+    "Base Type": "Sword",
+    "Format": "{base_item} -2, Cursed",
+    "Cursed": "True",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword of Dancing": {
+    "Base Type": "Sword",
+    "Format": "{base_item} of Dancing",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword of Life Stealing": {
+    "Base Type": "Sword",
+    "Format": "{base_item} of Life Stealing",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword of Sharpness": {
+    "Base Type": "Sword",
+    "Format": "{base_item} of Sharpness",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword of the Planes": {
+    "Base Type": "Sword",
+    "Format": "{base_item} of the Planes",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword of Wounding": {
+    "Base Type": "Sword",
+    "Format": "{base_item} of Wounding",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Sword, Cursed Berserking +2": {
+    "Base Type": "Sword",
+    "Format": "{base_item}, Cursed Berserking +2",
+    "Cursed": "True",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  },
+  "Short Sword of Quickness +2": {
+    "Base Items": [
+      "Short sword"
+    ],
+    "Format": "{base_item} of Quickness +2",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue"
+    ]
+  },
+  "Vorpal Sword": {
+    "Base Type": "Sword",
+    "Format": "Vorpal {base_item}",
+    "Source": "standard",
+    "Usable By": [
+      "Warrior",
+      "Rogue",
+      "Druid"
+    ]
+  }
 }
