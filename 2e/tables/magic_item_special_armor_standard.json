@@ -1,15 +1,15 @@
 {
-    "Action": "Table",
-    "Data": {
-      "2": "Armor of Command",
-      "4": "Armor of Blending",
-      "6": "Armor of Missile Attraction",
-      "8": "Armor of Rage +1",
-      "10": "Elven Chain Mail",
-      "12": "Plate Mail of Etherealness",
-      "14": "Plate Mail of Fear",
-      "16": "Plate Mail of Vulnerability",
-      "18": "Shield, Large, +1, +4 vs. Missiles",
-      "20": "Shield -1, Missile Attractor"
-    }
+    "Action": "Table_Compute",
+    "Data": [
+      [1, "Armor of Command"],
+      [1, "Armor of Blending"],
+      [1, "Armor of Missile Attraction"],
+      [1, "Armor of Rage +1"],
+      [1, "Elven Chain Mail"],
+      [1, "Plate Mail of Etherealness"],
+      [1, "Plate Mail of Fear"],
+      [1, "Plate Mail of Vulnerability"],
+      [1, "Shield, Large, +1, +4 vs. Missiles"],
+      [1, "Shield -1, Missile Attractor"]
+    ]
 }

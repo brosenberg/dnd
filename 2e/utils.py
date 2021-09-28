@@ -43,6 +43,11 @@ def plusify(number):
         pass
 
 
+def mutate_data_if_equal_keys(table, keys):
+    data = [x for x in table["Data"] if x[1] in keys]
+    table["Data"] = data
+
+
 def table_keys_by_filter(table, filter_dict, do_extra=True, inverse=False):
     results = []
     for entry in table:

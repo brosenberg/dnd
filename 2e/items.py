@@ -12,6 +12,7 @@ from simple_gen import gen
 from spells import random_spell
 from utils import choice_table_count_unique
 from utils import load_table
+from utils import mutate_data_if_equal_keys
 from utils import plusify
 from utils import table_keys_by_filter
 
@@ -376,7 +377,9 @@ def random_magic_armor(**kwargs):
             base_item = random_item(item_type="Armor", filters=filters)
 
     if base_item == "Special":
-        return random_special_magic_armor(table=table, filters=filters)
+        return random_special_magic_item(
+            item_type="Armor", table=table, filters=filters
+        )
     adjustment = gen(**load_table(f"magic_item_armor_adjustment_{table}"))
     base_item = f"{base_item} {plusify(adjustment)}"
     if adjustment < 0:
@@ -551,12 +554,26 @@ def random_magic_weapon(**kwargs):
     return weapon
 
 
-def random_special_magic_armor(table="standard", usable=None, filters={}):
-    return special_magic_armor(
-        special=gen_table(f"magic_item_special_armor_{table}"),
-        table=table,
-        usable=usable,
-    )
+# Use random item generation tables to choose random special magic weapon
+def random_special_magic_item(**kwargs):
+    table = kwargs.get("table", "standard")
+    item_type = kwargs.get("item_type", "Weapons")
+    filters = build_filters(**kwargs)
+
+    random_table = f"magic_item_special_weapons_{table}"
+    special_table = SPECIAL_MAGIC_WEAPONS
+    if item_type == "Armor":
+        random_table = f"magic_item_special_armor_{table}"
+        special_table = SPECIAL_MAGIC_ARMOR
+
+    allowed = table_keys_by_filter(special_table, filters)
+    data = load_table(random_table)
+    mutate_data_if_equal_keys(data, allowed)
+    special = gen(**data)
+    if item_type == "Armor":
+        return special_magic_armor(special=special, table=table, filters=filters)
+    else:
+        return special_magic_weapon(special=special, table=table, filters=filters)
 
 
 def random_item(**kwargs):
@@ -709,30 +726,33 @@ def main():
 
     # gen_all_special_weapons()
     # gen_all_categories()
-    for _ in range(0, 10):
-        print(random_magic_item("Sword"))
-    print()
-    for _ in range(0, 10):
-        print(random_magic_item("Nonsword"))
-    print()
-    for _ in range(0, 10):
-        print(random_magic_item("Armor No Shields"))
+    # for _ in range(0, 10):
+    #    print(random_magic_item("Sword"))
+    # print()
+    # for _ in range(0, 10):
+    #    print(random_magic_item("Nonsword"))
+    # print()
+    # for _ in range(0, 10):
+    #    print(random_magic_item("Armor No Shields"))
 
-    print()
-    print(special_magic_weapon(special="Vorpal Sword", classes=["Druid"]))
-    print(special_magic_weapon(special="Hornblade", classes=["Mage"]))
+    # print()
+    # print(special_magic_weapon(special="Vorpal Sword", classes=["Druid"]))
+    # print(special_magic_weapon(special="Hornblade", classes=["Mage"]))
+    # print()
+    # for _ in range(0, 10):
+    #    print(random_magic_weapon(classes=["Mage"]))
+    # print()
+    # for _ in range(0, 10):
+    #    print(random_magic_weapon(classes=["Druid"]))
+    # print()
+    for _ in range(0, 10):
+        print(random_special_magic_item(item_type="Armor", classes=["Druid"]))
     print()
     for _ in range(0, 10):
-        print(random_magic_weapon(classes=["Mage"]))
-    print()
-    for _ in range(0, 10):
-        print(random_magic_weapon(classes=["Druid"]))
-    print()
-    for _ in range(0, 10):
-        print(special_magic_armor(classes=["Druid"]))
+        print(random_special_magic_item(item_type="Weapons", classes=["Druid"]))
     print()
 
-    print(random_magic_armor(classes=["Druid"]))
+    # print(random_magic_armor(classes=["Druid"]))
 
 
 if __name__ == "__main__":
