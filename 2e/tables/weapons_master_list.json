@@ -3,24 +3,28 @@
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Ankus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Staff",
+        "Usable By": ["Warrior", "Rogue", "Cleric", "Druid", "Mage"],
         "Source": "expanded"
     },
     "Awl pike": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Bagh nakh": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Barbed dart": {
@@ -32,48 +36,56 @@
             0
         ],
         "Base Type": "Blow gun ammo",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Bardiche": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Baselard": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Bastard sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Battle axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Bec de corbin": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Bill": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Bill-guisarme": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Blow gun": {
@@ -84,12 +96,14 @@
             "Needle"
         ],
         "Base Type": "Blow gun",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Bo stick": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
+        "Usable By": ["Warrior", "Rogue", "Cleric", "Druid"],
         "Source": "expanded"
     },
     "Bolas": {
@@ -101,18 +115,21 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior", "Rogue", "Cleric"],
         "Source": "expanded"
     },
     "Bone dagger": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded"
     },
     "Bone knife": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded"
     },
     "Boomerang": {
@@ -124,24 +141,28 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior", "Rogue", "Druid"],
         "Source": "expanded"
     },
     "Brandistock": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
+        "Usable By": ["Warrior", "Rogue", "Cleric", "Mage"],
         "Source": "expanded"
     },
     "Broad sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Cestus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Chakram": {
@@ -153,12 +174,14 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Chijikiri": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Chain",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Cho-ku-no": {
@@ -168,24 +191,28 @@
             "Light bolt"
         ],
         "Base Type": "Crossbow",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Cinquedea": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Claymore": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Club": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Club",
+        "Usable By": ["Warrior", "Rogue", "Cleric", "Druid"],
         "Source": "standard"
     },
     "Composite long bow": {
@@ -198,6 +225,7 @@
             "Stone arrow"
         ],
         "Base Type": "Bow",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Composite short bow": {
@@ -208,18 +236,21 @@
             "Stone arrow"
         ],
         "Base Type": "Bow",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Cutlass": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Dagger": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard"
     },
     "Daikyu": {
@@ -229,6 +260,7 @@
             "Daikyu arrow"
         ],
         "Base Type": "Bow",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Daikyu arrow": {
@@ -240,6 +272,7 @@
             0
         ],
         "Base Type": "Arrow",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Dart": {
@@ -251,42 +284,49 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard"
     },
     "Dirk": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard"
     },
     "Drusus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Estoc": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Falchion": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Fauchard": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Fauchard-fork": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Flight arrow": {
@@ -298,78 +338,91 @@
             0
         ],
         "Base Type": "Arrow",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Footman's flail": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Flail",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Footman's mace": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Mace",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Footman's pick": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Pick",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Gladius": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Glaive": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Glaive-guisarme": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Great club": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Club",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Great scimitar": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Guisarme": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Guisarme-voulge": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Halberd": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Hand axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Hand crossbow": {
@@ -379,6 +432,7 @@
             "Hand quarrel"
         ],
         "Base Type": "Crossbow",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Hand quarrel": {
@@ -390,18 +444,21 @@
             0
         ],
         "Base Type": "Bolt",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Harpoon": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Heavy lance": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Lance",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Heavy bolt": {
@@ -413,6 +470,7 @@
             0
         ],
         "Base Type": "Bolt",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Heavy crossbow": {
@@ -422,36 +480,42 @@
             "Heavy bolt"
         ],
         "Base Type": "Crossbow",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Hook fauchard": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Horseman's flail": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Flail",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Horseman's mace": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Mace",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Horseman's pick": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Pick",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Jambiya": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded"
     },
     "Javelin": {
@@ -463,84 +527,98 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Jitte": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Mace",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Jousting lance": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Lance",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Kama": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sickle",
+        "Usable By": ["Warrior", "Druid"],
         "Source": "expanded"
     },
     "Katana": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Katar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Kau sin ke": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Flail",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Kawanaga": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Chain",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Khanjar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "expanded"
     },
     "Khopseh": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Knife": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard"
     },
     "Kusari-gama": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Chain",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Lajatang": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Light lance": {
         "Hands": 3,
         "Category": "Melee",
         "Base Type": "Lance",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Light bolt": {
@@ -552,6 +630,7 @@
             0
         ],
         "Base Type": "Bolt",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Light crossbow": {
@@ -561,6 +640,7 @@
             "Light bolt"
         ],
         "Base Type": "Crossbow",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Long bow": {
@@ -573,78 +653,91 @@
             "Stone arrow"
         ],
         "Base Type": "Bow",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Long spear": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
+        "Usable By": ["Warrior", "Druid"],
         "Source": "expanded"
     },
     "Long sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Lucern hammer": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Mace-axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Machete": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Main-gauche": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Maul": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hammer",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Medium lance": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Lance",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Military fork": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Morning star": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Mace",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Nagimaki": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Naginata": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Needle": {
@@ -656,36 +749,42 @@
             0
         ],
         "Base Type": "Blow gun ammo",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Ninja-to": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "No-dachi": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Nunchaku": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Flail",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Partisan": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Pike": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Pile arrow": {
@@ -697,6 +796,7 @@
             0
         ],
         "Base Type": "Arrow",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Pilum": {
@@ -708,66 +808,77 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Quarterstaff": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
+        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
         "Source": "standard"
     },
     "Ranseur": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Rapier": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Sabre": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Sai": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Sang kauw": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Sapara": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Scimitar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Druid"],
         "Source": "standard"
     },
     "Scourge": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Whip",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Scythe": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sickle",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Sheaf arrow": {
@@ -779,6 +890,7 @@
             0
         ],
         "Base Type": "Arrow",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Short bow": {
@@ -789,12 +901,14 @@
             "Stone arrow"
         ],
         "Base Type": "Bow",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Short sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "standard"
     },
     "Shuriken": {
@@ -806,12 +920,14 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Sickle": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sickle",
+        "Usable By": ["Warrior", "Druid"],
         "Source": "standard"
     },
     "Sling": {
@@ -822,6 +938,7 @@
             "Sling stone"
         ],
         "Base Type": "Sling",
+        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
         "Source": "standard"
     },
     "Sling bullet": {
@@ -833,6 +950,7 @@
             0
         ],
         "Base Type": "Sling ammo",
+        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
         "Source": "standard"
     },
     "Sling stone": {
@@ -844,24 +962,28 @@
             0
         ],
         "Base Type": "Sling ammo",
+        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
         "Source": "standard"
     },
     "Spatha": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Spear": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Spear",
+        "Usable By": ["Warrior", "Druid"],
         "Source": "standard"
     },
     "Spetum": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Staff sling": {
@@ -872,12 +994,14 @@
             "Sling stone"
         ],
         "Base Type": "Sling",
+        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
         "Source": "standard"
     },
     "Stiletto": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
         "Source": "expanded"
     },
     "Stone arrow": {
@@ -889,48 +1013,56 @@
             0
         ],
         "Base Type": "Arrow",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "Stone dagger": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
         "Source": "expanded"
     },
     "Stone knife": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
         "Source": "expanded"
     },
     "Stone spear": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
+        "Usable By": ["Warrior", "Druid"],
         "Source": "expanded"
     },
     "Sword-axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Tanto": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
+        "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "expanded"
     },
     "Tetsubo": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Three-piece rod": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Chain",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded"
     },
     "Throwing axe": {
@@ -942,6 +1074,7 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Throwing knife": {
@@ -953,60 +1086,70 @@
             0
         ],
         "Base Type": "Thrown",
+        "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded"
     },
     "Trident": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Spear",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Tulwar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Two-handed axe": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Axe",
+        "Usable By": ["Warrior"],
         "Source": "expanded"
     },
     "Two-handed sword": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Voulge": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     },
     "Wakizashi": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
+        "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded"
     },
     "War club": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Club",
+        "Usable By": ["Warrior", "Druid", "Cleric"],
         "Source": "expanded"
     },
     "Warhammer": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hammer",
+        "Usable By": ["Warrior", "Cleric"],
         "Source": "standard"
     },
     "Whip": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Whip",
+        "Usable By": ["Warrior"],
         "Source": "standard"
     }
 }

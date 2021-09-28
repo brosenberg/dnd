@@ -4,7 +4,7 @@ import argparse
 import random
 
 import items
-import magic_item
+#import magic_item
 
 from character import Character
 from dice import roll
@@ -68,7 +68,7 @@ def random_adventurer(
     experience=None,
     slow_advancement=False,
 ):
-    mig = magic_item.MagicItemGen(expanded)
+    #mig = magic_item.MagicItemGen(expanded)
     level = roll(
         LEVEL_RANGE[level_range][0],
         LEVEL_RANGE[level_range][1],
@@ -122,10 +122,11 @@ def random_adventurer(
                             "Paladin",
                         ],
                     ):
-                        armor = items.random_armor(
-                            expanded=expanded, classes=classes, level=level
-                        )
-                        item = mig.armor(force_armor=armor)
+                        item = items.random_magic_armor(classes=classes)
+                        #armor = items.random_armor(
+                        #    expanded=expanded, classes=classes, level=level
+                        #)
+                        #item = mig.armor(force_armor=armor)
                     elif (
                         (category == "Sword" or category == "Nonsword")
                         and "Bard" not in classes
