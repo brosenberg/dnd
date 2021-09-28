@@ -330,22 +330,22 @@
         }
     },
     "Rods": {
-        "Action": "Table",
-        "Data": {
-            "2": "Rod of Absorption",
-            "4": "Rod of Alertness",
-            "5": "Rod of Beguiling",
-            "7": "Rod of Cancellation",
-            "8": "Rod of Flailing",
-            "9": "Rod of Lordly Might",
-            "10": "Rod of Passage",
-            "11": "Rod of Ressurection",
-            "12": "Rod of Rulership",
-            "14": "Rod of Security",
-            "16": "Rod of Smiting",
-            "17": "Rod of Splendor",
-            "19": "Rod of Terror"
-        }
+        "Action": "Table_Calc",
+        "Data": [
+            [2, "Rod of Absorption"],
+            [2, "Rod of Alertness"],
+            [1, "Rod of Beguiling"],
+            [2, "Rod of Cancellation"],
+            [1, "Rod of Flailing"],
+            [1, "Rod of Lordly Might"],
+            [1, "Rod of Passage"],
+            [1, "Rod of Ressurection"],
+            [1, "Rod of Rulership"],
+            [2, "Rod of Security"],
+            [1, "Rod of Smiting"],
+            [1, "Rod of Splendor"],
+            [2, "Rod of Terror"]
+        ]
     },
     "Staves": {
         "Action": "Table",

@@ -11,6 +11,7 @@ from magic_item import MagicItemGen
 from simple_gen import gen
 from spells import random_spell
 from utils import choice_table_count_unique
+from utils import intersect
 from utils import load_table
 from utils import mutate_data_if_equal_keys
 from utils import plusify
@@ -20,6 +21,7 @@ from utils import table_keys_by_filter
 AMMOS = load_table("weapons_ammos.json")
 ARMOR = load_table("armor_master_list.json")
 CLASSES = load_table("classes.json")
+RODS = load_table("magic_item_rods.json")
 SHIELDS = load_table("shields.json")
 SPECIAL_MAGIC_ARMOR = load_table("magic_item_armor_special.json")
 SPECIAL_MAGIC_WEAPONS = load_table("magic_item_weapons_special.json")
@@ -419,7 +421,7 @@ def random_magic_item(**kwargs):
             "Category": "Weapons",
             "Data": f"magic_item_weapon_nonsword_{table}",
         },
-        "Rod/Staff/Wand": {"Category": ["Rod", "Staff", "Wand"]},
+        "Rod/Staff/Wand": {"Category": ["Rods", "Staff", "Wand"]},
         "Sword": {"Category": "Weapons", "Data": f"magic_item_weapon_sword_{table}"},
     }
 
@@ -438,6 +440,15 @@ def random_magic_item(**kwargs):
         return random_magic_weapon(table=table, data=data, filters=filters)
     elif category == "Armor and Shields":
         return random_magic_armor(table=table, data=data, filters=filters)
+    elif category == "Rods":
+        rods_data = load_table(f"magic_items_{table}.json")["Rods"]
+        usable_rods = [
+            x for x in RODS if intersect(filters["Usable By"], RODS[x]["Usable By"])
+        ]
+        mutate_data_if_equal_keys(rods_data, usable_rods)
+        item = gen(**rods_data)
+        charges = roll(*RODS[item]["Charges"])
+        return f"{item} ({charges} charges)"
     else:
         item = gen(**magic_items[category])
         # Fill the Beaker
@@ -699,15 +710,19 @@ def usable_by(classes):
         ]
 
     exclusive_weapon_groups = set(["Druid", "Cleric"])
-    usable_lists = {"Armor": [], "Weapons": [], "Scrolls": []}
-    usable = {"Armor": "Mage", "Weapons": "Mage", "Scrolls": []}
+    usable_lists = {"Armor": [], "Rods": [], "Scrolls": [], "Weapons": []}
+    usable = {"Armor": "Mage", "Rods": [], "Scrolls": [], "Weapons": "Mage"}
+
     for class_name in classes:
-        for category in ["Armor", "Weapons"]:
+        for category in ["Armor", "Rods", "Weapons"]:
             usable_lists[category].append(CLASSES[class_name]["Usable By"][category])
         usable_lists["Scrolls"] += list(CLASSES[class_name]["Usable By"]["Scrolls"])
-    usable["Armor"] = best_option("Armor", usable_lists["Armor"])
-    usable["Scrolls"] = list(set(usable_lists["Scrolls"]))
-    usable["Weapons"] = best_option("Weapons", usable_lists["Weapons"])
+
+    for category_best in ["Armor", "Weapons"]:
+        usable[category_best] = best_option(category_best, usable_lists[category_best])
+    for category in ["Rods", "Scrolls"]:
+        usable[category] = list(set(usable_lists[category]))
+
     has_exclusive = list(
         set(usable_lists["Weapons"]).intersection(exclusive_weapon_groups)
     )

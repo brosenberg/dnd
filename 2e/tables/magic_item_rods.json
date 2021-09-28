@@ -1,0 +1,54 @@
+{
+    "Rod of Absorption": {
+        "Usable By": ["Priest", "Wizard"],
+        "Charges": [1, 1, 49]
+    },
+    "Rod of Alertness": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Beguiling": {
+        "Usable By": ["Priest", "Wizard", "Rogue"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Cancellation": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Flailing": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Lordly Might": {
+        "Usable By": ["Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Passage": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Ressurection": {
+        "Usable By": ["Priest"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Rulership": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Security": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Smiting": {
+        "Usable By": ["Priest", "Wizard"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Splendor": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    },
+    "Rod of Terror": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"],
+        "Charges": [1, 10, 40]
+    }
+}
