@@ -44,7 +44,14 @@ def plusify(number):
 
 
 def mutate_data_if_equal_keys(table, keys):
-    data = [x for x in table["Data"] if x[1] in keys]
+    data = []
+    for entry in table["Data"]:
+        if type(entry[1]) is dict:
+            if entry[1]["Base Item"] in keys:
+                data.append(entry)
+        elif entry[1] in keys:
+            data.append(entry)
+    # data = [x for x in table["Data"] if x[1] in keys]
     table["Data"] = data
 
 

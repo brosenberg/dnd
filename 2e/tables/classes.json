@@ -7,7 +7,7 @@
         "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Warrior"],
-        "Usable By": {"Armor": "Heavy", "Weapons": "Warrior", "Rods": "Warrior"},
+        "Usable By": {"Armor": "Heavy", "Weapons": "Warrior", "Rods": "Warrior", "Staves": ["Warrior"]},
         "Levels": [
             0,
             2000,
@@ -49,7 +49,7 @@
         "Races": ["Human"],
         "Alignments": ["Lawful Good"],
         "Proficiency Groups": ["General", "Warrior", "Priest"],
-        "Usable By": {"Armor": "Heavy", "Weapons": "Warrior", "Rods": "Warrior"},
+        "Usable By": {"Armor": "Heavy", "Weapons": "Warrior", "Rods": "Warrior", "Staves": ["Warrior"]},
         "Levels": [
             0,
             2250,
@@ -91,7 +91,7 @@
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good"],
         "Proficiency Groups": ["General", "Warrior", "Wizard"],
-        "Usable By": {"Armor": "Ranger", "Weapons": "Warrior", "Rods": "Warrior"},
+        "Usable By": {"Armor": "Ranger", "Weapons": "Warrior", "Rods": "Warrior", "Staves": ["Warrior"]},
         "Levels": [
             0,
             2250,
@@ -155,7 +155,7 @@
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Weapons": "Mage", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Weapons": "Mage", "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -197,7 +197,7 @@
         "Races": ["Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -239,7 +239,7 @@
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -281,7 +281,7 @@
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -323,7 +323,7 @@
         "Races": ["Human", "Elf", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -365,7 +365,7 @@
         "Races": ["Human", "Gnome"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -407,7 +407,7 @@
         "Races": ["Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -449,7 +449,7 @@
         "Races": ["Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -491,7 +491,7 @@
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Mage", "Weapons": "Mage", "Rods": "Wizard", "Staves": ["Wizard"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             2500,
@@ -533,7 +533,7 @@
         "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Wizard"],
-        "Usable By": {"Armor": "Heavy", "Weapons": "Cleric", "Rods": "Priest", "Scrolls": ["Priest"]},
+        "Usable By": {"Armor": "Heavy", "Weapons": "Cleric", "Rods": "Priest", "Staves": ["Priest"], "Scrolls": ["Priest"]},
         "Levels": [
             0,
             1500,
@@ -575,7 +575,7 @@
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["True Neutral"],
         "Proficiency Groups": ["General", "Warrior", "Priest"],
-        "Usable By": {"Armor": "Druid", "Weapons": "Druid", "Rods": "Priest", "Scrolls": ["Priest"]},
+        "Usable By": {"Armor": "Druid", "Weapons": "Druid", "Rods": "Priest", "Staves": ["Druid", "Priest"], "Scrolls": ["Priest"]},
         "Levels": [
             0,
             2000,
@@ -617,7 +617,7 @@
         "Races": ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"],
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Rogue"],
-        "Usable By": {"Armor": "Rogue", "Weapons": "Rogue", "Rods": "Rogue", "Scrolls": ["Wizard", "Priest"]},
+        "Usable By": {"Armor": "Rogue", "Weapons": "Rogue", "Rods": "Rogue", "Staves": ["Rogue"], "Scrolls": ["Wizard", "Priest"]},
         "Levels": [
             0,
             1250,
@@ -659,7 +659,7 @@
         "Races": ["Human", "Half-Elf"],
         "Alignments": ["Neutral Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Neutral Evil"],
         "Proficiency Groups": ["General", "Rogue", "Warrior", "Wizard"],
-        "Usable By": {"Armor": "Bard", "Weapons": "Warrior", "Rods": "Rogue", "Scrolls": ["Wizard"]},
+        "Usable By": {"Armor": "Bard", "Weapons": "Warrior", "Rods": "Rogue", "Staves": ["Rogue"], "Scrolls": ["Wizard"]},
         "Levels": [
             0,
             1250,

@@ -25,6 +25,7 @@ RODS = load_table("magic_item_rods.json")
 SHIELDS = load_table("shields.json")
 SPECIAL_MAGIC_ARMOR = load_table("magic_item_armor_special.json")
 SPECIAL_MAGIC_WEAPONS = load_table("magic_item_weapons_special.json")
+STAVES = load_table("magic_item_staves.json")
 THROWN_WEAPONS = load_table("weapons_thrown.json")
 WEAPONS = load_table("weapons_master_list.json")
 
@@ -449,6 +450,13 @@ def random_magic_item(**kwargs):
         item = gen(**rods_data)
         charges = roll(*RODS[item]["Charges"])
         return f"{item} ({charges} charges)"
+    elif category == "Staves":
+        staves_data = load_table(f"magic_items_{table}.json")["Staves"]
+        usable_staves = [
+            x for x in STAVES if intersect(filters["Usable By"], STAVES[x]["Usable By"])
+        ]
+        mutate_data_if_equal_keys(staves_data, usable_staves)
+        return gen(**staves_data)
     else:
         item = gen(**magic_items[category])
         # Fill the Beaker
@@ -710,17 +718,26 @@ def usable_by(classes):
         ]
 
     exclusive_weapon_groups = set(["Druid", "Cleric"])
-    usable_lists = {"Armor": [], "Rods": [], "Scrolls": [], "Weapons": []}
-    usable = {"Armor": "Mage", "Rods": [], "Scrolls": [], "Weapons": "Mage"}
+    usable_lists = {"Armor": [], "Rods": [], "Scrolls": [], "Staves": [], "Weapons": []}
+    usable = {
+        "Armor": "Mage",
+        "Rods": [],
+        "Scrolls": [],
+        "Staves": [],
+        "Weapons": "Mage",
+    }
 
     for class_name in classes:
+        # These categories aren't lists, so just append them
         for category in ["Armor", "Rods", "Weapons"]:
             usable_lists[category].append(CLASSES[class_name]["Usable By"][category])
-        usable_lists["Scrolls"] += list(CLASSES[class_name]["Usable By"]["Scrolls"])
+        # THese categories are lists, so add them
+        for category in ["Scrolls", "Staves"]:
+            usable_lists[category] += list(CLASSES[class_name]["Usable By"][category])
 
     for category_best in ["Armor", "Weapons"]:
         usable[category_best] = best_option(category_best, usable_lists[category_best])
-    for category in ["Rods", "Scrolls"]:
+    for category in ["Rods", "Scrolls", "Staves"]:
         usable[category] = list(set(usable_lists[category]))
 
     has_exclusive = list(

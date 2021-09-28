@@ -1,0 +1,41 @@
+{
+    "Staff-Mace": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"]
+    },
+    "Staff of Command": {
+        "Usable By": ["Priest", "Wizard"]
+    },
+    "Staff of Curing": {
+        "Usable By": ["Priest"]
+    },
+    "Staff of the Magi": {
+        "Usable By": ["Wizard"]
+    },
+    "Staff of Power": {
+        "Usable By": ["Wizard"]
+    },
+    "Staff of the Serpent": {
+        "Usable By": ["Priest"]
+    },
+    "Staff of Slinging": {
+        "Usable By": ["Priest"]
+    },
+    "Staff-Spear": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"]
+    },
+    "Staff of Striking": {
+        "Usable By": ["Priest", "Wizard"]
+    },
+    "Staff of Swarming Insects": {
+        "Usable By": ["Priest", "Wizard"]
+    },
+    "Staff of Thunder & Lightning": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"]
+    },
+    "Staff of Withering": {
+        "Usable By": ["Priest", "Wizard", "Rogue", "Warrior"]
+    },
+    "Staff of the Woodlands": {
+        "Usable By": ["Druid"]
+    }
+}

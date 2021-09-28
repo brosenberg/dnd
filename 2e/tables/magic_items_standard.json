@@ -348,80 +348,104 @@
         ]
     },
     "Staves": {
-        "Action": "Table",
-        "Data": {
-            "2": "Staff-Mace",
-            "3": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Command ({result} charges)"
-            },
-            "5": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Curing ({result} charges)"
-            },
-            "6": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of the Magi ({result} charges)"
-            },
-            "7": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Power ({result} charges)"
-            },
-            "8": {
-                "Action": "Table",
-                "Data": {
-                    "60": "Python",
-                    "100": "Adder"
-                },
-                "Format":"Staff of the Serpent ({result})"
-            },
-            "10": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Slinging ({result} charges)"
-            },
-            "12": {
-                "Action": "Table",
-                "Data": {
-                    "6": "+1",
-                    "10": "+2",
-                    "13": "+3",
-                    "16": "+4",
-                    "19": "+5",
-                    "20": "+3 (Ranseur)"
-                },
-                "Format":"Staff-Spear {result}"
-            },
-            "14": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Striking ({result} charges)"
-            },
-            "15": {
-                "Action": "Roll",
-                "Data": [1, 6, 44],
-                "Format":"Staff of Swarming Insects ({result} charges)"
-            },
-            "16": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Thunder & Lightning ({result} charges)"
-            },
-            "18": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of Withering ({result} charges)"
-            },
-            "19": {
-                "Action": "Roll",
-                "Data": [1, 6, 19],
-                "Format":"Staff of the Woodlands ({result} charges)"
-            }
-        }
+        "Action": "Table_Calc",
+        "Data": [
+            [2, "Staff-Mace"],
+            [1, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Command",
+                    "Format": "Staff of Command ({result} charges)"
+                }
+            ],
+            [2, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Curing",
+                    "Format": "Staff of Curing ({result} charges)"
+                }
+            ],
+            [1, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of the Magi",
+                    "Format": "Staff of the Magi ({result} charges)"
+                }
+            ],
+            [1, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Power",
+                    "Format": "Staff of Power ({result} charges)"
+                }
+            ],
+            [1, {
+                    "Action": "Table",
+                    "Data": {
+                        "60": "Python",
+                        "100": "Adder"
+                    },
+                    "Base Item": "Staff of the Serpent",
+                    "Format": "Staff of the Serpent ({result})"
+                }
+            ],
+            [2, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Slinging",
+                    "Format": "Staff of Slinging ({result} charges)"
+                }
+            ],
+            [2, {
+                    "Action": "Table",
+                    "Data": {
+                        "6": "+1",
+                        "10": "+2",
+                        "13": "+3",
+                        "16": "+4",
+                        "19": "+5",
+                        "20": "+3 (Ranseur)"
+                    },
+                    "Base Item": "Staff-Spear",
+                    "Format": "Staff-Spear {result}"
+                }
+            ],
+            [2, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Striking",
+                    "Format": "Staff of Striking ({result} charges)"
+                }
+            ],
+            [1, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 44],
+                    "Base Item": "Staff of Swarming Insects",
+                    "Format": "Staff of Swarming Insects ({result} charges)"
+                }
+            ],
+            [1, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Thunder & Lightning",
+                    "Format": "Staff of Thunder & Lightning ({result} charges)"
+                }
+            ],
+            [2, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of Withering",
+                    "Format": "Staff of Withering ({result} charges)"
+                }
+            ],
+            [1, {
+                    "Action": "Roll",
+                    "Data": [1, 6, 19],
+                    "Base Item": "Staff of the Woodlands",
+                    "Format": "Staff of the Woodlands ({result} charges)"
+                }
+            ]
+        ]
     },
     "Wands": {
         "Action": "Table",
