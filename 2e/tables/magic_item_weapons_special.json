@@ -359,7 +359,7 @@
         "Cursed": true
     },
     "Short Sword of Quickness +2": {
-        "Base Items": ["Short Sword"],
+        "Base Items": ["Short sword"],
         "Format": "{base_item} of Quickness +2"
     },
     "Vorpal Sword": {

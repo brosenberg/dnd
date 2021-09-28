@@ -51,7 +51,11 @@ def table_keys_by_filter(table, filter_dict, do_extra=True, inverse=False):
 
             def default_match():
                 if type(filter_dict[key]) is list:
-                    return intersect(table[entry][key], filter_dict[key])
+                    if type(table[enty][key]) is list:
+                        return intersect(table[entry][key], filter_dict[key])
+                    return table[entry][key] in filter_dict[key]
+                elif type(table[entry][key]) is list:
+                    return filter_dict[key] in table[entry][key]
                 return table[entry][key] == filter_dict[key]
 
             if do_extra:
