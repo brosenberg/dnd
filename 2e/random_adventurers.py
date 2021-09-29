@@ -103,16 +103,20 @@ def random_adventurer(
             slow_advancement=slow_advancement,
         )
     class_groups = adventurer.class_groups
+    items_kwargs = {
+        "classes": classes,
+        "sub_table": "expanded" if expanded else "standard",
+    }
     for category in get_magic_item_categories(adventurer.class_groups):
         if roll(1, 100, 0) <= level * 5:
             # Give multiclass clerics something other than a sword
             if category == "Sword" and "Cleric" in classes:
                 category = "Rod/Staff/Wand"
 
-            item = items.random_magic_item(category=category, classes=classes)
+            item = items.random_magic_item(**items_kwargs, category=category)
             # One reroll on cursed items
             if items.is_cursed(item):
-                item = items.random_magic_item(category=category, classes=classes)
+                item = items.random_magic_item(**items_kwargs, category=category)
 
             if category == "Armor No Shields":
                 has_armor = True
@@ -171,8 +175,8 @@ def random_adventurer(
                     adventurer.add_equipment("Light warhorse")
                 if roll(1, 100, 0) < 10 * level:
                     barding = items.random_item(
+                        **items_kwargs,
                         item_type="Armor",
-                        classes=classes,
                         filters={"Category": "Armor"},
                     )
                     adventurer.add_equipment(f"{barding} barding")
@@ -183,7 +187,7 @@ def random_adventurer(
         if not has_armor and "Wizard" not in class_groups:
             adventurer.add_equipment(
                 items.random_item(
-                    item_type="Armor", classes=classes, filters={"Category": "Armor"}
+                    **items_kwargs, item_type="Armor", filters={"Category": "Armor"}
                 )
             )
 
@@ -194,7 +198,7 @@ def random_adventurer(
         ):
             adventurer.add_equipment(
                 items.random_item(
-                    item_type="Armor", classes=classes, filters={"Category": "Shield"}
+                    **items_kwargs, item_type="Armor", filters={"Category": "Shield"}
                 )
             )
 
@@ -204,7 +208,7 @@ def random_adventurer(
             if has_ranged_weapon:
                 filters = {"Category": "Melee"}
             weapon = items.random_item(
-                item_type="Weapons", classes=classes, filters=filters
+                **items_kwargs, item_type="Weapons", filters=filters
             )
 
             # If the weapon requires ammo, give some ammo for it
@@ -217,7 +221,7 @@ def random_adventurer(
                 adventurer.add_equipment(ammo)
                 has_ranged_weapon = True
                 weapon = items.random_item(
-                    item_type="Weapons", classes=classes, filters={"Category": "Melee"}
+                    **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
                 )
             # If the weapon is thrown, give a few of them
             elif items.is_thrown_weapon(weapon):
@@ -229,7 +233,7 @@ def random_adventurer(
                     adventurer.add_equipment(weapon)
                 has_ranged_weapon = True
                 weapon = items.random_item(
-                    item_type="Weapons", classes=classes, filters={"Category": "Melee"}
+                    **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
                 )
 
             adventurer.add_equipment(weapon)
@@ -239,7 +243,7 @@ def random_adventurer(
         if "Ranger" in classes and level > 1:
             adventurer.add_equipment(
                 items.random_item(
-                    item_type="Weapons", classes=classes, filters={"Category": "Melee"}
+                    **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
                 )
             )
 
