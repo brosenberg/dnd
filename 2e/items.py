@@ -7,7 +7,6 @@ import os
 
 from dice import roll
 from generate_scroll import generate_scroll
-from magic_item import MagicItemGen
 from simple_gen import gen
 from spells import random_spell
 from utils import choice_table_count_unique

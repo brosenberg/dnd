@@ -1,9 +1,0 @@
-{
-    "10": "blindness on hit 2d6 rounds",
-    "20": "confusion on hit 2d6 rounds",
-    "25": "disintegrate on hit",
-    "55": "fear on hit 1d4 rounds",
-    "65": "insanity on hit 1d4 rounds",
-    "80": "paralysis on hit 1d4 rounds",
-    "100": "+2 to all saves, -1 to each damage die"
-}

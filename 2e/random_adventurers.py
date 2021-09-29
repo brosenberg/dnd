@@ -5,8 +5,6 @@ import random
 
 import items
 
-# import magic_item
-
 from character import Character
 from dice import roll
 from roll_abilities import get_abilities
