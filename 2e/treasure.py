@@ -11,6 +11,7 @@ ORDER = [
     "cp",
     "sp",
     "gp",
+    "ep",
     "pp",
     "gems",
     "art/jewelry",
@@ -217,6 +218,8 @@ def roll_treasure(ttypes):
                         amount = random.randint(
                             TREASURE[ttype][thing][1], TREASURE[ttype][thing][2]
                         )
+                        if thing == "pp":
+                            thing = random.choice(["ep", "pp"])
                         treasure[thing] += amount
         else:
             print("Unknown treasure type: %s" % (ttype,))
