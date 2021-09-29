@@ -41,7 +41,9 @@ MAGIC_ITEMS = {
         "Misc Magic",
     ],
     "Rogue": [
-        "Shields",
+        # Rogues are supposed to roll on Shields, but Rogues can't use shields.
+        # So instead we give them armor, because they can actually use that.
+        "Armor No Shields",
         "Sword",
         "Nonsword",
         "Potions and Oils",

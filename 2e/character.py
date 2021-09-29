@@ -762,9 +762,11 @@ class Character(object):
 
         ### Spells
         if self.spells:
-            s += "\nSpells:"
+            s += "\nSpells:\n"
             for class_name in self.spell_levels:
-                s += f"{class_name} ({'/'.join([str(x) for x in self.spell_levels[class_name]])}):\n"
+                if not self.spell_levels[class_name]:
+                    continue
+                s += f"  {class_name} ({'/'.join([str(x) for x in self.spell_levels[class_name]])}):\n"
                 for spell_level in range(1, len(self.spell_levels[class_name]) + 1):
                     s += f"\t{spell_level}: "
                     cur_spells = []

@@ -100,12 +100,25 @@ def gen_table(table, **kwargs):
 
 
 def get_ac(item):
-    ac = get_armor_ac(item)
+    if item == "Bracers of Defenselessness":
+        return (10, None)
+    remove_list = [" of Blending", " of Missile Attraction"]
+    for remove in remove_list:
+        item = item.replace(remove, "")
+    bracers_of_defense = re.match(r"^Bracers of Defense \(AC ([0-9]+)\)$", item)
+    if bracers_of_defense:
+        return (int(bracers_of_defense.group(1)), None)
+    item, adjustment = get_adjustment(item)
+    item = item.capitalize()
+    try:
+        ac = ARMOR[item]["AC"]
+    except KeyError:
+        ac = None
     if ac:
-        return (ac, None)
-    ac = get_shield_ac_bonus(item)
-    if ac:
-        return (None, ac)
+        if ARMOR[item]["Category"] == "Shield":
+            return (None, ac+adjustment)
+        else:
+            return (ac-adjustment, None)
     return (None, get_other_ac_bonus(item))
 
 
@@ -114,30 +127,6 @@ def get_adjustment(item):
     if magic:
         return (magic.group(1), int(magic.group(2)))
     return (item, 0)
-
-
-def get_armor_ac(armor):
-    if armor == "Bracers of Defenselessness":
-        return 10
-    remove_list = [" of Blending", " of Missile Attraction"]
-    for remove in remove_list:
-        armor = armor.replace(remove, "")
-    bracers_of_defense = re.match(r"^Bracers of Defense \(AC ([0-9]+)\)$", armor)
-    if bracers_of_defense:
-        return int(bracers_of_defense.group(1))
-    armor, adjustment = get_adjustment(armor)
-    armor = armor.title()
-    try:
-        return ARMOR[armor]["AC"] - adjustment
-    except KeyError:
-        pass
-
-
-def get_shield_ac_bonus(shield):
-    if is_shield(shield):
-        _, adjustment = get_adjustment(shield)
-        return 1 + adjustment
-    return None
 
 
 def get_other_ac_bonus(item):
@@ -351,6 +340,9 @@ def random_magic_armor(**kwargs):
         return random_special_magic_item(
             item_type="Armor", sub_table=sub_table, filters=filters
         )
+    elif base_item == "Shield":
+        filters["Category"] = "Shield"
+        base_item = random.choice(table_keys_by_filter(ARMOR, filters))
     adjustment = gen(**load_table(f"magic_item_armor_adjustment", sub_table=sub_table))
     base_item = f"{base_item} {plusify(adjustment)}"
     if adjustment < 0:
