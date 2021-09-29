@@ -1,17 +1,29 @@
 {
     "Action": "Table",
     "Data": {
-      "1": "Banded mail",
-      "2": "Brigandine",
-      "5": "Chain mail",
-      "6": "Field plate",
-      "7": "Full plate",
-      "8": "Leather armor",
-      "12": "Plate mail",
-      "13": "Ring mail",
-      "14": "Scale mail",
-      "17": "Splint mail",
-      "18": "Studded leather",
-      "19": "Special"
+        "1": "Banded mail",
+        "2": "Brigandine",
+        "5": "Chain mail",
+        "6": "Field plate",
+        "7": "Full plate",
+        "8": "Leather armor",
+        "12": "Plate mail",
+        "13": "Ring mail",
+        "14": "Scale mail",
+        "17": "Splint mail",
+        "18": "Studded leather",
+        "19": {
+            "Action": "Table_Compute",
+            "Data": [
+              [1, "Armor of Command"],
+              [1, "Armor of Blending"],
+              [1, "Armor of Missile Attraction"],
+              [1, "Armor of Rage +1"],
+              [1, "Elven Chain Mail"],
+              [1, "Plate Mail of Etherealness"],
+              [1, "Plate Mail of Fear"],
+              [1, "Plate Mail of Vulnerability"]
+            ]
+        }
     }
 }

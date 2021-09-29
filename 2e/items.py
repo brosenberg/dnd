@@ -309,40 +309,6 @@ def is_two_handed_melee(weapon):
     return WEAPONS[base]["Hands"] == 2 and WEAPONS[base]["Category"] == "Melee"
 
 
-def random_armor(expanded=False, table=None, classes=[], level=1):
-    armors = []
-    if table:
-        armors = load_table(table)
-    else:
-        armor_groups = list(set([appropriate_armor_group(x) for x in classes]))
-        if len(armor_groups) == 1:
-            armor_group = armor_groups[0]
-            if armor_group == "warrior":
-                if level > 3:
-                    armors = load_table("armor_high.json")
-                else:
-                    armors = load_table("armor_low.json")
-            elif armor_group == "bard":
-                if level > 2:
-                    armors = load_table("armor_bard.json")
-                else:
-                    armors = load_table("armor_rogue.json")
-            else:
-                table = f"armor_{appropriate_armor_group(armor_group)}.json"
-                armors = load_table(table)
-        else:
-            table = f"armor_{appropriate_armor_group(classes[0])}.json"
-            armors = set(load_table(table))
-            for class_name in classes[1:]:
-                table = f"armor_{appropriate_armor_group(class_name)}.json"
-                armors = armors.intersection(set(load_table(table)))
-            armors = list(armors)
-    try:
-        return random.choice(armors)
-    except IndexError:
-        return None
-
-
 def random_appropriate_ammo(weapon):
     try:
         ammo = appropriate_ammo_type(weapon)
@@ -353,6 +319,7 @@ def random_appropriate_ammo(weapon):
         return None
 
 
+# FIXME: Wtf is this going to be used for?
 def random_item_count(item):
     try:
         return WEAPONS[base_weapon(item)]["Quantity"]
@@ -423,14 +390,21 @@ def random_magic_item(**kwargs):
             "Data": f"magic_item_weapon_nonsword_{table}",
         },
         "Rod/Staff/Wand": {"Category": ["Rods", "Staff", "Wand"]},
+        "Shields": {
+            "Category": "Armor and Shields",
+            "Data": f"magic_item_shields_only_{table}",
+        },
         "Sword": {"Category": "Weapons", "Data": f"magic_item_weapon_sword_{table}"},
     }
 
     if category in subcategories:
-        if type(category) is list:
+        if type(subcategories[category]["Category"]) is list:
             category = random.choice(list)
         else:
-            data = load_table(subcategories[category]["Data"])
+            try:
+                data = load_table(subcategories[category]["Data"])
+            except:
+                breakpoint()
             category = subcategories[category]["Category"]
 
     usable = None
@@ -484,7 +458,10 @@ def random_magic_item(**kwargs):
         elif category == "Scrolls" and item == "Spell Scroll":
             scroll_type = None
             scroll_data = load_table("scroll_types.json")
-            mutate_data_if_equal_keys(scroll_data, filters["Usable By"])
+            # If this character can use scrolls, give them an appropriate one
+            # Otherwise, give them something random
+            if filters["Usable By"]:
+                mutate_data_if_equal_keys(scroll_data, filters["Usable By"])
             scroll_type = gen(**scroll_data)
             item = str(generate_scroll(scroll_type=scroll_type))
         # Fill the Ring of Spell Storing with spells
@@ -733,7 +710,12 @@ def usable_by(classes):
             usable_lists[category].append(CLASSES[class_name]["Usable By"][category])
         # THese categories are lists, so add them
         for category in ["Scrolls", "Staves"]:
-            usable_lists[category] += list(CLASSES[class_name]["Usable By"][category])
+            try:
+                usable_lists[category] += list(
+                    CLASSES[class_name]["Usable By"][category]
+                )
+            except KeyError:
+                pass
 
     for category_best in ["Armor", "Weapons"]:
         usable[category_best] = best_option(category_best, usable_lists[category_best])
@@ -796,7 +778,7 @@ def main():
     # print()
 
     # print(random_magic_armor(classes=["Druid"]))
-    gen_all_categories(classes=["Mage"])
+    gen_all_categories(classes=["Fighter"])
 
 
 if __name__ == "__main__":

@@ -69,7 +69,6 @@ def random_adventurer(
     experience=None,
     slow_advancement=False,
 ):
-    # mig = magic_item.MagicItemGen(expanded)
     level = roll(
         LEVEL_RANGE[level_range][0],
         LEVEL_RANGE[level_range][1],
@@ -113,46 +112,10 @@ def random_adventurer(
     for category in get_magic_item_categories(adventurer.class_groups):
         if roll(1, 100, 0) <= level * 5:
 
-            def gen_item():
-                item = None
-                if more_equipment:
-                    if category == "Armor No Shields" and not intersect(
-                        classes,
-                        [
-                            "Fighter",
-                            "Paladin",
-                        ],
-                    ):
-                        item = items.random_magic_armor(classes=classes)
-                        # armor = items.random_armor(
-                        #    expanded=expanded, classes=classes, level=level
-                        # )
-                        # item = mig.armor(force_armor=armor)
-                    elif (
-                        (category == "Sword" or category == "Nonsword")
-                        and "Bard" not in classes
-                        and "Warrior" not in adventurer.class_groups
-                    ):
-                        weapon = items.random_weapon(
-                            expanded=expanded,
-                            classes=classes,
-                            class_groups=class_groups,
-                            level=level,
-                        )
-                        if items.random_item_count(weapon):
-                            dice, die, mod = items.random_item_count(weapon)
-                            weapon = f"{weapon} ({dice}d{die})"
-                        item = mig.weapon(force_weapon=weapon)
-                    else:
-                        item = mig.roll_category(category)
-                else:
-                    item = mig.roll_category(category)
-                return item
-
-            item = gen_item()
+            item = items.random_magic_item(category=category, classes=classes)
             # One reroll on cursed items
             if items.is_cursed(item):
-                item = gen_item()
+                item = items.random_magic_item(category=category, classes=classes)
 
             if category == "Armor No Shields":
                 has_armor = True
@@ -226,7 +189,9 @@ def random_adventurer(
         # Everyone should have armor. Besides wizards.
         if not has_armor:
             adventurer.add_equipment(
-                items.random_armor(expanded=expanded, classes=classes, level=level)
+                items.random_item(
+                    item_type="Armor", classes=classes, filters={"Category": "Armor"}
+                )
             )
 
         if (
@@ -234,18 +199,19 @@ def random_adventurer(
             and not has_shield
             and intersect(classes, ["Cleric", "Fighter", "Paladin"])
         ):
-            adventurer.add_equipment(items.random_shield())
+            adventurer.add_equipment(
+                items.random_item(
+                    item_type="Armor", classes=classes, filters={"Category": "Shield"}
+                )
+            )
 
         # Everyone should have at least one weapon.
         if not has_weapon:
-            weapon_filter = None
+            filters = {}
             if has_ranged_weapon:
-                weapon_filter = items.is_melee_weapon
-            weapon = items.random_weapon(
-                expanded=expanded,
-                classes=classes,
-                class_groups=class_groups,
-                weapon_filter=weapon_filter,
+                filters = {"Category": "Melee"}
+            weapon = items.random_item(
+                item_type="Weapons", classes=classes, filters=filters
             )
 
             # If the weapon requires ammo, give some ammo for it
@@ -257,11 +223,8 @@ def random_adventurer(
                 adventurer.add_equipment(weapon)
                 adventurer.add_equipment(ammo)
                 has_ranged_weapon = True
-                weapon = items.random_weapon(
-                    expanded=expanded,
-                    classes=classes,
-                    class_groups=class_groups,
-                    weapon_filter=items.is_melee_weapon,
+                weapon = items.random_item(
+                    item_type="Weapons", classes=classes, filters={"Category": "Melee"}
                 )
             # If the weapon is thrown, give a few of them
             elif items.is_thrown_weapon(weapon):
@@ -272,11 +235,8 @@ def random_adventurer(
                 else:
                     adventurer.add_equipment(weapon)
                 has_ranged_weapon = True
-                weapon = items.random_weapon(
-                    expanded=expanded,
-                    classes=classes,
-                    class_groups=class_groups,
-                    weapon_filter=items.is_melee_weapon,
+                weapon = items.random_item(
+                    item_type="Weapons", classes=classes, filters={"Category": "Melee"}
                 )
 
             adventurer.add_equipment(weapon)
@@ -285,10 +245,8 @@ def random_adventurer(
         # Rangers love to dual-wield
         if "Ranger" in classes and level > 1:
             adventurer.add_equipment(
-                items.random_weapon(
-                    expanded=expanded,
-                    table="weapons_warrior.json",
-                    weapon_filter=items.is_melee_weapon,
+                weapon=items.random_item(
+                    item_type="Weapons", classes=classes, filters={"Category": "Melee"}
                 )
             )
 
