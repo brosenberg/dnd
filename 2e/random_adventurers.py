@@ -69,11 +69,7 @@ def random_adventurer(
     experience=None,
     slow_advancement=False,
 ):
-    level = roll(
-        LEVEL_RANGE[level_range][0],
-        LEVEL_RANGE[level_range][1],
-        LEVEL_RANGE[level_range][2],
-    )
+    level = roll(*LEVEL_RANGE[level_range])
     adventurer = None
     classes = []
     has_weapon = False
@@ -111,6 +107,9 @@ def random_adventurer(
     class_groups = adventurer.class_groups
     for category in get_magic_item_categories(adventurer.class_groups):
         if roll(1, 100, 0) <= level * 5:
+            # Give multiclass clerics something other than a sword
+            if category == "Sword" and "Cleric" in classes:
+                category = "Rod/Staff/Wand"
 
             item = items.random_magic_item(category=category, classes=classes)
             # One reroll on cursed items
@@ -173,21 +172,17 @@ def random_adventurer(
                 else:
                     adventurer.add_equipment("Light warhorse")
                 if roll(1, 100, 0) < 10 * level:
-                    barding = None
-                    if roll(1, 100, 0) < 51:
-                        barding = items.random_armor(
-                            expanded=expanded, table="armor_low.json"
-                        )
-                    else:
-                        barding = items.random_armor(
-                            expanded=expanded, table="armor_low.json"
-                        )
+                    barding = items.random_item(
+                        item_type="Armor",
+                        classes=classes,
+                        filters={"Category": "Armor"},
+                    )
                     adventurer.add_equipment(f"{barding} barding")
             else:
                 adventurer.add_equipment("Riding horse")
 
         # Everyone should have armor. Besides wizards.
-        if not has_armor:
+        if not has_armor and "Wizard" not in class_groups:
             adventurer.add_equipment(
                 items.random_item(
                     item_type="Armor", classes=classes, filters={"Category": "Armor"}
@@ -245,7 +240,7 @@ def random_adventurer(
         # Rangers love to dual-wield
         if "Ranger" in classes and level > 1:
             adventurer.add_equipment(
-                weapon=items.random_item(
+                items.random_item(
                     item_type="Weapons", classes=classes, filters={"Category": "Melee"}
                 )
             )

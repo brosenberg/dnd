@@ -365,7 +365,6 @@ def random_magic_item(**kwargs):
     category = kwargs.get("category", gen_table(f"magic_item_categories_{table}"))
     magic_items = load_table(f"magic_items_{table}")
     data = None
-    filters = build_filters(**kwargs, item_type=category)
     subcategories = {
         "Armor No Shields": {
             "Category": "Armor and Shields",
@@ -389,7 +388,7 @@ def random_magic_item(**kwargs):
             "Category": "Weapons",
             "Data": f"magic_item_weapon_nonsword_{table}",
         },
-        "Rod/Staff/Wand": {"Category": ["Rods", "Staff", "Wand"]},
+        "Rod/Staff/Wand": {"Category": ["Rods", "Staves", "Wands"]},
         "Shields": {
             "Category": "Armor and Shields",
             "Data": f"magic_item_shields_only_{table}",
@@ -399,7 +398,7 @@ def random_magic_item(**kwargs):
 
     if category in subcategories:
         if type(subcategories[category]["Category"]) is list:
-            category = random.choice(list)
+            category = random.choice(subcategories[category]["Category"])
         else:
             try:
                 data = load_table(subcategories[category]["Data"])
@@ -407,9 +406,7 @@ def random_magic_item(**kwargs):
                 breakpoint()
             category = subcategories[category]["Category"]
 
-    usable = None
-    if kwargs.get("classes"):
-        usable = usable_by(kwargs.get("classes"))
+    filters = build_filters(**kwargs, item_type=category)
 
     if category == "Weapons":
         return random_magic_weapon(table=table, data=data, filters=filters)
@@ -426,9 +423,14 @@ def random_magic_item(**kwargs):
         return f"{item} ({charges} charges)"
     elif category == "Staves":
         staves_data = load_table(f"magic_items_{table}.json")["Staves"]
-        usable_staves = [
-            x for x in STAVES if intersect(filters["Usable By"], STAVES[x]["Usable By"])
-        ]
+        try:
+            usable_staves = [
+                x
+                for x in STAVES
+                if intersect(filters["Usable By"], STAVES[x]["Usable By"])
+            ]
+        except:
+            breakpoint()
         mutate_data_if_equal_keys(staves_data, usable_staves)
         return gen(**staves_data)
     else:
