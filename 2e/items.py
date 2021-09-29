@@ -257,10 +257,11 @@ def is_cursed(item):
         or "Contrariness" in item
         or "Delusion" in item
         or "Defenselessness" in item
-        or "Stammering" in item
-        or "Jewel of Attacks" in item
         or "Elixir of Madness" in item
+        or "Hat of Stupidity" in item
+        or "Jewel of Attacks" in item
         or "Ring of Weakness" in item
+        or "Stammering" in item
     )
 
 
@@ -343,10 +344,11 @@ def random_magic_armor(**kwargs):
     elif base_item == "Shield":
         filters["Category"] = "Shield"
         base_item = random.choice(table_keys_by_filter(ARMOR, filters))
-    adjustment = gen(**load_table(f"magic_item_armor_adjustment", sub_table=sub_table))
-    base_item = f"{base_item} {plusify(adjustment)}"
-    if adjustment < 0:
-        base_item += " (Cursed)"
+    if not get_adjustment(base_item)[1]:
+        adjustment = gen(**load_table(f"magic_item_armor_adjustment", sub_table=sub_table))
+        base_item = f"{base_item} {plusify(adjustment)}"
+        if adjustment < 0:
+            base_item += " (Cursed)"
     return base_item
 
 

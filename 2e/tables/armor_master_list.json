@@ -6,7 +6,7 @@
         "AC": 4,
         "Cost": 200
     },
-    "Brigadine": {
+    "Brigandine": {
         "Category": "Armor",
         "Source": "standard",
         "Usable By": ["Heavy", "Bard"],
