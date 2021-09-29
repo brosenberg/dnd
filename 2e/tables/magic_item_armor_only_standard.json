@@ -13,7 +13,7 @@
         "17": "Splint mail",
         "18": "Studded leather",
         "19": {
-            "Action": "Table_Compute",
+            "Action": "Table_Calc",
             "Data": [
               [1, "Armor of Command"],
               [1, "Armor of Blending"],

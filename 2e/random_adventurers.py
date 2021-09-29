@@ -79,6 +79,7 @@ def random_adventurer(
     level = roll(*LEVEL_RANGE[level_range])
     adventurer = None
     classes = []
+    has_any_item = True
     has_weapon = False
     has_ranged_weapon = False
     has_armor = False
@@ -117,12 +118,11 @@ def random_adventurer(
         "sub_table": "expanded" if expanded else "standard",
     }
 
-    for class_group in adventurer.class_groups:
-        adventurer.give_treasure(TREASURE[class_group])
     # Generate magic items for the character, 5% chance per level in each
     # category for their class groups
     for category in get_magic_item_categories(adventurer.class_groups):
         if roll(1, 100, 0) <= level * 5:
+            has_any_item = True
             # Give multiclass clerics something other than a sword
             if category == "Sword" and "Cleric" in classes:
                 category = "Rod/Staff/Wand"
@@ -142,6 +142,13 @@ def random_adventurer(
             elif category == "Shields":
                 has_shield = True
             adventurer.add_equipment(item)
+
+    # Give random currency to adventurers who received an item
+    # Adventurers who have zero magic items are probably not established
+    # enough to have more than their starting funds.
+    if has_any_item:
+        for class_group in adventurer.class_groups:
+            adventurer.give_treasure(TREASURE[class_group])
 
     # Roll standard items
     if not more_equipment:

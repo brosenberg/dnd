@@ -55,6 +55,8 @@ def do_action(action, data):
         return results
     elif action == "Table Twice":
         return [roll_table(data), roll_table(data)]
+    else:
+        print(f"Unknown action: {action}")
 
 
 def dump_data(**kwargs):

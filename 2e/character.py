@@ -627,7 +627,7 @@ class Character(object):
         self.thac0 = get_best_thac0(self.classes, self.levels)
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
         self.equipment = []
-        self.currency = {"pp": 0, "ep": 0, "gp": 0, "sp": 0, "cp": 0}
+        self.currency = {"pp": 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0}
         if starting_money:
             funds_roll = (1, 4, 1)
             if "Rogue" in self.class_groups:
@@ -985,6 +985,13 @@ class Character(object):
     def add_equipment(self, item):
         if item is not None:
             self.equipment.append(item)
+
+    # Return amount of gold the character has
+    def get_currency_value(self, **kwargs):
+        value_map = kwargs.get(
+            "value_map", {"pp": 5, "gp": 1, "ep": 0.5, "sp": 0.1, "cp": 0.01}
+        )
+        return sum([value_map[x] * self.currency[x] for x in self.currency])
 
     def get_level(self, class_name, class_group=None):
         if class_group:
