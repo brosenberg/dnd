@@ -10,6 +10,7 @@ from dice import roll
 from items import get_ac
 from spells import Spells
 from roll_abilities import get_abilities
+from treasure import generate_treasure
 from utils import load_table
 
 
@@ -626,7 +627,7 @@ class Character(object):
         self.thac0 = get_best_thac0(self.classes, self.levels)
         self.ac = 10 + dexterity_ac_mod(self.abilities["Dexterity"])
         self.equipment = []
-        self.currency = {"cp": 0, "sp": 0, "gp": 0, "ep": 0, "pp": 0}
+        self.currency = {"pp": 0, "ep": 0, "gp": 0, "sp": 0, "cp": 0}
         if starting_money:
             funds_roll = (1, 4, 1)
             if "Rogue" in self.class_groups:
@@ -990,6 +991,14 @@ class Character(object):
             return self.levels[self.class_groups.index(class_group)]
         else:
             return self.levels[self.classes.index(class_name)]
+
+    def give_treasure(self, treasure_types):
+        treasure = generate_treasure(treasure_types)
+        for currency in treasure["Currency"]:
+            self.currency[currency] += treasure["Currency"][currency]
+        for category in treasure.keys() - ["Currency"]:
+            for item in treasure[category]:
+                self.add_equipment(item)
 
     def update_ac(self):
         if "Bracers of Defenselessness" in self.equipment:

@@ -136,6 +136,7 @@ def gem_variant(base):
 
 def generate_gems(count):
     gems = [0, 0, 0, 0, 0, 0]
+    result = []
     variant_count = 0
     total = 0
     if count >= 10:
@@ -145,7 +146,7 @@ def generate_gems(count):
         gems[get_gem()] += 1
     for i in range(0, 6):
         if gems[i]:
-            print(f"{gems[i]} {VALUES[i]} gp {random.choice(GEM_TYPES[i])}")
+            result.append(f"{random.choice(GEM_TYPES[i])} ({VALUES[i]} gp) x{gems[i]}")
             total += gems[i] * VALUES[i]
     if variant_count:
         base = get_gem()
@@ -156,9 +157,11 @@ def generate_gems(count):
             value *= 10
             coin = "sp"
         value = int(value)
-        print(f"{variant_count} {value} {coin} {random.choice(GEM_TYPES[base])}")
+        result.append(
+            f"{random.choice(GEM_TYPES[base])} ({value} {coin}) x{variant_count}"
+        )
 
-    print(f"{total} gp total")
+    return (sorted(result), total)
 
 
 def main():

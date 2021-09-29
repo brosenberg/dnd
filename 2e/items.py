@@ -116,9 +116,9 @@ def get_ac(item):
         ac = None
     if ac:
         if ARMOR[item]["Category"] == "Shield":
-            return (None, ac+adjustment)
+            return (None, ac + adjustment)
         else:
-            return (ac-adjustment, None)
+            return (ac - adjustment, None)
     return (None, get_other_ac_bonus(item))
 
 

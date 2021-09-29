@@ -52,6 +52,13 @@ MAGIC_ITEMS = {
     ],
 }
 
+TREASURE = {
+    "Warrior": "LM",
+    "Wizard": "LNQ",
+    "Priest": "JKM",
+    "Rogue": "JNQ",
+}
+
 
 def get_magic_item_categories(class_groups):
     categories = []
@@ -109,6 +116,11 @@ def random_adventurer(
         "classes": classes,
         "sub_table": "expanded" if expanded else "standard",
     }
+
+    for class_group in adventurer.class_groups:
+        adventurer.give_treasure(TREASURE[class_group])
+    # Generate magic items for the character, 5% chance per level in each
+    # category for their class groups
     for category in get_magic_item_categories(adventurer.class_groups):
         if roll(1, 100, 0) <= level * 5:
             # Give multiclass clerics something other than a sword

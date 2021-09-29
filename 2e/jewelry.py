@@ -98,12 +98,13 @@ class Jewelry(object):
 
 def generate_jewelry(count):
     total = 0
+    jewelry = []
     while count:
-        jewelry = Jewelry()
-        print(jewelry)
-        total = total + jewelry.value
+        j = Jewelry()
+        jewelry.append(str(j))
+        total = total + j.value
         count = count - 1
-    print(f"{total} gp total")
+    return [sorted(jewelry), total]
 
 
 def main():

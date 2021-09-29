@@ -246,13 +246,19 @@ def print_treasure(treasure):
 def generate_gems(treasure):
     if treasure["gems"]:
         print(f"\nGems ({treasure['gems']}):")
-        gems.generate_gems(treasure["gems"])
+        result, value = gems.generate_gems(treasure["gems"])
+        for g in result:
+            print(g)
+        print(f"{value} gp total")
 
 
 def generate_jewelry(treasure):
     if treasure["art/jewelry"]:
         print(f"\nJewelry ({treasure['art/jewelry']}):")
-        jewelry.generate_jewelry(treasure["art/jewelry"])
+        jewels, value = jewelry.generate_jewelry(treasure["art/jewelry"])
+        for j in jewels:
+            print(j)
+        print(f"{value} gp total")
 
 
 def generate_magic_items(treasure, expanded):
@@ -274,6 +280,28 @@ def generate_magic_items(treasure, expanded):
     except KeyError:
         pass
     return sorted(magic_items)
+
+
+def generate_treasure(treasure_types, expanded=False):
+    base_treasure = roll_treasure(treasure_types)
+    treasure = {
+        "Currency": {},
+        "Magic Items": generate_magic_items(base_treasure, expanded),
+        "Gems": [],
+        "Jewelry": [],
+    }
+    try:
+        treasure["Gems"] = jewelry.generate_jewelry(base_treasure["gems"])[0]
+    except KeyError:
+        pass
+    try:
+        treasure["Jewelry"] = jewelry.generate_jewelry(base_treasure["art/jewelry"])[0]
+    except KeyError:
+        pass
+    for currency in ["cp", "sp", "gp", "pp"]:
+        if base_treasure[currency]:
+            treasure["Currency"][currency] = base_treasure[currency]
+    return treasure
 
 
 def main():
