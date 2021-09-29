@@ -25,17 +25,17 @@ def intersect(list_a, list_b):
     return False
 
 
-def load_table(fname, subdir="tables", subtable=None):
+def load_table(fname, subdir="tables", sub_table=None):
     base_dir = os.path.dirname(os.path.realpath(__file__))
-    if subtable:
+    if sub_table:
         fname = fname.replace(".json", "")
-        if not subtable.startswith("_"):
-            subtable = f"_{subtable}"
+        if not sub_table.startswith("_"):
+            sub_table = f"_{sub_table}"
         try:
-            return load_table(f"{fname}{subtable}", subdir=subdir)
+            return load_table(f"{fname}{sub_table}", subdir=subdir)
         except FileNotFoundError:
-            subtable = "_standard"
-            return load_table(f"{fname}{subtable}", subdir=subdir)
+            sub_table = "_standard"
+            return load_table(f"{fname}{sub_table}", subdir=subdir)
     if not fname.endswith(".json"):
         fname += ".json"
     return json.load(open(f"{base_dir}/{subdir}/{fname}"))
