@@ -96,7 +96,7 @@ def build_filters(**kwargs):
 
 
 def gen_table(table, **kwargs):
-    return gen(**load_table(table), **kwargs)
+    return gen(**load_table(table, **kwargs), **kwargs)
 
 
 def get_ac(item):
@@ -150,7 +150,7 @@ def get_other_ac_bonus(item):
 
 
 def intelligent_weapon(base_weapon, sub_table="standard"):
-    tables = load_table(f"magic_item_weapons_intelligent_{sub_table}")
+    tables = load_table(f"magic_item_weapons_intelligent", sub_table=sub_table)
     (
         intelligence,
         primary_count,
@@ -337,7 +337,7 @@ def random_magic_armor(**kwargs):
     sub_table = kwargs.get("sub_table", "standard")
     filters = build_filters(**kwargs)
     if kwargs.get("load_table") and data is None:
-        data = load_table("magic_item_armor_{sub_table}")
+        data = load_table("magic_item_armor", sub_table=sub_table)
     if not filters.get("Usable By") and kwargs.get("classes"):
         filters["Usable By"] = usable_by(kwargs.get("classes"))
 
@@ -351,7 +351,7 @@ def random_magic_armor(**kwargs):
         return random_special_magic_item(
             item_type="Armor", sub_table=sub_table, filters=filters
         )
-    adjustment = gen(**load_table(f"magic_item_armor_adjustment_{sub_table}"))
+    adjustment = gen(**load_table(f"magic_item_armor_adjustment", sub_table=sub_table))
     base_item = f"{base_item} {plusify(adjustment)}"
     if adjustment < 0:
         base_item += " (Cursed)"
@@ -360,14 +360,16 @@ def random_magic_armor(**kwargs):
 
 def random_magic_item(**kwargs):
     sub_table = kwargs.get("sub_table", "standard")
-    category = kwargs.get("category", gen_table(f"magic_item_categories_{sub_table}"))
-    magic_items = load_table(f"magic_items_{sub_table}")
+    category = kwargs.get(
+        "category", gen_table(f"magic_item_categories", sub_table=sub_table)
+    )
+    magic_items = load_table(f"magic_items", sub_table=sub_table)
     data = None
     subcategories = {
         "Armor or Weapon": {"Category": ["Armor and Shields", "Weapons"]},
         "Armor No Shields": {
             "Category": "Armor and Shields",
-            "Data": f"magic_item_armor_only_{sub_table}",
+            "Data": f"magic_item_armor_only",
         },
         "Misc Magic": {
             "Category": [
@@ -385,7 +387,7 @@ def random_magic_item(**kwargs):
         },
         "Nonsword": {
             "Category": "Weapons",
-            "Data": f"magic_item_weapon_nonsword_{sub_table}",
+            "Data": f"magic_item_weapon_nonsword",
         },
         "Nonweapon": {
             "Category": [
@@ -411,9 +413,9 @@ def random_magic_item(**kwargs):
         "Rod/Staff/Wand": {"Category": ["Rods", "Staves", "Wands"]},
         "Shields": {
             "Category": "Armor and Shields",
-            "Data": f"magic_item_shields_only_{sub_table}",
+            "Data": f"magic_item_shields_only",
         },
-        "Sword": {"Category": "Weapons", "Data": f"magic_item_weapon_sword_{sub_table}"},
+        "Sword": {"Category": "Weapons", "Data": f"magic_item_weapon_sword"},
     }
 
     if category in subcategories:
@@ -421,7 +423,7 @@ def random_magic_item(**kwargs):
             category = random.choice(subcategories[category]["Category"])
         else:
             try:
-                data = load_table(subcategories[category]["Data"])
+                data = load_table(subcategories[category]["Data"], sub_table=sub_table)
             except:
                 breakpoint()
             category = subcategories[category]["Category"]
@@ -433,7 +435,7 @@ def random_magic_item(**kwargs):
     elif category == "Armor and Shields":
         return random_magic_armor(sub_table=sub_table, data=data, filters=filters)
     elif category == "Rods":
-        rods_data = load_table(f"magic_items_{sub_table}.json")["Rods"]
+        rods_data = load_table(f"magic_items", sub_table=sub_table)["Rods"]
         try:
             usable_rods = [
                 x for x in RODS if intersect(filters["Usable By"], RODS[x]["Usable By"])
@@ -446,7 +448,7 @@ def random_magic_item(**kwargs):
         charges = roll(*RODS[item]["Charges"])
         return f"{item} ({charges} charges)"
     elif category == "Staves":
-        staves_data = load_table(f"magic_items_{sub_table}.json")["Staves"]
+        staves_data = load_table(f"magic_items", sub_table=sub_table)["Staves"]
         try:
             usable_staves = [
                 x
@@ -464,7 +466,9 @@ def random_magic_item(**kwargs):
             potions = []
             for _ in range(0, roll(1, 4, 1)):
                 doses = roll(1, 4, 1)
-                potion = random_magic_item(category="Potions and Oils", sub_table=sub_table)
+                potion = random_magic_item(
+                    category="Potions and Oils", sub_table=sub_table
+                )
                 potions.append(f"{potion} ({doses} doses)")
             item = f"{item} (Potions: {', '.join(potions)})"
         # Write the Robe of Useful Items' scrolls
@@ -532,7 +536,7 @@ def random_magic_weapon(**kwargs):
     sub_table = kwargs.get("sub_table", "standard")
     filters = build_filters(**kwargs)
     if kwargs.get("load_table") and data is None:
-        data = load_table("magic_item_weapons_{sub_table}")
+        data = load_table("magic_item_weapons", sub_table=sub_table)
 
     if not base_item:
         if data is not None:
@@ -566,7 +570,8 @@ def random_magic_weapon(**kwargs):
         quantity = roll(*WEAPONS[base_item]["Quantity"])
 
     adjustment = gen_table(
-        f"magic_item_weapon_adjustment_{sub_table}",
+        f"magic_item_weapon_adjustment",
+        sub_table=sub_table,
         base_type=WEAPONS[base_item]["Base Type"],
     )
 
@@ -591,20 +596,24 @@ def random_special_magic_item(**kwargs):
     item_type = kwargs.get("item_type", "Weapons")
     filters = build_filters(**kwargs)
 
-    random_table = f"magic_item_special_weapons_{sub_table}"
+    random_table = f"magic_item_special_weapons"
     special_table = SPECIAL_MAGIC_WEAPONS
     if item_type == "Armor":
-        random_table = f"magic_item_special_armor_{sub_table}"
+        random_table = f"magic_item_special_armor"
         special_table = SPECIAL_MAGIC_ARMOR
 
     allowed = table_keys_by_filter(special_table, filters)
-    data = load_table(random_table)
+    data = load_table(random_table, sub_table=sub_table)
     mutate_data_if_equal_keys(data, allowed)
     special = gen(**data)
     if item_type == "Armor":
-        return special_magic_armor(special=special, sub_table=sub_table, filters=filters)
+        return special_magic_armor(
+            special=special, sub_table=sub_table, filters=filters
+        )
     else:
-        return special_magic_weapon(special=special, sub_table=sub_table, filters=filters)
+        return special_magic_weapon(
+            special=special, sub_table=sub_table, filters=filters
+        )
 
 
 def random_item(**kwargs):
@@ -775,7 +784,7 @@ def main():
         ):
             print(f"{category:25}  {random_magic_item(category=category, **kwargs)}")
 
-    gen_all_categories(classes=["Fighter"])
+    gen_all_categories(classes=["Fighter"], sub_table="expanded")
 
 
 if __name__ == "__main__":
