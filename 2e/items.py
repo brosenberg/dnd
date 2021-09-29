@@ -775,42 +775,7 @@ def main():
         ):
             print(f"{category:25}  {random_magic_item(category=category, **kwargs)}")
 
-    # gen_all_special_weapons()
-    # gen_all_categories()
-    # for _ in range(0, 10):
-    #    print(random_magic_item("Sword"))
-    # print()
-    # for _ in range(0, 10):
-    #    print(random_magic_item("Nonsword"))
-    # print()
-    # for _ in range(0, 10):
-    #    print(random_magic_item("Armor No Shields"))
-
-    # print()
-    # print(special_magic_weapon(special="Vorpal Sword", classes=["Druid"]))
-    # print(special_magic_weapon(special="Hornblade", classes=["Mage"]))
-    # print()
-    # for _ in range(0, 10):
-    #    print(random_magic_weapon(classes=["Mage"]))
-    # print()
-    # for _ in range(0, 10):
-    #    print(random_magic_weapon(classes=["Druid"]))
-    # print()
-    # for _ in range(0, 10):
-    #    print(random_special_magic_item(item_type="Armor", classes=["Druid"]))
-    # print()
-    # for _ in range(0, 10):
-    #    print(random_special_magic_item(item_type="Weapons", classes=["Druid"]))
-    # print()
-
-    # print(random_magic_armor(classes=["Druid"]))
-    # gen_all_categories(classes=["Fighter"])
-
-    for _ in range(0, 1000):
-        try:
-            print(random_magic_item(category="Cloaks and Robes"))
-        except TypeError:
-            pass
+    gen_all_categories(classes=["Fighter"])
 
 
 if __name__ == "__main__":
