@@ -92,7 +92,6 @@ def build_filters(**kwargs):
                 filters["Usable By"] = usable[item_type]
             except KeyError:
                 pass
-
     return filters
 
 
@@ -365,6 +364,7 @@ def random_magic_item(**kwargs):
     magic_items = load_table(f"magic_items_{table}")
     data = None
     subcategories = {
+        "Armor or Weapon": {"Category": ["Armor and Shields", "Weapons"]},
         "Armor No Shields": {
             "Category": "Armor and Shields",
             "Data": f"magic_item_armor_only_{table}",
@@ -386,6 +386,27 @@ def random_magic_item(**kwargs):
         "Nonsword": {
             "Category": "Weapons",
             "Data": f"magic_item_weapon_nonsword_{table}",
+        },
+        "Nonweapon": {
+            "Category": [
+                "Potions and Oils",
+                "Scrolls",
+                "Rings",
+                "Rods",
+                "Staves",
+                "Wands",
+                "Books and Tomes",
+                "Jewels and Jewelry",
+                "Cloaks and Robes",
+                "Boots and Gloves",
+                "Girdles and Helms",
+                "Bags and Bottles",
+                "Dusts and Stones",
+                "Household Items and Tools",
+                "Musical Instruments",
+                "The Weird Stuff",
+                "Armor and Shields",
+            ]
         },
         "Rod/Staff/Wand": {"Category": ["Rods", "Staves", "Wands"]},
         "Shields": {
@@ -413,10 +434,14 @@ def random_magic_item(**kwargs):
         return random_magic_armor(table=table, data=data, filters=filters)
     elif category == "Rods":
         rods_data = load_table(f"magic_items_{table}.json")["Rods"]
-        usable_rods = [
-            x for x in RODS if intersect(filters["Usable By"], RODS[x]["Usable By"])
-        ]
-        mutate_data_if_equal_keys(rods_data, usable_rods)
+        try:
+            usable_rods = [
+                x for x in RODS if intersect(filters["Usable By"], RODS[x]["Usable By"])
+            ]
+            mutate_data_if_equal_keys(rods_data, usable_rods)
+        # If "Usable By" is empty, generate any rod
+        except KeyError:
+            pass
         item = gen(**rods_data)
         charges = roll(*RODS[item]["Charges"])
         return f"{item} ({charges} charges)"
@@ -428,9 +453,9 @@ def random_magic_item(**kwargs):
                 for x in STAVES
                 if intersect(filters["Usable By"], STAVES[x]["Usable By"])
             ]
-        except:
-            breakpoint()
-        mutate_data_if_equal_keys(staves_data, usable_staves)
+            mutate_data_if_equal_keys(staves_data, usable_staves)
+        except KeyError:
+            pass
         return gen(**staves_data)
     else:
         item = gen(**magic_items[category])
@@ -439,7 +464,7 @@ def random_magic_item(**kwargs):
             potions = []
             for _ in range(0, roll(1, 4, 1)):
                 doses = roll(1, 4, 1)
-                potion = random_magic_item("Potions and Oils", table=table)
+                potion = random_magic_item(category="Potions and Oils", table=table)
                 potions.append(f"{potion} ({doses} doses)")
             item = f"{item} (Potions: {', '.join(potions)})"
         # Write the Robe of Useful Items' scrolls
@@ -461,7 +486,7 @@ def random_magic_item(**kwargs):
             scroll_data = load_table("scroll_types.json")
             # If this character can use scrolls, give them an appropriate one
             # Otherwise, give them something random
-            if filters["Usable By"]:
+            if "Usable By" in filters and filters["Usable By"]:
                 mutate_data_if_equal_keys(scroll_data, filters["Usable By"])
             scroll_type = gen(**scroll_data)
             item = str(generate_scroll(scroll_type=scroll_type))
@@ -779,7 +804,13 @@ def main():
     # print()
 
     # print(random_magic_armor(classes=["Druid"]))
-    gen_all_categories(classes=["Fighter"])
+    # gen_all_categories(classes=["Fighter"])
+
+    for _ in range(0, 1000):
+        try:
+            print(random_magic_item(category="Cloaks and Robes"))
+        except TypeError:
+            pass
 
 
 if __name__ == "__main__":

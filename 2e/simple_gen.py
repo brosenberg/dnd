@@ -86,12 +86,20 @@ def gen(**kwargs):
     elif type(result) is list:
         for index, entry in enumerate(result):
             if type(entry) is dict:
-                result[index] = gen(**entry)
+                result.remove(entry)
+                sub_results = gen(**entry)
+                if type(sub_results) is list:
+                    result += sub_results
+                else:
+                    result.append(sub_results)
 
     if kwargs.get("Plusify", False):
         result = plusify(result)
     if kwargs.get("Sort", False):
-        result = sorted(result)
+        try:
+            result = sorted(result)
+        except:
+            breakpoint()
     if math:
         for operator in math.split(" "):
             op = operator[0]

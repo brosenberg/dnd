@@ -5,7 +5,7 @@ import random
 
 import jewelry
 import gems
-import magic_item
+import items
 
 ORDER = [
     "cp",
@@ -257,21 +257,20 @@ def generate_jewelry(treasure):
 
 def generate_magic_items(treasure, expanded):
     magic_items = []
-    mig = magic_item.MagicItemGen(expanded)
     for i in range(0, treasure["magic items"]):
-        magic_items.append(mig.random_magic_item())
+        magic_items.append(items.random_magic_item())
     for i in range(0, treasure["potions"]):
-        magic_items.append(mig.roll_category("Potions and Oils"))
+        magic_items.append(items.random_magic_item(category="Potions and Oils"))
     for i in range(0, treasure["scrolls"]):
-        magic_items.append(str(mig.roll_category("Scrolls")))
+        magic_items.append(items.random_magic_item(category="Scrolls"))
     try:
         for i in range(0, treasure["complex"]["non-weapon magic items"]):
-            magic_items.append(mig.roll_nonweapon())
+            magic_items.append(items.random_magic_item(category="Nonweapon"))
     except KeyError:
         pass
     try:
         for i in range(0, treasure["complex"]["magic armor or magic weapon"]):
-            magic_items.append(mig.armor_or_weapon())
+            magic_items.append(items.random_magic_item(category="Armor or Weapon"))
     except KeyError:
         pass
     return sorted(magic_items)

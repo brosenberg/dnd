@@ -107,7 +107,11 @@ def gem_variant(base):
         if roll == 1:
             if base < 6:
                 base += 1
-                value = VALUES[base]
+                try:
+                    value = VALUES[base]
+                except IndexError:
+                    base = len(VALUES)
+                    value = VALUES[-1]
             else:
                 value *= 2
                 if value > 100000:
