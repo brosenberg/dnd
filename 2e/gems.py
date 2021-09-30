@@ -3,172 +3,89 @@
 import random
 import sys
 
-VALUES = (10, 50, 100, 500, 1000, 5000)
-GEM_TYPES = [
-    [
-        "azurite",
-        "banded agate",
-        "blue quartz",
-        "cats' eye agate",
-        "eye agate",
-        "hematite",
-        "lapis lazuli",
-        "malachite",
-        "moss agate",
-        "obsidian",
-        "rhodochrosite",
-        "tiger eye agate",
-        "turquoise",
-    ],
-    [
-        "bloodstone",
-        "carnelian",
-        "chalcedony",
-        "chrysoprase",
-        "citrine",
-        "jasper",
-        "moonstone",
-        "onyx",
-        "rock crystal",
-        "sardonyx",
-        "smoky quartz",
-        "star rose quartz",
-        "zircon",
-    ],
-    [
-        "amber",
-        "alexandrite",
-        "amethyst",
-        "chrysoberyl",
-        "coral",
-        "green spinel",
-        "jade",
-        "jet",
-        "pearl",
-        "red garnet",
-        "red spinel",
-        "tourmaline",
-    ],
-    [
-        "aquamarine",
-        "black pearl",
-        "blue spinel",
-        "peridot",
-        "topaz",
-        "violet garnet",
-    ],
-    [
-        "black opal",
-        "fire opal",
-        "opal",
-        "sapphire",
-    ],
-    [
-        "black sapphire",
-        "diamond",
-        "emerald",
-        "jacinth",
-        "ruby",
-        "star ruby",
-        "star sapphire",
-    ],
-]
+from dice import roll
+from simple_gen import gen
+from utils import load_table
 
+GEMS = load_table("gems.json")
 
-def get_gem():
-    roll = random.randint(1, 100)
-    if roll == 100:
-        return 5
-    elif roll >= 91:
-        return 4
-    elif roll >= 71:
-        return 3
-    elif roll >= 51:
-        return 2
-    elif roll >= 26:
-        return 1
-    else:
-        return 0
-
-
-def gem_variant(base):
-    value = VALUES[base]
-    roll = random.randint(1, 6)
+def gem_variant(gem_type):
+    value = GEMS[gem_type]["Base Value"]
+    result = roll(1, 6, 0)
     count = 0
-    if roll == 2:
+    if result == 2:
         value *= 2
-    elif roll == 3:
-        value = int(value * (1 + (random.randint(1, 6) * 0.1)))
-    elif roll == 4:
-        value = int(value * (1 + (random.randint(1, 4) * 0.1)))
-    elif roll == 5:
+    elif result == 3:
+        value = int(value * (1 + (roll(10, 6, 0) * 0.01)))
+    elif result == 4:
+        value = int(value * (1 + (roll(10, 4, 0) * 0.01)))
+    elif result == 5:
         value = int(value / 2)
-    while roll == 1:
-        if roll == 1:
-            if base < 6:
-                base += 1
-                try:
-                    value = VALUES[base]
-                except IndexError:
-                    base = len(VALUES)
-                    value = VALUES[-1]
+    while result == 1:
+        if result == 1:
+            if GEMS["Gem Order"].index(gem_type) < len(GEMS["Gem Order"])-1:
+                gem_type = GEMS["Gem Order"][GEMS["Gem Order"].index(gem_type)+1]
+                value = GEMS[gem_type]["Base Value"]
             else:
                 value *= 2
                 if value > 100000:
                     return 100000
-        roll = random.randint(1, 6)
-    while roll == 6 and count < 5:
+        result = roll(1, 6, 0)
+    while result == 6 and count < 5:
         count += 1
-        if roll == 6:
-            if base > 0:
-                base -= 1
-                value = VALUES[base]
+        if result == 6:
+            if GEMS["Gem Order"].index(gem_type) > 0:
+                gem_type = GEMS["Gem Order"][GEMS["Gem Order"].index(gem_type)-1]
+                value = GEMS[gem_type]["Base Value"]
             else:
-                if value == 10 or value == 1:
-                    value /= 2.0
-                elif value == 5:
+                if value > 5:
+                    value = 5
+                elif value > 1:
                     value = 1
+                elif value > 0.5:
+                    value = 0.5
                 else:
                     return 0.1
-        roll = random.randint(1, 6)
+        result = roll(1, 6, 0)
     return value
 
+def generate_gem():
+    gem_type = gen(**GEMS["Gem Type"])
+    value = GEMS[gem_type]["Base Value"]
+    stone = random.choice(GEMS[gem_type]["Stones"])
+    if roll(1, 100, 0) <= 10:
+        value = gem_variant(gem_type)
+    return [stone, value]
 
 def generate_gems(count):
-    gems = [0, 0, 0, 0, 0, 0]
-    result = []
-    variant_count = 0
-    total = 0
-    if count >= 10:
-        variant_count = int(count / 10)
-        count = count - variant_count
-    for i in range(0, count):
-        gems[get_gem()] += 1
-    for i in range(0, 6):
-        if gems[i]:
-            result.append(f"{random.choice(GEM_TYPES[i])} ({VALUES[i]} gp) x{gems[i]}")
-            total += gems[i] * VALUES[i]
-    if variant_count:
-        base = get_gem()
-        value = gem_variant(base)
-        total += value * variant_count
-        coin = "gp"
-        if value < 1:
-            value *= 10
-            coin = "sp"
-        value = int(value)
-        result.append(
-            f"{random.choice(GEM_TYPES[base])} ({value} {coin}) x{variant_count}"
-        )
+    gems = {}
+    for _ in range(0, count):
+        stone, value = generate_gem()
+        if value not in gems:
+            gems[value] = [stone]
+        else:
+            gems[value].append(stone)
+    return gems
 
-    return (sorted(result), total)
+
+def format_gems(gems):
+    s = ""
+    total = 0
+    for value in sorted(gems):
+        total += value*len(gems[value])
+        for gem in set(gems[value]):
+            s += f"{gem} ({value} gp)"
+            if gems[value].count(gem) > 1:
+                s += f" x{gems[value].count(gem)}"
+            s += "\n"
+    s += f"{total} gp total"
+    return s
 
 
 def main():
-    if len(sys.argv) > 1:
-        count = int(sys.argv[1])
-        generate_gems(count)
-    else:
+    try:
+        print(format_gems(generate_gems(int(sys.argv[1]))))
+    except IndexError:
         print(f"Usage: {sys.argv[0]} [number of gems]")
         sys.exit(1)
 

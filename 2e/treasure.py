@@ -249,10 +249,7 @@ def print_treasure(treasure):
 def generate_gems(treasure):
     if treasure["gems"]:
         print(f"\nGems ({treasure['gems']}):")
-        result, value = gems.generate_gems(treasure["gems"])
-        for g in result:
-            print(g)
-        print(f"{value} gp total")
+        print(gems.format_gems(gems.generate_gems(treasure["gems"])))
 
 
 def generate_jewelry(treasure):

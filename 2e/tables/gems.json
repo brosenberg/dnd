@@ -1,0 +1,99 @@
+{
+    "Gem Order": ["Ornamental", "Semi-precious", "Fancy", "Precious", "Gems", "Jewels"],
+    "Gem Type": {
+        "Action": "Table",
+        "Data": {
+            "25": "Ornamental",
+            "50": "Semi-precious",
+            "70": "Fancy",
+            "90": "Precious",
+            "99": "Gems",
+            "100": "Jewels"
+        }
+    },
+    "Ornamental": {
+        "Base Value": 10,
+        "Stones": [
+            "azurite",
+            "banded agate",
+            "blue quartz",
+            "cats' eye agate",
+            "eye agate",
+            "hematite",
+            "lapis lazuli",
+            "malachite",
+            "moss agate",
+            "obsidian",
+            "rhodochrosite",
+            "tiger eye agate",
+            "turquoise"
+        ]
+    },
+    "Semi-precious": {
+        "Base Value": 50,
+        "Stones": [
+            "bloodstone",
+            "carnelian",
+            "chalcedony",
+            "chrysoprase",
+            "citrine",
+            "jasper",
+            "moonstone",
+            "onyx",
+            "rock crystal",
+            "sardonyx",
+            "smoky quartz",
+            "star rose quartz",
+            "zircon"
+        ]
+    },
+    "Fancy": {
+        "Base Value": 100,
+        "Stones": [
+            "amber",
+            "alexandrite",
+            "amethyst",
+            "chrysoberyl",
+            "coral",
+            "green spinel",
+            "jade",
+            "jet",
+            "pearl",
+            "red garnet",
+            "red spinel",
+            "tourmaline"
+        ]
+    },
+    "Precious": {
+        "Base Value": 500,
+        "Stones": [
+            "aquamarine",
+            "black pearl",
+            "blue spinel",
+            "peridot",
+            "topaz",
+            "violet garnet"
+        ]
+    },
+    "Gems": {
+        "Base Value": 1000,
+        "Stones": [
+            "black opal",
+            "fire opal",
+            "opal",
+            "sapphire"
+        ]
+    },
+    "Jewels": {
+        "Base Value": 5000,
+        "Stones": [
+            "black sapphire",
+            "diamond",
+            "emerald",
+            "jacinth",
+            "ruby",
+            "star ruby",
+            "star sapphire"
+        ]
+    }
+}
