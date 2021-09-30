@@ -651,11 +651,10 @@ def special_magic_armor(**kwargs):
 
     armor = special
     # Determine base item, if any
-    if SPECIAL_MAGIC_ARMOR[special]["Random Armor"]:
-        filters["Category"] = "Armor"
-        armor = SPECIAL_MAGIC_ARMOR[special]["Format"].format(
-            base_item=random.choice(table_keys_by_filter(ARMOR, filters))
-        )
+    if SPECIAL_MAGIC_ARMOR[special]["Random Base Item"]:
+        filters["Category"] = SPECIAL_MAGIC_ARMOR[special]["Random Category"]
+        base_item = random_item(**kwargs, filters=filters, item_type="Armor")
+        armor = SPECIAL_MAGIC_ARMOR[special]["Format"].format(base_item=base_item)
 
     adjustment = SPECIAL_MAGIC_ARMOR[special].get("Adjustment", None)
     if adjustment:

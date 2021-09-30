@@ -87,7 +87,7 @@
         "AC": 2,
         "Cost": 2000
     },
-    "Full Plate": {
+    "Full plate": {
         "Category": "Armor",
         "Source": "standard",
         "Small Race Usable": true,
@@ -159,7 +159,7 @@
         "AC": 3,
         "Cost": 600
     },
-    "Ring Mail": {
+    "Ring mail": {
         "Category": "Armor",
         "Source": "standard",
         "Small Race Usable": true,
