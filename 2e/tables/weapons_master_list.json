@@ -5,14 +5,16 @@
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.3
     },
     "Ankus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Staff",
-        "Usable By": ["Warrior", "Rogue", "Cleric", "Druid", "Mage"],
+        "Usable By": ["Any"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 3
     },
     "Awl pike": {
@@ -21,6 +23,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Bagh nakh": {
@@ -29,6 +32,7 @@
         "Base Type": "Hand",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 4
     },
     "Barbed dart": {
@@ -42,6 +46,7 @@
         "Base Type": "Blow gun ammo",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.1
     },
     "Bardiche": {
@@ -50,6 +55,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 7
     },
     "Baselard": {
@@ -58,6 +64,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 8
     },
     "Bastard sword": {
@@ -66,6 +73,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 25
     },
     "Battle axe": {
@@ -74,6 +82,7 @@
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 5
     },
     "Bec de corbin": {
@@ -82,6 +91,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 8
     },
     "Bill": {
@@ -90,6 +100,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Bill-guisarme": {
@@ -98,6 +109,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 7
     },
     "Blow gun": {
@@ -110,6 +122,7 @@
         "Base Type": "Blow gun",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 5
     },
     "Bo stick": {
@@ -118,6 +131,7 @@
         "Base Type": "Staff",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Druid"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 0.02
     },
     "Bolas": {
@@ -131,6 +145,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Bone dagger": {
@@ -139,6 +154,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.1
     },
     "Bone knife": {
@@ -147,6 +163,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.03
     },
     "Boomerang": {
@@ -160,6 +177,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue", "Druid"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Brandistock": {
@@ -168,6 +186,7 @@
         "Base Type": "Staff",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 15
     },
     "Broad sword": {
@@ -176,6 +195,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 10
     },
     "Cestus": {
@@ -184,6 +204,7 @@
         "Base Type": "Hand",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Chakram": {
@@ -197,6 +218,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.8
     },
     "Chijikiri": {
@@ -205,6 +227,7 @@
         "Base Type": "Chain",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Cho-ku-no": {
@@ -216,6 +239,7 @@
         "Base Type": "Crossbow",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 300
     },
     "Cinquedea": {
@@ -224,6 +248,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 4
     },
     "Claymore": {
@@ -232,6 +257,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 25
     },
     "Club": {
@@ -240,6 +266,7 @@
         "Base Type": "Club",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Druid"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0
     },
     "Composite long bow": {
@@ -254,6 +281,7 @@
         "Base Type": "Bow",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 100
     },
     "Composite short bow": {
@@ -266,6 +294,7 @@
         "Base Type": "Bow",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 75
     },
     "Cutlass": {
@@ -274,6 +303,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 12
     },
     "Dagger": {
@@ -282,6 +312,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 2
     },
     "Daikyu": {
@@ -293,6 +324,7 @@
         "Base Type": "Bow",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 100
     },
     "Daikyu arrow": {
@@ -306,6 +338,7 @@
         "Base Type": "Arrow",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 0.05
     },
     "Dart": {
@@ -319,6 +352,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Dirk": {
@@ -327,6 +361,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 2
     },
     "Drusus": {
@@ -335,6 +370,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 50
     },
     "Estoc": {
@@ -343,6 +379,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 15
     },
     "Falchion": {
@@ -351,6 +388,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 17
     },
     "Fauchard": {
@@ -359,6 +397,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Fauchard-fork": {
@@ -367,6 +406,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 8
     },
     "Flight arrow": {
@@ -380,6 +420,7 @@
         "Base Type": "Arrow",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.025
     },
     "Footman's flail": {
@@ -388,6 +429,7 @@
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 15
     },
     "Footman's mace": {
@@ -396,6 +438,7 @@
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 8
     },
     "Footman's pick": {
@@ -404,6 +447,7 @@
         "Base Type": "Pick",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 8
     },
     "Gladius": {
@@ -412,6 +456,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 50
     },
     "Glaive": {
@@ -420,6 +465,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Glaive-guisarme": {
@@ -428,6 +474,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 10
     },
     "Great club": {
@@ -436,6 +483,7 @@
         "Base Type": "Club",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Great scimitar": {
@@ -444,6 +492,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 60
     },
     "Guisarme": {
@@ -452,6 +501,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Guisarme-voulge": {
@@ -460,6 +510,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 8
     },
     "Halberd": {
@@ -468,6 +519,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 10
     },
     "Hand axe": {
@@ -476,6 +528,7 @@
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Hand crossbow": {
@@ -487,6 +540,7 @@
         "Base Type": "Crossbow",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 300
     },
     "Hand quarrel": {
@@ -500,6 +554,7 @@
         "Base Type": "Bolt",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Harpoon": {
@@ -508,6 +563,7 @@
         "Base Type": "Spear",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 20
     },
     "Heavy lance": {
@@ -516,6 +572,7 @@
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 15
     },
     "Heavy bolt": {
@@ -529,6 +586,7 @@
         "Base Type": "Bolt",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 0.2
     },
     "Heavy crossbow": {
@@ -540,6 +598,7 @@
         "Base Type": "Crossbow",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 50
     },
     "Hook fauchard": {
@@ -548,6 +607,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 10
     },
     "Horseman's flail": {
@@ -556,6 +616,7 @@
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 8
     },
     "Horseman's mace": {
@@ -564,6 +625,7 @@
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 5
     },
     "Horseman's pick": {
@@ -572,6 +634,7 @@
         "Base Type": "Pick",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 7
     },
     "Jambiya": {
@@ -580,6 +643,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 4
     },
     "Javelin": {
@@ -593,6 +657,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Jitte": {
@@ -601,6 +666,7 @@
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Jousting lance": {
@@ -609,6 +675,7 @@
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 20
     },
     "Kama": {
@@ -617,6 +684,7 @@
         "Base Type": "Sickle",
         "Usable By": ["Warrior", "Druid"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 2
     },
     "Katana": {
@@ -625,14 +693,16 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 100
     },
     "Katar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
-        "Usable By": ["Warrior", "Rogue", "Wizard"],
+        "Usable By": ["Warrior", "Rogue", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 3
     },
     "Kau sin ke": {
@@ -641,6 +711,7 @@
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 3
     },
     "Kawanaga": {
@@ -649,6 +720,7 @@
         "Base Type": "Chain",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 1
     },
     "Khanjar": {
@@ -657,6 +729,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 4
     },
     "Khopseh": {
@@ -665,6 +738,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 10
     },
     "Knife": {
@@ -673,6 +747,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Kusari-gama": {
@@ -681,6 +756,7 @@
         "Base Type": "Chain",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 4
     },
     "Lajatang": {
@@ -689,6 +765,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 7
     },
     "Light lance": {
@@ -697,6 +774,7 @@
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Light bolt": {
@@ -710,6 +788,7 @@
         "Base Type": "Bolt",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.1
     },
     "Light crossbow": {
@@ -721,6 +800,7 @@
         "Base Type": "Crossbow",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 35
     },
     "Long bow": {
@@ -735,6 +815,7 @@
         "Base Type": "Bow",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 75
     },
     "Long spear": {
@@ -743,6 +824,7 @@
         "Base Type": "Spear",
         "Usable By": ["Warrior", "Druid"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Long sword": {
@@ -751,6 +833,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 15
     },
     "Lucern hammer": {
@@ -759,6 +842,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 7
     },
     "Mace-axe": {
@@ -767,6 +851,7 @@
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 12
     },
     "Machete": {
@@ -775,14 +860,16 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 8
     },
     "Main-gauche": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
-        "Usable By": ["Warrior", "Rogue", "Wizard"],
+        "Usable By": ["Warrior", "Rogue", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 3
     },
     "Maul": {
@@ -791,6 +878,7 @@
         "Base Type": "Hammer",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 4
     },
     "Medium lance": {
@@ -799,6 +887,7 @@
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 10
     },
     "Military fork": {
@@ -807,6 +896,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Morning star": {
@@ -815,6 +905,7 @@
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 10
     },
     "Nagimaki": {
@@ -823,6 +914,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Naginata": {
@@ -831,6 +923,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 8
     },
     "Needle": {
@@ -844,6 +937,7 @@
         "Base Type": "Blow gun ammo",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.02
     },
     "Ninja-to": {
@@ -852,6 +946,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 50
     },
     "No-dachi": {
@@ -860,6 +955,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 200
     },
     "Nunchaku": {
@@ -868,6 +964,7 @@
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Partisan": {
@@ -876,6 +973,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 10
     },
     "Pike": {
@@ -884,6 +982,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Pile arrow": {
@@ -897,6 +996,7 @@
         "Base Type": "Arrow",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.05
     },
     "Pilum": {
@@ -910,14 +1010,16 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Quarterstaff": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
-        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
+        "Usable By": ["Any"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 0
     },
     "Ranseur": {
@@ -926,6 +1028,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 6
     },
     "Rapier": {
@@ -934,6 +1037,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 15
     },
     "Sabre": {
@@ -942,6 +1046,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 17
     },
     "Sai": {
@@ -950,6 +1055,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Sang kauw": {
@@ -958,6 +1064,7 @@
         "Base Type": "Spear",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Sapara": {
@@ -966,6 +1073,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 10
     },
     "Scimitar": {
@@ -974,6 +1082,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Druid"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 15
     },
     "Scourge": {
@@ -982,6 +1091,7 @@
         "Base Type": "Whip",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Scythe": {
@@ -990,6 +1100,7 @@
         "Base Type": "Sickle",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 3
     },
     "Sheaf arrow": {
@@ -1003,6 +1114,7 @@
         "Base Type": "Arrow",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.05
     },
     "Short bow": {
@@ -1015,6 +1127,7 @@
         "Base Type": "Bow",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 30
     },
     "Short sword": {
@@ -1023,6 +1136,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 10
     },
     "Shuriken": {
@@ -1036,6 +1150,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.3
     },
     "Sickle": {
@@ -1044,6 +1159,7 @@
         "Base Type": "Sickle",
         "Usable By": ["Warrior", "Druid"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.6
     },
     "Sling": {
@@ -1054,8 +1170,9 @@
             "Sling stone"
         ],
         "Base Type": "Sling",
-        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
+        "Usable By": ["Any"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Sling bullet": {
@@ -1067,8 +1184,9 @@
             0
         ],
         "Base Type": "Sling ammo",
-        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
+        "Usable By": ["Any"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.01
     },
     "Sling stone": {
@@ -1080,8 +1198,9 @@
             0
         ],
         "Base Type": "Sling ammo",
-        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
+        "Usable By": ["Any"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0
     },
     "Spatha": {
@@ -1090,6 +1209,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 100
     },
     "Spear": {
@@ -1098,6 +1218,7 @@
         "Base Type": "Spear",
         "Usable By": ["Warrior", "Druid"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.8
     },
     "Spetum": {
@@ -1106,6 +1227,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Staff sling": {
@@ -1116,8 +1238,9 @@
             "Sling stone"
         ],
         "Base Type": "Sling",
-        "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
+        "Usable By": ["Any"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.2
     },
     "Stiletto": {
@@ -1126,6 +1249,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.5
     },
     "Stone arrow": {
@@ -1139,6 +1263,7 @@
         "Base Type": "Arrow",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.00025
     },
     "Stone dagger": {
@@ -1147,6 +1272,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.2
     },
     "Stone knife": {
@@ -1155,6 +1281,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.05
     },
     "Stone spear": {
@@ -1163,6 +1290,7 @@
         "Base Type": "Spear",
         "Usable By": ["Warrior", "Druid"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 0.2
     },
     "Sword-axe": {
@@ -1171,6 +1299,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 20
     },
     "Tanto": {
@@ -1179,6 +1308,7 @@
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 25
     },
     "Tetsubo": {
@@ -1187,6 +1317,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 2
     },
     "Three-piece rod": {
@@ -1195,6 +1326,7 @@
         "Base Type": "Chain",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 2
     },
     "Throwing axe": {
@@ -1208,6 +1340,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 1
     },
     "Throwing knife": {
@@ -1221,6 +1354,7 @@
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 5
     },
     "Trident": {
@@ -1229,6 +1363,7 @@
         "Base Type": "Spear",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 15
     },
     "Tulwar": {
@@ -1237,6 +1372,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 17
     },
     "Two-handed axe": {
@@ -1245,6 +1381,7 @@
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
         "Source": "expanded",
+        "Small Race Usable": false,
         "Cost": 20
     },
     "Two-handed sword": {
@@ -1253,6 +1390,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 50
     },
     "Voulge": {
@@ -1261,6 +1399,7 @@
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": false,
         "Cost": 5
     },
     "Wakizashi": {
@@ -1269,6 +1408,7 @@
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 50
     },
     "War club": {
@@ -1277,6 +1417,7 @@
         "Base Type": "Club",
         "Usable By": ["Warrior", "Druid", "Cleric"],
         "Source": "expanded",
+        "Small Race Usable": true,
         "Cost": 6
     },
     "Warhammer": {
@@ -1285,6 +1426,7 @@
         "Base Type": "Hammer",
         "Usable By": ["Warrior", "Cleric"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 2
     },
     "Whip": {
@@ -1293,6 +1435,7 @@
         "Base Type": "Whip",
         "Usable By": ["Warrior"],
         "Source": "standard",
+        "Small Race Usable": true,
         "Cost": 0.1
     }
 }

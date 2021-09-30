@@ -1,6 +1,6 @@
 {
     "Armor of Blending": {
-        "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
+        "Usable By": ["Any"],
         "Random Armor": true,
         "Source": "standard",
         "Format": "{base_item} of Blending",
@@ -22,7 +22,7 @@
         "Format": "{base_item}"
     },
     "Armor of Missile Attraction": {
-        "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
+        "Usable By": ["Any"],
         "Random Armor": true,
         "Source": "standard",
         "Format": "{base_item} of Missile Attraction",

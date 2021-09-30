@@ -123,12 +123,12 @@ def random_adventurer(
     items_kwargs = {
         "classes": classes,
         "sub_table": "expanded" if expanded else "standard",
+        "extra_filters": {"Weapons": {}, "Armor": {}}
     }
-    weapons_filters = {}
     # Small races use small weapons
-    # TODO: Change this to weapon size, also add weapon sizes
     if adventurer.race in ["Gnome", "Halfling"]:
-        weapons_filters["Hands"] = 1
+        items_kwargs["extra_filters"]['Weapons']["Small Race Usable"] = True
+        items_kwargs["extra_filters"]['Armor']["Small Race Usable"] = True
 
     # Generate magic items for the character, 5% chance per level in each
     # category for their class groups

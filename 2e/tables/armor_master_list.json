@@ -2,6 +2,7 @@
     "Banded mail": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 4,
         "Cost": 200
@@ -9,6 +10,7 @@
     "Brigandine": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard"],
         "AC": 6,
         "Cost": 120
@@ -16,6 +18,7 @@
     "Bronze plate": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 4,
         "Cost": 400
@@ -23,6 +26,7 @@
     "Chain mail": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard"],
         "AC": 5,
         "Cost": 75
@@ -30,6 +34,7 @@
     "Coin mail": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 6,
         "Cost": 1000
@@ -37,6 +42,7 @@
     "Cord armor": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
         "AC": 8,
         "Cost": 10
@@ -44,6 +50,7 @@
     "Drow chain mail": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard", "Rogue", "Elf Fighter/Mage"],
         "AC": 4,
         "Cost": 3500
@@ -51,6 +58,7 @@
     "Dwarven plate": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 3,
         "Cost": 6000
@@ -58,6 +66,7 @@
     "Elven chain mail": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard", "Rogue", "Elf Fighter/Mage"],
         "AC": 5,
         "Cost": 750 
@@ -65,6 +74,7 @@
     "Elven plate": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 3,
         "Cost": 6000
@@ -72,6 +82,7 @@
     "Field plate": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 2,
         "Cost": 2000
@@ -79,6 +90,7 @@
     "Full Plate": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 1,
         "Cost": 4000
@@ -86,6 +98,7 @@
     "Gnomish leather": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
         "AC": 8,
         "Cost": 500
@@ -93,6 +106,7 @@
     "Hide armor": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard", "Druid"],
         "AC": 6,
         "Cost": 35
@@ -100,6 +114,7 @@
     "Lamellar": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard"],
         "AC": 5,
         "Cost": 250
@@ -107,6 +122,7 @@
     "Leather armor": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
         "AC": 8,
         "Cost": 5
@@ -114,6 +130,7 @@
     "Leather scale": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
         "AC": 7,
         "Cost": 80
@@ -121,6 +138,7 @@
     "O-Yoroi": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 2,
         "Cost": 3000
@@ -128,6 +146,7 @@
     "Padded armor": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard", "Druid"],
         "AC": 8,
         "Cost": 4
@@ -135,6 +154,7 @@
     "Plate mail": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 3,
         "Cost": 600
@@ -142,6 +162,7 @@
     "Ring Mail": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard"],
         "AC": 7,
         "Cost": 40
@@ -149,6 +170,7 @@
     "Scale mail": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard"],
         "AC": 6,
         "Cost": 60
@@ -156,6 +178,7 @@
     "Sea elf scale mail": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Bard"],
         "AC": 6,
         "Cost": 1200
@@ -163,6 +186,7 @@
     "Spiked leather": {
         "Category": "Armor",
         "Source": "expanded",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard"],
         "AC": 7,
         "Cost": 30
@@ -170,6 +194,7 @@
     "Splint mail": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 4,
         "Cost": 80
@@ -177,6 +202,7 @@
     "Studded leather": {
         "Category": "Armor",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy", "Ranger", "Rogue", "Bard"],
         "AC": 7,
         "Cost": 20
@@ -184,6 +210,7 @@
     "Tower shield": {
         "Category": "Shield",
         "Source": "standard",
+        "Small Race Usable": false,
         "Usable By": ["Heavy"],
         "AC": 1,
         "Cost": 10
@@ -191,6 +218,7 @@
     "Buckler": {
         "Category": "Shield",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 1,
         "Cost": 3
@@ -198,6 +226,7 @@
     "Medium shield": {
         "Category": "Shield",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 1,
         "Cost": 7
@@ -205,6 +234,7 @@
     "Small shield": {
         "Category": "Shield",
         "Source": "standard",
+        "Small Race Usable": true,
         "Usable By": ["Heavy"],
         "AC": 1,
         "Cost": 5

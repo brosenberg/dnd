@@ -88,6 +88,9 @@ def table_keys_by_filter(table, filter_dict, do_extra=True, inverse=False):
                 elif key == "Cost":
                     if table[entry][key] > filter_dict[key]:
                         match = False
+                elif key == "Usable By":
+                    if table[entry][key] != "Any" and not default_match():
+                        match = False
                 elif not default_match():
                     match = False
             elif not default_match():

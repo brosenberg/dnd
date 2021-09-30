@@ -93,6 +93,11 @@ def build_filters(**kwargs):
             except KeyError:
                 pass
 
+    if item_type in kwargs.get("extra_filters", {}):
+        for extra in kwargs['extra_filters'][item_type]:
+            if kwargs.get("extra_filters_override", False) or extra not in filters:
+                filters[extra] = kwargs['extra_filters'][item_type][extra]
+
     return filters
 
 
