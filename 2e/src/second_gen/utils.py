@@ -4,7 +4,7 @@ import json
 import random
 import os
 
-from dice import roll
+from second_gen.dice import roll
 
 
 def choice_table_count_unique(table_fname, subdir="tables", count=1):

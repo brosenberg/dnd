@@ -5,16 +5,16 @@ import random
 import re
 import os
 
-from dice import roll
-from generate_scroll import generate_scroll
-from simple_gen import gen
-from spells import random_spell
-from utils import choice_table_count_unique
-from utils import intersect
-from utils import load_table
-from utils import mutate_data_if_equal_keys
-from utils import plusify
-from utils import table_keys_by_filter
+from second_gen.dice import roll
+from second_gen.generate_scroll import generate_scroll
+from second_gen.simple_gen import gen
+from second_gen.spells import random_spell
+from second_gen.utils import choice_table_count_unique
+from second_gen.utils import intersect
+from second_gen.utils import load_table
+from second_gen.utils import mutate_data_if_equal_keys
+from second_gen.utils import plusify
+from second_gen.utils import table_keys_by_filter
 
 
 AMMOS = load_table("weapons_ammos.json")

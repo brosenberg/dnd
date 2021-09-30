@@ -2,8 +2,8 @@
 
 import random
 
-from dice import roll
-from generate_scroll import random_spell
+from second_gen.dice import roll
+from second_gen.generate_scroll import random_spell
 
 
 def get_page():

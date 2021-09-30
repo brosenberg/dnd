@@ -4,7 +4,7 @@ import json
 import os
 import random
 
-from utils import load_table
+from second_gen.utils import load_table
 
 
 def flatten_schools(spell_list):

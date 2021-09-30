@@ -5,7 +5,7 @@ import os
 import random
 
 
-from spells import Spells
+from second_gen.spells import Spells
 
 
 class Scroll(object):

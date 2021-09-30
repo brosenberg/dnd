@@ -68,7 +68,132 @@
         "Weight": [90, 70, 3, 10],
         "Age": [100, 5, 6, 3, 175]
     },
-    "Languages": ["Elf", "Gnome", "Halfling", "Goblin", "Hobgoblin", "Orc", "Gnoll"]
+    "Languages": ["Elf", "Gnome", "Halfling", "Goblin", "Hobgoblin", "Orc", "Gnoll"],
+    "Subraces": {
+        "Aquatic Elf": {
+            "Ability Modifiers": {
+              "Intelligence": -1,
+              "Dexterity": 1
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 19,
+              "Constitution": 18,
+              "Intelligence": 17,
+              "Wisdom": 18,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 6,
+              "Constitution": 8,
+              "Intelligence": 7,
+              "Wisdom": 3,
+              "Charisma": 8
+            },
+            "Languages": ["Aquatic Elf", "Kuo-toa", "Sauhuagin", "Dolphin", "Merman", "Undersea Common"]
+        },
+        "Drow": {
+            "Ability Modifiers": {
+              "Charisma": -2,
+              "Constitution": -1,
+              "Intelligence": 1,
+              "Dexterity": 2
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 20,
+              "Constitution": 17,
+              "Intelligence": 19,
+              "Wisdom": 18,
+              "Charisma": 16
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 8,
+              "Constitution": 7,
+              "Intelligence": 9,
+              "Wisdom": 3,
+              "Charisma": 6
+            },
+            "Languages": ["Drow", "Elf", "Duergar", "Svirfneblin", "Deep Dwarf", "Illithid", "Undercommon", "Drow Sign Language", "Kuo-toa", "Bugbear", "Orcish"],
+            "Experience Penalty": 0.2
+        },
+        "Grey Elf": {
+            "Ability Modifiers": {
+              "Strength": -1,
+              "Constitution": -2,
+              "Intelligence": 2,
+              "Dexterity": 1
+            },
+            "Maximums": {
+              "Strength": 17,
+              "Dexterity": 19,
+              "Constitution": 16,
+              "Intelligence": 20,
+              "Wisdom": 18,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 7,
+              "Constitution": 5,
+              "Intelligence": 8,
+              "Wisdom": 3,
+              "Charisma": 8
+            },
+            "Languages": ["Any"],
+            "Experience Penalty": 0.15
+        },
+        "High Elf": {
+            "Ability Modifiers": {
+              "Constitution": -1,
+              "Dexterity": 1
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 19,
+              "Constitution": 17,
+              "Intelligence": 18,
+              "Wisdom": 18,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 6,
+              "Constitution": 7,
+              "Intelligence": 8,
+              "Wisdom": 3,
+              "Charisma": 8
+            },
+            "Languages": ["High Elf", "Elf", "Aquatic Elf", "Sylvan Elf", "Dwarf", "Gnome", "Halfling", "Orc", "Hobgoblin", "Goblin"]
+        },
+        "Sylvan Elf": {
+            "Ability Modifiers": {
+              "Strength": 1,
+              "Constitution": -1,
+              "Charisma": -1,
+              "Dexterity": 1
+            },
+            "Maximums": {
+              "Strength": 19,
+              "Dexterity": 19,
+              "Constitution": 17,
+              "Intelligence": 18,
+              "Wisdom": 18,
+              "Charisma": 17
+            },
+            "Minimums": {
+              "Strength": 6,
+              "Dexterity": 6,
+              "Constitution": 7,
+              "Intelligence": 8,
+              "Wisdom": 3,
+              "Charisma": 7
+            },
+            "Languages": ["Sylvan Elf", "High Elf", "Centaur", "Pixie", "Dryad", "Treant"]
+        }
+    }
   },
   "Gnome": {
     "Ability Modifiers": {

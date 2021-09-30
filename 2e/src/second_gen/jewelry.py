@@ -110,7 +110,9 @@ def generate_jewelry(count):
 def main():
     try:
         count = int(sys.argv[1])
-        generate_jewelry(count)
+        jewelry, total = generate_jewelry(count)
+        print("\n".join(jewelry))
+        print(f"{total} gp toal")
     except IndexError:
         print(f"Usage: {sys.argv[0]} [pieces of jewelry]")
         sys.exit(1)

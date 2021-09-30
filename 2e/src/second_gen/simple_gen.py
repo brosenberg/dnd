@@ -2,8 +2,8 @@
 
 import random
 
-from dice import roll
-from utils import plusify
+from second_gen.dice import roll
+from second_gen.utils import plusify
 
 
 def do_action(action, data):

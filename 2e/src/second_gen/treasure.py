@@ -3,9 +3,9 @@
 import argparse
 import random
 
-import jewelry
-import gems
-import items
+from second_gen import jewelry
+from second_gen import gems
+from second_gen import items
 
 ORDER = [
     "cp",
@@ -291,12 +291,16 @@ def generate_treasure(treasure_types, expanded=False):
         "Jewelry": [],
     }
     try:
-        treasure["Gems"] = jewelry.generate_jewelry(base_treasure["gems"])[0]
+        treasure["Gems"] = generate_gems(base_treasure["gems"])[0]
     except KeyError:
         pass
+    except TypeError:
+        pass
     try:
-        treasure["Jewelry"] = jewelry.generate_jewelry(base_treasure["art/jewelry"])[0]
+        treasure["Jewelry"] = generate_jewelry(base_treasure["art/jewelry"])[0]
     except KeyError:
+        pass
+    except TypeError:
         pass
     for currency in ["cp", "sp", "gp", "pp"]:
         if base_treasure[currency]:

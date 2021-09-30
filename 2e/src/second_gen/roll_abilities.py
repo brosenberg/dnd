@@ -2,7 +2,7 @@
 
 import random
 
-from dice import roll
+from second_gen.dice import roll
 
 
 ABILITIES = [

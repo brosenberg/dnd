@@ -3,14 +3,21 @@
 import argparse
 import random
 
-import items
-
-from character import Character
-from currency import get_gold_value
-from dice import roll
-from roll_abilities import get_abilities
-from utils import intersect
-from utils import load_table
+from second_gen.character import Character
+from second_gen.currency import get_gold_value
+from second_gen.dice import roll
+from second_gen.items import appropriate_ammo_type
+from second_gen.items import appropriate_weapons_by_ammo
+from second_gen.items import is_cursed
+from second_gen.items import is_missile_weapon
+from second_gen.items import is_thrown_weapon
+from second_gen.items import random_appropriate_ammo
+from second_gen.items import random_item
+from second_gen.items import random_item_count
+from second_gen.items import random_magic_item
+from second_gen.roll_abilities import get_abilities
+from second_gen.utils import intersect
+from second_gen.utils import load_table
 
 LEVEL_RANGES = ["Low", "Medium", "High", "Very high"]
 
@@ -139,15 +146,15 @@ def random_adventurer(
             if category == "Sword" and "Cleric" in classes:
                 category = "Rod/Staff/Wand"
 
-            item = items.random_magic_item(**items_kwargs, category=category)
+            item = random_magic_item(**items_kwargs, category=category)
             # One reroll on cursed items
-            if items.is_cursed(item):
-                item = items.random_magic_item(**items_kwargs, category=category)
+            if is_cursed(item):
+                item = random_magic_item(**items_kwargs, category=category)
 
             if category == "Armor No Shields":
                 has_armor = True
             elif category in ["Nonsword", "Sword", "Rod/Staff/Wand"]:
-                if items.is_missile_weapon(item):
+                if is_missile_weapon(item):
                     has_ranged_weapon = True
                 else:
                     has_weapon = True
@@ -184,16 +191,14 @@ def random_adventurer(
         # suitable for it, or give ammo for a weapon that needs it.
         for item in adventurer.equipment:
             # Give a weapon for orphan ammo
-            weapons = items.appropriate_weapons_by_ammo(item)
+            weapons = appropriate_weapons_by_ammo(item)
             if weapons:
                 adventurer.add_equipment(
-                    items.random_item(
-                        **items_kwargs, category=category, item_list=weapons
-                    )
+                    random_item(**items_kwargs, category=category, item_list=weapons)
                 )
             # Give ammo for weapons needing it
             try:
-                ammo, count = items.random_appropriate_ammo(item)
+                ammo, count = random_appropriate_ammo(item)
                 count *= 2
                 adventurer.add_equipment((f"{ammo} x{count}"))
             except TypeError:
@@ -214,7 +219,7 @@ def random_adventurer(
                 else:
                     adventurer.add_equipment("Light warhorse")
                 if roll(1, 100, 0) < 10 * level:
-                    barding = items.random_item(
+                    barding = random_item(
                         **items_kwargs,
                         item_type="Armor",
                         filters={"Category": "Armor"},
@@ -228,32 +233,30 @@ def random_adventurer(
             filters = {"Cost": get_gold_value(adventurer.currency)}
             if has_ranged_weapon:
                 filters["Category"] = "Melee"
-            weapon = items.random_item(
-                **items_kwargs, item_type="Weapons", filters=filters
-            )
+            weapon = random_item(**items_kwargs, item_type="Weapons", filters=filters)
 
             # If the weapon requires ammo, give some ammo for it
-            ammo = items.appropriate_ammo_type(weapon)
+            ammo = appropriate_ammo_type(weapon)
             if ammo:
-                ammo_dice, ammo_die, ammo_mod = items.random_item_count(ammo)
+                ammo_dice, ammo_die, ammo_mod = random_item_count(ammo)
                 ammo_dice *= 2
                 ammo = f"{ammo} x{roll(ammo_dice, ammo_die, ammo_mod)}"
                 adventurer.add_equipment(weapon)
                 adventurer.add_equipment(ammo)
                 has_ranged_weapon = True
-                weapon = items.random_item(
+                weapon = random_item(
                     **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
                 )
             # If the weapon is thrown, give a few of them
-            elif items.is_thrown_weapon(weapon):
-                ammo_dice, ammo_die, ammo_mod = items.random_item_count(weapon)
+            elif is_thrown_weapon(weapon):
+                ammo_dice, ammo_die, ammo_mod = random_item_count(weapon)
                 count = roll(ammo_dice, ammo_die, ammo_mod)
                 if count > 1:
                     adventurer.add_equipment(f"{weapon} x{count}")
                 else:
                     adventurer.add_equipment(weapon)
                 has_ranged_weapon = True
-                weapon = items.random_item(
+                weapon = random_item(
                     **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
                 )
 
@@ -269,9 +272,7 @@ def random_adventurer(
             filters = {"Cost": get_gold_value(adventurer.currency), "Category": "Armor"}
             try:
                 adventurer.buy_item(
-                    items.random_item(
-                        **items_kwargs, filters=filters, item_type="Armor"
-                    ),
+                    random_item(**items_kwargs, filters=filters, item_type="Armor"),
                     item_type="Armor",
                 )
             except IndexError:
@@ -285,9 +286,7 @@ def random_adventurer(
             }
             try:
                 adventurer.buy_item(
-                    items.random_item(
-                        **items_kwargs, item_type="Armor", filters=filters
-                    ),
+                    random_item(**items_kwargs, item_type="Armor", filters=filters),
                     item_type="Armor",
                 )
             except IndexError:
@@ -299,9 +298,7 @@ def random_adventurer(
             filters = {"Cost": get_gold_value(adventurer.currency), "Category": "Melee"}
             try:
                 adventurer.buy_item(
-                    items.random_item(
-                        **items_kwargs, item_type="Weapons", filters=filters
-                    ),
+                    random_item(**items_kwargs, item_type="Weapons", filters=filters),
                     item_type="Weapons",
                 )
             except IndexError:

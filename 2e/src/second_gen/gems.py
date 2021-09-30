@@ -3,9 +3,9 @@
 import random
 import sys
 
-from dice import roll
-from simple_gen import gen
-from utils import load_table
+from second_gen.dice import roll
+from second_gen.simple_gen import gen
+from second_gen.utils import load_table
 
 GEMS = load_table("gems.json")
 
@@ -69,6 +69,25 @@ def generate_gems(count):
         else:
             gems[value].append(stone)
     return gems
+
+
+def gems_to_list(gems):
+    gems_list = []
+    for value in sorted(gems):
+        total += value * len(gems[value])
+        for gem in set(gems[value]):
+            s = f"{gem} ({value} gp)"
+            if gems[value].count(gem) > 1:
+                s += f" x{gems[value].count(gem)}"
+            gems_list.append(s)
+    return gems_list
+
+
+def gems_value(gems):
+    total = 0
+    for value in sorted(gems):
+        total += value * len(gems[value])
+    return total
 
 
 def format_gems(gems):

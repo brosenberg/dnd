@@ -6,15 +6,15 @@ import os
 import random
 import re
 
-from currency import get_gold_value
-from currency import gold_to_coins
-from currency import subtract_coins
-from dice import roll
-from items import get_ac
-from spells import Spells
-from roll_abilities import get_abilities
-from treasure import generate_treasure
-from utils import load_table
+from second_gen.currency import get_gold_value
+from second_gen.currency import gold_to_coins
+from second_gen.currency import subtract_coins
+from second_gen.dice import roll
+from second_gen.items import get_ac
+from second_gen.spells import Spells
+from second_gen.roll_abilities import get_abilities
+from second_gen.treasure import generate_treasure
+from second_gen.utils import load_table
 
 
 ARMOR = load_table("armor_master_list.json")
@@ -504,6 +504,7 @@ class Character(object):
         slow_advancement=False,
         starting_money=True,
         demi_experience_penalty=[2, 3],
+        **kwargs,
     ):
         self.expanded = expanded
 
@@ -518,10 +519,16 @@ class Character(object):
             )
         self.class_groups = get_class_groups(self.classes)
 
-        ### Assign or choose a race
+        ### Assign or choose a race and subrace
         self.race = race
         if not self.race:
             self.race = get_random_race_by_classes(self.classes)
+        self.subrace = kwargs.get("subrace", None)
+        if not self.subrace:
+            try:
+                self.subrace = random.choice(RACES[self.race]["Subraces"])
+            except KeyError:
+                pass
 
         self.slow_advancement = slow_advancement
         self.experience_penalty = [1, 1]  # No penalty
@@ -657,13 +664,16 @@ class Character(object):
         str_hit_mod = strength_to_hit(
             self.abilities["Strength"], self.abilities["Extrao Strength"]
         )
-        s = f"{'-'*10}\n"
+        s = f"{'-'*80}\n"
 
         ### Race, Class, Alignment, HP, AC, THAC0
         classes_str = "/".join(self.classes)
         levels_str = "/".join([str(x) for x in self.levels])
         xp_str = "/".join([f"{x:,}" for x in self.experience])
-        s += f"{self.alignment} {self.race} {classes_str} {levels_str}\n"
+        if self.subrace:
+            s += f"{self.alignment} {self.subrace} {classes_str} {levels_str}\n"
+        else:
+            s += f"{self.alignment} {self.race} {classes_str} {levels_str}\n"
         s += f"XP: {xp_str} - "
         level_limits_str = "/".join(
             ["U" if x > 98 else str(x) for x in self.level_limits]
@@ -812,7 +822,7 @@ class Character(object):
                 items.append(item)
             s += "\n"
             s += "Equipment:\n\t" + "\n\t".join(items)
-        s += f"\n{'-'*10}"
+        s += f"\n{'-'*80}"
         return s
 
     def _assign_nwps(self):
