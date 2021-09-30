@@ -123,12 +123,12 @@ def random_adventurer(
     items_kwargs = {
         "classes": classes,
         "sub_table": "expanded" if expanded else "standard",
-        "extra_filters": {"Weapons": {}, "Armor": {}}
+        "extra_filters": {"Weapons": {}, "Armor": {}},
     }
     # Small races use small weapons
     if adventurer.race in ["Gnome", "Halfling"]:
-        items_kwargs["extra_filters"]['Weapons']["Small Race Usable"] = True
-        items_kwargs["extra_filters"]['Armor']["Small Race Usable"] = True
+        items_kwargs["extra_filters"]["Weapons"]["Small Race Usable"] = True
+        items_kwargs["extra_filters"]["Armor"]["Small Race Usable"] = True
 
     # Generate magic items for the character, 5% chance per level in each
     # category for their class groups
@@ -182,26 +182,22 @@ def random_adventurer(
     else:
         # Check to see if the adventurer has random ammo and give them a weapon
         # suitable for it, or give ammo for a weapon that needs it.
-        appropriate_items = []
         for item in adventurer.equipment:
             # Give a weapon for orphan ammo
-            try:
-                appropriate_items.append(
-                    random.choice(items.appropriate_weapons_by_ammo(item))
+            weapons = items.appropriate_weapons_by_ammo(item)
+            if weapons:
+                adventurer.add_equipment(
+                    items.random_item(
+                        **items_kwargs, category=category, item_list=weapons
+                    )
                 )
-                has_ranged_weapon = True
-                continue
-            except IndexError:
-                pass
             # Give ammo for weapons needing it
             try:
                 ammo, count = items.random_appropriate_ammo(item)
                 count *= 2
-                appropriate_items.append(f"{ammo} x{count}")
+                adventurer.add_equipment((f"{ammo} x{count}"))
             except TypeError:
                 pass
-        for item in appropriate_items:
-            adventurer.add_equipment(item)
 
         # Maybe give the adventurer a mount
         mount_chance = 20

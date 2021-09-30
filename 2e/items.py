@@ -50,16 +50,10 @@ def appropriate_armor_group(char_class):
 
 
 def appropriate_weapons_by_ammo(ammo):
-    def in_ammo(item, ammo_list):
-        for ammo_type in ammo_list:
-            if ammo_type in item:
-                return True
-        return False
-
     weapons = []
     for weapon in WEAPONS:
         try:
-            if in_ammo(ammo, WEAPONS[weapon]["Ammo"]):
+            if ammo in WEAPONS[weapon]["Ammo"]:
                 weapons.append(weapon)
         except KeyError:
             pass
@@ -94,9 +88,9 @@ def build_filters(**kwargs):
                 pass
 
     if item_type in kwargs.get("extra_filters", {}):
-        for extra in kwargs['extra_filters'][item_type]:
+        for extra in kwargs["extra_filters"][item_type]:
             if kwargs.get("extra_filters_override", False) or extra not in filters:
-                filters[extra] = kwargs['extra_filters'][item_type][extra]
+                filters[extra] = kwargs["extra_filters"][item_type][extra]
 
     return filters
 
