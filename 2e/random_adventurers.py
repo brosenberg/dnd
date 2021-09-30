@@ -58,6 +58,12 @@ TREASURE = {
     "Wizard": "LNQ",
     "Priest": "JKM",
     "Rogue": "JNQ",
+    "Elf": "N",
+    "Dwarf": "MMMMM",
+    "Gnome": "MMM",
+    "Halfling": "K",
+    "Half-Elf": "N",
+    "Human": "K",
 }
 
 
@@ -144,12 +150,18 @@ def random_adventurer(
                 has_shield = True
             adventurer.add_equipment(item)
 
+    # High level priests sometimes carry religious artifacts
+    if "Priest" in adventurer.class_groups and  roll(1, 100, 0) <= 5:
+        adventurer.add_equipment("Religious artifact")
+
     # Give random currency to adventurers who received an item
     # Adventurers who have zero magic items are probably not established
     # enough to have more than their starting funds.
     if has_any_item:
         for class_group in adventurer.class_groups:
             adventurer.give_treasure(TREASURE[class_group])
+        if adventurer.race in TREASURE:
+            adventurer.give_treasure(TREASURE[adventurer.race])
 
     # Roll standard items
     if not more_equipment:
@@ -187,7 +199,11 @@ def random_adventurer(
             adventurer.add_equipment(item)
 
         # Maybe give the adventurer a mount
-        if roll(1, 100, 0) < 20 * level:
+        mount_chance = 20
+        # Elves typically don't ride, so a smaller chance for them
+        if adventurer.race == "Elf":
+            mount_chance = 2
+        if roll(1, 100, 0) < mount_chance * level:
             if level > 2 and ("Warrior" in class_groups or "Cleric" in classes):
                 horse_roll = roll(1, 100, 0)
                 if horse_roll < roll(1, 12, 0) * level:
