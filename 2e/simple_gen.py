@@ -98,10 +98,7 @@ def gen(**kwargs):
     if kwargs.get("Plusify", False):
         result = plusify(result)
     if kwargs.get("Sort", False):
-        try:
-            result = sorted(result)
-        except:
-            breakpoint()
+        result = sorted(result)
     if math:
         for operator in math.split(" "):
             op = operator[0]

@@ -418,10 +418,7 @@ def random_magic_item(**kwargs):
         if type(subcategories[category]["Category"]) is list:
             category = random.choice(subcategories[category]["Category"])
         else:
-            try:
-                data = load_table(subcategories[category]["Data"], sub_table=sub_table)
-            except:
-                breakpoint()
+            data = load_table(subcategories[category]["Data"], sub_table=sub_table)
             category = subcategories[category]["Category"]
 
     filters = build_filters(**kwargs, item_type=category)
