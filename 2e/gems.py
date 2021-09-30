@@ -9,6 +9,7 @@ from utils import load_table
 
 GEMS = load_table("gems.json")
 
+
 def gem_variant(gem_type):
     value = GEMS[gem_type]["Base Value"]
     result = roll(1, 6, 0)
@@ -23,8 +24,8 @@ def gem_variant(gem_type):
         value = int(value / 2)
     while result == 1:
         if result == 1:
-            if GEMS["Gem Order"].index(gem_type) < len(GEMS["Gem Order"])-1:
-                gem_type = GEMS["Gem Order"][GEMS["Gem Order"].index(gem_type)+1]
+            if GEMS["Gem Order"].index(gem_type) < len(GEMS["Gem Order"]) - 1:
+                gem_type = GEMS["Gem Order"][GEMS["Gem Order"].index(gem_type) + 1]
                 value = GEMS[gem_type]["Base Value"]
             else:
                 value *= 2
@@ -35,7 +36,7 @@ def gem_variant(gem_type):
         count += 1
         if result == 6:
             if GEMS["Gem Order"].index(gem_type) > 0:
-                gem_type = GEMS["Gem Order"][GEMS["Gem Order"].index(gem_type)-1]
+                gem_type = GEMS["Gem Order"][GEMS["Gem Order"].index(gem_type) - 1]
                 value = GEMS[gem_type]["Base Value"]
             else:
                 if value > 5:
@@ -49,6 +50,7 @@ def gem_variant(gem_type):
         result = roll(1, 6, 0)
     return value
 
+
 def generate_gem():
     gem_type = gen(**GEMS["Gem Type"])
     value = GEMS[gem_type]["Base Value"]
@@ -56,6 +58,7 @@ def generate_gem():
     if roll(1, 100, 0) <= 10:
         value = gem_variant(gem_type)
     return [stone, value]
+
 
 def generate_gems(count):
     gems = {}
@@ -72,7 +75,7 @@ def format_gems(gems):
     s = ""
     total = 0
     for value in sorted(gems):
-        total += value*len(gems[value])
+        total += value * len(gems[value])
         for gem in set(gems[value]):
             s += f"{gem} ({value} gp)"
             if gems[value].count(gem) > 1:

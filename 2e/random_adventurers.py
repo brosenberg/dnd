@@ -311,6 +311,55 @@ def random_adventurer(
     return adventurer
 
 
+def random_adventurers(**kwargs):
+    s = ""
+    no_appearing = roll(1, 8, 0)
+    if kwargs.get("epic"):
+        level_range = random.choice(LEVEL_RANGES + ["Epic"])
+    else:
+        level_range = random.choice(LEVEL_RANGES)
+    experience = None
+    alignments = None
+    level_str = f"{LEVEL_RANGE[level_range][0]+LEVEL_RANGE[level_range][2]} - {LEVEL_RANGE[level_range][1]+LEVEL_RANGE[level_range][2]}"
+
+    s += f"{level_range} level ({level_str}) Adventurer Party ({no_appearing} adventurers)\n"
+
+    if kwargs.get("experience"):
+        min_mod = 1
+        if kwargs.get("slow"):
+            min_mod = 2
+        experience = random.randint(
+            EXPERIENCE_RANGE[level_range][0] * min_mod, EXPERIENCE_RANGE[level_range][1]
+        )
+        s += f"Base experience: {experience:,}\n"
+    if kwargs.get("slow"):
+        s += "Using slow advancement for demi-humans optional rule\n"
+    if kwargs.get("alignment"):
+        alignments = random.choice(load_table("alignment_groups.json"))
+        s += f"Alignments: {', '.join(alignments)}\n"
+    s += "\n"
+    for adventurer in range(0, no_appearing):
+        alignment = None
+        if kwargs.get("alignment"):
+            alignment = random.choice(alignments)
+        this_xp = experience
+        if this_xp:
+            this_xp += random.randint(0, (EXPERIENCE_RANGE[level_range][0] / 10) + 100)
+        s += str(
+            random_adventurer(
+                level_range,
+                kwargs.get("expanded", False),
+                kwargs.get("equipment", False),
+                kwargs.get("classes", False),
+                alignment=alignment,
+                experience=this_xp,
+                slow_advancement=kwargs.get("slow", False),
+            )
+        )
+        s += "\n\n"
+    return s.strip()
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate adventurers")
     parser.add_argument(
@@ -364,51 +413,17 @@ def main():
     )
 
     args = parser.parse_args()
-    no_appearing = roll(1, 8, 0)
-    if args.epic:
-        level_range = random.choice(LEVEL_RANGES + ["Epic"])
-    else:
-        level_range = random.choice(LEVEL_RANGES)
-    experience = None
-    alignments = None
-    level_str = f"{LEVEL_RANGE[level_range][0]+LEVEL_RANGE[level_range][2]} - {LEVEL_RANGE[level_range][1]+LEVEL_RANGE[level_range][2]}"
-
     print(
-        f"{level_range} level ({level_str}) Adventurer Party ({no_appearing} adventurers)"
+        random_adventurers(
+            alignment=args.alignments,
+            classes=args.classes,
+            epic=args.epic,
+            equipment=args.equipment,
+            expanded=args.expanded,
+            experience=args.experience,
+            slow=args.slow,
+        )
     )
-    if args.experience:
-        min_mod = 1
-        if args.slow:
-            min_mod = 2
-        experience = random.randint(
-            EXPERIENCE_RANGE[level_range][0] * min_mod, EXPERIENCE_RANGE[level_range][1]
-        )
-        print(f"Base experience: {experience:,}")
-    if args.slow:
-        print("Using slow advancement for demi-humans optional rule")
-    if args.alignments:
-        alignments = random.choice(load_table("alignment_groups.json"))
-        print(f"Alignments: {', '.join(alignments)}")
-    print()
-    for adventurer in range(0, no_appearing):
-        alignment = None
-        if args.alignments:
-            alignment = random.choice(alignments)
-        this_xp = experience
-        if this_xp:
-            this_xp += random.randint(0, (EXPERIENCE_RANGE[level_range][0] / 10) + 100)
-        print(
-            random_adventurer(
-                level_range,
-                args.expanded,
-                args.equipment,
-                args.classes,
-                alignment=alignment,
-                experience=this_xp,
-                slow_advancement=args.slow,
-            )
-        )
-        print()
 
 
 if __name__ == "__main__":
