@@ -345,7 +345,9 @@ def random_magic_armor(**kwargs):
         filters["Category"] = "Shield"
         base_item = random.choice(table_keys_by_filter(ARMOR, filters))
     if not get_adjustment(base_item)[1]:
-        adjustment = gen(**load_table(f"magic_item_armor_adjustment", sub_table=sub_table))
+        adjustment = gen(
+            **load_table(f"magic_item_armor_adjustment", sub_table=sub_table)
+        )
         base_item = f"{base_item} {plusify(adjustment)}"
         if adjustment < 0:
             base_item += " (Cursed)"

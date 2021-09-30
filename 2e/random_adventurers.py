@@ -162,7 +162,8 @@ def random_adventurer(
             adventurer.add_equipment("Medium warhorse")
     # Roll more variety of items
     else:
-        # Check to see if the adventurer has random ammo and give them a weapon for it
+        # Check to see if the adventurer has random ammo and give them a weapon
+        # suitable for it, or give ammo for a weapon that needs it.
         appropriate_items = []
         for item in adventurer.equipment:
             # Give a weapon for orphan ammo

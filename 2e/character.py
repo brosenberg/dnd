@@ -986,12 +986,20 @@ class Character(object):
         if item is not None:
             self.equipment.append(item)
 
-    # Return amount of gold the character has
-    def get_currency_value(self, **kwargs):
-        value_map = kwargs.get(
-            "value_map", {"pp": 5, "gp": 1, "ep": 0.5, "sp": 0.1, "cp": 0.01}
-        )
-        return sum([value_map[x] * self.currency[x] for x in self.currency])
+    def buy_item(self, item, **kwargs):
+        item_table = kwargs.get("item_table")
+        if not item_table:
+            item_type = kwargs.get("item_type")
+            if item_type == "Armor":
+                item_table = ARMOR
+            elif item_type == "Weapons":
+                item_table = WEAPONS
+        price = item_table[item]["Cost"]
+        if price > get_gold_value(self.currency):
+            return False
+        self.currency = subtract_coins(self.currency, gold_to_coins(price))
+        self.add_equipment(item)
+        return True
 
     def get_level(self, class_name, class_group=None):
         if class_group:

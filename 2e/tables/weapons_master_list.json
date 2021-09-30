@@ -4,28 +4,32 @@
         "Category": "Melee",
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.3
     },
     "Ankus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Staff",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Druid", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 3
     },
     "Awl pike": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Bagh nakh": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 4
     },
     "Barbed dart": {
         "Hands": 1,
@@ -37,56 +41,64 @@
         ],
         "Base Type": "Blow gun ammo",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.1
     },
     "Bardiche": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 7
     },
     "Baselard": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 8
     },
     "Bastard sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 25
     },
     "Battle axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Bec de corbin": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 8
     },
     "Bill": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Bill-guisarme": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 7
     },
     "Blow gun": {
         "Hands": 2,
@@ -97,14 +109,16 @@
         ],
         "Base Type": "Blow gun",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Bo stick": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Druid"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.02
     },
     "Bolas": {
         "Hands": 1,
@@ -116,21 +130,24 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.5
     },
     "Bone dagger": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.1
     },
     "Bone knife": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.03
     },
     "Boomerang": {
         "Hands": 1,
@@ -142,28 +159,32 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue", "Druid"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.5
     },
     "Brandistock": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 15
     },
     "Broad sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Cestus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 1
     },
     "Chakram": {
         "Hands": 1,
@@ -175,14 +196,16 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.8
     },
     "Chijikiri": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Chain",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 6
     },
     "Cho-ku-no": {
         "Hands": 2,
@@ -192,28 +215,32 @@
         ],
         "Base Type": "Crossbow",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 300
     },
     "Cinquedea": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 4
     },
     "Claymore": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 25
     },
     "Club": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Club",
         "Usable By": ["Warrior", "Rogue", "Cleric", "Druid"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0
     },
     "Composite long bow": {
         "Hands": 2,
@@ -226,7 +253,8 @@
         ],
         "Base Type": "Bow",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 100
     },
     "Composite short bow": {
         "Hands": 2,
@@ -237,21 +265,24 @@
         ],
         "Base Type": "Bow",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 75
     },
     "Cutlass": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 12
     },
     "Dagger": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 2
     },
     "Daikyu": {
         "Hands": 2,
@@ -261,7 +292,8 @@
         ],
         "Base Type": "Bow",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 100
     },
     "Daikyu arrow": {
         "Hands": 1,
@@ -273,7 +305,8 @@
         ],
         "Base Type": "Arrow",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.05
     },
     "Dart": {
         "Hands": 1,
@@ -285,49 +318,56 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.5
     },
     "Dirk": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 2
     },
     "Drusus": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 50
     },
     "Estoc": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 15
     },
     "Falchion": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 17
     },
     "Fauchard": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Fauchard-fork": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 8
     },
     "Flight arrow": {
         "Hands": 1,
@@ -339,91 +379,104 @@
         ],
         "Base Type": "Arrow",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.025
     },
     "Footman's flail": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 15
     },
     "Footman's mace": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 8
     },
     "Footman's pick": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Pick",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 8
     },
     "Gladius": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 50
     },
     "Glaive": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 6
     },
     "Glaive-guisarme": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Great club": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Club",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 6
     },
     "Great scimitar": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 60
     },
     "Guisarme": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Guisarme-voulge": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 8
     },
     "Halberd": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Hand axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 1
     },
     "Hand crossbow": {
         "Hands": 1,
@@ -433,7 +486,8 @@
         ],
         "Base Type": "Crossbow",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 300
     },
     "Hand quarrel": {
         "Hands": 1,
@@ -445,21 +499,24 @@
         ],
         "Base Type": "Bolt",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 1
     },
     "Harpoon": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 20
     },
     "Heavy lance": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 15
     },
     "Heavy bolt": {
         "Hands": 1,
@@ -471,7 +528,8 @@
         ],
         "Base Type": "Bolt",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.2
     },
     "Heavy crossbow": {
         "Hands": 2,
@@ -481,42 +539,48 @@
         ],
         "Base Type": "Crossbow",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 50
     },
     "Hook fauchard": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Horseman's flail": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 8
     },
     "Horseman's mace": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Horseman's pick": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Pick",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 7
     },
     "Jambiya": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 4
     },
     "Javelin": {
         "Hands": 1,
@@ -528,98 +592,112 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.5
     },
     "Jitte": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.5
     },
     "Jousting lance": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 20
     },
     "Kama": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sickle",
         "Usable By": ["Warrior", "Druid"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 2
     },
     "Katana": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 100
     },
     "Katar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hand",
-        "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Usable By": ["Warrior", "Rogue", "Wizard"],
+        "Source": "expanded",
+        "Cost": 3
     },
     "Kau sin ke": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 3
     },
     "Kawanaga": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Chain",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 1
     },
     "Khanjar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 4
     },
     "Khopseh": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Knife": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.5
     },
     "Kusari-gama": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Chain",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 4
     },
     "Lajatang": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 7
     },
     "Light lance": {
         "Hands": 3,
         "Category": "Melee",
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 6
     },
     "Light bolt": {
         "Hands": 1,
@@ -631,7 +709,8 @@
         ],
         "Base Type": "Bolt",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.1
     },
     "Light crossbow": {
         "Hands": 2,
@@ -641,7 +720,8 @@
         ],
         "Base Type": "Crossbow",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 35
     },
     "Long bow": {
         "Hands": 2,
@@ -654,91 +734,104 @@
         ],
         "Base Type": "Bow",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 75
     },
     "Long spear": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
         "Usable By": ["Warrior", "Druid"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 5
     },
     "Long sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 15
     },
     "Lucern hammer": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 7
     },
     "Mace-axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 12
     },
     "Machete": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 8
     },
     "Main-gauche": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
-        "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Usable By": ["Warrior", "Rogue", "Wizard"],
+        "Source": "expanded",
+        "Cost": 3
     },
     "Maul": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hammer",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 4
     },
     "Medium lance": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Lance",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Military fork": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Morning star": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Mace",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Nagimaki": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 6
     },
     "Naginata": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 8
     },
     "Needle": {
         "Hands": 1,
@@ -750,42 +843,48 @@
         ],
         "Base Type": "Blow gun ammo",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.02
     },
     "Ninja-to": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 50
     },
     "No-dachi": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 200
     },
     "Nunchaku": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Flail",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 1
     },
     "Partisan": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Pike": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 6
     },
     "Pile arrow": {
         "Hands": 1,
@@ -797,7 +896,8 @@
         ],
         "Base Type": "Arrow",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.05
     },
     "Pilum": {
         "Hands": 1,
@@ -809,77 +909,88 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 1
     },
     "Quarterstaff": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Staff",
         "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0
     },
     "Ranseur": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 6
     },
     "Rapier": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 15
     },
     "Sabre": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 17
     },
     "Sai": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.5
     },
     "Sang kauw": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 5
     },
     "Sapara": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 10
     },
     "Scimitar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Druid"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 15
     },
     "Scourge": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Whip",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 1
     },
     "Scythe": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sickle",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 3
     },
     "Sheaf arrow": {
         "Hands": 1,
@@ -891,7 +1002,8 @@
         ],
         "Base Type": "Arrow",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.05
     },
     "Short bow": {
         "Hands": 2,
@@ -902,14 +1014,16 @@
         ],
         "Base Type": "Bow",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 30
     },
     "Short sword": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 10
     },
     "Shuriken": {
         "Hands": 1,
@@ -921,14 +1035,16 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.3
     },
     "Sickle": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sickle",
         "Usable By": ["Warrior", "Druid"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.6
     },
     "Sling": {
         "Hands": 1,
@@ -939,7 +1055,8 @@
         ],
         "Base Type": "Sling",
         "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.5
     },
     "Sling bullet": {
         "Hands": 1,
@@ -951,7 +1068,8 @@
         ],
         "Base Type": "Sling ammo",
         "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.01
     },
     "Sling stone": {
         "Hands": 1,
@@ -963,28 +1081,32 @@
         ],
         "Base Type": "Sling ammo",
         "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0
     },
     "Spatha": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 100
     },
     "Spear": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Spear",
         "Usable By": ["Warrior", "Druid"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.8
     },
     "Spetum": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Staff sling": {
         "Hands": 2,
@@ -995,14 +1117,16 @@
         ],
         "Base Type": "Sling",
         "Usable By": ["Warrior", "Druid", "Mage", "Cleric", "Rogue"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.2
     },
     "Stiletto": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.5
     },
     "Stone arrow": {
         "Hands": 1,
@@ -1014,56 +1138,64 @@
         ],
         "Base Type": "Arrow",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.00025
     },
     "Stone dagger": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.2
     },
     "Stone knife": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Mage", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.05
     },
     "Stone spear": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Spear",
         "Usable By": ["Warrior", "Druid"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 0.2
     },
     "Sword-axe": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 20
     },
     "Tanto": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Dagger",
         "Usable By": ["Warrior", "Druid", "Rogue", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 25
     },
     "Tetsubo": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 2
     },
     "Three-piece rod": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Chain",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 2
     },
     "Throwing axe": {
         "Hands": 1,
@@ -1075,7 +1207,8 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 1
     },
     "Throwing knife": {
         "Hands": 1,
@@ -1087,69 +1220,79 @@
         ],
         "Base Type": "Thrown",
         "Usable By": ["Warrior", "Rogue", "Druid", "Mage"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 5
     },
     "Trident": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Spear",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 15
     },
     "Tulwar": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 17
     },
     "Two-handed axe": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Axe",
         "Usable By": ["Warrior"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 20
     },
     "Two-handed sword": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 50
     },
     "Voulge": {
         "Hands": 2,
         "Category": "Melee",
         "Base Type": "Pole arm",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 5
     },
     "Wakizashi": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Sword",
         "Usable By": ["Warrior", "Rogue"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 50
     },
     "War club": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Club",
         "Usable By": ["Warrior", "Druid", "Cleric"],
-        "Source": "expanded"
+        "Source": "expanded",
+        "Cost": 6
     },
     "Warhammer": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Hammer",
         "Usable By": ["Warrior", "Cleric"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 2
     },
     "Whip": {
         "Hands": 1,
         "Category": "Melee",
         "Base Type": "Whip",
         "Usable By": ["Warrior"],
-        "Source": "standard"
+        "Source": "standard",
+        "Cost": 0.1
     }
 }
