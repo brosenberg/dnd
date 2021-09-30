@@ -6,6 +6,7 @@ import random
 import items
 
 from character import Character
+from currency import get_gold_value
 from dice import roll
 from roll_abilities import get_abilities
 from utils import intersect
@@ -205,30 +206,11 @@ def random_adventurer(
             else:
                 adventurer.add_equipment("Riding horse")
 
-        # Everyone should have armor. Besides wizards.
-        if not has_armor and "Wizard" not in class_groups:
-            adventurer.add_equipment(
-                items.random_item(
-                    **items_kwargs, item_type="Armor", filters={"Category": "Armor"}
-                )
-            )
-
-        if (
-            level > 1
-            and not has_shield
-            and intersect(classes, ["Cleric", "Fighter", "Paladin"])
-        ):
-            adventurer.add_equipment(
-                items.random_item(
-                    **items_kwargs, item_type="Armor", filters={"Category": "Shield"}
-                )
-            )
-
         # Everyone should have at least one weapon.
         if not has_weapon:
-            filters = {}
+            filters = {"Cost": get_gold_value(adventurer.currency)}
             if has_ranged_weapon:
-                filters = {"Category": "Melee"}
+                filters["Category"] = "Melee"
             weapon = items.random_item(
                 **items_kwargs, item_type="Weapons", filters=filters
             )
@@ -258,16 +240,56 @@ def random_adventurer(
                     **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
                 )
 
-            adventurer.add_equipment(weapon)
-            has_weapon = True
+            try:
+                adventurer.buy_item(weapon, item_type="Weapons")
+                has_weapon = True
+            except IndexError:
+                # poor lol
+                pass
+
+        # Everyone should have armor. Besides wizards.
+        if not has_armor and "Wizard" not in class_groups:
+            filters = {"Cost": get_gold_value(adventurer.currency), "Category": "Armor"}
+            try:
+                adventurer.buy_item(
+                    items.random_item(
+                        **items_kwargs, filters=filters, item_type="Armor"
+                    ),
+                    item_type="Armor",
+                )
+            except IndexError:
+                # poor lol
+                pass
+
+        if not has_shield and intersect(classes, ["Cleric", "Fighter", "Paladin"]):
+            filters = {
+                "Cost": get_gold_value(adventurer.currency),
+                "Category": "Shield",
+            }
+            try:
+                adventurer.buy_item(
+                    items.random_item(
+                        **items_kwargs, item_type="Armor", filters=filters
+                    ),
+                    item_type="Armor",
+                )
+            except IndexError:
+                # poor lol
+                pass
 
         # Rangers love to dual-wield
         if "Ranger" in classes and level > 1:
-            adventurer.add_equipment(
-                items.random_item(
-                    **items_kwargs, item_type="Weapons", filters={"Category": "Melee"}
+            filters = {"Cost": get_gold_value(adventurer.currency), "Category": "Melee"}
+            try:
+                adventurer.buy_item(
+                    items.random_item(
+                        **items_kwargs, item_type="Weapons", filters=filters
+                    ),
+                    item_type="Weapons",
                 )
-            )
+            except IndexError:
+                # poor lol
+                pass
 
     return adventurer
 

@@ -6,6 +6,9 @@ import os
 import random
 import re
 
+from currency import get_gold_value
+from currency import gold_to_coins
+from currency import subtract_coins
 from dice import roll
 from items import get_ac
 from spells import Spells
@@ -14,6 +17,7 @@ from treasure import generate_treasure
 from utils import load_table
 
 
+ARMOR = load_table("armor_master_list.json")
 ABILITIES = load_table("abilities.json")
 ABILITY_MODS = {
     "Strength": load_table("strength.json"),
@@ -38,6 +42,7 @@ THAC0 = load_table("thac0.json")
 THIEF_SKILLS = load_table("thief_skills.json")
 THIEF_SKILLS_STANDARD = load_table("thief_skills_standard.json")
 THIEF_SKILLS_HLA = load_table("thief_skills_hla.json")
+WEAPONS = load_table("weapons_master_list.json")
 WISDOM_CASTERS = load_table("wisdom_casters.json")
 
 
