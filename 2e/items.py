@@ -543,11 +543,24 @@ def random_magic_weapon(**kwargs):
     if base_item == "Special" or base_item in SPECIAL_MAGIC_WEAPONS:
         if base_item == "Special":
             base_item = None
-        return special_magic_weapon(
-            special=base_item,
-            sub_table=sub_table,
-            filters=filters,
-        )
+        else:
+            if not intersect(
+                filters["Usable By"], SPECIAL_MAGIC_WEAPONS[base_item]["Usable By"]
+            ):
+                # FIXME: This is bad and dumb
+                # Instead the item lists should be filtered ahead of time to
+                # remove bad item candidates. But some of that is complicated
+                # and not particularly exciting to implement.
+                # Example failure for this: Generating category "Sword" for
+                # "Fighter/Druid"s and getting a "Sun Blade +2", which is a
+                # Bastard Sword and unusable by a Druid.
+                bad_and_dumb = kwargs.get("bad_and_dumb", 0)
+                if bad_and_dumb > 50:
+                    print(json.dumps(kwargs, indent=1))
+                    raise RecursionError
+                kwargs["bad_and_dumb"] = bad_and_dumb + 1
+                return random_magic_weapon(**kwargs)
+        return special_magic_weapon(**kwargs)
 
     # See if the item has a quantity specified on the random table
     quantity_match = re.match(r"^.*\((\d+)d(\d+)\)$", base_item)
