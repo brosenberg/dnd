@@ -1,41 +1,54 @@
 {
     "Cleric/Illusionist": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Gnome"]
     },
     "Cleric/Mage": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Half-Elf"]
     },
     "Cleric/Ranger": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good"],
         "Races": ["Half-Elf"]
     },
     "Cleric/Thief": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Gnome"]
     },
     "Fighter/Cleric": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Dwarf", "Gnome", "Half-Elf"]
     },
     "Fighter/Druid": {
+        "Alignments": ["True Neutral"],
         "Races": ["Half-Elf"]
     },
     "Fighter/Illusionist": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Gnome"]
     },
     "Fighter/Mage/Cleric": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Half-Elf"]
     },
     "Fighter/Mage/Thief": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Elf", "Half-Elf"]
     },
     "Fighter/Mage": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Elf", "Half-Elf"]
     },
     "Fighter/Thief": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Dwarf", "Elf", "Gnome", "Halfling", "Half-Elf"]
     },
     "Illusionist/Thief": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Gnome"]
     },
     "Mage/Thief": {
+        "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Races": ["Elf", "Half-Elf"]
     }
 }

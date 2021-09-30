@@ -258,7 +258,14 @@ def get_random_classes(
             )
         else:
             base_class = random.choice(list(classes))
-        return random.choice([x for x in MULTICLASSES if base_class in x]).split("/")
+        possible_multiclasses = [x for x in MULTICLASSES if base_class in x]
+        if alignment:
+            possible_multiclasses = [
+                x
+                for x in possible_multiclasses
+                if alignment in MULTICLASSES[x]["Alignments"]
+            ]
+        return random.choice(possible_multiclasses).split("/")
     else:
         if class_group:
             classes = classes.intersection(set(CLASS_GROUPS[class_group]["Classes"]))
