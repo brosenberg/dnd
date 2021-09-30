@@ -124,6 +124,11 @@ def random_adventurer(
         "classes": classes,
         "sub_table": "expanded" if expanded else "standard",
     }
+    weapons_filters = {}
+    # Small races use small weapons
+    # TODO: Change this to weapon size, also add weapon sizes
+    if adventurer.race in ["Gnome", "Halfling"]:
+        weapons_filters["Hands"] = 1
 
     # Generate magic items for the character, 5% chance per level in each
     # category for their class groups
@@ -151,7 +156,7 @@ def random_adventurer(
             adventurer.add_equipment(item)
 
     # High level priests sometimes carry religious artifacts
-    if "Priest" in adventurer.class_groups and  roll(1, 100, 0) <= 5:
+    if "Priest" in adventurer.class_groups and roll(1, 100, 0) <= 5:
         adventurer.add_equipment("Religious artifact")
 
     # Give random currency to adventurers who received an item
@@ -293,8 +298,8 @@ def random_adventurer(
                 # poor lol
                 pass
 
-        # Rangers love to dual-wield
-        if "Ranger" in classes and level > 1:
+        # Rangers love to dual-wield and gnomes carry a lot of weapons
+        if "Ranger" in classes or adventurer.race == "Gnome":
             filters = {"Cost": get_gold_value(adventurer.currency), "Category": "Melee"}
             try:
                 adventurer.buy_item(

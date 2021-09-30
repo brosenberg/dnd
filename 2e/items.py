@@ -92,6 +92,7 @@ def build_filters(**kwargs):
                 filters["Usable By"] = usable[item_type]
             except KeyError:
                 pass
+
     return filters
 
 
@@ -627,14 +628,12 @@ def random_special_magic_item(**kwargs):
 
 def random_item(**kwargs):
     item_list = kwargs.get("item_list")
-    filters = kwargs.get("filters", {})
+    filters = build_filters(**kwargs)
     item_type = kwargs.get("item_type", "Weapons")
     item_tables = {
         "Armor": ARMOR,
         "Weapons": WEAPONS,
     }
-
-    filters = build_filters(**kwargs)
 
     items = table_keys_by_filter(item_tables[item_type], filters)
     if item_list:
