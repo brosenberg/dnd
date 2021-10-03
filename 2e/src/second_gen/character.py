@@ -923,7 +923,7 @@ class Character(object):
 
         # Assign thief skills points after modifiers are applied, so that
         # skills can hit 95 and not be reduced.
-        # TODO: Assign Bard points in here, too
+        # TODO: Have sub racial bonuses be applied instead of racial bonuses
         for class_name in self.classes:
             try:
                 base, advance = CLASSES[class_name]["Thief Skill Points"]

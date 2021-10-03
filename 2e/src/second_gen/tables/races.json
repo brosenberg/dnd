@@ -432,7 +432,102 @@
         "Weight": [72, 68, 5, 4],
         "Age": [60, 3, 12, 2, 100]
     },
-    "Languages": ["Gnome", "Dwarf", "Halfling", "Goblin", "Kobold", "Burrowing Animals"]
+    "Languages": ["Gnome", "Dwarf", "Halfling", "Goblin", "Kobold", "Burrowing Animals"],
+    "Subraces": {
+        "Rock Gnome": {
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 18,
+              "Constitution": 18,
+              "Intelligence": 19,
+              "Wisdom": 17,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 6,
+              "Dexterity": 3,
+              "Constitution": 8,
+              "Intelligence": 7,
+              "Wisdom": 3,
+              "Charisma": 3
+            },
+            "Languages": ["Gnome", "Dwarf", "Halfling", "Kobold", "Goblin", "Burrowing Animals"]
+        },
+        "Svirfneblin": {
+            "Ability Modifiers": {
+                "Wisdom": 1,
+                "Dexterity": 1,
+                "Intelligence": -1,
+                "Charisma": -2
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 19,
+              "Constitution": 18,
+              "Intelligence": 17,
+              "Wisdom": 18,
+              "Charisma": 16
+            },
+            "Minimums": {
+              "Strength": 6,
+              "Dexterity": 6,
+              "Constitution": 6,
+              "Intelligence": 3,
+              "Wisdom": 4,
+              "Charisma": 3
+            },
+            "Languages": ["Deep Gnome", "Gnome", "Undercommon", "Drow", "Kuo-toa", "Earth Elemental"]
+        },
+        "Tinker Gnome": {
+            "Ability Modifiers": {
+                "Dexterity": 2,
+                "Stength": -1,
+                "Wisdom": -1
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 18,
+              "Constitution": 18,
+              "Intelligence": 18,
+              "Wisdom": 12,
+              "Charisma": 16
+            },
+            "Minimums": {
+              "Strength": 6,
+              "Dexterity": 8,
+              "Constitution": 8,
+              "Intelligence": 8,
+              "Wisdom": 3,
+              "Charisma": 3
+            },
+            "Languages": ["Tinker Gnome", "Gnome"]
+        },
+        "Forest Gnome": {
+            "Ability Modifiers": {
+                "Dexterity": 1,
+                "Wisdom": 1,
+                "Stength": -1,
+                "Intelligence": -1
+            },
+            "Maximums": {
+              "Strength": 17,
+              "Dexterity": 19,
+              "Constitution": 18,
+              "Intelligence": 17,
+              "Wisdom": 18,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 8,
+              "Constitution": 8,
+              "Intelligence": 3,
+              "Wisdom": 6,
+              "Charisma": 3
+            },
+            "Languages": ["Forest Gnome", "Gnome", "Elf", "Treant", "Forest Mammal"]
+        }
+    }
   },
   "Half-Elf": {
     "Ability Modifiers": {},
