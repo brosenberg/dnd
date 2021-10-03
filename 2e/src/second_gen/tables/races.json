@@ -91,6 +91,11 @@
               "Wisdom": 3,
               "Charisma": 8
             },
+            "Characteristics": {
+                "Height": [50, 50, 1, 8],
+                "Weight": [85, 75, 2, 12],
+                "Age": [95, 5, 6, 3, 160]
+            },
             "Languages": ["Aquatic Elf", "Kuo-toa", "Sauhuagin", "Dolphin", "Merman", "Undersea Common"]
         },
         "Drow": {
@@ -117,6 +122,11 @@
               "Charisma": 6
             },
             "Languages": ["Drow", "Elf", "Duergar", "Svirfneblin", "Deep Dwarf", "Illithid", "Undercommon", "Drow Sign Language", "Kuo-toa", "Bugbear", "Orcish"],
+            "Characteristics": {
+                "Height": [50, 55, 1, 10],
+                "Weight": [80, 95, 3, 10],
+                "Age": [75, 4, 6, 3, 140]
+            },
             "Experience Penalty": 0.2
         },
         "Grey Elf": {
@@ -142,7 +152,66 @@
               "Wisdom": 3,
               "Charisma": 8
             },
-            "Languages": ["Any"],
+            "Languages": [
+                "Elf",
+                "Aquatic Elf",
+                "Brownie",
+                "Bugbear",
+                "Centaur",
+                "Deep Dwarf",
+                "Dolphin",
+                "Dragon",
+                "Drow Sign Language",
+                "Drow",
+                "Dryad",
+                "Duergar",
+                "Dwarf",
+                "Ettin",
+                "Faun",
+                "Gargoyle",
+                "Giant",
+                "Gnoll",
+                "Gnome",
+                "Goblin",
+                "Halfling",
+                "High Elf",
+                "Hobgoblin",
+                "Illithid",
+                "Kobold",
+                "Kuo-toa",
+                "Lammasu",
+                "Lizardfolk",
+                "Manticore",
+                "Medusa",
+                "Merman",
+                "Minotaur",
+                "Naga",
+                "Nixie",
+                "Nymph",
+                "Ogre",
+                "Orc",
+                "Orcish",
+                "Pixie",
+                "Salamnder",
+                "Satyr",
+                "Sauhuagin",
+                "Shedu",
+                "Sprite",
+                "Svirfneblin",
+                "Sylph",
+                "Sylvan Elf",
+                "Titan",
+                "Treant",
+                "Troll",
+                "Undercommon",
+                "Undersea Common",
+                "Xorn"
+            ],
+            "Characteristics": {
+                "Height": [60, 55, 1, 12],
+                "Weight": [85, 75, 3, 10],
+                "Age": [115, 6, 6, 4, 210]
+            },
             "Experience Penalty": 0.15
         },
         "High Elf": {
@@ -166,7 +235,12 @@
               "Wisdom": 3,
               "Charisma": 8
             },
-            "Languages": ["High Elf", "Elf", "Aquatic Elf", "Sylvan Elf", "Dwarf", "Gnome", "Halfling", "Orc", "Hobgoblin", "Goblin"]
+            "Languages": ["High Elf", "Elf", "Aquatic Elf", "Sylvan Elf", "Dwarf", "Gnome", "Halfling", "Orc", "Hobgoblin", "Goblin"],
+            "Characteristics": {
+                "Height": [55, 50, 1, 10],
+                "Weight": [90, 70, 3, 10],
+                "Age": [105, 5, 6, 3, 175]
+            }
         },
         "Sylvan Elf": {
             "Ability Modifiers": {
@@ -191,7 +265,13 @@
               "Wisdom": 3,
               "Charisma": 7
             },
-            "Languages": ["Sylvan Elf", "High Elf", "Centaur", "Pixie", "Dryad", "Treant"]
+            "Languages": ["Sylvan Elf", "High Elf", "Centaur", "Pixie", "Dryad", "Treant"],
+            "Characteristics": {
+                "Height": [60, 55, 1, 12],
+                "Weight": [95, 80, 3, 12],
+                "Age": [100, 5, 6, 3, 170]
+
+            }
         }
     }
   },

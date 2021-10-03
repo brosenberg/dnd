@@ -523,10 +523,15 @@ class Character(object):
         self.race = race
         if not self.race:
             self.race = get_random_race_by_classes(self.classes)
+        self.race_stats = RACES[self.race]
         self.subrace = kwargs.get("subrace", None)
         if not self.subrace:
             try:
-                self.subrace = random.choice(RACES[self.race]["Subraces"])
+                self.subrace = random.choice(list(self.race_stats["Subraces"]))
+                for stat in self.race_stats["Subraces"][self.subrace]:
+                    self.race_stats[stat] = self.race_stats["Subraces"][self.subrace][
+                        stat
+                    ]
             except KeyError:
                 pass
 
@@ -534,6 +539,10 @@ class Character(object):
         self.experience_penalty = [1, 1]  # No penalty
         if slow_advancement and self.race != "Human":
             self.experience_penalty = demi_experience_penalty
+            try:
+                self.experience_penalty *= 1 + self.race_stats["Experience Penalty"]
+            except KeyError:
+                pass
 
         ### Assign alignment
         self.alignment = alignment
@@ -577,15 +586,15 @@ class Character(object):
         if not self.abilities:
             minimums = combine_minimums(
                 [CLASSES[x]["Minimums"] for x in classes]
-                + [RACES[self.race]["Minimums"]]
+                + [self.race_stats["Minimums"]]
             )
             # TODO: Calculate the level here a little better for multiclass
             ability_rolls = ABILITY_ROLLS[str(max(self.levels))]
             self.abilities = get_abilities(
                 get_ability_priority(self.classes),
                 minimums,
-                RACES[self.race]["Maximums"],
-                RACES[self.race]["Ability Modifiers"],
+                self.race_stats["Maximums"],
+                self.race_stats["Ability Modifiers"],
                 order=ability_rolls,
                 extrao_str="Warrior" in self.class_groups and self.race != "Halfling",
             )
@@ -852,9 +861,9 @@ class Character(object):
             if (
                 self.race not in ["Human", "Half-Elf"]
                 and roll(1, 100, 0) > 50
-                and RACES[self.race]["Languages"][0] not in self.profs["Languages"]
+                and self.race_stats["Languages"][0] not in self.profs["Languages"]
             ):
-                self.profs["Languages"].append(RACES[self.race]["Languages"][0])
+                self.profs["Languages"].append(self.race_stats["Languages"][0])
                 slots -= 1
             # 60% chance to assign a non-general NWP if there's enough slots
             elif classgroups_nwps and roll(1, 100, 0) > 40:
@@ -874,15 +883,15 @@ class Character(object):
                 if self.race != "Human":
                     if self.race != "Half-Elf":
                         if (
-                            RACES[self.race]["Languages"][0]
+                            self.race_stats["Languages"][0]
                             not in self.profs["Languages"]
                         ):
                             self.profs["Languages"].append(
-                                RACES[self.race]["Languages"][0]
+                                self.race_stats["Languages"][0]
                             )
                             slots -= 1
                             continue
-                    languages = RACES[self.race]["Languages"]
+                    languages = self.race_stats["Languages"]
                 else:
                     languages = load_table("languages.json")
                 if (
