@@ -933,7 +933,11 @@ class Character(object):
         # Assign thief skills points after modifiers are applied, so that
         # skills can hit 95 and not be reduced.
         # TODO: Assign Bard points in here, too
-        if "Thief" in self.classes:
+        for class_name in self.classes:
+            try:
+                base, advance = CLASSES[class_name]["Thief Skill Points"]
+            except KeyError:
+                continue
 
             def assign_points(points):
                 max_points = points / 2
@@ -953,16 +957,16 @@ class Character(object):
                     if assigned[skill] == max_points or self.thief_skills[skill] == 95:
                         skills.remove(skill)
 
-            assign_points(60)
-            thief_level = self.get_level("Thief")
+            thief_level = self.get_level(class_name)
+            assign_points(base)
             for level in range(1, thief_level + 1)[:20]:
-                assign_points(30)
+                assign_points(advance)
             if thief_level > 20:
                 for skill in THIEF_SKILLS_HLA:
                     self.thief_skills[skill] = THIEF_SKILLS[skill]["Base"]
                 apply_race_dex_mods(THIEF_SKILLS_HLA)
                 for level in range(20, thief_level + 1):
-                    assign_points(30)
+                    assign_points(advance)
 
     def _populate_spells(self):
         spell_gen = Spells(expanded=self.expanded)

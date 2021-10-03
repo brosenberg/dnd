@@ -618,6 +618,7 @@
         "Alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
         "Proficiency Groups": ["General", "Rogue"],
         "Usable By": {"Armor": "Rogue", "Weapons": "Rogue", "Rods": "Rogue", "Staves": ["Rogue"], "Scrolls": ["Wizard", "Priest"]},
+        "Thief Skill Points": [60, 30],
         "Levels": [
             0,
             1250,
@@ -660,6 +661,7 @@
         "Alignments": ["Neutral Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Neutral Evil"],
         "Proficiency Groups": ["General", "Rogue", "Warrior", "Wizard"],
         "Usable By": {"Armor": "Bard", "Weapons": "Warrior", "Rods": "Rogue", "Staves": ["Rogue"], "Scrolls": ["Wizard"]},
+        "Thief Skill Points": [20, 15],
         "Levels": [
             0,
             1250,
