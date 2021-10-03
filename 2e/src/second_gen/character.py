@@ -212,15 +212,6 @@ def get_levels_by_experience(
     return levels
 
 
-def get_level_limits(race, classes, abilities):
-    limits = []
-    for class_name in classes:
-        limits.append(
-            RACES[race]["Limits"][class_name] + level_limit_bonus(class_name, abilities)
-        )
-    return limits
-
-
 def get_nwp_slots(class_groups, level, intelligence):
     base_nwps = 0
     nwp_rate = 99
@@ -600,7 +591,7 @@ class Character(object):
             )
 
         ### Apply level limits
-        self.level_limits = get_level_limits(self.race, self.classes, self.abilities)
+        self.level_limits = self._level_limits()
         if slow_advancement:
             self.levels = get_levels_by_experience(
                 self.classes,
@@ -967,6 +958,14 @@ class Character(object):
                 apply_race_dex_mods(THIEF_SKILLS_HLA)
                 for level in range(20, thief_level + 1):
                     assign_points(advance)
+
+    def _level_limits(self):
+        limits = []
+        for class_name in self.classes:
+            limits.append(
+                self.race_stats["Limits"][class_name] + level_limit_bonus(class_name, self.abilities)
+            )
+        return limits
 
     def _populate_spells(self):
         spell_gen = Spells(expanded=self.expanded)

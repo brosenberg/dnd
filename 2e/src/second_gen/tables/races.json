@@ -5,8 +5,8 @@
       "Charisma": -1
     },
     "Limits": {
-        "Cleric": 10,
         "Fighter": 15,
+        "Cleric": 10,
         "Thief": 12
     },
     "Maximums": {
@@ -30,7 +30,132 @@
         "Weight": [130, 105, 4, 10],
         "Age": [40, 5, 6, 3, 125]
     },
-    "Languages": ["Dwarf", "Gnome", "Goblin", "Kobold", "Orc"]
+    "Languages": ["Dwarf", "Gnome", "Goblin", "Kobold", "Orc"],
+    "Subraces": {
+        "Hill Dwarf": {
+            "Languages": ["Hill Dwarf", "Gnome", "Goblin", "Kobold", "Orc"]
+        },
+        "Mountain Dwarf": {
+            "Limits": {
+                "Fighter": 16,
+                "Cleric": 10,
+                "Thief": 12
+            },
+            "Characteristics": {
+                "Height": [49, 47, 1, 10],
+                "Weight": [145, 115, 5, 10],
+                "Age": [50, 6, 6, 3, 150]
+            },
+            "Languages": ["Mountain Dwarf", "Gnome", "Goblin", "Kobold", "Orc", "Ogre", "Troll"]
+        },
+        "Deep Dwarf": {
+            "Ability Modifiers": {
+              "Charisma": -2,
+              "Constitution": 2
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 16,
+              "Constitution": 19,
+              "Intelligence": 18,
+              "Wisdom": 18,
+              "Charisma": 15
+            },
+            "Limits": {
+                "Fighter": 14,
+                "Cleric": 12,
+                "Thief": 10
+            },
+            "Characteristics": {
+                "Height": [45, 42, 2, 6],
+                "Weight": [100, 80, 4, 10],
+                "Age": [45, 3, 12, 3, 140]
+            },
+            "Languages": ["Deep Dwarf", "Duergar", "Drow", "Illithid", "Kuo-toa", "Troll", "Troglodyte", "Svirfneblin", "Undercommon", "Sign Language"],
+            "Experience Penalty": 0.1
+        },
+        "Duergar": {
+            "Ability Modifiers": {
+              "Charisma": -2,
+              "Constitution": 1
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 17,
+              "Constitution": 18,
+              "Intelligence": 16,
+              "Wisdom": 18,
+              "Charisma": 15
+            },
+            "Limits": {
+                "Fighter": 12,
+                "Cleric": 12,
+                "Thief": 14
+            },
+            "Characteristics": {
+                "Height": [41, 40, 2, 6],
+                "Weight": [95, 75, 5, 10],
+                "Age": [40, 4, 6, 3, 150]
+            },
+            "Languages": ["Duergar", "Deep Dwarf", "Drow", "Illithid", "Kuo-toa", "Troll", "Troglodyte", "Undercommon", "Sign Language"],
+            "Experience Penalty": 0.2
+        },
+        "Sundered Dwarf": {
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 17,
+              "Constitution": 18,
+              "Intelligence": 16,
+              "Wisdom": 18,
+              "Charisma": 16
+            },
+            "Limits": {
+                "Fighter": 14,
+                "Cleric": 10,
+                "Thief": 15
+            },
+            "Characteristics": {
+                "Height": [50, 48, 1, 10],
+                "Weight": [135, 110, 3, 12],
+                "Age": [25, 4, 4, 3, 100]
+            },
+            "Languages": ["Hill Dwarf", "Mountain Dwarf", "Gully Dwarf", "Deep Dwarf", "Elf", "Gnome", "Goblin", "Kobold", "Orc", "Halfling", "Hobgoblin"]
+        },
+        "Gully Dwarf": {
+            "Ability Modifiers": {
+              "Charisma": -2,
+              "Strength": 1,
+              "Dexterity": 1
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 18,
+              "Constitution": 16,
+              "Intelligence": 12,
+              "Wisdom": 14,
+              "Charisma": 12
+            },
+            "Minimums": {
+              "Strength": 6,
+              "Dexterity": 6,
+              "Constitution": 8,
+              "Intelligence": 3,
+              "Wisdom": 3,
+              "Charisma": 3
+            },
+            "Limits": {
+                "Fighter": 8,
+                "Cleric": 8,
+                "Thief": 16
+            },
+            "Characteristics": {
+                "Height": [40, 38, 2, 6],
+                "Weight": [80, 65, 4, 10],
+                "Age": [30, 2, 12, 3, 100]
+            },
+            "Languages": ["Gully Dwarf", "Gnome", "Orc", "Goblin"]
+        }
+    }
   },
   "Elf": {
     "Ability Modifiers": {
@@ -121,7 +246,7 @@
               "Wisdom": 3,
               "Charisma": 6
             },
-            "Languages": ["Drow", "Elf", "Duergar", "Svirfneblin", "Deep Dwarf", "Illithid", "Undercommon", "Drow Sign Language", "Kuo-toa", "Bugbear", "Orcish"],
+            "Languages": ["Drow", "Elf", "Duergar", "Svirfneblin", "Deep Dwarf", "Illithid", "Undercommon", "Sign Language", "Kuo-toa", "Bugbear", "Orcish"],
             "Characteristics": {
                 "Height": [50, 55, 1, 10],
                 "Weight": [80, 95, 3, 10],
