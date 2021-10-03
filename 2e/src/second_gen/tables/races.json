@@ -476,12 +476,17 @@
               "Wisdom": 4,
               "Charisma": 3
             },
+            "Characteristics": {
+                "Height": [38, 36, 1, 6],
+                "Weight": [72, 68, 5, 4],
+                "Age": [45, 3, 8, 2, 100]
+            },
             "Languages": ["Deep Gnome", "Gnome", "Undercommon", "Drow", "Kuo-toa", "Earth Elemental"]
         },
         "Tinker Gnome": {
             "Ability Modifiers": {
                 "Dexterity": 2,
-                "Stength": -1,
+                "Strength": -1,
                 "Wisdom": -1
             },
             "Maximums": {
@@ -506,7 +511,7 @@
             "Ability Modifiers": {
                 "Dexterity": 1,
                 "Wisdom": 1,
-                "Stength": -1,
+                "Strength": -1,
                 "Intelligence": -1
             },
             "Maximums": {
@@ -524,6 +529,11 @@
               "Intelligence": 3,
               "Wisdom": 6,
               "Charisma": 3
+            },
+            "Characteristics": {
+                "Height": [26, 24, 1, 6],
+                "Weight": [48, 44, 2, 6],
+                "Age": [80, 4, 6, 3, 200]
             },
             "Languages": ["Forest Gnome", "Gnome", "Elf", "Treant", "Forest Mammal"]
         }
@@ -598,7 +608,169 @@
         "Weight": [52, 48, 5, 4],
         "Age": [20, 3, 4, 2, 50]
     },
-    "Languages": ["Halfling", "Dwarf", "Elf", "Gnome", "Goblin", "Orc"]
+    "Languages": ["Halfling", "Dwarf", "Elf", "Gnome", "Goblin", "Orc"],
+    "Subraces": {
+        "Hairfoot Halfling": {
+            "Ability Modifiers": {
+                "Dexterity": 1,
+                "Strength": -1
+            },
+            "Maximums": {
+              "Strength": 17,
+              "Dexterity": 19,
+              "Constitution": 18,
+              "Intelligence": 18,
+              "Wisdom": 18,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 8,
+              "Constitution": 10,
+              "Intelligence": 6,
+              "Wisdom": 3,
+              "Charisma": 7
+            }
+        },
+        "Stout Halfling": {
+            "Ability Modifiers": {
+                "Dexterity": 1,
+                "Strength": -1
+            },
+            "Maximums": {
+              "Strength": 17,
+              "Dexterity": 19,
+              "Constitution": 19,
+              "Intelligence": 18,
+              "Wisdom": 18,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 5,
+              "Dexterity": 8,
+              "Constitution": 10,
+              "Intelligence": 6,
+              "Wisdom": 3,
+              "Charisma": 5
+            },
+            "Characteristics": {
+                "Height": [33, 31, 1, 6],
+                "Weight": [72, 68, 5, 4],
+                "Age": [45, 3, 8, 2, 100]
+            }
+        },
+        "Tallfellow Halfling": {
+            "Ability Modifiers": {
+                "Dexterity": 1,
+                "Strength": -1
+            },
+            "Maximums": {
+              "Strength": 17,
+              "Dexterity": 19,
+              "Constitution": 18,
+              "Intelligence": 18,
+              "Wisdom": 19,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 8,
+              "Constitution": 10,
+              "Intelligence": 6,
+              "Wisdom": 7,
+              "Charisma": 5
+            },
+            "Characteristics": {
+                "Height": [47, 45, 2, 8],
+                "Weight": [54, 50, 4, 6],
+                "Age": [25, 4, 4, 2, 150]
+            }
+        },
+        "Kender": {
+            "Ability Modifiers": {
+                "Dexterity": 2,
+                "Strength": -1
+            },
+            "Maximums": {
+              "Strength": 16,
+              "Dexterity": 19,
+              "Constitution": 18,
+              "Intelligence": 18,
+              "Wisdom": 16,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 6,
+              "Dexterity": 8,
+              "Constitution": 10,
+              "Intelligence": 6,
+              "Wisdom": 3,
+              "Charisma": 6
+            },
+            "Languages": ["Kender", "Dwarf", "Elf", "Halfling", "Gnome", "Goblin", "Orc", "Ogre", "Hobgoblin"],
+            "Characteristics": {
+                "Height": [37, 35, 2, 8],
+                "Weight": [52, 48, 5, 4],
+                "Age": [20, 3, 4, 2, 100]
+            }
+        },
+        "Athasian Halfling": {
+            "Ability Modifiers": {
+                "Dexterity": 2,
+                "Wisdom": 2,
+                "Strength": -2,
+                "Charisma": -1,
+                "Constitution": -1
+            },
+            "Maximums": {
+              "Strength": 18,
+              "Dexterity": 20,
+              "Constitution": 20,
+              "Intelligence": 20,
+              "Wisdom": 20,
+              "Charisma": 20
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 12,
+              "Constitution": 5,
+              "Intelligence": 5,
+              "Wisdom": 7,
+              "Charisma": 5
+            },
+            "Languages": ["Athasian Halfling", "Dwarf", "Elf", "Halfling", "Gnome", "Goblin", "Orc", "Ogre", "Hobgoblin"]
+        },
+        "Furchin Halfling": {
+            "Ability Modifiers": {
+                "Dexterity": 1,
+                "Wisdom": -1,
+                "Strength": -1,
+                "Constitution": 1
+            },
+            "Maximums": {
+              "Strength": 17,
+              "Dexterity": 19,
+              "Constitution": 19,
+              "Intelligence": 18,
+              "Wisdom": 17,
+              "Charisma": 18
+            },
+            "Minimums": {
+              "Strength": 3,
+              "Dexterity": 8,
+              "Constitution": 10,
+              "Intelligence": 6,
+              "Wisdom": 3,
+              "Charisma": 7
+            },
+            "Characteristics": {
+                "Height": [32, 30, 2, 8],
+                "Weight": [52, 48, 5, 4],
+                "Age": [20, 1, 10, 2, 80]
+            },
+            "Languages": ["Furchin Halfling", "Dwarf"]
+        }
+    }
   },
   "Human": {
     "Ability Modifiers": {},
