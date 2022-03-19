@@ -310,7 +310,7 @@ def generate_treasure(treasure_types, expanded=False):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate treasure")
-    parser.add_argument("treasure_types", metavar="N", nargs="+")
+    parser.add_argument("treasure_types",  nargs="+")
     parser.add_argument(
         "-n",
         "--nogen",

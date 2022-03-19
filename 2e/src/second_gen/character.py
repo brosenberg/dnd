@@ -531,9 +531,13 @@ class Character(object):
         if slow_advancement and self.race != "Human":
             self.experience_penalty = demi_experience_penalty
             try:
+
+                breakpoint()
                 self.experience_penalty *= 1 + self.race_stats["Experience Penalty"]
             except KeyError:
                 pass
+            except TypeError:
+                breakpoint()
 
         ### Assign alignment
         self.alignment = alignment
@@ -1093,6 +1097,7 @@ def main():
         )
     for class_name in get_all_classes():
         print(
+
             Character(
                 class_name=class_name,
                 level=30,
