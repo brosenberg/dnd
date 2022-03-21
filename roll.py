@@ -27,8 +27,10 @@ def parse_dice(dice_str):
             bonus = int(match[1][1:])
         except IndexError:
             bonus_sign = None
+            bonus = 0
         except ValueError:
             bonus_sign = None
+            bonus = 0
         next_sign = match[2]
         rolls.append([dice, sides, bonus_sign, bonus, next_sign])
     return rolls
