@@ -9,18 +9,15 @@ def parse_dice(dice_str):
     rolls = []
     dice_re = r"([0-9]+d[0-9]+)([-+*/][0-9](?!d))?([-+*/])?"
     matches = re.findall(dice_re, dice_str)
-    print(matches)
     for match in matches:
         dice, sides = [int(x) for x in match[0].split("d")]
         try:
             bonus_sign = match[1][0]
             bonus = int(match[1][1:])
         except IndexError:
-            bonus_sign = "+"
-            bonus = 0
+            bonus_sign = None
         except ValueError:
-            bonus_sign = "+"
-            bonus = 0
+            bonus_sign = None
         next_sign = match[2]
         rolls.append([dice, sides, bonus_sign, bonus, next_sign])
     return rolls
@@ -31,10 +28,12 @@ def roll(dice, sides, bonus_sign, bonus):
     s = f"{dice}d{sides}"
     if bonus_sign:
         s += f"{bonus_sign}{bonus}"
-    s += " = "
+    s += ": "
     for _ in range(0, dice):
         results.append(random.randint(1, sides))
+    s += "("
     s += "+".join([str(x) for x in results])
+    s += ")"
     result = sum(results)
     if bonus_sign:
         s += f"{bonus_sign}{bonus}"
@@ -56,7 +55,7 @@ def do_bonus(base, bonus_sign, bonus):
 
 
 def main():
-    dices = parse_dice(sys.argv[1])
+    dices = parse_dice(re.sub(r"\s*", "", "".join(sys.argv[1:])))
     last_sign = ""
     result = 0
     for dice in dices:
@@ -69,6 +68,8 @@ def main():
             print(result)
             last_sign = dice[4]
             print(last_sign)
+    if len(dices) == 1:
+        return
     print("=")
     print(result)
 
