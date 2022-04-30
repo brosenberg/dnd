@@ -52,31 +52,29 @@ def roll(dice, sides, bonus_sign, bonus):
         s += f"{bonus_sign}{bonus}"
         result = do_bonus(result, bonus_sign, bonus)
     s += f" = {result}"
-    print(s)
-    return result
+    return (result, s)
 
 
-def roll_dices(dices, quiet=False):
+def roll_dices(dices):
     last_sign = ""
-    result = 0
+    result_val = 0
+    result_str = ""
+    cur_str = ""
     for dice in dices:
-        cur = roll(*dice[:4])
+        cur, cur_str = roll(*dice[:4])
+        result_str += f"{cur_str}\n"
         if last_sign:
-            result = do_bonus(result, last_sign, cur)
+            result_val = do_bonus(result_val, last_sign, cur)
         else:
-            result = cur
+            result_val = cur
         if dice[4]:
-            if not quiet:
-                print(result)
+            result_str += f"{result_val}\n"
             last_sign = dice[4]
-            if not quiet:
-                print(f"{last_sign} ", end="")
+            result_str += f"{last_sign} "
     if len(dices) == 1:
-        return
-    if not quiet:
-        print("=")
-        print(result)
-    return result
+        return (result_val, cur_str)
+    result_str += f"=\n{result_val}"
+    return (result_val, result_str)
 
 
 def print_usage():
@@ -86,16 +84,19 @@ def print_usage():
 
 
 def main():
-    dice_str = re.sub(r"\s*", "", "".join(sys.argv[1:]))
-    dices = parse_dice(dice_str)
-    if not dice_str:
+    dices = []
+    try:
+        for arg in sys.argv[1:]:
+            dices.append(parse_dice(re.sub(r"\s*", "", arg)))
+    except IndexError:
         print_usage()
         sys.exit(1)
     if not dices:
         print(f"Unknown dice string: {dice_str}")
         print_usage()
         sys.exit(2)
-    roll_dices(dices)
+    results = [roll_dices(x) for x in dices]
+    print("\n\n".join([x[1] for x in results]))
 
 
 if __name__ == "__main__":
