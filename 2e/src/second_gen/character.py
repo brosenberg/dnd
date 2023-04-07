@@ -129,7 +129,7 @@ def get_alignment_by_classes(classes):
 
 
 def get_all_classes():
-    return list(CLASSES.keys())
+    return list(CLASSES.keys()) + list(MULTICLASSES.keys())
 
 
 def get_best_thac0(classes, levels):
@@ -1070,7 +1070,31 @@ class Character(object):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Create a character")
+    parser = argparse.ArgumentParser(description="Create a character", epilog="If experience and level are both not set, a random value for experience is chosen. Level takes precedence over experience. If number of characters is not set, a number between 1 and 8 is chosen.")
+    parser.add_argument(
+        "-e",
+        "--experience",
+        default=None,
+        type=int,
+        action="store",
+        help="character experience",
+    )
+    parser.add_argument(
+        "-l",
+        "--level",
+        default=None,
+        type=int,
+        action="store",
+        help="character level",
+    )
+    parser.add_argument(
+        "-n",
+        "--number",
+        default=None,
+        type=int,
+        action="store",
+        help="number of characters",
+    )
     parser.add_argument(
         "-s",
         "--slow",
@@ -1086,33 +1110,27 @@ def main():
         help="use expanded generation tables",
     )
     args = parser.parse_args()
-    for class_name in get_all_classes():
-        print(
-            Character(
-                class_name=class_name,
-                level=15,
-                expanded=args.expanded,
-                slow_advancement=args.slow,
-            )
-        )
-    for class_name in get_all_classes():
-        print(
+    character_count = args.number
+    if not character_count:
+        character_count = random.randint(1, 8)
 
-            Character(
-                class_name=class_name,
-                level=30,
-                race="Human",
-                expanded=args.expanded,
-                slow_advancement=args.slow,
-            )
-        )
-    for class_name in MULTICLASSES:
+    gen_args = {}
+    if args.level:
+        gen_args["level"]= args.level
+    else:
+        experience = args.experience
+        if not experience:
+            experience = random.randint(0, 9000000)
+        gen_args["experience"] = experience
+
+    for _ in range(0, character_count):
+        class_name = random.choice(get_all_classes())
         print(
             Character(
                 class_name=class_name,
-                experience=15000000,
                 expanded=args.expanded,
                 slow_advancement=args.slow,
+                **gen_args,
             )
         )
 

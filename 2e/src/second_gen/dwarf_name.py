@@ -110,9 +110,9 @@ def gen_firstname(gender="female"):
 
 
 def main():
-    print "Female Dwarf Name:", gen_firstname()
-    print "  Male Dwarf Name:", gen_firstname(gender="male")
-    print "  Stronghold Name:", gen_stronghold()
+    print("Female Dwarf Name:", gen_firstname())
+    print("  Male Dwarf Name:", gen_firstname(gender="male"))
+    print("  Stronghold Name:", gen_stronghold())
 
 
 if __name__ == "__main__":
